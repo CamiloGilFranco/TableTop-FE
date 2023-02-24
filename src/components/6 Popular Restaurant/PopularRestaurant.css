@@ -1,0 +1,82 @@
+.popular-restaurant {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.popular-restaurant-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.popular-restaurant-title {
+  font-size: 24px;
+}
+
+.popular-restaurants-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.popular-restaurants-buttons-text {
+  padding: 10px 15px;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.popular-restaurants-buttons-text-selected {
+  background-color: #ef3f3f;
+  color: white;
+}
+
+.popular-restaurant-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.popular-restaurant-card {
+  margin-top: 30px;
+  height: 400px;
+  width: 400px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.popular-restaurant-card-image-container {
+  height: 60%;
+  width: 100%;
+  display: flex;
+}
+
+.popular-restaurant-card-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.popular-restaurant-card-info {
+  padding: 20px;
+}
+
+.popular-restaurant-card-info-first-line {
+  display: flex;
+}
+
+.popular-restaurant-card-title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.popular-restaurant-card-rating {
+  margin-left: 30px;
+  background-color: #479744;
+  padding: 5px 10px;
+}
+
+.popular-restaurant-card-info-list {
+  margin-top: 15px;
+  color: gray;
+  list-style-position: inside;
+  list-style-type: square;
+}
