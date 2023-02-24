@@ -2,7 +2,6 @@
     background-image: url('./assets/pexels-jill-wellington-257816.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     background-size:cover ;
     display: flex;
     flex-direction: column;
