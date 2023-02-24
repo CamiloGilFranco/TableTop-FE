@@ -1,0 +1,71 @@
+.headerNavBar {
+    background-color: #F9F9F9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+    gap: 15px;
+    height: 35px;
+}
+.logo__container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.logo {
+    background-color: darkgray;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    border-radius: 15px;
+}
+
+.header__title {
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.headerNavBar button{
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.headerNavBar button:hover{
+    background-color: darkgray;
+}
+
+@media(min-width: 769px) and (max-width: 1024px) {
+    .headerNavBar{
+        height: 70px;
+    }
+    .header__title{
+        margin-top: 10px;
+        font-size: 25px;
+    }
+    .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 75px;
+    }
+    .headerNavBar button{
+        font-size: 20px;
+    }
+}
+@media(min-width: 1025px) {
+    .headerNavBar{
+        height: 80px;
+    }
+    .header__title{
+        margin-top: 10px;
+        font-size: 30px;
+    }
+    .logo {
+        width: 45px;
+        height: 45px;
+        border-radius: 75px;
+    }
+    .headerNavBar button{
+        font-size: 25px;
+    }
+}
