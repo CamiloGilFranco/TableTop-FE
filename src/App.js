@@ -8,6 +8,9 @@ import Footer from "./components/Footer/Footer";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
 import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantListComponent from "./components/RestaurantListComponent/RestaurantListComponent";
+import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent"
+
+
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
       <RestaurantList />
       <Footer />
       <RestaurantListComponent />
+      <RestaurantFilterComponent />
     </div>
   );
 }
