@@ -7,8 +7,12 @@ import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent"
 import Footer from "./components/Footer/Footer";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
 import RestaurantList from "./components/RestaurantList/RestaurantList";
+import RestaurantListComponent from "./components/RestaurantListComponent/RestaurantListComponent";
+import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent";
+import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent"
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
+
 
 
 
@@ -22,6 +26,7 @@ function App() {
       <PopularRestaurant />
       <DownloadPageComponent />
       <RestaurantList />
+      <RestauranOptions />
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />
