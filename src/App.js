@@ -10,6 +10,8 @@ import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent";
 import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
+import ReserveForm from "./components/ReserveForm/ReserveForm";
+
 
 
 
@@ -24,6 +26,7 @@ function App() {
       <DownloadPageComponent />
       <RestaurantList />
       <RestauranOptions />
+      <ReserveForm />
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />
