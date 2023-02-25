@@ -12,6 +12,7 @@ import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
 import ReserveForm from "./components/ReserveForm/ReserveForm";
 import Recommended from "./components/Recommended/Recommended";
+import CartItem from "./components/CartItem/CartItem";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <RestauranOptions />
       <ReserveForm />
       <Recommended />
+      <CartItem />
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />

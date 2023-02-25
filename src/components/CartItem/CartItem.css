@@ -1,0 +1,111 @@
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 15px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+  margin: 10px;
+}
+
+.cart-item-header {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.cart-item-product {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: solid 1px grey;
+  padding-bottom: 10px;
+}
+
+.cart-item-product-title {
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.cart-item-product-unit-value {
+  margin-top: 5px;
+}
+
+.cart-item-product-quantity-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cart-item-product-quantity-container-buttons {
+  display: flex;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.cart-item-product-quantity-button-plus {
+  font-size: 24px;
+  font-weight: 700;
+  height: 100%;
+  width: 32px;
+  background-color: #f9f9f9;
+  border: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.cart-item-product-quantity-number-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+}
+
+.cart-item-product-quantity-number {
+  font-weight: 700;
+}
+
+.cart-item-product-quantity-button-less {
+  font-size: 24px;
+  font-weight: 700;
+  height: 100%;
+  width: 32px;
+  background-color: #f9f9f9;
+  border: none;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.cart-item-product-total-value {
+  font-weight: 700;
+}
+
+.cart-item-finish-subtotal-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  border-top: solid 1px grey;
+}
+
+.cart-item-finish-subtotal-text {
+  font-weight: 700;
+}
+
+.cart-item-finish-subtotal-value {
+  font-weight: 700;
+}
+
+.cart-item-finish-waring {
+  font-size: 12px;
+  font-weight: 700;
+  width: 60%;
+  line-height: 10px;
+  color: gray;
+}
+
+.cart-item-finish-button {
+  background-color: #ef3f3f;
+  border: none;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-weight: 700;
+  margin-top: 15px;
+}
