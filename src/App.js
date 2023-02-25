@@ -11,9 +11,7 @@ import RestaurantFilterComponent from "./components/RestaurantFilterComponent/Re
 import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
 import ReserveForm from "./components/ReserveForm/ReserveForm";
-
-
-
+import Recommended from "./components/Recommended/Recommended";
 
 function App() {
   return (
@@ -27,6 +25,7 @@ function App() {
       <RestaurantList />
       <RestauranOptions />
       <ReserveForm />
+      <Recommended />
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />
