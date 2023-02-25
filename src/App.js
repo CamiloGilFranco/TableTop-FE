@@ -5,6 +5,7 @@ import PopularRestaurant from "./components/6 Popular Restaurant/PopularRestaura
 import SearchbarComponent from "./components/SearchbarComponent/SearchbarComponent";
 import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent";
 import Footer from "./components/Footer/Footer";
+import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <PromotionBanner />
       <FlowInfoComponent />
       <PopularRestaurant />
+      <DownloadPageComponent />
       <Footer />
     </div>
   );
