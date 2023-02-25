@@ -10,8 +10,6 @@ import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent";
 import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
-import OrderFailed from "./components/OrderFailed/OrderFailed";
-
 
 
 
