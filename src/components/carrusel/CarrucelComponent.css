@@ -3,16 +3,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-content: center;
-    
+    align-content: center;   
 }
+
 .content {
     width: 80vw;
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;  
 }
+
 .content-info {
     width: 8rem;
     display: flex;
