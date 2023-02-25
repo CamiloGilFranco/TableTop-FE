@@ -8,9 +8,8 @@ import Footer from "./components/Footer/Footer";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
 import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantListComponent from "./components/RestaurantListComponent/RestaurantListComponent";
-import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent"
-
-
+import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent";
+import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 
 function App() {
   return (
@@ -22,6 +21,7 @@ function App() {
       <PopularRestaurant />
       <DownloadPageComponent />
       <RestaurantList />
+      <RestauranOptions />
       <Footer />
       <RestaurantListComponent />
       <RestaurantFilterComponent />
