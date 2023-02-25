@@ -6,6 +6,7 @@ import SearchbarComponent from "./components/SearchbarComponent/SearchbarCompone
 import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent";
 import Footer from "./components/Footer/Footer";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
+import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantListComponent from "./components/RestaurantListComponent/RestaurantListComponent";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <FlowInfoComponent />
       <PopularRestaurant />
       <DownloadPageComponent />
+      <RestaurantList />
       <Footer />
       <RestaurantListComponent />
     </div>
