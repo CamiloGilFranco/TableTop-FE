@@ -1,0 +1,42 @@
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+}
+.content {
+    width: 80vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
+.content-info {
+    width: 8rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.content-img {
+    width: 8rem;
+    height: 8rem;
+}
+
+img {
+    border-radius: 1rem;
+    object-fit: cover;
+    width: 8rem;
+    height: 8rem;
+}
+
+h3 {
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+}
+p {
+    margin-top: 0;
+    color: #A1A1A1;
+}
