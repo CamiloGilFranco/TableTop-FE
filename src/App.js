@@ -11,8 +11,8 @@ import RestaurantFilterComponent from "./components/RestaurantFilterComponent/Re
 import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
 import ReserveForm from "./components/ReserveForm/ReserveForm";
-import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
-import OrderFailed from "./components/OrderFailed/OrderFailed";
+
+
 
 
 function App() {
