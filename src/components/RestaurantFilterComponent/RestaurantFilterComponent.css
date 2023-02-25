@@ -1,0 +1,72 @@
+.restaurantFilter__container{
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.restaurantFilter__dropdown {
+    border: none;
+    font-size: 16px;
+}
+.restaurantFilter__filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.desktop{
+    display: none;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px dotted black;
+    width: 31%;
+}
+.searchBar{
+    border: none;
+    background-color: lightgray;
+    padding: 10px;
+}
+.icons {
+    cursor: pointer;
+}
+.popularFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+.helpButton{
+    background-color: #ef3f3f;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    width: 40%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    gap: 15px;
+    cursor: pointer;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mobile {
+        display: none;
+    }
+    .desktop{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+@media (min-width: 1025px) {
+    .mobile{
+        display: none;
+    }
+    .desktop{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

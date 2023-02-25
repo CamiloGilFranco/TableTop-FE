@@ -5,7 +5,7 @@ import PopularRestaurant from "./components/6 Popular Restaurant/PopularRestaura
 import SearchbarComponent from "./components/SearchbarComponent/SearchbarComponent";
 import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
-
+import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent"
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
       <FlowInfoComponent/>
       <PopularRestaurant />
       <DownloadPageComponent />
+      <RestaurantFilterComponent />
     </div>
   );
 }
