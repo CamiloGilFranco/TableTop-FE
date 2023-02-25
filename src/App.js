@@ -6,6 +6,7 @@ import SearchbarComponent from "./components/SearchbarComponent/SearchbarCompone
 import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent";
 import Footer from "./components/Footer/Footer";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
+import RestaurantList from "./components/RestaurantList/RestaurantList";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <FlowInfoComponent />
       <PopularRestaurant />
       <DownloadPageComponent />
+      <RestaurantList />
       <Footer />
     </div>
   );
