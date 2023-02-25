@@ -1,0 +1,24 @@
+.restaurantList__container {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+.restaurantList__buttons-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    
+}
+.restaurantList__buttons{
+    background-color:rgba(255,255,255,255);
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+}
+.restaurantList__buttons:hover{
+    background-color: #ef3f3f;
+    color: white;
+}
+.restaurantList__buttons:focus{
+    background-color: #ef3f3f;
+    color: white;
+}

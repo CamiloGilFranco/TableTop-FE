@@ -7,6 +7,7 @@ import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent"
 import Footer from "./components/Footer/Footer";
 import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
 import RestaurantList from "./components/RestaurantList/RestaurantList";
+import RestaurantListComponent from "./components/RestaurantListComponent/RestaurantListComponent";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <DownloadPageComponent />
       <RestaurantList />
       <Footer />
+      <RestaurantListComponent />
     </div>
   );
 }
