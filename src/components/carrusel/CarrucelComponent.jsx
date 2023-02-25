@@ -4,7 +4,7 @@ import italianFood from "./assets/italianfood.jpg";
 import chineseFood from "./assets/chinesefood.jpg";
 
 
-function CarrucelComponent(){
+const CarrucelComponent = () =>{
 
     return(
 
@@ -45,8 +45,7 @@ function CarrucelComponent(){
                     </a>
                     </div>
                     <h3>Bakery</h3>
-                    <p>23 Restaurant</p>
-                    
+                    <p>23 Restaurant</p>   
                 </div>
                 <div className="content-info">
                     <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
