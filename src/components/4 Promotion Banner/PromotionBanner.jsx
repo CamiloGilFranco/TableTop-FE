@@ -16,6 +16,7 @@ const PromotionBanner = () => {
         <img src={burger} alt="" className="picture" />
         <section className="text">
           <span className="redText">ONLY $12</span>
+          <span className="blackText">Tasty Burger</span>
           <span className="blackText"></span>
         </section>
       </figure>

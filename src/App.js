@@ -9,6 +9,7 @@ import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPa
 import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent"
 import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantInfoBanner";
+import RestaurantOptions from "./components/RestaurantOptions/RestaurantOptions";
 
 
 
@@ -25,6 +26,7 @@ function App() {
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />
+      <RestaurantOptions />
     </div>
   );
 }

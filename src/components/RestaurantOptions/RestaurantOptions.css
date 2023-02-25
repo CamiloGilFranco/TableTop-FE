@@ -1,0 +1,41 @@
+.restaurantOptions__container{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 10px lightgray;
+    gap: 5px;
+    width: auto;
+}
+.restaurantOptions__options{
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+}
+
+.restaurantOptions__options :hover {
+    color: #ef3f3f;
+    border-bottom: 3px solid #ef3f3f;
+}
+.restaurantOptions__options :active {
+    border-bottom: 3px solid #ef3f3f;
+}
+@media(min-width: 765px) {
+    .restaurantOptions__container{
+        margin: 0;
+        height: 50px;
+        gap: 15px;
+        margin-bottom: 10px;
+        padding: 0px 20px;
+    }
+    .restaurantOptions__options p {
+        font-size: 18px;
+    }
+    
+}
+
+@media(min-width: 765px) {
+    .restaurantOptions__options p {
+        font-size: 22px;
+    }
+}
