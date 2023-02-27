@@ -1,0 +1,92 @@
+.searchBar__container{
+    background-image: url('./assets/pexels-jill-wellington-257816.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover ;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+.searchBar__text{
+    background-color: rgba(238, 237, 236, 0.3);
+    padding: 10px;
+    font-size: 14px;
+    width: fit-content;
+
+}
+
+.searchBar__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.searchBar__inputText{
+    border: none;
+    background-color:rgb(238, 237, 236);
+    border-radius: 10px;
+    padding: 10px;
+    height: 25px;
+}
+
+.searchBar__button{
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #ef3f3f;
+    padding: 10px;
+}
+
+@media(min-width: 769px) and (max-width: 1024px) {
+    .searchBar__container {
+        height: 35vh;
+        justify-content: center;
+    }
+    .searchBar__form{
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .searchBar__inputText {
+        height: 40px;
+        width: 50vh;
+        font-size: 20px;
+    }
+    .searchBar__button{
+       width: 15vh;
+    }
+    .searchBar__text{
+        font-size: 22px;
+        background-color: rgba(238, 237, 236, 0.7);
+    }
+}
+
+@media(min-width: 1025px) {
+    .searchBar__container {
+        height: 35vh;
+        justify-content: center;
+    }
+    .searchBar__form{
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .searchBar__inputText {
+        height: 40px;
+        width: 55vh;
+        font-size: 20px;
+    }
+    .searchBar__button{
+       width: 20vh;
+    }
+    .searchBar__text{
+        font-size: 22px;
+        background-color: rgba(238, 237, 236, 0.7);
+    }
+}

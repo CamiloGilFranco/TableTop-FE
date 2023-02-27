@@ -1,148 +1,150 @@
 .headerNavBar {
-    background-color: #F9F9F9;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 10px;
-    gap: 15px;
-    height: 35px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+  gap: 15px;
+  height: 35px;
 }
 .logo__container {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
-.logo {
-    background-color: darkgray;
-    width: 20px;
-    height: 20px;
-    padding: 3px;
-    border-radius: 15px;
+.logotipo {
+  background-color: lightgray;
+  aspect-ratio: 1/1;
+  height: 90%;
+  padding: 3px;
+  border-radius: 50%;
 }
 
 .header__title {
-    margin-top: 5px;
-    padding-left: 5px;
+  margin-top: 5px;
+  padding-left: 5px;
 }
 
 .header__text {
-    display: none;
+  display: none;
 }
 
-.header__textButtons span:hover{
-    background-color: darkgray;
-    cursor: pointer;
+.header__textButtons span:hover {
+  background-color: darkgray;
+  cursor: pointer;
 }
 
-.header__icons:hover{
-    cursor: pointer;
-    background-color: darkgray;
+.header__icons:hover {
+  cursor: pointer;
+  background-color: darkgray;
 }
 .header__personIcon {
-    margin: 0px 5px;
+  margin: 0px 5px;
 }
 
-.header__optionLists{
+.header__optionLists {
+  display: none;
+  margin: 0px 5px;
+}
+.currencyList {
+  border: none;
+  background-color: darkgray;
+  height: 30px;
+  margin: 0px 5px;
+}
+.lenguageList {
+  border: none;
+  background-color: darkgray;
+  height: 30px;
+  margin: 0px 5px;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .headerNavBar {
+    height: 70px;
+    justify-content: space-around;
+  }
+  .header__title {
+    margin-top: 10px;
+    font-size: 25px;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 75px;
+  }
+  .headerNavBar span {
+    font-size: 20px;
+  }
+
+  .header__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__gearIcon {
     display: none;
-    margin: 0px 5px
+  }
+  .header__listIcon {
+    display: none;
+  }
+  .header__text {
+    display: block;
+  }
+  .header__textButtons span {
+    padding: 0px 5px;
+  }
+  .header__optionLists {
+    display: block;
+  }
+  .header__textButtons {
+    display: flex;
+  }
 }
-.currencyList{
-    border: none;
-    background-color: darkgray;
-    height: 30px;
-    margin: 0px 5px
-}
-.lenguageList{
-    border: none;
-    background-color: darkgray;
-    height: 30px;
-    margin: 0px 5px
-}
-
-@media(min-width: 769px) and (max-width: 1024px) {
-    .headerNavBar{
-        height: 70px;
-        justify-content: space-around;
-    }
-    .header__title{
-        margin-top: 10px;
-        font-size: 25px;
-    }
-    .logo {
-        width: 40px;
-        height: 40px;
-        border-radius: 75px;
-    }
-    .headerNavBar span{
-        font-size: 20px;
-    }
-    
-    .header__buttons {
-        display: flex;
-        align-items: center;
-    }
-    
-    .header__gearIcon {
-        display: none;
-    }
-    .header__listIcon {
-        display: none;
-    }
-    .header__text {
-        display: block;
-    }
-    .header__textButtons span{
-        padding: 0px 5px;
-    }
-    .header__optionLists{
-        display: block;
-    }
-    .header__textButtons{
-        display: flex;
-    }
-}
-@media(min-width: 1025px) {
-    .headerNavBar{
-        height: 80px;
-        justify-content: space-around;
-    }
-    .header__title{
-        margin-top: 10px;
-        font-size: 30px;
-    }
-    .logo {
-        width: 45px;
-        height: 45px;
-        border-radius: 75px;
-    }
-    .headerNavBar span{
-        font-size: 25px;
-    }
-    .header__gearIcon {
-        display: none;
-    }
-    .header__listIcon {
-        display: none;
-    }
-    .header__text {
-        display: block;
-    }
-    .header__buttons {
-        display: flex;
-        align-self: center;
-    }
-    .header__textButtons span{
-        padding: 0px 10px;
-    }
-    .header__optionLists{
-        display: block;
-    }
-    .header__personIcon{
-        height: 25px;
-        width: auto;
-        align-self: center;
-    }
-    .header__textButtons{
-        display: flex;
-    }
+@media (min-width: 1025px) {
+  .headerNavBar {
+    height: 80px;
+    justify-content: space-around;
+  }
+  .header__title {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 75px;
+  }
+  .headerNavBar span {
+    font-size: 25px;
+  }
+  .header__gearIcon {
+    display: none;
+  }
+  .header__listIcon {
+    display: none;
+  }
+  .header__text {
+    display: block;
+  }
+  .header__buttons {
+    display: flex;
+    align-self: center;
+  }
+  .header__textButtons span {
+    padding: 0px 10px;
+  }
+  .header__optionLists {
+    display: block;
+  }
+  .header__personIcon {
+    height: 25px;
+    width: auto;
+    align-self: center;
+  }
+  .header__textButtons {
+    display: flex;
+  }
 }
