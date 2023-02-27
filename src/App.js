@@ -1,4 +1,5 @@
 import "./App.css";
+import { CarrucelComponent } from "./components/carrusel/CarrucelComponent";
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 import PromotionBanner from "./components/4 Promotion Banner/PromotionBanner";
 import PopularRestaurant from "./components/6 Popular Restaurant/PopularRestaurant";
@@ -20,6 +21,7 @@ function App() {
       <HeaderComponent />
       <SearchbarComponent />
       <PromotionBanner />
+      <CarrucelComponent />
       <FlowInfoComponent />
       <PopularRestaurant />
       <DownloadPageComponent />
