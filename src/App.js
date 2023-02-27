@@ -14,6 +14,7 @@ import RestaurantInfoBanner from "./components/RestaurantInfoBanner/RestaurantIn
 import ReserveForm from "./components/ReserveForm/ReserveForm";
 import Recommended from "./components/Recommended/Recommended";
 import CartItem from "./components/CartItem/CartItem";
+import { Payment } from "./components/payment/Payment";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />
+      <Payment />
     </div>
   );
 }
