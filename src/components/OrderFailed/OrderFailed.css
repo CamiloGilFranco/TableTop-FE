@@ -1,41 +1,45 @@
 .orderFailed__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9;
-    padding: 10px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  text-align: center;
 }
-.orderFailed__icon{
-    width: 25vh;
-    height: 25vh;
-    color: #ef3f3f;
-    margin-bottom: 20px;
+
+.orderFailed__icon {
+  width: 25vh;
+  height: 25vh;
+  color: #ef3f3f;
+  margin-bottom: 20px;
 }
+
 .orderFailed__text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-.orderFailed__button{
-    border: none;
-    background-color: #ef3f3f;
-    color: white;
-    padding: 10px;
-    font-weight:700;
-    width: 50%;
-    cursor: pointer;
+@media (min-width: 765px) {
+  .orderFailed__text {
+    font-size: large;
+    gap: 30px;
+    width: 700px;
+  }
 }
-@media (min-width: 765px){
-    .orderFailed__text {
-        font-size: large;
-        gap: 30px;
-        width: 700px;
-    }
- 
-    .orderFailed__button {
-        font-size: large;
-    }
+
+.orderFailed__button {
+  border: none;
+  background-color: #ef3f3f;
+  color: white;
+  padding: 10px;
+  font-weight: 700;
+  width: 50%;
+  cursor: pointer;
 }
+@media (min-width: 765px) {
+  .orderFailed__button {
+    font-size: large;
+  }
+}/*# sourceMappingURL=OrderFailed.css.map */
