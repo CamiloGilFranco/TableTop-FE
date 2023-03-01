@@ -18,15 +18,15 @@ function App() {
       <HeaderComponent />
       <HomePageComponent />
       <RestaurantList />
-      <RestauranOptions />
-      <ReserveForm />
-      <Recommended />
-      <CartItem />
+      {/* <RestauranOptions /> */}
+      {/* <ReserveForm /> */}
+      {/* <Recommended />
+      <CartItem /> */}
       {/* <OrderPage /> */}
       <Footer />
-      <RestaurantFilterComponent />
+      {/* <RestaurantFilterComponent />
       <RestaurantInfoBanner />
-      <Payment />
+      <Payment /> */}
     </div>
   );
 }

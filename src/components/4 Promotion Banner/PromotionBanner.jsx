@@ -6,17 +6,17 @@ const PromotionBanner = () => {
   return (
     <div className="promotions-banner">
       <figure className="picture-content">
-        <img src={pizza} alt="pizza" className="picture" />
-        <section className="text">
-          <span className="redText">BUY 1 GET FREE</span>
-          <span className="blackText">All Pizza</span>
+        <img src={pizza} alt="pizza" className="promotionBanner__picture" />
+        <section className="promotionBanner__text">
+          <span className="promotionBanner__redText">BUY 1 GET FREE</span>
+          <span className="promotionBanner__blackText">All Pizza</span>
         </section>
       </figure>
       <figure className="picture-content">
-        <img src={burger} alt="" className="picture" />
-        <section className="text">
-          <span className="redText">ONLY $12</span>
-          <span className="blackText"></span>
+        <img src={burger} alt="" className="promotionBanner__picture" />
+        <section className="promotionBanner__text">
+          <span className="promotionBanner__redText">ONLY $12</span>
+          <span className="promotionBanner__blackText">Tasty Burger</span>
         </section>
       </figure>
     </div>

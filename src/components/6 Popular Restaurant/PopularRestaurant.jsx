@@ -37,7 +37,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -59,7 +59,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -81,7 +81,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -103,7 +103,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -125,7 +125,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -147,7 +147,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -169,7 +169,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>
@@ -191,7 +191,7 @@ const PopularRestaurant = () => {
               <span className="popular-restaurant-card-title">
                 Italian Restro
               </span>
-              <span className="popular-restaurant-card-rating">4.5 ⭐</span>
+              <span className="popular-restaurant-card-rating"> 4.5 ⭐</span>
             </div>
             <ul className="popular-restaurant-card-info-list">
               <li>Fast Food, Cafe, Italian</li>

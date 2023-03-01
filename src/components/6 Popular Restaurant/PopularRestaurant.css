@@ -1,28 +1,41 @@
 .popular-restaurant {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 10px;
+}
+@media (min-width: 765px) {
+  .popular-restaurant {
+    padding: 40px;
+  }
 }
 
 .popular-restaurant-header {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
+  gap: 10px;
+}
+@media (min-width: 765px) {
+  .popular-restaurant-header {
+    flex-direction: row;
+  }
 }
 
 .popular-restaurant-title {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .popular-restaurants-buttons {
   display: flex;
   gap: 10px;
+  cursor: pointer;
 }
 
 .popular-restaurants-buttons-text {
-  padding: 10px 15px;
+  padding: 10px;
   background-color: lightgray;
   cursor: pointer;
 }
@@ -37,14 +50,26 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+@media (min-width: 765px) {
+  .popular-restaurant-main {
+    justify-content: center;
+  }
+}
+@media (min-width: 1000px) {
+  .popular-restaurant-main {
+    gap: 35px;
+  }
+}
+
 .popular-restaurant-card {
   margin-top: 30px;
   height: 400px;
-  width: 400px;
+  width: 350px;
   box-shadow: 0 2px 5px 1px lightgrey;
 }
 
 .popular-restaurant-card-image-container {
+  cursor: pointer;
   height: 60%;
   width: 100%;
   display: flex;
@@ -52,7 +77,8 @@
 
 .popular-restaurant-card-image {
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .popular-restaurant-card-info {
@@ -61,6 +87,7 @@
 
 .popular-restaurant-card-info-first-line {
   display: flex;
+  cursor: pointer;
 }
 
 .popular-restaurant-card-title {
@@ -79,4 +106,4 @@
   color: gray;
   list-style-position: inside;
   list-style-type: square;
-}
+}/*# sourceMappingURL=PopularRestaurant.css.map */
