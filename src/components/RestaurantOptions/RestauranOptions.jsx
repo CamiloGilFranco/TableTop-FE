@@ -1,21 +1,15 @@
-import { useState } from "react";
 import "./RestaurantOptions.css";
 
-const RestauranOptions = () => {
-  const [selected, setSelected] = useState("ORDER ONLINE");
-  const classOrderOnline =
-    selected === "ORDER ONLINE" ? "restaurant-options-option-selected" : "";
-  const classOverview =
-    selected === "OVERVIEW" ? "restaurant-options-option-selected" : "";
-  const classGallery =
-    selected === "GALLERY" ? "restaurant-options-option-selected" : "";
-  const classLocation =
-    selected === "LOCATION" ? "restaurant-options-option-selected" : "";
-  const classBookATable =
-    selected === "BOOK A TABLE" ? "restaurant-options-option-selected" : "";
-  const classReviews =
-    selected === "REVIEWS" ? "restaurant-options-option-selected" : "";
-
+const RestauranOptions = ({
+  setSelected,
+  selected = "nada",
+  classOrderOnline,
+  classOverview,
+  classGallery,
+  classLocation,
+  classBookATable,
+  classReviews,
+}) => {
   return (
     <div className="restaurant-options">
       <div className={`restaurant-options-option ${classOrderOnline}`}>

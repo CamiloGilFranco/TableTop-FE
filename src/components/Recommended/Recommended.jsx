@@ -29,8 +29,7 @@ const Recommended = () => {
             </div>
             <div className="restaurant-view-recommended-card-info-list">
               <p>- Fast Food, Cafe, Italian</p>
-              <p>- 11:30am - 11:30pm</p>
-              <p>- (Mon-Sun)</p>
+              <p>- 11:30am - 11:30pm (Mon-Sun)</p>
               <p>- Cost $25 For Two</p>
             </div>
           </figcaption>
@@ -54,8 +53,7 @@ const Recommended = () => {
             </div>
             <div className="restaurant-view-recommended-card-info-list">
               <p>- Fast Food, Cafe, Italian</p>
-              <p>- 11:30am - 11:30pm</p>
-              <p>- (Mon-Sun)</p>
+              <p>- 11:30am - 11:30pm (Mon-Sun)</p>
               <p>- Cost $25 For Two</p>
             </div>
           </figcaption>
@@ -79,8 +77,7 @@ const Recommended = () => {
             </div>
             <div className="restaurant-view-recommended-card-info-list">
               <p>- Fast Food, Cafe, Italian</p>
-              <p>- 11:30am - 11:30pm</p>
-              <p>- (Mon-Sun)</p>
+              <p>- 11:30am - 11:30pm (Mon-Sun)</p>
               <p>- Cost $25 For Two</p>
             </div>
           </figcaption>

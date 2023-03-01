@@ -1,6 +1,6 @@
 import "./GalleryComponent.css";
-const GalleryComponent = () => {
-  return <div className="gallery-component-container"></div>;
+const GalleryComponent = ({ hiddenGallery }) => {
+  return <div className={`gallery-component-container ${hiddenGallery}`}></div>;
 };
 
 export default GalleryComponent;

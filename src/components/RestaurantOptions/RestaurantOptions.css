@@ -13,11 +13,13 @@
   width: fit-content;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .restaurant-options-option-text {
   font-weight: 700;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .restaurant-options-option-radio {

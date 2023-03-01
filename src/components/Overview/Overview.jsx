@@ -1,8 +1,8 @@
 import "./Overview.css";
 
-const Overview = () => {
+const Overview = ({ hiddenOverview }) => {
   return (
-    <div className="restaurant-view-overview">
+    <div className={`restaurant-view-overview ${hiddenOverview}`}>
       <div className="restaurant-view-overview-category">
         <span className="restaurant-view-overview-category-title">
           Phone Number: 1234567890

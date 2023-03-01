@@ -1,9 +1,10 @@
 import "./OrderOnline.css";
 import IndividualDish from "./IndividualDish";
 
-const OrderOnline = () => {
+const OrderOnline = ({ hiddenOrderOnline }) => {
+  console.log(hiddenOrderOnline);
   return (
-    <div className="restaurant-view-order-online">
+    <div className={`restaurant-view-order-online ${hiddenOrderOnline}`}>
       <div className="restaurant-view-order-online-search-panel">
         <input
           type="search"

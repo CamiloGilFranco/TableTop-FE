@@ -1,9 +1,9 @@
 import "./ReviewsComponent.css";
 import SingleReviewComponent from "./SingleReviewComponent.jsx";
 
-const ReviewsComponent = () => {
+const ReviewsComponent = ({ hiddenReviews }) => {
   return (
-    <div className="reviews-component-container">
+    <div className={`reviews-component-container ${hiddenReviews}`}>
       <SingleReviewComponent />
       <SingleReviewComponent />
       <SingleReviewComponent />
