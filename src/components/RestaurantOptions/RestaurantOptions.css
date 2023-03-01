@@ -1,21 +1,27 @@
 .restaurant-options {
   margin: 5px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
-  height: 60px;
+  height: 40px;
   box-shadow: 0 2px 5px 1px lightgrey;
+  padding: 0 10px;
 }
 
 .restaurant-options-option {
   height: 100%;
+  width: fit-content;
   display: flex;
   align-items: center;
-  padding: 0 40px;
 }
 
-.restaurant-options-option {
+.restaurant-options-option-text {
   font-weight: 700;
+  font-size: 14px;
+}
+
+.restaurant-options-option-radio {
+  display: none;
 }
 
 .restaurant-options-option-selected {

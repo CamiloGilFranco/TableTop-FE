@@ -1,0 +1,10 @@
+.restaurant-view-location-map-container {
+  padding: 25px;
+  height: 500px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.restaurant-view-location-map {
+  width: 100%;
+  height: 100%;
+}

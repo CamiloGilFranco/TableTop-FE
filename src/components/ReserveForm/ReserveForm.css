@@ -1,9 +1,8 @@
 .reserve-form {
-  width: 50%;
+  width: 100%;
   height: max-content;
   padding: 40px;
   box-shadow: 0 2px 5px 1px lightgrey;
-  margin: 10px;
 }
 
 .reserve-form-input-container {

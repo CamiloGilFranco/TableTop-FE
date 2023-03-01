@@ -15,26 +15,28 @@ import ReserveForm from "./components/ReserveForm/ReserveForm";
 import Recommended from "./components/Recommended/Recommended";
 import CartItem from "./components/CartItem/CartItem";
 import { Payment } from "./components/payment/Payment";
+import RestaurantView from "./pages/RestaurantView/RestaurantView";
 
 function App() {
   return (
     <div className="App">
-      <HeaderComponent />
-      <SearchbarComponent />
-      <PromotionBanner />
-      <CarrucelComponent />
-      <FlowInfoComponent />
-      <PopularRestaurant />
-      <DownloadPageComponent />
-      <RestaurantList />
-      <RestauranOptions />
-      <ReserveForm />
-      <Recommended />
-      <CartItem />
-      <Footer />
-      <RestaurantFilterComponent />
-      <RestaurantInfoBanner />
-      <Payment />
+      {/* <HeaderComponent /> */}
+      {/* <SearchbarComponent /> */}
+      {/* <PromotionBanner /> */}
+      {/* <CarrucelComponent /> */}
+      {/* <FlowInfoComponent /> */}
+      {/* <PopularRestaurant /> */}
+      {/* <DownloadPageComponent /> */}
+      {/* <RestaurantList /> */}
+      {/* <RestauranOptions /> */}
+      {/* <ReserveForm /> */}
+      {/* <Recommended /> */}
+      {/* <CartItem /> */}
+      {/* <Footer /> */}
+      {/* <RestaurantFilterComponent /> */}
+      {/* <RestaurantInfoBanner /> */}
+      {/* <Payment /> */}
+      <RestaurantView />
     </div>
   );
 }
