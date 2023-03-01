@@ -16,4 +16,4 @@ const OrderFailed = ()=>{
     )
 }
 
-export default OrderFailed
+export default OrderFailed;

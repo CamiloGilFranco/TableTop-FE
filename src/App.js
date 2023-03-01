@@ -10,6 +10,7 @@ import Recommended from "./components/Recommended/Recommended";
 import CartItem from "./components/CartItem/CartItem";
 import { Payment } from "./components/payment/Payment";
 import HomePageComponent from "./components/HomePageComponent/HomePageComponent";
+// import OrderPage from "./components/OrderPage/OrderPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <ReserveForm />
       <Recommended />
       <CartItem />
+      {/* <OrderPage /> */}
       <Footer />
       <RestaurantFilterComponent />
       <RestaurantInfoBanner />
