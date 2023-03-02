@@ -14,25 +14,12 @@ import ReserveForm from "./components/ReserveForm/ReserveForm";
 import Recommended from "./components/Recommended/Recommended";
 import CartItem from "./components/CartItem/CartItem";
 import { Payment } from "./components/payment/Payment";
+import NewAdressComponent from "./components/NewAdressComponent/NewAdressComponent";
 
 function App() {
   return (
     <div className="App">
-      <HeaderComponent />
-      <SearchbarComponent />
-      <PromotionBanner />
-      <FlowInfoComponent />
-      <PopularRestaurant />
-      <DownloadPageComponent />
-      <RestaurantList />
-      <RestauranOptions />
-      <ReserveForm />
-      <Recommended />
-      <CartItem />
-      <Footer />
-      <RestaurantFilterComponent />
-      <RestaurantInfoBanner />
-      <Payment />
+      <Payment /> 
     </div>
   );
 }
