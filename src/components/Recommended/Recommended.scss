@@ -1,0 +1,76 @@
+.restaurant-view-recommended {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.restaurant-view-recommended-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.restaurant-view-recommended-title {
+  font-size: 20px;
+}
+
+.restaurant-view-recommended-cards-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant-view-recommended-card {
+  margin-top: 10px;
+  height: 300px;
+  width: 30%;
+  max-width: 300px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.restaurant-view-recommended-card-image-container {
+  height: 50%;
+  width: 100%;
+  display: flex;
+}
+
+.restaurant-view-recommended-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.restaurant-view-recommended-card-info {
+  padding: 10px;
+}
+
+.restaurant-view-recommended-card-info-first-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant-view-recommended-card-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.restaurant-view-recommended-card-rating {
+  margin-left: 0px;
+  background-color: #479744;
+  padding: 2px 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.restaurant-view-recommended-card-info-list {
+  margin-top: 15px;
+  color: gray;
+  list-style-type: square;
+  font-size: 14px;
+}

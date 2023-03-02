@@ -1,0 +1,22 @@
+.restaurant-view-overview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 40px;
+  flex-wrap: wrap;
+  height: 400px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.restaurant-view-overview-category {
+  margin-bottom: 25px;
+}
+
+.restaurant-view-overview-category-title {
+  display: block;
+  font-weight: 700;
+}
+
+.restaurant-view-overview-category-items {
+  list-style: square inside;
+}/*# sourceMappingURL=Overview.css.map */

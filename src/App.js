@@ -9,24 +9,16 @@ import ReserveForm from "./components/ReserveForm/ReserveForm";
 import Recommended from "./components/Recommended/Recommended";
 import CartItem from "./components/CartItem/CartItem";
 import { Payment } from "./components/payment/Payment";
+import RestaurantView from "./pages/RestaurantView/RestaurantView";
 import HomePageComponent from "./components/HomePageComponent/HomePageComponent";
 // import OrderPage from "./components/OrderPage/OrderPage";
 
 function App() {
   return (
     <div className="App">
-      {/* <HeaderComponent /> */}
       <HomePageComponent />
       <RestaurantList />
-      {/* <RestauranOptions /> */}
-      {/* <ReserveForm /> */}
-      {/* <Recommended />
-      <CartItem /> */}
-      {/* <OrderPage /> */}
-      {/* <Footer /> */}
-      {/* <RestaurantFilterComponent />
-      <RestaurantInfoBanner />
-      <Payment /> */}
+
     </div>
   );
 }

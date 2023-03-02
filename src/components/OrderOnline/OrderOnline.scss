@@ -1,0 +1,105 @@
+.restaurant-view-order-online {
+  width: 100%;
+  display: flex;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.restaurant-view-order-online-search-panel {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-top: 10px;
+  border-right: darkgray solid 1px;
+}
+
+.restaurant-view-order-online-search-panel-search-input {
+  background-color: #f9f9f9;
+  color: darkgrey;
+  padding-left: 10px;
+  border: none;
+  width: 90%;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 30px;
+}
+
+.restaurant-view-order-online-search-panel-list {
+  font-size: 14px;
+  width: 90%;
+  list-style: none;
+  font-weight: 700;
+}
+
+.search-panel-list-subcategory {
+  padding-left: 15px;
+}
+.search-panel-list-category:hover,
+.search-panel-list-subcategory:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.restaurant-view-order-online-menu-container {
+  width: 75%;
+  height: 100%;
+  padding: 15px;
+}
+
+.restaurant-view-order-online-menu-container > :nth-child(1n + 2) {
+  border-top: grey solid 2px;
+}
+
+.restaurant-view-order-online-category-title {
+  color: darkgrey;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.restaurant-view-order-online-subcategory-title {
+  display: block;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.restaurant-view-order-online-subcategory-quantity {
+  display: block;
+  color: #a1a1a1;
+  margin-bottom: 10px;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+.restaurant-view-individual-dish-main-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant-view-individual-dish-main-line-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.restaurant-view-individual-dish-main-line-button {
+  font-weight: 700;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px 1px lightgrey;
+  padding: 3px 0;
+}
+
+.restaurant-view-individual-dish-description {
+  width: 80%;
+  color: #a1a1a1;
+  font-size: 14px;
+}
+
+.restaurant-view-individual-dish-price {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

@@ -1,8 +1,8 @@
 import "./ReserveForm.css";
 
-const ReserveForm = () => {
+const ReserveForm = ({ hiddenBookATable }) => {
   return (
-    <form action="" className="reserve-form">
+    <form action="" className={`reserve-form ${hiddenBookATable}`}>
       <div className="reserve-form-input-container">
         <input
           type="text"

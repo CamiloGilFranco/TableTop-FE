@@ -8,53 +8,52 @@ const CarrucelComponent = () =>{
 
     return(
 
-        <main className='container'>
-            <section className="content">
-                <div className="content-info">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
-                        <img src={mexicanFood} alt="mexican" className="content-ingo__image" ></img>
+        <main className='carrucel'>
+            <section className="carrucel-list">
+                <div className="food-type">
+                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
+                        <img src={mexicanFood} alt="mexican" className="food-type__image" ></img>
                     </a>
-                    <h3>Mexican</h3>
-                    <p>23 Restaurant</p>
+                    <h3 className='food-type__item>Mexican'>Mexican</h3>
+                    <p className='food-type__text'>23 Restaurant</p>
                 </div>
-                <div className="content-info">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
-                        <img src={chineseFood} alt="chinese"/>
+                <div className="food-type">
+                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
+                        <img src={chineseFood} alt="chinese" className="food-type__image"/>
                     </a>
-                    <h3>Chinese</h3>
-                    <p>23 Restaurant</p>
+                    <h3 className='food-type__item'>Chinese</h3>
+                    <p className='food-type__text'>23 Restaurant</p>
                 </div>
-                <div className="content-info">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
-                        <img src={italianFood} alt="italian food"/>
+                <div className="food-type">
+                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
+                        <img src={italianFood} alt="italian food" className="food-type__image"/>
                     </a>
-                    <h3>Italian</h3>
-                    <p>23 Restaurant</p>
+                    <h3 className='food-type__item'>Italian</h3>
+                    <p className='food-type__text'>23 Restaurant</p>
                 </div>
-                <div className="content-info">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
-                        <img src={mexicanFood} alt="chinese food" />
+                <div className="food-type">
+                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
+                        <img src={mexicanFood} alt="chinese food" className="food-type__image"/>
                     </a>
-                    <h3>Bakery</h3>
-                    <p>23 Restaurant</p>
+                    <h3 className='food-type__item'>Bakery</h3>
+                    <p className='food-type__text'>23 Restaurant</p>
                 </div>
-                <div className="content-info">
+                <div className="food-type">
                     <div content-img>
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
-                        <img src={mexicanFood} alt="chinese food"/>
+                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
+                        <img src={mexicanFood} alt="chinese food" className="food-type__image"/>
                     </a>
                     </div>
-                    <h3>Bakery</h3>
-                    <p>23 Restaurant</p>   
+                    <h3 className='food-type__item'>Bakery</h3>
+                    <p className='food-type__text'>23 Restaurant</p>   
                 </div>
-                <div className="content-info">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer">
-                        <img src={mexicanFood} alt="chinese food" className="content-ingo__image"/>
+                <div className="food-type">
+                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
+                        <img src={mexicanFood} alt="chinese food" className="food-type__image"/>
                     </a>
-                    <h3>Bakery</h3>
-                    <p>23 Restaurant</p>
+                    <h3 className='food-type__item'>Bakery</h3>
+                    <p className='food-type__text'>23 Restaurant</p>
                 </div>
-
             </section>
         </main>
   

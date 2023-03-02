@@ -1,0 +1,51 @@
+.restaurant-card-component {
+  margin-top: 10px;
+  height: 300px;
+  width: 30%;
+  max-width: 300px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.restaurant-card-component-image-container {
+  height: 50%;
+  width: 100%;
+  display: flex;
+}
+
+.restaurant-card-component-image {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.restaurant-card-component-info {
+  padding: 10px;
+}
+
+.restaurant-card-component-info-first-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant-card-component-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.restaurant-card-component-rating {
+  margin-left: 0px;
+  background-color: #479744;
+  padding: 2px 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.restaurant-card-component-info-list {
+  margin-top: 15px;
+  color: gray;
+  list-style-type: square;
+  font-size: 14px;
+}/*# sourceMappingURL=RestaurantCardComponent.css.map */
