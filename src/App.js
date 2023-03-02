@@ -16,7 +16,6 @@ import HomePageComponent from "./components/HomePageComponent/HomePageComponent"
 function App() {
   return (
     <div className="App">
-
       {/* <HeaderComponent /> */}
       {/* <SearchbarComponent /> */}
       {/* <PromotionBanner /> */}
@@ -24,7 +23,7 @@ function App() {
       {/* <FlowInfoComponent /> */}
       {/* <PopularRestaurant /> */}
       {/* <DownloadPageComponent /> */}
-      {/* <RestaurantList /> */}
+      <RestaurantList />
       {/* <RestauranOptions /> */}
       {/* <ReserveForm /> */}
       {/* <Recommended /> */}
@@ -33,12 +32,11 @@ function App() {
       {/* <RestaurantFilterComponent /> */}
       {/* <RestaurantInfoBanner /> */}
       {/* <Payment /> */}
-      <RestaurantView />
-      
-      <HomePageComponent />
-  
-      {/* <OrderPage /> */}
+      {/* <RestaurantView /> */}
 
+      {/* <HomePageComponent /> */}
+
+      {/* <OrderPage /> */}
     </div>
   );
 }
