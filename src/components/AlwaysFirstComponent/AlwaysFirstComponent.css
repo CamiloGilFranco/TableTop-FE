@@ -1,0 +1,42 @@
+.always-first-component-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.always-first-component-title {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.always-first-component-paragraph {
+  font-size: 18px;
+  color: darkgrey;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.always-first-component-input {
+  display: block;
+  font-size: 18px;
+  width: 100%;
+  border: solid darkgrey 1px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.always-first-component-button {
+  color: white;
+  background-color: #ef3f3f;
+  font-size: 16px;
+  border: none;
+  padding: 5px 0;
+  margin-top: 15px;
+  width: 120px;
+  align-self: flex-end;
+  font-weight: 700;
+}/*# sourceMappingURL=AlwaysFirstComponent.css.map */

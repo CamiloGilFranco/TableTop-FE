@@ -34,6 +34,9 @@
 
 .footer-logo {
   height: 30px;
+  border-radius: none;
+  object-fit: initial;
+  width: auto;
 }
 
 .footer-info-title {
@@ -72,6 +75,9 @@
 
 .footer-icon {
   height: 20px;
+  border-radius: none;
+  object-fit: initial;
+  width: auto;
 }
 
 .footer-info-text-data {
@@ -159,9 +165,12 @@
 }
 
 .footer-new-image {
+  height: auto;
   overflow: hidden;
   object-fit: cover;
   object-position: -10px;
+  border-radius: 5px;
+  width: auto;
 }
 
 .footer-new-container-text-title {
@@ -188,4 +197,7 @@
 
 .footer-social-media-icon {
   height: 70%;
+  border-radius: none;
+  object-fit: initial;
+  width: auto;
 }

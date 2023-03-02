@@ -1,0 +1,24 @@
+.reviews-component-container {
+  padding: 20px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.single-review-component {
+  padding: 15px 0;
+  border-bottom: grey solid 1px;
+}
+
+.single-review-component:last-child {
+  border: none;
+}
+
+.single-review-component-main-message {
+  display: block;
+  font-weight: 700;
+}
+
+.single-review-component-user-data {
+  display: block;
+  font-size: 14px;
+  color: darkgrey;
+}
