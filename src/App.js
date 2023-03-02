@@ -15,7 +15,7 @@ import HomePageComponent from "./components/HomePageComponent/HomePageComponent"
 function App() {
   return (
     <div className="App">
-      <HeaderComponent />
+      {/* <HeaderComponent /> */}
       <HomePageComponent />
       <RestaurantList />
       {/* <RestauranOptions /> */}
@@ -23,7 +23,7 @@ function App() {
       {/* <Recommended />
       <CartItem /> */}
       {/* <OrderPage /> */}
-      <Footer />
+      {/* <Footer /> */}
       {/* <RestaurantFilterComponent />
       <RestaurantInfoBanner />
       <Payment /> */}

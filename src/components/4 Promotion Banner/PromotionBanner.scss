@@ -1,0 +1,68 @@
+.promotions-banner {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 30px;
+
+    @media (min-width: 765px) {
+        flex-direction: row;
+        width: 100%;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+  }
+}
+
+.picture-content {
+  height: 90%;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.promotionBanner__picture {
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.promotionBanner__text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(238, 237, 236, 0.3);
+    @media (min-width:765px) {
+        padding: 20px;
+        gap:20px
+    }
+  
+}
+
+.promotionBanner__redText {
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-text-fill-color: red;
+  -webkit-text-stroke: 0.3px white;
+  @media (min-width:765px) {
+    font-size: 26px;
+  }
+  /*   color: red;
+  text-shadow: 0 0 2px white; */
+}
+
+.promotionBanner__blackText {
+    color: black;
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 0 0 3px white;
+    @media (min-width:765px){
+        font-size: 40px;
+    }
+}

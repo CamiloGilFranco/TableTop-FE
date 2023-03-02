@@ -1,0 +1,79 @@
+$restaurantFilter__white: #fff;
+
+.restaurantFilter__container{
+    background-color: $restaurantFilter__white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.restaurantFilter__dropdown {
+    border: none;
+    font-size: 16px;
+}
+.restaurantFilter__filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.restaurantFilterDesktop{
+    display: none;
+    background-color: $restaurantFilter__white;
+    padding: 10px;
+    width: 31%;
+    @media (min-width:765px) {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.restaurantFilter__SearchBar{
+    border: none;
+    background-color: lightgray;
+    padding: 10px;
+}
+.restaurantFilter_icons {
+    cursor: pointer;
+}
+.popularFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+.helpButton{
+    background-color: #ef3f3f;
+    color: $restaurantFilter__white;
+    border-radius: 15px;
+    text-align: center;
+    width: 40%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    gap: 15px;
+    cursor: pointer;
+
+    @media (min-width:765px) {
+        font-size: medium;
+        height: 40px;
+        max-width: 40%;
+        gap: 7px;
+    }
+}
+.filterCheckbox {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.restaurantFilter__Slider{
+    cursor: pointer;
+    width: 25vh;
+    margin: 10px;
+}
+.restaurantFilterMobile{
+    @media (min-width:765px) {
+        display: none;        
+    }
+}
