@@ -1,0 +1,63 @@
+.notFound__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+}
+
+.notFound__title {
+  margin-top: 10px;
+  font-size: 24px;
+}
+@media (min-width: 765px) {
+  .notFound__title {
+    font-size: 32px;
+  }
+}
+
+.notFound__img {
+  max-height: 500px;
+  max-width: 500px;
+}
+@media (min-width: 765px) {
+  .notFound__img {
+    height: 50vh;
+  }
+}
+
+.notFound__text {
+  font-weight: 700;
+  margin: 10px 0px;
+}
+@media (min-width: 765px) {
+  .notFound__text {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1000px) {
+  .notFound__text {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+}
+
+.notFound__button {
+  background-color: #ef3f3f;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  max-width: 50%;
+  align-self: center;
+  border-radius: 10px;
+}
+.notFound__button a {
+  text-decoration: none;
+  color: white;
+}
+@media (min-width: 765px) {
+  .notFound__button {
+    font-size: 20px;
+    padding: 15px;
+  }
+}/*# sourceMappingURL=NotFoundPageComponent.css.map */
