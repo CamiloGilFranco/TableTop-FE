@@ -4,7 +4,6 @@
 }
 
 .restaurant-view-header-component {
-  height: -moz-max-content;
   height: max-content;
   width: 100%;
   position: sticky;
@@ -13,7 +12,6 @@
 
 .restaurant-view-restaurant-info-banner {
   width: 100%;
-  height: -moz-max-content;
   height: max-content;
 }
 
@@ -46,4 +44,4 @@
 
 .restaurant-view-hidden-component {
   display: none !important;
-}/*# sourceMappingURL=RestaurantView.css.map */
+}
