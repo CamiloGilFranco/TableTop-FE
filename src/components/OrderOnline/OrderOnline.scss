@@ -35,7 +35,6 @@
 .search-panel-list-subcategory {
   padding-left: 15px;
 }
-
 .search-panel-list-category:hover,
 .search-panel-list-subcategory:hover {
   background-color: #f9f9f9;
@@ -48,7 +47,7 @@
   padding: 15px;
 }
 
-.restaurant-view-order-online-menu-container > :nth-child(1n+2) {
+.restaurant-view-order-online-menu-container > :nth-child(1n + 2) {
   border-top: grey solid 2px;
 }
 
@@ -71,6 +70,7 @@
 }
 
 /* ----------------------------------------------------------------------------- */
+
 .restaurant-view-individual-dish-main-line {
   display: flex;
   align-items: center;
@@ -102,4 +102,4 @@
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-}/*# sourceMappingURL=OrderOnline.css.map */
+}

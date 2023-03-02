@@ -10,7 +10,6 @@
 
 .restaurant-options-option {
   height: 100%;
-  width: -moz-fit-content;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -30,4 +29,4 @@
 .restaurant-options-option-selected {
   color: #ef3f3f;
   border-bottom: solid 3px #ef3f3f;
-}/*# sourceMappingURL=RestaurantOptions.css.map */
+}
