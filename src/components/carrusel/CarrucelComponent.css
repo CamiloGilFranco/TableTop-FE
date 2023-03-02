@@ -1,19 +1,19 @@
 
-.container {
+.crrucel {
     width: 100%;
     display: flex;
     justify-content: center;
     align-content: center;   
 }
 
-.content {
+.carrucel-list {
     width: 80vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;  
 }
 
-.content-info {
+.food-type {
     width: 8rem;
     display: flex;
     flex-direction: column;
@@ -25,18 +25,19 @@
     height: 8rem;
 }
 
-img {
+.food-type__image{
     border-radius: 1rem;
     object-fit: cover;
     width: 8rem;
     height: 8rem;
 }
 
-h3 {
+.food-type__item {
     margin-top: 0.7rem;
     margin-bottom: 0;
 }
-p {
+
+.food-type__text {
     margin-top: 0;
     color: #A1A1A1;
 }
