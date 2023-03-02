@@ -1,8 +1,6 @@
 import "./Recommended.css";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
-import restaurant1 from "./assets/restaurante1.jpg";
-import restaurant2 from "./assets/restaurante2.jpg";
-import restaurant3 from "./assets/restaurante3.jpg";
+
 
 const Recommended = () => {
   return (
