@@ -74,10 +74,18 @@
 
 .header__textButtons {
     gap: 15px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    .active {
+      color: #ef3f3f;
+    }
     span:hover {
         background-color: darkgray;
         cursor: pointer;
     }
+
 }
 
 .header__icons {
