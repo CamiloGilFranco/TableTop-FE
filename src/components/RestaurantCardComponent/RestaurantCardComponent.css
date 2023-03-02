@@ -10,6 +10,7 @@
   height: 50%;
   width: 100%;
   display: flex;
+  cursor: pointer;
 }
 
 .restaurant-card-component-image {
@@ -28,6 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .restaurant-card-component-title {

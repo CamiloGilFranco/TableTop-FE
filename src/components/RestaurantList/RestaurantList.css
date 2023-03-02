@@ -1,24 +1,37 @@
 .restaurant-list {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 10px;
+}
+@media (min-width: 765px) {
+  .restaurant-list {
+    padding: 40px;
+  }
 }
 
 .restaurant-list-header {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
+  gap: 10px;
+}
+@media (min-width: 765px) {
+  .restaurant-list-header {
+    flex-direction: row;
+  }
 }
 
 .restaurant-list-buttons {
   display: flex;
   gap: 10px;
+  cursor: pointer;
 }
 
 .restaurant-list-buttons-text {
-  padding: 10px 15px;
+  padding: 10px;
   background-color: lightgray;
   cursor: pointer;
 }
@@ -32,6 +45,61 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+@media (min-width: 765px) {
+  .restaurant-list-main {
+    justify-content: center;
+  }
+}
+@media (min-width: 1000px) {
+  .restaurant-list-main {
+    gap: 35px;
+  }
+}
+
+.restaurant-list-card {
+  margin-top: 30px;
+  height: 400px;
+  width: 350px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+}
+
+.restaurant-list-card-image-container {
+  height: 60%;
+  width: 100%;
+  display: flex;
+}
+
+.restaurant-list-card-image {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.restaurant-list-card-info {
+  padding: 20px;
+}
+
+.restaurant-list-card-info-first-line {
+  display: flex;
+}
+
+.restaurant-list-card-title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.restaurant-list-card-rating {
+  margin-left: 30px;
+  background-color: #479744;
+  padding: 5px 10px;
+}
+
+.restaurant-list-card-info-list {
+  margin-top: 15px;
+  color: gray;
+  list-style-position: inside;
+  list-style-type: square;
 }
 
 .restaurant-list-footer {
@@ -64,4 +132,4 @@
 
 .restaurant-list-footer-button-icon {
   height: 25px;
-}
+}/*# sourceMappingURL=RestaurantList.css.map */
