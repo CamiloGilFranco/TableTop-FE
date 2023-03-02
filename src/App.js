@@ -1,12 +1,6 @@
 import "./App.css";
-import { CarrucelComponent } from "./components/carrusel/CarrucelComponent";
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
-import PromotionBanner from "./components/4 Promotion Banner/PromotionBanner";
-import PopularRestaurant from "./components/6 Popular Restaurant/PopularRestaurant";
-import SearchbarComponent from "./components/SearchbarComponent/SearchbarComponent";
-import FlowInfoComponent from "./components/FlowInfoComponent/FlowInfoComponent";
 import Footer from "./components/Footer/Footer";
-import DownloadPageComponent from "./components/DownloadPageComponent/DownloadPageComponent";
 import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantFilterComponent from "./components/RestaurantFilterComponent/RestaurantFilterComponent";
 import RestauranOptions from "./components/RestaurantOptions/RestauranOptions";
@@ -16,10 +10,13 @@ import Recommended from "./components/Recommended/Recommended";
 import CartItem from "./components/CartItem/CartItem";
 import { Payment } from "./components/payment/Payment";
 import RestaurantView from "./pages/RestaurantView/RestaurantView";
+import HomePageComponent from "./components/HomePageComponent/HomePageComponent";
+// import OrderPage from "./components/OrderPage/OrderPage";
 
 function App() {
   return (
     <div className="App">
+
       {/* <HeaderComponent /> */}
       {/* <SearchbarComponent /> */}
       {/* <PromotionBanner /> */}
@@ -37,6 +34,11 @@ function App() {
       {/* <RestaurantInfoBanner /> */}
       {/* <Payment /> */}
       <RestaurantView />
+      
+      <HomePageComponent />
+  
+      {/* <OrderPage /> */}
+
     </div>
   );
 }

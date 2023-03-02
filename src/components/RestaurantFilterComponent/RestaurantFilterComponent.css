@@ -1,87 +1,90 @@
-.restaurantFilter__container{
-    background-color: #fff;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.restaurantFilter__dropdown {
-    border: none;
-    font-size: 16px;
-}
-.restaurantFilter__filter{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-.restaurantFilterDesktop{
-    display: none;
-    background-color: #fff;
-    padding: 10px;
-    width: 31%;
-}
-.restaurantFilter__SearchBar{
-    border: none;
-    background-color: lightgray;
-    padding: 10px;
-}
-.restaurantFilter_icons {
-    cursor: pointer;
-}
-.popularFilter {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-}
-.helpButton{
-    background-color: #ef3f3f;
-    color: white;
-    border-radius: 15px;
-    text-align: center;
-    width: 40%;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: larger;
-    gap: 15px;
-    cursor: pointer;
-}
-.filterCheckbox {
-    margin-right: 10px;
-    cursor: pointer;
-}
-.restaurantFilter__Slider{
-    cursor: pointer;
-    width: 25vh;
-    margin: 10px;
+.restaurantFilter__container {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-    .restaurantFilterMobile {
-        display: none;
-    }
-    .restaurantFilterDesktop{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .helpButton {
-        font-size: medium;
-        height: 40px;
-        max-width: 40%;
-        gap: 7px;
-    }
+.restaurantFilter__dropdown {
+  border: none;
+  font-size: 16px;
 }
-@media (min-width: 1025px) {
-    .restaurantFilterMobile{
-        display: none;
-    }
-    .restaurantFilterDesktop{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+
+.restaurantFilter__filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
+
+.restaurantFilterDesktop {
+  display: none;
+  background-color: #fff;
+  padding: 10px;
+  width: 31%;
+}
+@media (min-width: 765px) {
+  .restaurantFilterDesktop {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.restaurantFilter__SearchBar {
+  border: none;
+  background-color: lightgray;
+  padding: 10px;
+}
+
+.restaurantFilter_icons {
+  cursor: pointer;
+}
+
+.popularFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.helpButton {
+  background-color: #ef3f3f;
+  color: #fff;
+  border-radius: 15px;
+  text-align: center;
+  width: 40%;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  gap: 15px;
+  cursor: pointer;
+}
+@media (min-width: 765px) {
+  .helpButton {
+    font-size: medium;
+    height: 40px;
+    max-width: 40%;
+    gap: 7px;
+  }
+}
+
+.filterCheckbox {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.restaurantFilter__Slider {
+  cursor: pointer;
+  width: 25vh;
+  margin: 10px;
+}
+
+@media (min-width: 765px) {
+  .restaurantFilterMobile {
+    display: none;
+  }
+}/*# sourceMappingURL=RestaurantFilterComponent.css.map */

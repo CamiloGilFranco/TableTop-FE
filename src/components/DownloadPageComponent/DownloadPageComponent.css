@@ -1,111 +1,123 @@
 .downloadPage__Container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-.downloadPage__buttonsContainer{
-    text-align: center;
+@media (min-width: 765px) {
+  .downloadPage__Container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    padding: 10px;
+    flex-direction: row;
+    width: 100%;
+  }
 }
 
-.downloadPage__buttons{
-    display: flex;
-    gap: 15px;
+.downloadPage__buttonsContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
 }
-.downloadPage__buttons button{
+@media (min-width: 765px) {
+  .downloadPage__buttonsContainer {
+    width: 50%;
+    text-align: left;
+    align-items: flex-start;
+    margin-left: 15px;
+  }
+  .downloadPage__buttonsContainer h4 {
+    font-size: 16px;
+  }
+  .downloadPage__buttonsContainer p {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1020px) {
+  .downloadPage__buttonsContainer {
+    width: 50%;
+    text-align: left;
+    align-items: flex-start;
+    margin-left: 15px;
+  }
+  .downloadPage__buttonsContainer h4 {
+    font-size: 20px;
+  }
+  .downloadPage__buttonsContainer p {
+    font-size: 18px;
+  }
+}
+
+.downloadPage__buttons {
+  display: flex;
+  gap: 15px;
+}
+.downloadPage__buttons button {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+@media (min-width: 765px) {
+  .downloadPage__buttons {
     border: none;
     padding: 5px;
     border-radius: 5px;
+  }
+  .downloadPage__buttons button {
+    width: 15vh;
+    height: -moz-fit-content;
+    height: fit-content;
+    font-size: 16px;
+  }
 }
-.downloadPage__icons{
-    margin-right: 5px;
+@media (min-width: 1000px) {
+  .downloadPage__buttons {
+    font-size: 16px;
+  }
+}
+
+.downloadPage__icons {
+  margin-right: 5px;
 }
 
 .downloadPage__title {
-    margin: 10px;
+  margin: 10px;
+}
+@media (min-width: 765px) {
+  .downloadPage__title {
+    margin-left: 0;
+    font-size: 24px;
+  }
+}
+@media (min-width: 1023) {
+  .downloadPage__title {
+    font-size: 28px;
+  }
 }
 
 .downloadPage__android {
-    color: #ef3f3f;
-    background-color: #ffffff;
-    cursor: pointer;
+  color: #ef3f3f;
+  background-color: #ffffff;
+  cursor: pointer;
 }
+
 .downloadPage__iOS {
-    background-color: #ef3f3f;
-    color: #ffffff;
-    cursor: pointer;
-}
-.downloadPage__picture{
-    display: none;
+  background-color: #ef3f3f;
+  color: #ffffff;
+  cursor: pointer;
 }
 
-@media(min-width: 769px) and (max-width: 1024px) {
-    .downloadPage__Container{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-    .downloadPage__title{
-        margin-left: 0;
-        font-size: 24px;
-    }
-    .downloadPage__buttonsContainer h4{
-        font-size: 16px;
-    }
-    .downloadPage__buttonsContainer p{
-        font-size: 16px;
-    }
-    .downloadPage__buttonsContainer{
-        width: 50%;
-        text-align: left;
-        align-items: flex-start;
-        margin-left: 15px;
-    }
-    .downloadPage__picture{
-        display: block;
-        height: 50vh;
-        width: 75vh;
-    }
-    .downloadPage__buttons button{
-        width: 15vh;
-        height: 5vh;
-        font-size: 16px;
-    }
+.downloadPage__picture {
+  display: none;
 }
-
-@media(min-width: 1025px) {
-    .downloadPage__Container{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-    .downloadPage__title{
-        margin-left: 0;
-        font-size: 28px;
-    }
-    .downloadPage__buttonsContainer h4{
-        font-size: 20px;
-    }
-    .downloadPage__buttonsContainer p{
-        font-size: 18px;
-    }
-    .downloadPage__buttonsContainer{
-        width: 50%;
-        text-align: left;
-        align-items: flex-start;
-        margin-left: 15px;
-    }
-    .downloadPage__picture{
-        display: block;
-        height: 50vh;
-        width: 104vh;
-    }
-    .downloadPage__buttons button{
-        width: 15vh;
-        height: 5vh;
-        font-size: 16px;
-    }
+@media (min-width: 765px) {
+  .downloadPage__picture {
+    display: block;
+    height: 50vh;
+    width: 75vh;
+  }
 }
+@media (min-width: 1000px) {
+  .downloadPage__picture {
+    width: 90vh;
+  }
+}/*# sourceMappingURL=DownloadPageComponent.css.map */
