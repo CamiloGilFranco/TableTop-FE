@@ -3,7 +3,7 @@ import { BsFillFilterSquareFill } from 'react-icons/bs';
 import { AiOutlineMinus } from 'react-icons/ai';
 import { ImInfo } from 'react-icons/im'
 
-const RestaurantOrderComponent =()=>{
+const RestaurantFilterComponent =()=>{
     return(
         <section className='restaurantFilter__container'>
             <section className='restaurantFilterMobile'>
@@ -162,4 +162,4 @@ const RestaurantOrderComponent =()=>{
     )
 }
 
-export default RestaurantOrderComponent;
+export default RestaurantFilterComponent;
