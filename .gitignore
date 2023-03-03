@@ -23,7 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-*.css.map
-*.sass.map
-*.scss.map
-*.scss
+# *.css.map
+# *.sass.map
+# *.scss.map
+# *.scss

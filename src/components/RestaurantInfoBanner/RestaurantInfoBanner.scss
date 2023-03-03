@@ -1,0 +1,46 @@
+.restaurantInfoBanner__container {
+    background-image: url('./assets/scott-webb-UjupleczBOY-unsplash.jpg');
+    text-align: center;
+    background-repeat: no-repeat;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-position: bottom;
+
+    @media (min-width:765px) {
+        padding-top: 20px;
+    }
+    @media (min-width:1000px) {
+        padding-top: 30px;
+    }
+}
+.restaurantInfoBanner__logo {
+    height: 50px;
+    width: 50px;
+    background-color: gold;
+    padding: 2px;
+    border-radius: 75px;
+
+    @media (min-width:765px) {
+        width: 75px;
+        height: 75px;
+    }
+    @media (min-width:1000px) {
+        width: 100px;
+        height: 100px;
+    }
+}
+.restaurantInfoBanner__text {
+    background-color: rgba(238, 237, 236, 0.3);
+    width: fit-content;
+    margin-top: 10px;
+
+    @media (min-width:765px) {
+        font-size: 20px;
+    }
+    @media (min-width:1000px) {
+        font-size: 24px;
+    }
+}

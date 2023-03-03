@@ -5,6 +5,7 @@ import {
   BsFillGearFill,
 } from "react-icons/bs";
 import { HiOutlineViewList } from "react-icons/hi";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 const HeaderComponent = () => {
@@ -12,20 +13,19 @@ const HeaderComponent = () => {
     <header className="headerNavBar">
       <picture className="logo__container">
         <img src={logo} alt="" className="logotipo" />
-        {/* <BsCheck2Circle className="logo" /> */}
         <span className="header__title">
           <b>TableTop</b>
         </span>
       </picture>
       <section className="header__textButtons">
         <span className="header__homeButton">
-          <b className="header__text">HOME</b>
+          <NavLink to={'/'}><b className="header__text">HOME</b></NavLink>
         </span>
         <span className="header__restaurantButton">
-          <b className="header__text">RESTAURANT</b>
+          <NavLink to={'/restaurant'}><b className="header__text">RESTAURANT</b></NavLink>
         </span>
         <span className="header__pagesButton">
-          <b className="header__text">PAGES</b>
+          <NavLink to={'/order'}><b className="header__text">ORDER</b></NavLink>
         </span>
       </section>
       <section className="header__buttons">
