@@ -1,14 +1,22 @@
 import "./HeaderComponent.css";
 import {
-  //BsCheck2Circle,
   BsFillPersonFill,
   BsFillGearFill,
 } from "react-icons/bs";
+import MobileNavBar from "../MobileNavBar/MobileNavBar"
 import { HiOutlineViewList } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { useState } from "react";
 
 const HeaderComponent = () => {
+
+  const [mobileShow, setMobileShow] = useState('mobileNavBar__none')
+
+  const handleClickList = () => {
+    setMobileShow('')
+  }
+  
   return (
     <header className="headerNavBar">
       <picture className="logo__container">
@@ -41,10 +49,14 @@ const HeaderComponent = () => {
             <option value={"spanish"}>ES</option>
           </select>
         </section>
-        <HiOutlineViewList className="header__listIcon header__icons" />
+        <HiOutlineViewList className="header__listIcon header__icons" onClick={handleClickList}/>
         <BsFillPersonFill className="header__personIcon header__icons" />
         <BsFillGearFill className="header__gearIcon header__icons" />
       </section>
+      <MobileNavBar
+        setMobileShow={setMobileShow}
+        mobileShow={mobileShow}
+      />
     </header>
   );
 };
