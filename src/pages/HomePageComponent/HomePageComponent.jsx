@@ -9,18 +9,18 @@ import Footer from "../../components/Footer/Footer";
 
 
 const HomePageComponent = () => {
-    return(
-        <>
-            <HeaderComponent/>
-            <SearchbarComponent />
-            <CarrucelComponent />
-            <PromotionBanner />
-            <FlowInfoComponent />
-            <PopularRestaurant />
-            <DownloadPageComponent />
-            <Footer/>
-        </>
-    )
+  return(
+    <>
+      <HeaderComponent/>
+      <SearchbarComponent />
+      <CarrucelComponent />
+      <PromotionBanner />
+      <FlowInfoComponent />
+      <PopularRestaurant />
+      <DownloadPageComponent />
+      <Footer/>
+    </>
+  )
 }
 
 export default HomePageComponent;

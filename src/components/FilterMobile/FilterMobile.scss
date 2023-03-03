@@ -1,0 +1,19 @@
+$restaurantFilter__white: #fff;
+
+
+.filterMobile__container{
+    background-color: $restaurantFilter__white;
+    padding: 10px;
+    margin: 10px;
+    display: flex ;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 1px 1px 50px lightgray;
+    z-index: 1;
+    position: absolute;
+    right: 6%;
+}
+
+.mobileFilter__none {
+    display: none;
+}

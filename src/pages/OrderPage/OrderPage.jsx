@@ -4,14 +4,14 @@ import OrderFailed from "../../components/OrderFailed/OrderFailed"
 import OrderSuccesful from "../../components/OrderSuccesful/OrderSuccesful"
 
 const OrderPage = () => {
-    return(
-        <div>
-            <HeaderComponent/>
-            <OrderFailed />
-            <OrderSuccesful />
-            <Footer />
-        </div>
-    )
+  return(
+    <div>
+      <HeaderComponent/>
+      <OrderFailed />
+      <OrderSuccesful />
+      <Footer />
+    </div>
+  )
 }
 
 export default OrderPage;
