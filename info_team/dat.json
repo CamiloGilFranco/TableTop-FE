@@ -1,57 +1,1178 @@
 [
   {
     "id": 1,
-    "restaurantName": "lorem",
-    "rating": 4.2,
-    "categories": ["Cafe", "Italian", "Chinese"],
-    "plates": [
-      {
-        "title": "plate1",
-        "description": "description plate 1",
-        "price": 1000,
-        "available": true
-      },
-      {
-        "title": "plate1",
-        "description": "description plate 1",
-        "price": 1000,
-        "available": true
-      },
-      {
-        "title": "plate1",
-        "description": "description plate 1",
-        "price": 1000,
-        "available": true
-      }
-    ],
+    "restaurantName": "La Carnicería Grill & Beer",
+    "logo": "",
+    "picture": "",
+    "rating": 4.5,
     "localization": "Bogotá",
     "address": "fakeSt-123",
-    "horario": "12PM - 6PM",
+    "schedule": "12PM - 6PM",
     "average-price": 2000,
-    "acomodaciones": ["dataphone", "parking", "etc", "game zone"],
+    "categories": ["Cafe", "Italiano", "Chino"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
     "reviews": [
       {
         "rating": 3,
-        "title": "qwerty",
-        "author": "John",
-        "fecha": "12/12/12",
-        "description": "text"
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
       },
       {
-        "rating": 3,
-        "title": "qwerty",
-        "author": "John",
-        "fecha": "12/12/12",
-        "description": "text"
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 3,
-        "title": "qwerty",
-        "author": "John",
-        "fecha": "12/12/12",
-        "description": "text"
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
       }
-    ],
-    "tables": { "tableId": 1, "available": true }
+    ]
+  },
+  {
+    "id": 2,
+    "restaurantName": "El Palacio de Hierro",
+    "logo": "",
+    "picture": "",
+    "rating": 4.0,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 15000,
+    "categories": ["Desayunos", "Parrilla", "Vegetariano"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "restaurantName": "La Bohème Bistrot",
+    "logo": "",
+    "picture": "",
+    "rating": 4.8,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 20000,
+    "categories": ["Parrilla", "Bar", "Típico"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "restaurantName": "Las Cazuelas de la Abuela",
+    "logo": "",
+    "picture": "",
+    "rating": 2.3,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 15000,
+    "categories": ["Sopas", "Postres", "Típico"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "restaurantName": "El Rincón de los Sabores",
+    "logo": "",
+    "picture": "",
+    "rating": 4.6,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 18000,
+    "categories": ["Parrilla", "Italiano", "Sopas"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "restaurantName": "Sushi House",
+    "logo": "",
+    "picture": "",
+    "rating": 3.0,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 20000,
+    "categories": ["Sushi", "Oriental", "Chino"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "restaurantName": "La Casona del Molino",
+    "logo": "",
+    "picture": "",
+    "rating": 4.1,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 5000,
+    "categories": ["Cafe", "Parrilla", "Típico"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "restaurantName": "Tostao' Café & Pan",
+    "logo": "",
+    "picture": "",
+    "rating": 3.9,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 8000,
+    "categories": ["Cafe", "Comidas Rápidas"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "restaurantName": "La Taquería del Barrio",
+    "logo": "",
+    "picture": "",
+    "rating": 4.8,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 12000,
+    "categories": ["Mejicano", "Comida Rápida"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "restaurantName": "Punto MX",
+    "logo": "",
+    "picture": "",
+    "rating": 5.0,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 20000,
+    "categories": ["Cafe", "Mejicano", "Típico"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "restaurantName": "El Gaucho Argentino",
+    "logo": "",
+    "picture": "",
+    "rating": 4.4,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 25000,
+    "categories": ["Parrilla", "Típico"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "restaurantName": "La Casa de Toño",
+    "logo": "",
+    "picture": "",
+    "rating": 2.0,
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "schedule": "12PM - 6PM",
+    "average-price": 15000,
+    "categories": ["Cafe", "típico"],
+    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "menu": {
+      "desayuno": [
+        {
+          "title": "huevos",
+          "description": "Descripción de huevos.",
+          "price": 3000,
+          "available": true
+        },
+        {
+          "title": "caldo",
+          "description": "Descripción de caldo",
+          "price": 5000,
+          "available": true
+        },
+        {
+          "title": "tamals",
+          "description": "Descripción de tamal",
+          "price": 5500,
+          "available": true
+        }
+      ],
+      "almuerzo": [
+        {
+          "title": "carne",
+          "description": "Descripción de carne.",
+          "price": 13000,
+          "available": true
+        },
+        {
+          "title": "pollo",
+          "description": "Descripción de pollo",
+          "price": 10000,
+          "available": true
+        },
+        {
+          "title": "pescado",
+          "description": "Descripción de pescado",
+          "price": 15500,
+          "available": true
+        }
+      ],
+      "bebidas": [
+        {
+          "title": "gaseosa",
+          "description": "Descripción de gaseosa.",
+          "price": 1000,
+          "available": true
+        },
+        {
+          "title": "cafe",
+          "description": "Descripción de cafe",
+          "price": 1500,
+          "available": true
+        },
+        {
+          "title": "jugo",
+          "description": "Descripción de jugo",
+          "price": 4000,
+          "available": true
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "Me Gustó",
+        "author": "Camilo",
+        "fecha": "12/23/2023",
+        "description": "comentarios de Camilo"
+      },
+      {
+        "rating": 3.7,
+        "title": "Muy bueno",
+        "author": "Nicolas",
+        "fecha": "29/06/2022",
+        "description": "Comentarios de Nicolas"
+      },
+      {
+        "rating": 4.5,
+        "title": "Fue Excelente",
+        "author": "Diego",
+        "fecha": "01/01/2021",
+        "description": "Comentarios de Diego"
+      }
+    ]
   }
 ]
