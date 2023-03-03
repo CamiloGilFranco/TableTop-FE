@@ -1,0 +1,22 @@
+.restaurantList__page .restaurant-list .restaurant-list-header {
+  display: none;
+}
+@media (min-width: 765px) {
+  .restaurantList__page .restaurant-list .restaurant-list-header {
+    display: flex;
+  }
+}
+
+@media (min-width: 765px) {
+  .restaurantList__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .restaurantList__flex .restaurant-list {
+    padding-top: 20px;
+    width: 75%;
+  }
+  .restaurantList__flex .restaurantFilterDesktop {
+    width: 100%;
+  }
+}/*# sourceMappingURL=RestaurantListPage.css.map */

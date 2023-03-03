@@ -33,7 +33,7 @@ const HeaderComponent = () => {
           <NavLink to={'/restaurant'}><b className="header__text">RESTAURANT</b></NavLink>
         </span>
         <span className="header__pagesButton">
-          <NavLink to={'/order'}><b className="header__text">ORDER</b></NavLink>
+          <NavLink to={'/pages'}><b className="header__text">PAGES</b></NavLink>
         </span>
       </section>
       <section className="header__buttons">
