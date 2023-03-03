@@ -21,6 +21,10 @@
   justify-content: center;
   gap: 30px;
   padding: 50px;
+
+  @media (max-width: 1001px) {
+    flex-direction: column;
+  }
 }
 
 .restaurant-view-body-container {
@@ -28,6 +32,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: 1001px) {
+    width: 100%;
+  }
 }
 
 .restaurant-view-lateral-column-container {
@@ -35,6 +43,9 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: 1001px) {
+    width: 100%;
+  }
 }
 
 .restaurant-view-footer {

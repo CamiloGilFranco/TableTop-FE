@@ -13,6 +13,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
+@media (max-width: 769px) {
+  .reserve-form-input-container {
+    flex-direction: column;
+  }
+}
 
 .reserve-form-input {
   height: 35px;
@@ -23,6 +28,11 @@
   border-radius: 5px;
   padding-left: 10px;
 }
+@media (max-width: 769px) {
+  .reserve-form-input {
+    width: 100%;
+  }
+}
 
 .reserve-form-input-date-container {
   height: 35px;
@@ -30,6 +40,11 @@
   min-width: 200px;
   display: flex;
   margin-bottom: 15px;
+}
+@media (max-width: 769px) {
+  .reserve-form-input-date-container {
+    width: 100%;
+  }
 }
 
 .reserve-form-input-date-text {

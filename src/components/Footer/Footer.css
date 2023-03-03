@@ -6,11 +6,21 @@
   flex-direction: column;
   align-items: center;
 }
+@media (max-width: 769px) {
+  .footer {
+    height: auto;
+  }
+}
 
 .general-footer {
   display: flex;
-  width: 85%;
+  width: 95%;
   height: 85%;
+}
+@media (max-width: 769px) {
+  .general-footer {
+    flex-direction: column;
+  }
 }
 
 .footer-card {
@@ -19,6 +29,12 @@
   display: flex;
   flex-direction: column;
   padding: 60px 3%;
+}
+@media (max-width: 769px) {
+  .footer-card {
+    width: 100%;
+    padding: 20px 0;
+  }
 }
 
 .footer-info {
@@ -35,7 +51,8 @@
 .footer-logo {
   height: 30px;
   border-radius: none;
-  object-fit: initial;
+  -o-object-fit: initial;
+     object-fit: initial;
   width: auto;
 }
 
@@ -60,6 +77,12 @@
   text-align: center;
   color: gray;
 }
+@media (max-width: 769px) {
+  .footer-info-text-paragraph {
+    height: auto;
+    margin-bottom: 40px;
+  }
+}
 
 .footer-info-data {
   display: flex;
@@ -76,7 +99,8 @@
 .footer-icon {
   height: 20px;
   border-radius: none;
-  object-fit: initial;
+  -o-object-fit: initial;
+     object-fit: initial;
   width: auto;
 }
 
@@ -109,16 +133,8 @@
   font-weight: 700;
 }
 
-.footer-location {
-  width: 25%;
-}
-
 .footer-location-map {
   width: 100%;
-}
-
-.footer-links {
-  width: 17%;
 }
 
 .footer-links-list {
@@ -127,14 +143,19 @@
   gap: 10px;
 }
 
+.footer-new {
+  width: 25%;
+}
+@media (max-width: 769px) {
+  .footer-new {
+    width: 100%;
+  }
+}
+
 .footer-links-list-item {
   text-decoration: none;
   color: gray;
   font-weight: 700;
-}
-
-.footer-new {
-  width: 23%;
 }
 
 .footer-new-container {
@@ -143,6 +164,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 15px;
 }
 
 .footer-new-container-new {
@@ -150,7 +172,7 @@
   height: 47%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .footer-new-container-new-image {
@@ -161,14 +183,16 @@
 
 .footer-new-container-new-text {
   height: 80px;
-  width: 60%;
+  width: auto;
 }
 
 .footer-new-image {
   height: auto;
   overflow: hidden;
-  object-fit: cover;
-  object-position: -10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: -10px;
+     object-position: -10px;
   border-radius: 5px;
   width: auto;
 }
@@ -193,11 +217,18 @@
   align-items: center;
   padding-left: 10%;
   gap: 50px;
+  margin-top: 15px;
+}
+@media (max-width: 769px) {
+  .footer-social-media {
+    height: 50px;
+  }
 }
 
 .footer-social-media-icon {
   height: 70%;
   border-radius: none;
-  object-fit: initial;
+  -o-object-fit: initial;
+     object-fit: initial;
   width: auto;
-}
+}/*# sourceMappingURL=Footer.css.map */

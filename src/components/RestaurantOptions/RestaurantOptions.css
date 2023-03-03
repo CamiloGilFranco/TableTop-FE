@@ -3,13 +3,13 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 40px;
   box-shadow: 0 2px 5px 1px lightgrey;
   padding: 0 10px;
+  flex-wrap: wrap;
 }
 
 .restaurant-options-option {
-  height: 100%;
+  height: 40px;
   width: -moz-fit-content;
   width: fit-content;
   display: flex;

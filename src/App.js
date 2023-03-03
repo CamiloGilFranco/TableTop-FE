@@ -23,7 +23,7 @@ function App() {
       {/* <FlowInfoComponent /> */}
       {/* <PopularRestaurant /> */}
       {/* <DownloadPageComponent /> */}
-      <RestaurantList />
+      {/* <RestaurantList /> */}
       {/* <RestauranOptions /> */}
       {/* <ReserveForm /> */}
       {/* <Recommended /> */}
@@ -32,10 +32,8 @@ function App() {
       {/* <RestaurantFilterComponent /> */}
       {/* <RestaurantInfoBanner /> */}
       {/* <Payment /> */}
-      {/* <RestaurantView /> */}
-
+      <RestaurantView />
       {/* <HomePageComponent /> */}
-
       {/* <OrderPage /> */}
     </div>
   );

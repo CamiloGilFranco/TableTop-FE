@@ -7,6 +7,11 @@
   height: 400px;
   box-shadow: 0 2px 5px 1px lightgrey;
 }
+@media (max-width: 769px) {
+  .restaurant-view-overview {
+    height: auto;
+  }
+}
 
 .restaurant-view-overview-category {
   margin-bottom: 25px;

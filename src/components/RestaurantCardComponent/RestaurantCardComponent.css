@@ -1,8 +1,7 @@
 .restaurant-card-component {
   margin-top: 10px;
   height: 300px;
-  width: 30%;
-  max-width: 300px;
+  width: 300px;
   box-shadow: 0 2px 5px 1px lightgrey;
 }
 
