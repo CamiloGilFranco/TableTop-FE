@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "restaurantName": "lorem",
+    "rating": 4.2,
+    "categories": ["Cafe", "Italian", "Chinese"],
+    "plates": [
+      {
+        "title": "plate1",
+        "description": "description plate 1",
+        "price": 1000,
+        "available": true
+      },
+      {
+        "title": "plate1",
+        "description": "description plate 1",
+        "price": 1000,
+        "available": true
+      },
+      {
+        "title": "plate1",
+        "description": "description plate 1",
+        "price": 1000,
+        "available": true
+      }
+    ],
+    "localization": "Bogotá",
+    "address": "fakeSt-123",
+    "horario": "12PM - 6PM",
+    "average-price": 2000,
+    "acomodaciones": ["dataphone", "parking", "etc", "game zone"],
+    "reviews": [
+      {
+        "rating": 3,
+        "title": "qwerty",
+        "author": "John",
+        "fecha": "12/12/12",
+        "description": "text"
+      },
+      {
+        "rating": 3,
+        "title": "qwerty",
+        "author": "John",
+        "fecha": "12/12/12",
+        "description": "text"
+      },
+      {
+        "rating": 3,
+        "title": "qwerty",
+        "author": "John",
+        "fecha": "12/12/12",
+        "description": "text"
+      }
+    ],
+    "tables": { "tableId": 1, "available": true }
+  }
+]
