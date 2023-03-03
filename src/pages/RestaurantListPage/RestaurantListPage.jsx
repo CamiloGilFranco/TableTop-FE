@@ -6,15 +6,17 @@ import RestaurantList from '../../components/RestaurantList/RestaurantList'
 import './RestaurantListPage.css';
 
 const RestaurantListPage = ()=>{
-    return(
-        <div className='whatev'>
-            <HeaderComponent/>
-            <SearchbarComponent/>
-            <RestaurantFilterComponent/>
-            <RestaurantList />
-            <Footer />
-        </ div>
-    )
+  return(
+    <div className='restaurantList__page'>
+      <HeaderComponent/>
+      <SearchbarComponent/>
+        <div className='restaurantList__flex'>
+          <RestaurantFilterComponent/>
+          <RestaurantList />
+        </div>    
+        <Footer />
+    </ div>
+  )
 }
 
 export default RestaurantListPage;

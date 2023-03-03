@@ -40,7 +40,7 @@ const MobileNavBar =({mobileShow, setMobileShow})=>{
         </article>
         <article className='mobileNavBar__section'>
           <section className='mobileNavBar__title'>
-            <Link to={'/order'}><p>Order</p></Link>
+            <Link to={'/pages'}><p>Pages</p></Link>
             <AiOutlinePlus/>
           </section>
           <section>
