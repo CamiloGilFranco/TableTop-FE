@@ -21,8 +21,16 @@
   width: 100%;
   display: flex;
   align-items: center;
+  align-content: center;
   justify-content: space-between;
 }
+
+@media (max-width: 769px) {
+  .restaurant-view-recommended-cards-container {
+    justify-content: center;
+  }
+}
+
 
 .restaurant-view-recommended-card {
   margin-top: 10px;
@@ -41,8 +49,7 @@
 .restaurant-view-recommended-card-image {
   width: 100%;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 0;
 }
 
@@ -74,4 +81,6 @@
   color: gray;
   list-style-type: square;
   font-size: 14px;
-}/*# sourceMappingURL=Recommended.css.map */
+
+} 
+

@@ -24,6 +24,11 @@
   gap: 30px;
   padding: 50px;
 }
+@media (max-width: 1001px) {
+  .restaurant-view-content-container {
+    flex-direction: column;
+  }
+}
 
 .restaurant-view-body-container {
   width: 70%;
@@ -31,12 +36,22 @@
   flex-direction: column;
   gap: 20px;
 }
+@media (max-width: 1001px) {
+  .restaurant-view-body-container {
+    width: 100%;
+  }
+}
 
 .restaurant-view-lateral-column-container {
   width: 23%;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+@media (max-width: 1001px) {
+  .restaurant-view-lateral-column-container {
+    width: 100%;
+  }
 }
 
 .restaurant-view-footer {

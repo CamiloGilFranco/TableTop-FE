@@ -8,6 +8,7 @@ import NotFoundPageComponent from "./pages/NotFoundPageComponent/NotFoundPageCom
 function App() {
   return (
     <div className="App">
+
       <Routes>
         <Route path="/" element={<HomePageComponent />}/>
         <Route path="/order" element={<OrderPage/>}/>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/restaurant" element={<RestaurantView />}/>
         <Route path="*" element={<NotFoundPageComponent/>}/>
       </Routes>
+
     </div>
   );
 }

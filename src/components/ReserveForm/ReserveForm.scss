@@ -11,6 +11,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: 769px) {
+    flex-direction: column;
+  }
 }
 
 .reserve-form-input {
@@ -21,6 +25,10 @@
   border: solid grey 1px;
   border-radius: 5px;
   padding-left: 10px;
+
+  @media (max-width: 769px) {
+    width: 100%;
+  }
 }
 
 .reserve-form-input-date-container {
@@ -29,6 +37,10 @@
   min-width: 200px;
   display: flex;
   margin-bottom: 15px;
+
+  @media (max-width: 769px) {
+    width: 100%;
+  }
 }
 
 .reserve-form-input-date-text {

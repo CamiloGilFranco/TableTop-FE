@@ -12,6 +12,10 @@
   gap: 15px;
   padding-top: 10px;
   border-right: darkgray solid 1px;
+
+  @media (max-width: 769px) {
+    display: none;
+  }
 }
 
 .restaurant-view-order-online-search-panel-search-input {
@@ -45,6 +49,10 @@
   width: 75%;
   height: 100%;
   padding: 15px;
+
+  @media (max-width: 769px) {
+    width: 100%;
+  }
 }
 
 .restaurant-view-order-online-menu-container > :nth-child(1n + 2) {

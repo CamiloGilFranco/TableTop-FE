@@ -23,8 +23,7 @@ const Footer = () => {
           <div className="footer-info-text">
             <p className="footer-info-text-paragraph">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-              sint voluptates tenetur officia a, deleniti expedita eius,
-              consectetur accusamus
+              sint
             </p>
           </div>
           <div className="footer-info-data">
@@ -123,7 +122,7 @@ const Footer = () => {
                   Recent News
                 </span>
                 <p className="footer-new-container-text-paragraph">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Lorem ipsum dolor sit amet consectetur
                 </p>
               </div>
             </div>
@@ -136,7 +135,7 @@ const Footer = () => {
                   Recent News
                 </span>
                 <p className="footer-new-container-text-paragraph">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Lorem ipsum dolor sit amet consectetur
                 </p>
               </div>
             </div>

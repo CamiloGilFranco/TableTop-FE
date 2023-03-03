@@ -13,6 +13,11 @@
   padding-top: 10px;
   border-right: darkgray solid 1px;
 }
+@media (max-width: 769px) {
+  .restaurant-view-order-online-search-panel {
+    display: none;
+  }
+}
 
 .restaurant-view-order-online-search-panel-search-input {
   background-color: #f9f9f9;
@@ -46,6 +51,11 @@
   width: 75%;
   height: 100%;
   padding: 15px;
+}
+@media (max-width: 769px) {
+  .restaurant-view-order-online-menu-container {
+    width: 100%;
+  }
 }
 
 .restaurant-view-order-online-menu-container > :nth-child(1n+2) {
