@@ -9,7 +9,6 @@ import RestaurantListPage from "./pages/RestaurantListPage/RestaurantListPage";
 function App() {
   return (
     <div className="App">
-
       <Routes>
         <Route path="/" element={<HomePageComponent />}/>
         <Route path="/order" element={<OrderPage/>}/>
