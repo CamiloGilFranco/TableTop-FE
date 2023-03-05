@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./PopularRestaurant.css";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 

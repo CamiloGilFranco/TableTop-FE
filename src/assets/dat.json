@@ -1,16 +1,19 @@
 [
   {
     "id": 1,
+    "restaurantPath": "LaCarniceríaGrill&Beer",
     "restaurantName": "La Carnicería Grill & Beer",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo1.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto1.jpg",
     "rating": 4.5,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "1234567890",
     "schedule": "12PM - 6PM",
     "averagePrice": "20.000",
     "categories": ["Cafe", "Italiano", "Chino"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -99,16 +102,19 @@
   },
   {
     "id": 2,
+    "restaurantPath": "ElPalaciodeHierro",
     "restaurantName": "El Palacio de Hierro",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo2.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto2.jpg",
     "rating": 4.0,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "3216498",
     "schedule": "12PM - 6PM",
     "averagePrice": "15.000",
     "categories": ["Desayunos", "Parrilla", "Vegetariano"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -197,16 +203,19 @@
   },
   {
     "id": 3,
+    "restaurantPath": "LaBohèmeBistrot",
     "restaurantName": "La Bohème Bistrot",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo3.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto3.jpg",
     "rating": 4.8,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "6854981",
     "schedule": "12PM - 6PM",
     "averagePrice": "20.000",
     "categories": ["Parrilla", "Bar", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -295,16 +304,19 @@
   },
   {
     "id": 4,
+    "restaurantPath": "LasCazuelasdelaAbuela",
     "restaurantName": "Las Cazuelas de la Abuela",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo4.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto4.jpg",
     "rating": 2.3,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "1919844132",
     "schedule": "12PM - 6PM",
     "averagePrice": "15.000",
     "categories": ["Sopas", "Postres", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -393,16 +405,19 @@
   },
   {
     "id": 5,
+    "restaurantPath": "ElRincóndelosSabores",
     "restaurantName": "El Rincón de los Sabores",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo5.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto5.jpg",
     "rating": 4.6,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "75126219",
     "schedule": "12PM - 6PM",
     "averagePrice": "18.000",
     "categories": ["Parrilla", "Italiano", "Sopas"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -491,16 +506,19 @@
   },
   {
     "id": 6,
+    "restaurantPath": "SushiHouse",
     "restaurantName": "Sushi House",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo6.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto6.jpg",
     "rating": 3.0,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "49846516",
     "schedule": "12PM - 6PM",
     "averagePrice": "20.000",
     "categories": ["Sushi", "Oriental", "Chino"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -589,16 +607,19 @@
   },
   {
     "id": 7,
+    "restaurantPath": "LaCasonadelMolino",
     "restaurantName": "La Casona del Molino",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo7.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto7.jpg",
     "rating": 4.9,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "6516519",
     "schedule": "12PM - 6PM",
     "averagePrice": "5.000",
     "categories": ["Cafe", "Parrilla", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -687,16 +708,19 @@
   },
   {
     "id": 8,
+    "restaurantPath": "Tostao'Café&Pan",
     "restaurantName": "Tostao' Café & Pan",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo8.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto8.jpg",
     "rating": 3.9,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "645651",
     "schedule": "12PM - 6PM",
     "averagePrice": "8.000",
     "categories": ["Cafe", "Comidas Rápidas"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -785,16 +809,19 @@
   },
   {
     "id": 9,
+    "restaurantPath": "LaTaqueríadelBarrio",
     "restaurantName": "La Taquería del Barrio",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo9.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto9.jpg",
     "rating": 4.8,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "23116151",
     "schedule": "12PM - 6PM",
     "averagePrice": "12.000",
     "categories": ["Mejicano", "Comida Rápida"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -883,16 +910,19 @@
   },
   {
     "id": 10,
+    "restaurantPath": "PuntoMX",
     "restaurantName": "Punto MX",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo10.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto10.jpg",
     "rating": 5.0,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "98462132",
     "schedule": "12PM - 6PM",
     "averagePrice": "20.000",
     "categories": ["Cafe", "Mejicano", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -981,16 +1011,19 @@
   },
   {
     "id": 11,
+    "restaurantPath": "ElGauchoArgentino",
     "restaurantName": "El Gaucho Argentino",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo11.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto11.jpg",
     "rating": 4.4,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "6419816",
     "schedule": "12PM - 6PM",
     "averagePrice": "25,000",
     "categories": ["Parrilla", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -1079,16 +1112,19 @@
   },
   {
     "id": 12,
+    "restaurantPath": "LaCasadeToño",
     "restaurantName": "La Casa de Toño",
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo12.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto12.jpg",
     "rating": 2.0,
     "localization": "Bogotá",
     "address": "fakeSt-123",
+    "phoneNumber": "9846521",
     "schedule": "12PM - 6PM",
     "averagePrice": "15.000",
     "categories": ["Cafe", "típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
