@@ -97,7 +97,7 @@ const RestaurantView = () => {
             {showComponent()}
           </div>
           <div className="restaurant-view-body-recommended-places">
-            {/* <Recommended /> */}
+            <Recommended />
           </div>
         </div>
         <div className="restaurant-view-lateral-column-container">
