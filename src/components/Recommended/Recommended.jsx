@@ -1,6 +1,5 @@
 import "./Recommended.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import { useEffect, useState } from "react";
 import DB from "../../assets/dat.json";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 
