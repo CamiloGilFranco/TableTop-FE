@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./RestaurantCardComponent.css";
 
 const RestaurantCardComponent = ({
@@ -9,10 +9,13 @@ const RestaurantCardComponent = ({
   schedule,
   averagePrice,
 }) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
     const route = restaurantName.replace(/\s+/g, "");
     console.log(route);
-    return <Navigate to={`/restaurant/:${route}`} />;
+    /*  <Navigate to={`/restaurant/:${route}`} />; */
+    navigate(`/restaurant/${route}`);
   };
 
   return (

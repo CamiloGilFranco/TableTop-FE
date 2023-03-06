@@ -4,10 +4,10 @@ import SingleReviewComponent from "./SingleReviewComponent.jsx";
 const ReviewsComponent = ({ reviews }) => {
   return (
     <div className="reviews-component-container">
-      {reviews.map((element) => {
+      {reviews.map((element, index) => {
         return (
           <SingleReviewComponent
-            key={Math.floor(Math.random() * (1000 - 0 + 1) + 0)}
+            key={index}
             rating={element.rating}
             title={element.title}
             author={element.author}
