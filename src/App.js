@@ -5,6 +5,7 @@ import OrderPage from "./pages/OrderPage/OrderPage";
 import { Routes, Route } from "react-router";
 import NotFoundPageComponent from "./pages/NotFoundPageComponent/NotFoundPageComponent";
 import RestaurantListPage from "./pages/RestaurantListPage/RestaurantListPage";
+import { CheckoutPageComponent } from "./pages/CheckoutPageComponent/CheckoutPageComponent";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/restaurant" element={<RestaurantView />}/>
         <Route path="*" element={<NotFoundPageComponent/>}/>
         <Route path="/pages" element={<RestaurantListPage/>}/>
+        <Route path="/restaurant/checkout" element={<CheckoutPageComponent/>} />
       </Routes>
     </div>
   );
