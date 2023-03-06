@@ -50,7 +50,7 @@ const RestaurantView = () => {
             categories={restaurantData.categories}
             schedule={restaurantData.schedule}
             address={restaurantData.address}
-            facilities={RestauranOptions.facilities}
+            facilities={restaurantData.facilities}
           />
         );
       case "GALLERY":
