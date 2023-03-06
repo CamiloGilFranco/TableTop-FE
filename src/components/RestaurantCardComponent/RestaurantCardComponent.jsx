@@ -12,7 +12,7 @@ const RestaurantCardComponent = ({
   const handleClick = () => {
     const route = restaurantName.replace(/\s+/g, "");
     console.log(route);
-    return <Navigate to={`/restaurants/:${route}`} />;
+    return <Navigate to={`/restaurant/:${route}`} />;
   };
 
   return (
