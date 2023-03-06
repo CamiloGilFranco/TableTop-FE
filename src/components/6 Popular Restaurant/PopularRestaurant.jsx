@@ -1,8 +1,20 @@
-import React from "react";
 import "./PopularRestaurant.css";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 
+import db from "../../assets/dat.json";
+
 const PopularRestaurant = () => {
+  const data = db;
+  data.sort((a, b) => b.rating - a.rating);
+
+  const popularRestaurantsSelection = () => {
+    const popularRestaurantSelectionList = [];
+    for (let i = 0; i < 6; i++) {
+      popularRestaurantSelectionList.push(data[i]);
+    }
+    return popularRestaurantSelectionList;
+  };
+
   return (
     <div className="popular-restaurant">
       <header className="popular-restaurant-header">
@@ -17,14 +29,19 @@ const PopularRestaurant = () => {
         </div>
       </header>
       <main className="popular-restaurant-main">
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
+        {popularRestaurantsSelection().map((element) => {
+          return (
+            <RestaurantCardComponent
+              key={element.id}
+              picture={element.picture}
+              restaurantName={element.restaurantName}
+              rating={element.rating}
+              categories={element.categories}
+              schedule={element.schedule}
+              averagePrice={element.averagePrice}
+            />
+          );
+        })}
       </main>
     </div>
   );

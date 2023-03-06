@@ -2,8 +2,10 @@ import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardCo
 import previous from "./assets/previous.svg";
 import next from "./assets/next.svg";
 import "./RestaurantList.css";
+import DB from "../../assets/dat.json";
 
 const RestaurantList = () => {
+  const data = DB;
   return (
     <div className="restaurant-list">
       <header className="restaurant-list-header">
@@ -17,6 +19,20 @@ const RestaurantList = () => {
         </div>
       </header>
       <main className="restaurant-list-main">
+        {data.map((element) => {
+          return (
+            <RestaurantCardComponent
+              key={element.id}
+              picture={element.picture}
+              restaurantName={element.restaurantName}
+              rating={element.rating}
+              categories={element.categories}
+              schedule={element.schedule}
+              averagePrice={element.averagePrice}
+            />
+          );
+        })}
+        {/*         <RestaurantCardComponent />
         <RestaurantCardComponent />
         <RestaurantCardComponent />
         <RestaurantCardComponent />
@@ -27,8 +43,7 @@ const RestaurantList = () => {
         <RestaurantCardComponent />
         <RestaurantCardComponent />
         <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
+        <RestaurantCardComponent /> */}
       </main>
       <footer className="restaurant-list-footer">
         <div className="restaurant-list-footer-page-button">

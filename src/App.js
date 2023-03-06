@@ -10,12 +10,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePageComponent />}/>
-        <Route path="/order" element={<OrderPage/>}/>
+        <Route path="/" element={<HomePageComponent />} />
+        <Route path="/pages" element={<RestaurantListPage />} />
+        <Route path="/restaurant" element={<RestaurantView />}>
+          <Route path=":restaurantPath" element={<RestaurantView />} />
+        </Route>
+        <Route path="/order" element={<OrderPage />} />
         {/* <Route path="/" element={}/> */}
-        <Route path="/restaurant" element={<RestaurantView />}/>
-        <Route path="*" element={<NotFoundPageComponent/>}/>
-        <Route path="/pages" element={<RestaurantListPage/>}/>
+        <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>
     </div>
   );

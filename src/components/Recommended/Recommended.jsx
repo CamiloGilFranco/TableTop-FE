@@ -1,38 +1,50 @@
 import "./Recommended.css";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import DB from "../../assets/dat.json";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
-import { useState } from "react";
 
 const Recommended = () => {
-  const quantityOfCards = () => {
-    const windowWidth = window.innerWidth;
-    const topRestaurants = [];
-    let quantity;
-    if (windowWidth < 769) {
-      quantity = 1;
-    } else if (windowWidth < 1001) {
-      quantity = 2;
+  const width = useWindowSize();
+
+  const data = DB;
+  data.sort((a, b) => b.rating - a.rating);
+
+  const quantity = () => {
+    let cardsQuantity;
+    const cardsInfo = [];
+
+    if (width < 769) {
+      cardsQuantity = 1;
+    } else if (width < 1001) {
+      cardsQuantity = 2;
     } else {
-      quantity = 3;
+      cardsQuantity = 3;
     }
 
-    for (let i = 1; i <= quantity; i++) {
-      topRestaurants.push(<RestaurantCardComponent key={i} />);
+    for (let i = 0; i < cardsQuantity; i++) {
+      cardsInfo.push(data[i]);
     }
 
-    return topRestaurants;
+    return cardsInfo.map((element) => (
+      <RestaurantCardComponent
+        key={element.id}
+        picture={element.picture}
+        restaurantName={element.restaurantName}
+        rating={element.rating}
+        categories={element.categories}
+        schedule={element.schedule}
+        averagePrice={element.averagePrice}
+      />
+    ));
   };
 
-  console.log(quantityOfCards());
   return (
     <div className="restaurant-view-recommended">
       <div className="restaurant-view-recommended-header">
         <span className="restaurant-view-recommended-title">Recommended</span>
       </div>
       <div className="restaurant-view-recommended-cards-container">
-        {quantityOfCards().map((element) => element)}
-        {/*         <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent /> */}
+        {quantity()}
       </div>
     </div>
   );

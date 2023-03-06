@@ -12,10 +12,19 @@ import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent
 import Footer from "../../components/Footer/Footer";
 import CartItem from "../../components/CartItem/CartItem";
 import AlwaysFirstComponent from "../../components/AlwaysFirstComponent/AlwaysFirstComponent";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
+import db from "../../assets/dat.json";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
+  const params = useParams();
+
+  const data = db;
+
+  const restaurantData = data.find(
+    (element) => params.restaurantPath === element.restaurantPath
+  );
 
   const classOrderOnline =
     selected === "ORDER ONLINE" ? "restaurant-options-option-selected" : "";
@@ -30,18 +39,32 @@ const RestaurantView = () => {
   const classReviews =
     selected === "REVIEWS" ? "restaurant-options-option-selected" : "";
 
-  const hiddenOrderOnline =
-    selected !== "ORDER ONLINE" ? "restaurant-view-hidden-component" : "";
-  const hiddenOverview =
-    selected !== "OVERVIEW" ? "restaurant-view-hidden-component" : "";
-  const hiddenGallery =
-    selected !== "GALLERY" ? "restaurant-view-hidden-component" : "";
-  const hiddenLocation =
-    selected !== "LOCATION" ? "restaurant-view-hidden-component" : "";
-  const hiddenBookATable =
-    selected !== "BOOK A TABLE" ? "restaurant-view-hidden-component" : "";
-  const hiddenReviews =
-    selected !== "REVIEWS" ? "restaurant-view-hidden-component" : "";
+  const showComponent = () => {
+    switch (selected) {
+      case "ORDER ONLINE":
+        return <OrderOnline menu={restaurantData.menu} />;
+      case "OVERVIEW":
+        return (
+          <Overview
+            phoneNumber={restaurantData.phoneNumber}
+            categories={restaurantData.categories}
+            schedule={restaurantData.schedule}
+            address={restaurantData.address}
+            facilities={restaurantData.facilities}
+          />
+        );
+      case "GALLERY":
+        return <GalleryComponent photos={restaurantData.photos} />;
+      case "LOCATION":
+        return <LocationComponent />;
+      case "BOOK A TABLE":
+        return <ReserveForm />;
+      case "REVIEWS":
+        return <ReviewsComponent reviews={restaurantData.reviews} />;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="restaurant-view">
@@ -49,7 +72,12 @@ const RestaurantView = () => {
         <HeaderComponent />
       </div>
       <div className="restaurant-view-restaurant-info-banner">
-        <RestaurantInfoBanner />
+        <RestaurantInfoBanner
+          logo={restaurantData.logo}
+          restaurantName={restaurantData.restaurantName}
+          rating={restaurantData.rating}
+          categories={restaurantData.categories}
+        />
       </div>
       <div className="restaurant-view-content-container">
         <div className="restaurant-view-body-container">
@@ -66,12 +94,7 @@ const RestaurantView = () => {
             />
           </div>
           <div className="restaurant-view-body-main-content">
-            <OrderOnline hiddenOrderOnline={hiddenOrderOnline} />
-            <Overview hiddenOverview={hiddenOverview} />
-            <GalleryComponent hiddenGallery={hiddenGallery} />
-            <LocationComponent hiddenLocation={hiddenLocation} />
-            <ReserveForm hiddenBookATable={hiddenBookATable} />
-            <ReviewsComponent hiddenReviews={hiddenReviews} />
+            {showComponent()}
           </div>
           <div className="restaurant-view-body-recommended-places">
             <Recommended />

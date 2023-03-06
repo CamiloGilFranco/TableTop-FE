@@ -23,9 +23,8 @@
 .restaurantInfoBanner__logo {
   height: 50px;
   width: 50px;
-  background-color: gold;
+  background-color: transparent;
   padding: 2px;
-  border-radius: 75px;
 }
 @media (min-width: 765px) {
   .restaurantInfoBanner__logo {

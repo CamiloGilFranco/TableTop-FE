@@ -1,16 +1,19 @@
 [
   {
     "id": 1,
+    "restaurantPath": "LaCarniceríaGrill&Beer",
     "restaurantName": "La Carnicería Grill & Beer",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo1.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto1.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo1.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto1.jpg",
     "rating": 4.5,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 2000,
+    "address": ["fakeSt-1", "fakeSt-2", "fakeSt-3"],
+    "phoneNumber": ["1234567890", "351851651", "32121516"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "20.000",
     "categories": ["Cafe", "Italiano", "Chino"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -78,37 +81,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 2,
+    "restaurantPath": "ElPalaciodeHierro",
     "restaurantName": "El Palacio de Hierro",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo2.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto2.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo2.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto2.jpg",
     "rating": 4.0,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 15000,
+    "address": ["fakeSt-4", "fakeSt-5", "fakeSt-6"],
+    "phoneNumber": ["3216516121", "24224411", "63516513"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "15.000",
     "categories": ["Desayunos", "Parrilla", "Vegetariano"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -176,37 +182,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 3,
+    "restaurantPath": "LaBohèmeBistrot",
     "restaurantName": "La Bohème Bistrot",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo3.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto3.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo3.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto3.jpg",
     "rating": 4.8,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 20000,
+    "address": ["fakeSt-7", "fakeSt-8", "fakeSt-9"],
+    "phoneNumber": ["321981", "78946351", "987951621"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "20.000",
     "categories": ["Parrilla", "Bar", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -274,37 +283,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 4,
+    "restaurantPath": "LasCazuelasdelaAbuela",
     "restaurantName": "Las Cazuelas de la Abuela",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo4.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto4.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo4.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto4.jpg",
     "rating": 2.3,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 15000,
+    "address": ["fakeSt-10", "fakeSt-11", "fakeSt-12"],
+    "phoneNumber": ["12312131", "3213216", "412123132"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "15.000",
     "categories": ["Sopas", "Postres", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -372,37 +384,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 5,
+    "restaurantPath": "ElRincóndelosSabores",
     "restaurantName": "El Rincón de los Sabores",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo5.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto5.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo5.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto5.jpg",
     "rating": 4.6,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 18000,
+    "address": ["fakeSt-13", "fakeSt-14", "fakeSt-15"],
+    "phoneNumber": ["984312195", "3219681", "9876521985"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "18.000",
     "categories": ["Parrilla", "Italiano", "Sopas"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -470,37 +485,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 6,
+    "restaurantPath": "SushiHouse",
     "restaurantName": "Sushi House",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo6.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto6.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo6.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto6.jpg",
     "rating": 3.0,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 20000,
+    "address": ["fakeSt-16", "fakeSt-17", "fakeSt-18"],
+    "phoneNumber": ["978456123", "36514981", "89746"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "20.000",
     "categories": ["Sushi", "Oriental", "Chino"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -568,37 +586,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 7,
+    "restaurantPath": "LaCasonadelMolino",
     "restaurantName": "La Casona del Molino",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo7.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto7.jpg",
-    "rating": 4.1,
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo7.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto7.jpg",
+    "rating": 4.9,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 5000,
+    "address": ["fakeSt-19", "fakeSt-20", "fakeSt-21"],
+    "phoneNumber": ["5654541216", "9527251", "6516894"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "5.000",
     "categories": ["Cafe", "Parrilla", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -666,37 +687,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 8,
+    "restaurantPath": "Tostao'Café&Pan",
     "restaurantName": "Tostao' Café & Pan",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo8.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto8.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo8.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto8.jpg",
     "rating": 3.9,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 8000,
+    "address": ["fakeSt-22", "fakeSt-23", "fakeSt-24"],
+    "phoneNumber": ["96469517", "33485218182", "848156"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "8.000",
     "categories": ["Cafe", "Comidas Rápidas"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -764,37 +788,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 9,
+    "restaurantPath": "LaTaqueríadelBarrio",
     "restaurantName": "La Taquería del Barrio",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo9.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto9.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo9.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto9.jpg",
     "rating": 4.8,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 12000,
+    "address": ["fakeSt-25", "fakeSt-26", "fakeSt-27"],
+    "phoneNumber": ["21321549", "84181263", "8781996"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "12.000",
     "categories": ["Mejicano", "Comida Rápida"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -862,37 +889,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 10,
+    "restaurantPath": "PuntoMX",
     "restaurantName": "Punto MX",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo10.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto10.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo10.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto10.jpg",
     "rating": 5.0,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 20000,
+    "address": ["fakeSt-28", "fakeSt-29", "fakeSt-30"],
+    "phoneNumber": ["9781216231", "482362198", "84191632"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "20.000",
     "categories": ["Cafe", "Mejicano", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -960,37 +990,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 11,
+    "restaurantPath": "ElGauchoArgentino",
     "restaurantName": "El Gaucho Argentino",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo11.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto11.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo11.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto11.jpg",
     "rating": 4.4,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 25000,
+    "address": ["fakeSt-31", "fakeSt-32", "fakeSt-33"],
+    "phoneNumber": ["32165194984", "987951652191", "32198198"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "25,000",
     "categories": ["Parrilla", "Típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -1058,37 +1091,40 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
   },
   {
     "id": 12,
+    "restaurantPath": "LaCasadeToño",
     "restaurantName": "La Casa de Toño",
-    "logo": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/logos/logo10.svg",
-    "picture": "https://github.com/CamiloGilFranco/TableTop-FE/blob/main/src/assets/fotos/foto12.jpg",
+    "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo12.svg",
+    "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto12.jpg",
     "rating": 2.0,
     "localization": "Bogotá",
-    "address": "fakeSt-123",
-    "schedule": "12PM - 6PM",
-    "average-price": 15000,
+    "address": ["fakeSt-34", "fakeSt-35", "fakeSt-36"],
+    "phoneNumber": ["1234567890", "351851651", "52454984984"],
+    "schedule": ["12PM - 6PM"],
+    "averagePrice": "15.000",
     "categories": ["Cafe", "típico"],
-    "servicios-extra": ["datáfono", "parking", "etc", "game zone"],
+    "facilities": ["datáfono", "parking", "etc", "game zone"],
+    "photos": [],
     "menu": {
       "desayuno": [
         {
@@ -1156,21 +1192,21 @@
         "rating": 3,
         "title": "Me Gustó",
         "author": "Camilo",
-        "fecha": "12/23/2023",
+        "date": "12/23/2023",
         "description": "comentarios de Camilo"
       },
       {
-        "rating": 3.7,
+        "rating": 3,
         "title": "Muy bueno",
         "author": "Nicolas",
-        "fecha": "29/06/2022",
+        "date": "29/06/2022",
         "description": "Comentarios de Nicolas"
       },
       {
-        "rating": 4.5,
+        "rating": 4,
         "title": "Fue Excelente",
         "author": "Diego",
-        "fecha": "01/01/2021",
+        "date": "01/01/2021",
         "description": "Comentarios de Diego"
       }
     ]
