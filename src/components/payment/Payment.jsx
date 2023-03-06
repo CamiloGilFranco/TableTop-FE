@@ -6,24 +6,23 @@ import {BsRecord2} from 'react-icons/bs'
 
 const Payment = () => {
     return (
-    <section className="target">
-        <main className="content">
-            <h2 className="init-title">Payment</h2>
-            <section className="container">
-                <div className="container__header">
-                    <div className="container__header--icon">{<BsRecord2 color="red" size="30px" />}</div>
-                    <p className="constainer__header--paragraph"><b>Debit Card</b></p>
+      <main className="payment-container">
+            <h2 className="payment-container__init-title">Payment</h2>
+            <section className="payment-content">
+                <div className="payment-content__header">
+                    <div className="payment-content__header--icon">{<BsRecord2 color="red" size="30px" />}</div>
+                    <p className="payment-content__header--paragraph"><b>Debit Card</b></p>
                 </div>
-                <form action="" className="card-info">
-                    <label for="nombre" className="card-info__name">
-                        <p className="card-paragraph">Name On Card</p>
-                        <input  type="text" id="nombre" className="card-info__number"/>
+                <form action="" className="payment-form">
+                    <label for="nombre" className="payment-form-name">
+                        <p className="payment-form__paragraph">Name On Card</p>
+                        <input  type="text" id="nombre" className="payment-form__input-name"/>
                     </label>
                     <label for="number">
-                        <p className="card-paragraph">Card Number</p>
-                        <div className="card">
-                            <input  type="number" id="number" className="card__number"/>
-                            <img src={typesCards} alt="" className="card-images"/>
+                        <p className="payment-card-paragraph">Card Number</p>
+                        <div className="payment-card-info">
+                            <input  type="number" id="number" className="payment-card-info__number"/>
+                            <img src={typesCards} alt="" className="payment-card-info__images"/>
                         </div>
                     </label>
                 </form>
@@ -60,7 +59,7 @@ const Payment = () => {
                 </div>
             </form>
         </main>
-        </section>
+
     )
 }
 export {Payment}

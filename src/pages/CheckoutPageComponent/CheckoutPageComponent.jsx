@@ -4,11 +4,11 @@ import { DeliveryAddressComponent } from "../../components/DeliveryAddressCompon
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent"
 import Footer from "../../components/Footer/Footer"
 import image from "./assets/pexels-ella-olsson-1640777.jpg"
+import {Payment} from "../../components/payment/Payment"
 
 const CheckoutPageComponent = () => {
     return (
         <>
-    
             <div>
                 <div>
                   <HeaderComponent />
@@ -18,12 +18,11 @@ const CheckoutPageComponent = () => {
                 </div>
                 <div>
                   <CartItem />
-                </div>
-                <div>
                   <AlwaysFirstComponent />
                 </div>
                 <div>
                   <DeliveryAddressComponent />
+                  <Payment />
                 </div>
                 <div>
                   <Footer />
