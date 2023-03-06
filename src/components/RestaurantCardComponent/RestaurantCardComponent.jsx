@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./RestaurantCardComponent.css";
 
 const RestaurantCardComponent = ({
@@ -13,8 +13,6 @@ const RestaurantCardComponent = ({
 
   const handleClick = () => {
     const route = restaurantName.replace(/\s+/g, "");
-    console.log(route);
-    /*  <Navigate to={`/restaurant/:${route}`} />; */
     navigate(`/restaurant/${route}`);
   };
 
