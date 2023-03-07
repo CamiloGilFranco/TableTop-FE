@@ -4,8 +4,73 @@ import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 
-const RestaurantList = () => {
+const RestaurantList = ({ categories, setCategories }) => {
   const data = DB;
+  const data2 = data.filter((element1)=>categories.some((element2)=> element2 === element1))
+  
+  const renderList = (data, data2) => {
+    return data2.lenght === 0 ? 
+    data.map((element) => { 
+        console.log('entro en data');
+           return (
+             <RestaurantCardComponent
+               key={element.id}
+               picture={element.picture}
+               restaurantName={element.restaurantName}
+               rating={element.rating}
+               categories={element.categories}
+               schedule={element.schedule}
+               averagePrice={element.averagePrice}
+             />
+           );
+         }) 
+      : data2.map((element) => { 
+             console.log('entro en data2');
+             return (
+               <RestaurantCardComponent
+                 key={element.id}
+                 picture={element.picture}
+                 restaurantName={element.restaurantName}
+                 rating={element.rating}
+                 categories={element.categories}
+                 schedule={element.schedule}
+                 averagePrice={element.averagePrice}
+               />
+             );
+           })
+
+    // if (data2.lenght === 0) {
+    //    return data.map((element) => { 
+    //     return (
+    //       <RestaurantCardComponent
+    //         key={element.id}
+    //         picture={element.picture}
+    //         restaurantName={element.restaurantName}
+    //         rating={element.rating}
+    //         categories={element.categories}
+    //         schedule={element.schedule}
+    //         averagePrice={element.averagePrice}
+    //       />
+    //     );
+    //   }) 
+    // } else {
+    //   return data2.map((element) => { 
+    //     console.log('entro en data2');
+    //     return (
+    //       <RestaurantCardComponent
+    //         key={element.id}
+    //         picture={element.picture}
+    //         restaurantName={element.restaurantName}
+    //         rating={element.rating}
+    //         categories={element.categories}
+    //         schedule={element.schedule}
+    //         averagePrice={element.averagePrice}
+    //       />
+    //     );
+    //   })
+    // }
+  } 
+  
   return (
     <div className="restaurant-list">
       <header className="restaurant-list-header">
@@ -19,19 +84,7 @@ const RestaurantList = () => {
         </div>
       </header>
       <main className="restaurant-list-main">
-        {data.map((element) => {
-          return (
-            <RestaurantCardComponent
-              key={element.id}
-              picture={element.picture}
-              restaurantName={element.restaurantName}
-              rating={element.rating}
-              categories={element.categories}
-              schedule={element.schedule}
-              averagePrice={element.averagePrice}
-            />
-          );
-        })}
+        {renderList(data, data2)}
         {/*         <RestaurantCardComponent />
         <RestaurantCardComponent />
         <RestaurantCardComponent />
