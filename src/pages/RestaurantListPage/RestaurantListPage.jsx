@@ -8,8 +8,7 @@ import "./RestaurantListPage.css";
 
 const RestaurantListPage = () => {
   const [categories, setCategories] = useState([]);
-  const [ rating, setRating]  = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  const [rating, setRating] = useState([]);
 
   return (
     <div className="restaurantList__page">
@@ -19,8 +18,6 @@ const RestaurantListPage = () => {
         <RestaurantFilterComponent
           categories={categories}
           setCategories={setCategories}
-          isChecked={isChecked}
-          setIsChecked={setIsChecked}
           rating={rating}
           setRating={setRating}
         />

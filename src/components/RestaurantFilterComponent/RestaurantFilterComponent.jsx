@@ -1,37 +1,46 @@
 import './RestaurantFilterComponent.css'
+import { useEffect } from 'react';
 import { BsFillFilterSquareFill } from 'react-icons/bs';
 import { useState } from 'react';
-import FilterMobile from '../FilterMobile/FilterMobile';
 import { AiOutlineMinus } from 'react-icons/ai';
 import { ImInfo } from 'react-icons/im'
 
-const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIsChecked, rating, setRating }) =>{
+const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating }) =>{
 
-  const [mobileFilter, setMobileFilter] = useState('mobileFilter__none');
+  const [mobileFilter, setMobileFilter] = useState('');
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 765) {
+        setMobileFilter('');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleCategoriesChange = (event) =>{
     if (categories.some((element)=> element === event.target.name)) {
-      setCategories(categories.filter((element) => element!==(event.target.name) ));
-      setIsChecked(event.target.checked);
+      setCategories(categories.filter((element) => element !== (event.target.name) ));
     } else {
       setCategories([...categories, event.target.name]);
-      setIsChecked(event.target.checked);
     }
   }
 
   const handleRatingChange = (event) =>{
     if (rating.some((element)=> element === parseInt(event.target.id))) {
-      setRating(rating.filter((element) => element!==(event.target.name) ));
-      setIsChecked(event.target.checked);
+      setRating(rating.filter((element) => element !== parseInt(event.target.id) ));
     } else {
       setRating([...rating, parseInt(event.target.name)]);
-      setIsChecked(event.target.checked);
     }
   }
 
   const handleListClick = () => {
-    mobileFilter=== 'mobileFilter__none'? setMobileFilter('') : setMobileFilter('mobileFilter__none')
+    mobileFilter === 'Filter__none'? setMobileFilter('') : setMobileFilter('Filter__none')
   }
 
   return(
@@ -49,46 +58,11 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
           <BsFillFilterSquareFill onClick={handleListClick}/>
         </section>
       </section>
-      <FilterMobile 
-        setMobileFilter={setMobileFilter}
-        mobileFilter={mobileFilter}
-        categories={categories}
-        setCategories={setCategories}
-        handleCategoriesChange={handleCategoriesChange}
-        isChecked={isChecked}
-        setIsChecked={setIsChecked}
-        rating={rating}
-        handleRatingChange={handleRatingChange}
-      />
-      <section className='restaurantFilterDesktop'>
+  
+      <section className={`restaurantFilterDesktop ${mobileFilter}`} >
          <section className='restaurantFilter__filter'>
            <p>Latest Filter</p>
-           <BsFillFilterSquareFill className='restaurantFilter_icons'/>
          </section>
-         {/* <article>
-           <section className='restaurantFilter__filter'>
-             <p>Popular searches</p>
-             <AiOutlineMinus className='restaurantFilter_icons'/>
-           </section>
-           <section className='popularFilter'>
-             <label>
-              <input 
-                type='checkbox'
-                className='filterCheckbox'
-                id=''
-              />
-               Free Delivery
-             </label>
-             <label>
-               <input type='checkbox'className='filterCheckbox'/>
-                 Pure Veg
-               </label>
-             <label>
-               <input type='checkbox'className='filterCheckbox'/>
-                 Non Veg
-              </label>
-            </section>
-          </article> */}
           <article>
             <section className='restaurantFilter__filter'>
               <p>Cuisine</p>
@@ -101,7 +75,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='asian'
                     name='asian'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Asian
@@ -112,7 +85,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='seafood'
                     name='seafood'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Seafood
@@ -123,7 +95,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='italian'
                     name='italian'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Italian
@@ -134,7 +105,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='pizza'
                     name='pizza'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Pizza
@@ -145,7 +115,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='western'
                     name='western'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Western
@@ -156,7 +125,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='chinise'
                     name='chinese'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Chinese
@@ -167,7 +135,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='dessert'
                     name='dessert'
-                    checked={isChecked}
                     onChange={handleCategoriesChange}
                   />
                   Dessert
@@ -186,7 +153,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='5'
                     name='5'
-                    checked={isChecked}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐⭐⭐⭐
@@ -197,7 +163,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='4'
                     name='4'
-                    checked={isChecked}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐⭐⭐
@@ -208,7 +173,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='3'
                     name='3'
-                    checked={isChecked}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐⭐
@@ -219,7 +183,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, isChecked, setIs
                     className='filterCheckbox'
                     id='2'
                     name='2'
-                    checked={isChecked}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐

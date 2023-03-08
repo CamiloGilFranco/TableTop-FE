@@ -12,7 +12,6 @@ const RestaurantList = ({ categories, rating }) => {
     });
   });
 
-  console.log(rating);
 
   const renderList = (data, data2) => {
     if (data2.length === 0) {
