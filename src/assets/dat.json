@@ -11,7 +11,7 @@
     "phoneNumber": ["1234567890", "351851651", "32121516"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "20.000",
-    "categories": ["Cafe", "Italiano", "Chino"],
+    "categories": ["asian", "seafood", "Chino"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "menu": {
