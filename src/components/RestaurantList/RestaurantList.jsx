@@ -4,7 +4,7 @@ import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 
-const RestaurantList = ({ categories, setCategories }) => {
+const RestaurantList = ({ categories, rating }) => {
   const data = DB;
   const data2 = data.filter((element1) => {
     return element1.categories.some((element2) => {
@@ -12,12 +12,11 @@ const RestaurantList = ({ categories, setCategories }) => {
     });
   });
 
-  console.log(data2);
+  console.log(rating);
 
   const renderList = (data, data2) => {
     if (data2.length === 0) {
       return data.map((element) => {
-        console.log("entro en data");
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -32,7 +31,6 @@ const RestaurantList = ({ categories, setCategories }) => {
       });
     } else {
       return data2.map((element) => {
-        console.log("entro en data2");
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -47,6 +45,7 @@ const RestaurantList = ({ categories, setCategories }) => {
       });
     }
   };
+
   return (
     <div className="restaurant-list">
       <header className="restaurant-list-header">

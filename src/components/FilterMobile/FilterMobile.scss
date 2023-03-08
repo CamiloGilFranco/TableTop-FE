@@ -12,6 +12,9 @@ $restaurantFilter__white: #fff;
     z-index: 1;
     position: absolute;
     right: 6%;
+    @media (min-width: 765px) {
+        display: none;
+    }
 }
 
 .mobileFilter__none {
