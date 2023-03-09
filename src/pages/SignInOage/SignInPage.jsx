@@ -250,8 +250,19 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            Departamento / Ciudad de residencia
+            Ciudad
           </label>
+          <select
+            name=""
+            id=""
+            className="sign-in-page-form-text-input sign-in-page-form-city-input"
+          >
+            <option value="Bogota">Bogota</option>
+            <option value="Medellin">Medellin</option>
+            <option value="Cartagena">Cartagena</option>
+            <option value="Cali">Cali</option>
+            <option value="Bucaramanga">Bucaramanga</option>
+          </select>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">

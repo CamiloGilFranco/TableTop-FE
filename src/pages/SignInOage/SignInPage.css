@@ -1,5 +1,4 @@
 .sign-in-page {
-  background-color: darkgreen;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,9 +11,9 @@
 }
 
 .sign-in-page-form {
-  background-color: sandybrown;
   width: 60%;
   min-width: 600px;
+  margin-bottom: 50px;
 }
 @media (max-width: 768px) {
   .sign-in-page-form {
@@ -41,13 +40,13 @@
   border: none;
   border-radius: 16px;
   font-size: 16px;
-  background-color: #ffbbbb;
+  background-color: lightgray;
 }
 .sign-in-page-form-text-input::-moz-placeholder {
-  color: #ef3f3f;
+  color: grey;
 }
 .sign-in-page-form-text-input::placeholder {
-  color: #ef3f3f;
+  color: grey;
 }
 
 .sign-in-page-form-input-subcontainer {
@@ -61,10 +60,14 @@
 
 .sign-in-page-form-text-input-id-select {
   width: 29%;
-  color: #ef3f3f;
+  color: grey;
 }
 
 .sign-in-page-form-text-input-birth-select {
   width: 32%;
-  color: #ef3f3f;
+  color: grey;
+}
+
+.sign-in-page-form-city-input {
+  color: grey;
 }/*# sourceMappingURL=SignInPage.css.map */
