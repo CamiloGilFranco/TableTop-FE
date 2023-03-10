@@ -1,9 +1,63 @@
 import "./SignInPage.css";
+import facebook from "./assets/facebook.svg";
+import google from "./assets/google.svg";
+import twitter from "./assets/twitter.svg";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
+import Footer from "../../components/Footer/Footer";
+import { useState } from "react";
 
 const SignInPage = () => {
+  const [formContent, setFormContent] = useState({
+    correo: "",
+    confirmarCorreo: "",
+    contraseña: "",
+    confirmarContraseña: "",
+    nombres: "",
+    apellidos: "",
+    tipoDocumento: "Cédula de Ciudadanía",
+    numeroDocumento: "",
+    añoNacimiento: "1925",
+    mesNacimiento: "Enero",
+    diaNacimiento: "01",
+    ciudad: "Bogota",
+    direccion: "",
+    celular: "",
+  });
+
   return (
     <div className="sign-in-page">
-      <span className="sign-in-page-title">Registro</span>
+      <div className="sign-in-page-header">
+        <HeaderComponent />
+      </div>
+      <div className="sign-in-page-social-media-container">
+        <span className="sign-in-page-social-media-container-title">
+          Regístrate con
+        </span>
+        <div className="sign-in-page-social-media-container-icons">
+          <div className="sign-in-page-social-media-single-icon-container">
+            <img
+              src={facebook}
+              alt=""
+              className="sign-in-page-social-media-single-icon"
+            />
+          </div>
+          <div className="sign-in-page-social-media-single-icon-container">
+            <img
+              src={google}
+              alt=""
+              className="sign-in-page-social-media-single-icon"
+            />
+          </div>
+          <div className="sign-in-page-social-media-single-icon-container">
+            <img
+              src={twitter}
+              alt=""
+              className="sign-in-page-social-media-single-icon"
+            />
+          </div>
+        </div>
+      </div>
+      <span className="sign-in-page-subtitle">o completa el formulario</span>
       <form action="" className="sign-in-page-form">
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -13,6 +67,10 @@ const SignInPage = () => {
             type="text"
             className="sign-in-page-form-text-input"
             placeholder="Correo"
+            value={formContent.correo}
+            onChange={(event) =>
+              setFormContent({ ...formContent, correo: event.target.value })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -23,6 +81,13 @@ const SignInPage = () => {
             type="text"
             className="sign-in-page-form-text-input"
             placeholder="Confirmar Correo"
+            value={formContent.confirmarCorreo}
+            onChange={(event) =>
+              setFormContent({
+                ...formContent,
+                confirmarCorreo: event.target.value,
+              })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -30,9 +95,13 @@ const SignInPage = () => {
             Contraseña
           </label>
           <input
-            type="text"
+            type="password"
             className="sign-in-page-form-text-input"
             placeholder="Contraseña"
+            value={formContent.contraseña}
+            onChange={(event) =>
+              setFormContent({ ...formContent, contraseña: event.target.value })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -40,9 +109,16 @@ const SignInPage = () => {
             Confirmar Contraseña
           </label>
           <input
-            type="text"
+            type="password"
             className="sign-in-page-form-text-input"
             placeholder="Confirmar Contraseña"
+            value={formContent.confirmarContraseña}
+            onChange={(event) =>
+              setFormContent({
+                ...formContent,
+                confirmarContraseña: event.target.value,
+              })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -53,6 +129,10 @@ const SignInPage = () => {
             type="text"
             className="sign-in-page-form-text-input"
             placeholder="Nombres"
+            value={formContent.nombres}
+            onChange={(event) =>
+              setFormContent({ ...formContent, nombres: event.target.value })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -63,6 +143,10 @@ const SignInPage = () => {
             type="text"
             className="sign-in-page-form-text-input"
             placeholder="Apellidos"
+            value={formContent.apellidos}
+            onChange={(event) =>
+              setFormContent({ ...formContent, apellidos: event.target.value })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -74,6 +158,13 @@ const SignInPage = () => {
               name=""
               id=""
               className="sign-in-page-form-text-input sign-in-page-form-text-input-id-select"
+              value={formContent.tipoDocumento}
+              onChange={(event) =>
+                setFormContent({
+                  ...formContent,
+                  tipoDocumento: event.target.value,
+                })
+              }
             >
               <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
               <option value="Cédula de Extranjería">
@@ -82,9 +173,16 @@ const SignInPage = () => {
               <option value="Pasaporte">Pasaporte</option>
             </select>
             <input
-              type="text"
+              type="number"
               className="sign-in-page-form-text-input sign-in-page-form-text-input-id-text"
-              placeholder="Documento de identidad"
+              placeholder="Numero del documento"
+              value={formContent.numeroDocumento}
+              onChange={(event) =>
+                setFormContent({
+                  ...formContent,
+                  numeroDocumento: event.target.value,
+                })
+              }
             />
           </div>
         </div>
@@ -97,6 +195,13 @@ const SignInPage = () => {
               name=""
               id=""
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
+              value={formContent.añoNacimiento}
+              onChange={(event) =>
+                setFormContent({
+                  ...formContent,
+                  añoNacimiento: event.target.value,
+                })
+              }
             >
               <option value="1925">1925</option>
               <option value="1926">1926</option>
@@ -195,6 +300,13 @@ const SignInPage = () => {
               name=""
               id=""
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
+              value={formContent.mesNacimiento}
+              onChange={(event) =>
+                setFormContent({
+                  ...formContent,
+                  mesNacimiento: event.target.value,
+                })
+              }
             >
               <option value="Enero">Enero</option>
               <option value="Febrero">Febrero</option>
@@ -213,6 +325,13 @@ const SignInPage = () => {
               name=""
               id=""
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
+              value={formContent.diaNacimiento}
+              onChange={(event) =>
+                setFormContent({
+                  ...formContent,
+                  diaNacimiento: event.target.value,
+                })
+              }
             >
               <option value="01">01</option>
               <option value="02">02</option>
@@ -256,6 +375,13 @@ const SignInPage = () => {
             name=""
             id=""
             className="sign-in-page-form-text-input sign-in-page-form-city-input"
+            value={formContent.ciudad}
+            onChange={(event) =>
+              setFormContent({
+                ...formContent,
+                ciudad: event.target.value,
+              })
+            }
           >
             <option value="Bogota">Bogota</option>
             <option value="Medellin">Medellin</option>
@@ -272,6 +398,13 @@ const SignInPage = () => {
             type="text"
             className="sign-in-page-form-text-input"
             placeholder="Dirección"
+            value={formContent.direccion}
+            onChange={(event) =>
+              setFormContent({
+                ...formContent,
+                direccion: event.target.value,
+              })
+            }
           />
         </div>
         <div className="sign-in-page-form-input-container">
@@ -279,12 +412,27 @@ const SignInPage = () => {
             Celular
           </label>
           <input
-            type="text"
+            type="number"
             className="sign-in-page-form-text-input"
             placeholder="Celular"
+            value={formContent.celular}
+            onChange={(event) =>
+              setFormContent({
+                ...formContent,
+                celular: event.target.value,
+              })
+            }
           />
         </div>
+        <input
+          type="submit"
+          value="Registrarme"
+          className="sign-in-page-form-submit-button"
+        />
       </form>
+      <div className="sign-in-page-footer">
+        <Footer />
+      </div>
     </div>
   );
 };
