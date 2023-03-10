@@ -130,8 +130,19 @@
   border-radius: 20px;
   align-self: center;
   margin: 30px;
+  cursor: pointer;
 }
 
 .sign-in-page-footer {
   width: 100%;
+}
+
+.sign-in-page-form-text-error {
+  color: red;
+}
+
+.sign-in-page-form-text-error-id {
+  position: relative;
+  right: -32%;
+  z-index: -1;
 }/*# sourceMappingURL=SignInPage.css.map */

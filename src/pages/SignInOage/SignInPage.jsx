@@ -72,6 +72,9 @@ const SignInPage = () => {
               setFormContent({ ...formContent, correo: event.target.value })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Escribe un correo valido
+          </p>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -82,6 +85,7 @@ const SignInPage = () => {
             className="sign-in-page-form-text-input"
             placeholder="Confirmar Correo"
             value={formContent.confirmarCorreo}
+            pattern={formContent.correo}
             onChange={(event) =>
               setFormContent({
                 ...formContent,
@@ -89,6 +93,9 @@ const SignInPage = () => {
               })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Escribe el mismo correo que escribiste en el primer espacio
+          </p>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -103,6 +110,10 @@ const SignInPage = () => {
               setFormContent({ ...formContent, contraseña: event.target.value })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * La contraseña debe contener al menos una mayúscula, una minúscula
+            y un numero y debe ser de al menos 8 caracteres
+          </p>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -120,6 +131,10 @@ const SignInPage = () => {
               })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Debes escribir la misma contraseña que escribiste en el espacio
+            anterior
+          </p>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -134,6 +149,9 @@ const SignInPage = () => {
               setFormContent({ ...formContent, nombres: event.target.value })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Este espacio es requerido
+          </p>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -148,8 +166,11 @@ const SignInPage = () => {
               setFormContent({ ...formContent, apellidos: event.target.value })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Este espacio es requerido
+          </p>
         </div>
-        <div className="sign-in-page-form-input-container">
+        <div className="sign-in-page-form-input-container sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
             Documento de identidad
           </label>
@@ -185,6 +206,9 @@ const SignInPage = () => {
               }
             />
           </div>
+          <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
+            * Este espacio es requerido
+          </span>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -406,6 +430,9 @@ const SignInPage = () => {
               })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Debes escribir una dirección valida
+          </p>
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -423,11 +450,15 @@ const SignInPage = () => {
               })
             }
           />
+          <p className="sign-in-page-form-text-error">
+            * Debes escribir un numero de celular valido
+          </p>
         </div>
         <input
           type="submit"
           value="Registrarme"
           className="sign-in-page-form-submit-button"
+          onSubmit={(event) => {}}
         />
       </form>
       <div className="sign-in-page-footer">
