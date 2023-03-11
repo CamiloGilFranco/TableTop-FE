@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 
 const HomePageComponent = () => {
   const loc = useLocation();
-  console.log(loc);
   return (
     <>
       <HeaderComponent />

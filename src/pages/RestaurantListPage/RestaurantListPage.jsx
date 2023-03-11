@@ -10,6 +10,7 @@ const RestaurantListPage = () => {
   const [categories, setCategories] = useState([]);
   const [rating, setRating] = useState([]);
 
+
   return (
     <div className="restaurantList__page">
       <HeaderComponent />

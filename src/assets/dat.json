@@ -6,7 +6,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo1.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto1.jpg",
     "rating": 4.5,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-1", "fakeSt-2", "fakeSt-3"],
     "phoneNumber": ["1234567890", "351851651", "32121516"],
     "schedule": ["12PM - 6PM"],
@@ -14,6 +14,8 @@
     "categories": ["asian", "seafood", "Chino"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2019-02-05",
+    "numberOfSales": 58,
     "menu": {
       "desayuno": [
         {
@@ -107,7 +109,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo2.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto2.jpg",
     "rating": 4.0,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-4", "fakeSt-5", "fakeSt-6"],
     "phoneNumber": ["3216516121", "24224411", "63516513"],
     "schedule": ["12PM - 6PM"],
@@ -115,6 +117,8 @@
     "categories": ["Desayunos", "Parrilla", "Vegetariano"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2017-06-23",
+    "numberOfSales": 104,
     "menu": {
       "desayuno": [
         {
@@ -208,7 +212,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo3.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto3.jpg",
     "rating": 4.8,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-7", "fakeSt-8", "fakeSt-9"],
     "phoneNumber": ["321981", "78946351", "987951621"],
     "schedule": ["12PM - 6PM"],
@@ -216,6 +220,8 @@
     "categories": ["Parrilla", "Bar", "Típico"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2020-10-18",
+    "numberOfSales": 87,
     "menu": {
       "desayuno": [
         {
@@ -309,7 +315,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo4.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto4.jpg",
     "rating": 2.3,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-10", "fakeSt-11", "fakeSt-12"],
     "phoneNumber": ["12312131", "3213216", "412123132"],
     "schedule": ["12PM - 6PM"],
@@ -317,6 +323,8 @@
     "categories": ["Sopas", "Postres", "Típico"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2018-12-30",
+    "numberOfSales": 72,
     "menu": {
       "desayuno": [
         {
@@ -410,7 +418,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo5.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto5.jpg",
     "rating": 4.6,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-13", "fakeSt-14", "fakeSt-15"],
     "phoneNumber": ["984312195", "3219681", "9876521985"],
     "schedule": ["12PM - 6PM"],
@@ -418,6 +426,8 @@
     "categories": ["Parrilla", "Italiano", "Sopas"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2022-01-12",
+    "numberOfSales": 120,
     "menu": {
       "desayuno": [
         {
@@ -511,7 +521,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo6.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto6.jpg",
     "rating": 3.0,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-16", "fakeSt-17", "fakeSt-18"],
     "phoneNumber": ["978456123", "36514981", "89746"],
     "schedule": ["12PM - 6PM"],
@@ -519,6 +529,8 @@
     "categories": ["Sushi", "Oriental", "Chino"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2021-08-02",
+    "numberOfSales": 93,
     "menu": {
       "desayuno": [
         {
@@ -612,7 +624,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo7.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto7.jpg",
     "rating": 4.9,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-19", "fakeSt-20", "fakeSt-21"],
     "phoneNumber": ["5654541216", "9527251", "6516894"],
     "schedule": ["12PM - 6PM"],
@@ -620,6 +632,8 @@
     "categories": ["Cafe", "Parrilla", "Típico"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2016-03-19",
+    "numberOfSales": 65,
     "menu": {
       "desayuno": [
         {
@@ -713,7 +727,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo8.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto8.jpg",
     "rating": 3.9,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-22", "fakeSt-23", "fakeSt-24"],
     "phoneNumber": ["96469517", "33485218182", "848156"],
     "schedule": ["12PM - 6PM"],
@@ -721,6 +735,8 @@
     "categories": ["Cafe", "Comidas Rápidas"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2023-05-01",
+    "numberOfSales": 150,
     "menu": {
       "desayuno": [
         {
@@ -814,7 +830,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo9.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto9.jpg",
     "rating": 4.8,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-25", "fakeSt-26", "fakeSt-27"],
     "phoneNumber": ["21321549", "84181263", "8781996"],
     "schedule": ["12PM - 6PM"],
@@ -822,6 +838,8 @@
     "categories": ["Mejicano", "Comida Rápida"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2015-11-27",
+    "numberOfSales": 82,
     "menu": {
       "desayuno": [
         {
@@ -915,7 +933,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo10.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto10.jpg",
     "rating": 5.0,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-28", "fakeSt-29", "fakeSt-30"],
     "phoneNumber": ["9781216231", "482362198", "84191632"],
     "schedule": ["12PM - 6PM"],
@@ -923,6 +941,8 @@
     "categories": ["Cafe", "Mejicano", "Típico"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2020-07-15",
+    "numberOfSales": 115,
     "menu": {
       "desayuno": [
         {
@@ -1016,7 +1036,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo11.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto11.jpg",
     "rating": 4.4,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-31", "fakeSt-32", "fakeSt-33"],
     "phoneNumber": ["32165194984", "987951652191", "32198198"],
     "schedule": ["12PM - 6PM"],
@@ -1024,6 +1044,8 @@
     "categories": ["Parrilla", "Típico"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2023-03-04",
+    "numberOfSales": 68,
     "menu": {
       "desayuno": [
         {
@@ -1117,7 +1139,7 @@
     "logo": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/a0e7b6d729a0044d705306df9cafdc7e0cac47de/src/assets/logos/logo12.svg",
     "picture": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto12.jpg",
     "rating": 2.0,
-    "localization": "Bogotá",
+    "location": "Bogotá",
     "address": ["fakeSt-34", "fakeSt-35", "fakeSt-36"],
     "phoneNumber": ["1234567890", "351851651", "52454984984"],
     "schedule": ["12PM - 6PM"],
@@ -1125,6 +1147,8 @@
     "categories": ["Cafe", "típico"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
+    "createdAt": "2014-09-10",
+    "numberOfSales": 96,
     "menu": {
       "desayuno": [
         {
