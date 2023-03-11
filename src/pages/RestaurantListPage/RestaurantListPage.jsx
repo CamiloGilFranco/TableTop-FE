@@ -9,6 +9,8 @@ import "./RestaurantListPage.css";
 const RestaurantListPage = () => {
   const [categories, setCategories] = useState([]);
   const [rating, setRating] = useState([]);
+  const [sortBy, setSortBy] = useState('all');
+
 
 
   return (
@@ -21,8 +23,12 @@ const RestaurantListPage = () => {
           setCategories={setCategories}
           rating={rating}
           setRating={setRating}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
         />
         <RestaurantList 
+          sortBy={sortBy}
+          setSortBy={setSortBy}
           categories={categories}
           rating={rating}
         />

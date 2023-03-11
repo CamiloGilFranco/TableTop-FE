@@ -4,7 +4,7 @@ import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardCo
 
 import db from "../../assets/dat.json";
 
-const PopularRestaurant = () => {
+const PopularRestaurant = ({ inputValue }) => {
   const [activeAll, setActiveAll] = useState('popular-restaurants-buttons-text-selected');
   const [activePopular, setActivePopular] = useState('');
   const [activeLatest, setActiveLatest] = useState('');
@@ -12,6 +12,7 @@ const PopularRestaurant = () => {
   const [sortBy, setSortBy] = useState('all');
   const data = db;
 
+  console.log(inputValue);
 
   const sortList = (str) =>{
     if (str === 'all') {

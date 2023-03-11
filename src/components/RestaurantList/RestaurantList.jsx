@@ -5,14 +5,13 @@ import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 
-const RestaurantList = ({ categories, rating }) => {
+const RestaurantList = ({ categories, rating, sortBy, setSortBy }) => {
   const data = DB;
 
   const [activeAll, setActiveAll] = useState('restaurant-list-buttons-text-selected');
   const [activePopular, setActivePopular] = useState('');
   const [activeLatest, setActiveLatest] = useState('');
   const [activeTrend, setActiveTrend] = useState('');
-  const [sortBy, setSortBy] = useState('all');
 
   const sortList = (str) =>{
     if (str === 'all') {

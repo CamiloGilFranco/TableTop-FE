@@ -1,9 +1,7 @@
 import './SearchbarComponent.css';
-import { useState } from 'react';
 
-const SearchbarComponent = ()=>{
+const SearchbarComponent = ({ inputValue, setInputValue })=>{
 
-  const [inputValue, setInputValue] = useState('')
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -11,6 +9,8 @@ const SearchbarComponent = ()=>{
 
   const handleSearchButtonClick = (event) => {
     event.preventDefault();
+
+    inputValue.length >= 3 ? alert(inputValue) : alert('search term must be at least 3 characters long');
     setInputValue('');
   }
   return (
