@@ -12,10 +12,13 @@ const PopularRestaurant = ({ inputValue }) => {
   const [sortBy, setSortBy] = useState('all');
   const data = db;
 
-  console.log(inputValue);
 
   const sortList = (str) =>{
-    if (str === 'all') {
+
+    if (inputValue.length > 3) {
+      data.filter((a)=> a !== inputValue);
+      console.log(data.filter((a)=> a !== inputValue));
+    } else if (str === 'all') {
       return data.sort((a, b)=> a.id - b.id);
     } else if (str === 'popular') {
       return data.sort((a, b) => b.rating - a.rating);
