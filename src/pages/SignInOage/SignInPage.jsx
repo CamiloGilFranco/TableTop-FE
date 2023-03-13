@@ -4,7 +4,8 @@ import google from "./assets/google.svg";
 import twitter from "./assets/twitter.svg";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const SignInPage = () => {
   const [formContent, setFormContent] = useState({
@@ -41,6 +42,13 @@ const SignInPage = () => {
   const [celularError, setCelularError] = useState(false);
   const [TYCError, setTYCError] = useState(false);
   const [TDPError, setTDPError] = useState(false);
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, [pathname]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
