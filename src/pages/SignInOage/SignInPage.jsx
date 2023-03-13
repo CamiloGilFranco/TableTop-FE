@@ -9,20 +9,88 @@ import { useState } from "react";
 const SignInPage = () => {
   const [formContent, setFormContent] = useState({
     correo: "",
+    correoError: false,
     confirmarCorreo: "",
+    confirmarCorreoError: false,
     contraseña: "",
+    contraseñaError: false,
     confirmarContraseña: "",
+    confirmarContraseñaError: false,
     nombres: "",
+    nombresError: false,
     apellidos: "",
+    apellidosError: false,
     tipoDocumento: "Cédula de Ciudadanía",
     numeroDocumento: "",
+    numeroDocumentoError: false,
     añoNacimiento: "1925",
     mesNacimiento: "Enero",
     diaNacimiento: "01",
     ciudad: "Bogota",
     direccion: "",
+    direccionError: false,
     celular: "",
+    celularError: false,
   });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let isValid = true;
+
+    const correoRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const contraseñaRegExp =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
+    const nombresRegExp = /[^a-zA-ZñÑáéíóúAÉÍÓÚ\s]/g;
+
+    if (!correoRegExp.test(formContent.correo)) {
+      setFormContent({ ...formContent, correoError: true });
+      isValid = false;
+    }
+
+    if (formContent.confirmarCorreo !== formContent.correo) {
+      setFormContent({ ...formContent, confirmarCorreoError: true });
+      isValid = false;
+    }
+
+    if (!contraseñaRegExp.test(formContent.contraseña)) {
+      setFormContent({ ...formContent, contraseñaError: true });
+      isValid = false;
+    }
+
+    if (formContent.confirmarContraseña !== formContent.contraseña) {
+      setFormContent({ ...formContent, confirmarContraseñaError: true });
+      isValid = false;
+    }
+
+    if (nombresRegExp.test(formContent.nombres)) {
+      setFormContent({ ...formContent, nombresError: true });
+      isValid = false;
+    }
+
+    if (nombresRegExp.test(formContent.apellidos)) {
+      setFormContent({ ...formContent, apellidosError: true });
+      isValid = false;
+    }
+
+    if (formContent.numeroDocumento.length < 6) {
+      setFormContent({ ...formContent, numeroDocumentoError: true });
+      isValid = false;
+    }
+
+    if (formContent.direccion.length < 1) {
+      setFormContent({ ...formContent, direccionError: true });
+      isValid = false;
+    }
+
+    if (formContent.celular.length < 10 || formContent.celular.length > 10) {
+      setFormContent({ ...formContent, celular: true });
+      isValid = false;
+    }
+
+    if (isValid) {
+      //logica de procesamiento del formulario
+    }
+  };
 
   return (
     <div className="sign-in-page">
@@ -58,7 +126,7 @@ const SignInPage = () => {
         </div>
       </div>
       <span className="sign-in-page-subtitle">o completa el formulario</span>
-      <form action="" className="sign-in-page-form">
+      <form action="" className="sign-in-page-form" onSubmit={handleSubmit}>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
             Correo
@@ -72,9 +140,13 @@ const SignInPage = () => {
               setFormContent({ ...formContent, correo: event.target.value })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Escribe un correo valido
-          </p>
+          {formContent.correoError ? (
+            <p className="sign-in-page-form-text-error">
+              * Escribe un correo valido
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -93,9 +165,13 @@ const SignInPage = () => {
               })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Escribe el mismo correo que escribiste en el primer espacio
-          </p>
+          {formContent.confirmarCorreoError ? (
+            <p className="sign-in-page-form-text-error">
+              * Escribe el mismo correo que escribiste en el primer espacio
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -110,10 +186,14 @@ const SignInPage = () => {
               setFormContent({ ...formContent, contraseña: event.target.value })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * La contraseña debe contener al menos una mayúscula, una minúscula
-            y un numero y debe ser de al menos 8 caracteres
-          </p>
+          {formContent.contraseñaError ? (
+            <p className="sign-in-page-form-text-error">
+              * La contraseña debe contener al menos una mayúscula, una
+              minúscula y un numero y debe ser de al menos 8 caracteres
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -131,10 +211,14 @@ const SignInPage = () => {
               })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Debes escribir la misma contraseña que escribiste en el espacio
-            anterior
-          </p>
+          {formContent.confirmarContraseñaError ? (
+            <p className="sign-in-page-form-text-error">
+              * Debes escribir la misma contraseña que escribiste en el espacio
+              anterior
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -149,9 +233,14 @@ const SignInPage = () => {
               setFormContent({ ...formContent, nombres: event.target.value })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Este espacio es requerido
-          </p>
+          {formContent.nombresError ? (
+            <p className="sign-in-page-form-text-error">
+              * Este espacio es requerido y no puede contener caracteres
+              especiales o numéricos
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -166,9 +255,13 @@ const SignInPage = () => {
               setFormContent({ ...formContent, apellidos: event.target.value })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Este espacio es requerido
-          </p>
+          {formContent.apellidosError ? (
+            <p className="sign-in-page-form-text-error">
+              * Este espacio es requerido
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -206,9 +299,13 @@ const SignInPage = () => {
               }
             />
           </div>
-          <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
-            * Este espacio es requerido
-          </span>
+          {formContent.numeroDocumentoError ? (
+            <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
+              * Introduce un numero de documento valido
+            </span>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -430,9 +527,13 @@ const SignInPage = () => {
               })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Debes escribir una dirección valida
-          </p>
+          {formContent.direccionError ? (
+            <p className="sign-in-page-form-text-error">
+              * Este espacio es obligatorio
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
@@ -450,15 +551,18 @@ const SignInPage = () => {
               })
             }
           />
-          <p className="sign-in-page-form-text-error">
-            * Debes escribir un numero de celular valido
-          </p>
+          {formContent.celularError ? (
+            <p className="sign-in-page-form-text-error">
+              * Debes escribir un numero de celular valido
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <input
           type="submit"
           value="Registrarme"
           className="sign-in-page-form-submit-button"
-          onSubmit={(event) => {}}
         />
       </form>
       <div className="sign-in-page-footer">
