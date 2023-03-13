@@ -5,16 +5,17 @@ import OrderPage from "./pages/OrderPage/OrderPage";
 import { Routes, Route } from "react-router";
 import NotFoundPageComponent from "./pages/NotFoundPageComponent/NotFoundPageComponent";
 import RestaurantListPage from "./pages/RestaurantListPage/RestaurantListPage";
+import SignInPage from "./pages/SignInOage/SignInPage";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePageComponent />} />
-        <Route path="/pages" element={<RestaurantListPage />} />
-        <Route path="/restaurant" element={<RestaurantView />}>
-          <Route path=":restaurantPath" element={<RestaurantView />} />
-        </Route>
+        <Route path="/registro" element={<SignInPage />} />
+        {/* <Route path="/pages" element={<RestaurantListPage />} /> */}
+        <Route path="/restaurant" element={<RestaurantListPage />}></Route>
+        <Route path=":restaurantPath" element={<RestaurantView />} />
         <Route path="/order" element={<OrderPage />} />
         {/* <Route path="/" element={}/> */}
         <Route path="*" element={<NotFoundPageComponent />} />

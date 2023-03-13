@@ -1,0 +1,167 @@
+.log-in-component {
+  width: 100%;
+  height: 200vh;
+  position: absolute;
+}
+
+.log-in-component-background {
+  background-color: rgba(0, 0, 0, 0.5647058824);
+  height: 200vh;
+  width: 100%;
+  position: fixed;
+}
+
+.log-in-form {
+  background-color: #ef3f3f;
+  width: 350px;
+  position: fixed;
+  top: calc(50vh - 209px);
+  left: calc(50% - 175px);
+  border-radius: 16px;
+}
+
+.log-in-form-title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 82px;
+}
+
+.log-in-form-title-box .log-in-main-title {
+  display: block;
+  font-weight: 700;
+  margin-top: 15px;
+  color: white;
+}
+
+.log-in-form-title-box .log-in-main-subtitle {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+}
+
+.log-in-form-main-form {
+  background-color: white;
+  width: 100%;
+  height: 276px;
+  padding: 20px;
+}
+
+.log-in-form-main-form-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-in-form-main-form-input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.log-in-form-main-form-label {
+  font-weight: 700;
+}
+
+.log-in-main-form-input {
+  height: 40px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: #ffbbbb;
+}
+.log-in-main-form-input::-moz-placeholder {
+  color: #ef3f3f;
+}
+.log-in-main-form-input::placeholder {
+  color: #ef3f3f;
+}
+
+.log-in-main-form-button {
+  width: 105px;
+  height: 42px;
+  align-self: center;
+  border: none;
+  border-radius: 16px;
+  background-color: #ef3f3f;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.log-in-form-main-form-form .log-in-main-form-forgot-password {
+  color: #ef3f3f;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 20px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.forgotten-password-component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.forgotten-password-component-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forgotten-password-component-form-title {
+  font-weight: 700;
+  color: #ef3f3f;
+}
+
+.forgotten-password-component-form-label {
+  align-self: flex-start;
+  font-weight: 700;
+  margin-top: 30px;
+  padding-left: 5px;
+}
+
+.forgotten-password-component-form-input {
+  height: 40px;
+  width: 100%;
+  padding-left: 20px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: #ffbbbb;
+  margin-bottom: 20px;
+}
+.forgotten-password-component-form-input::-moz-placeholder {
+  color: #ef3f3f;
+}
+.forgotten-password-component-form-input::placeholder {
+  color: #ef3f3f;
+}
+
+.forgotten-password-component-form .forgotten-password-component-form-return {
+  color: #ef3f3f;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 20px;
+  align-self: center;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.log-in-sign-up {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-in-sign-up .log-in-sign-up-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+}/*# sourceMappingURL=LogInComponent.css.map */
