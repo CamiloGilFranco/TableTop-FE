@@ -133,8 +133,28 @@
   cursor: pointer;
 }
 
-.sign-in-page-footer {
-  width: 100%;
+.sign-in-page-form-checkbox-container {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.sign-in-page-form-checkbox {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+}
+
+.sign-in-page-form-checkbox-label {
+  width: 90%;
+}
+
+.sign-in-page-form-receive-information {
+  margin-top: 30px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .sign-in-page-form-text-error {
@@ -145,4 +165,8 @@
   position: relative;
   right: -32%;
   z-index: -1;
+}
+
+.sign-in-page-footer {
+  width: 100%;
 }/*# sourceMappingURL=SignInPage.css.map */

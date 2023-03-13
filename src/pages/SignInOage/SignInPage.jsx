@@ -9,29 +9,38 @@ import { useState } from "react";
 const SignInPage = () => {
   const [formContent, setFormContent] = useState({
     correo: "",
-    correoError: false,
     confirmarCorreo: "",
-    confirmarCorreoError: false,
     contraseña: "",
-    contraseñaError: false,
     confirmarContraseña: "",
-    confirmarContraseñaError: false,
     nombres: "",
-    nombresError: false,
     apellidos: "",
-    apellidosError: false,
     tipoDocumento: "Cédula de Ciudadanía",
     numeroDocumento: "",
-    numeroDocumentoError: false,
     añoNacimiento: "1925",
     mesNacimiento: "Enero",
     diaNacimiento: "01",
     ciudad: "Bogota",
     direccion: "",
-    direccionError: false,
     celular: "",
-    celularError: false,
+    terminosYCondiciones: false,
+    tratamientoDeDatos: false,
+    informacionCorreo: false,
+    informacionSMS: false,
+    informacionWPP: false,
   });
+
+  const [correoError, setCorreoError] = useState(false);
+  const [confirmarCorreoError, setConfirmarCorreoError] = useState(false);
+  const [contraseñaError, setContraseñaError] = useState(false);
+  const [confirmarContraseñaError, setConfirmarContraseñaError] =
+    useState(false);
+  const [nombresError, setNombresError] = useState(false);
+  const [apellidosError, setApellidosError] = useState(false);
+  const [numeroDocumentoError, setNumeroDocumentoError] = useState(false);
+  const [direccionError, setDireccionError] = useState(false);
+  const [celularError, setCelularError] = useState(false);
+  const [TYCError, setTYCError] = useState(false);
+  const [TDPError, setTDPError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,52 +52,97 @@ const SignInPage = () => {
     const nombresRegExp = /[^a-zA-ZñÑáéíóúAÉÍÓÚ\s]/g;
 
     if (!correoRegExp.test(formContent.correo)) {
-      setFormContent({ ...formContent, correoError: true });
+      setCorreoError(true);
       isValid = false;
+    } else {
+      setCorreoError(false);
     }
 
-    if (formContent.confirmarCorreo !== formContent.correo) {
-      setFormContent({ ...formContent, confirmarCorreoError: true });
+    if (
+      formContent.confirmarCorreo !== formContent.correo ||
+      formContent.confirmarCorreo.length === 0
+    ) {
+      setConfirmarCorreoError(true);
       isValid = false;
+    } else {
+      setConfirmarCorreoError(false);
     }
 
     if (!contraseñaRegExp.test(formContent.contraseña)) {
-      setFormContent({ ...formContent, contraseñaError: true });
+      setContraseñaError(true);
       isValid = false;
+    } else {
+      setContraseñaError(false);
     }
 
-    if (formContent.confirmarContraseña !== formContent.contraseña) {
-      setFormContent({ ...formContent, confirmarContraseñaError: true });
+    if (
+      formContent.confirmarContraseña !== formContent.contraseña ||
+      formContent.confirmarContraseña.length === 0
+    ) {
+      setConfirmarContraseñaError(true);
       isValid = false;
+    } else {
+      setConfirmarContraseñaError(false);
     }
 
-    if (nombresRegExp.test(formContent.nombres)) {
-      setFormContent({ ...formContent, nombresError: true });
+    if (
+      nombresRegExp.test(formContent.nombres) ||
+      formContent.nombres.length === 0
+    ) {
+      setNombresError(true);
       isValid = false;
+    } else {
+      setNombresError(false);
     }
 
-    if (nombresRegExp.test(formContent.apellidos)) {
-      setFormContent({ ...formContent, apellidosError: true });
+    if (
+      nombresRegExp.test(formContent.apellidos) ||
+      formContent.apellidos.length === 0
+    ) {
+      setApellidosError(true);
       isValid = false;
+    } else {
+      setApellidosError(false);
     }
 
     if (formContent.numeroDocumento.length < 6) {
-      setFormContent({ ...formContent, numeroDocumentoError: true });
+      setNumeroDocumentoError(true);
       isValid = false;
+    } else {
+      setNumeroDocumentoError(false);
     }
 
     if (formContent.direccion.length < 1) {
-      setFormContent({ ...formContent, direccionError: true });
+      setDireccionError(true);
       isValid = false;
+    } else {
+      setDireccionError(false);
     }
 
-    if (formContent.celular.length < 10 || formContent.celular.length > 10) {
-      setFormContent({ ...formContent, celular: true });
+    if (formContent.celular.length !== 10) {
+      setCelularError(true);
       isValid = false;
+    } else {
+      setCelularError(false);
+    }
+
+    if (!formContent.terminosYCondiciones) {
+      setTYCError(true);
+      isValid = false;
+    } else {
+      setTYCError(false);
+    }
+
+    if (!formContent.tratamientoDeDatos) {
+      setTDPError(true);
+      isValid = false;
+    } else {
+      setTDPError(false);
     }
 
     if (isValid) {
       //logica de procesamiento del formulario
+      console.log("formulario procesado");
     }
   };
 
@@ -140,7 +194,7 @@ const SignInPage = () => {
               setFormContent({ ...formContent, correo: event.target.value })
             }
           />
-          {formContent.correoError ? (
+          {correoError ? (
             <p className="sign-in-page-form-text-error">
               * Escribe un correo valido
             </p>
@@ -157,7 +211,6 @@ const SignInPage = () => {
             className="sign-in-page-form-text-input"
             placeholder="Confirmar Correo"
             value={formContent.confirmarCorreo}
-            pattern={formContent.correo}
             onChange={(event) =>
               setFormContent({
                 ...formContent,
@@ -165,7 +218,7 @@ const SignInPage = () => {
               })
             }
           />
-          {formContent.confirmarCorreoError ? (
+          {confirmarCorreoError ? (
             <p className="sign-in-page-form-text-error">
               * Escribe el mismo correo que escribiste en el primer espacio
             </p>
@@ -186,7 +239,7 @@ const SignInPage = () => {
               setFormContent({ ...formContent, contraseña: event.target.value })
             }
           />
-          {formContent.contraseñaError ? (
+          {contraseñaError ? (
             <p className="sign-in-page-form-text-error">
               * La contraseña debe contener al menos una mayúscula, una
               minúscula y un numero y debe ser de al menos 8 caracteres
@@ -211,7 +264,7 @@ const SignInPage = () => {
               })
             }
           />
-          {formContent.confirmarContraseñaError ? (
+          {confirmarContraseñaError ? (
             <p className="sign-in-page-form-text-error">
               * Debes escribir la misma contraseña que escribiste en el espacio
               anterior
@@ -233,7 +286,7 @@ const SignInPage = () => {
               setFormContent({ ...formContent, nombres: event.target.value })
             }
           />
-          {formContent.nombresError ? (
+          {nombresError ? (
             <p className="sign-in-page-form-text-error">
               * Este espacio es requerido y no puede contener caracteres
               especiales o numéricos
@@ -255,7 +308,7 @@ const SignInPage = () => {
               setFormContent({ ...formContent, apellidos: event.target.value })
             }
           />
-          {formContent.apellidosError ? (
+          {apellidosError ? (
             <p className="sign-in-page-form-text-error">
               * Este espacio es requerido
             </p>
@@ -299,7 +352,7 @@ const SignInPage = () => {
               }
             />
           </div>
-          {formContent.numeroDocumentoError ? (
+          {numeroDocumentoError ? (
             <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
               * Introduce un numero de documento valido
             </span>
@@ -527,7 +580,7 @@ const SignInPage = () => {
               })
             }
           />
-          {formContent.direccionError ? (
+          {direccionError ? (
             <p className="sign-in-page-form-text-error">
               * Este espacio es obligatorio
             </p>
@@ -551,13 +604,136 @@ const SignInPage = () => {
               })
             }
           />
-          {formContent.celularError ? (
+          {celularError ? (
             <p className="sign-in-page-form-text-error">
               * Debes escribir un numero de celular valido
             </p>
           ) : (
             ""
           )}
+        </div>
+        <div className="sign-in-page-form-checkbox-container">
+          <input
+            type="checkbox"
+            id="accept-t-y-d"
+            className="sign-in-page-form-checkbox"
+            checked={formContent.terminosYCondiciones}
+            onChange={() =>
+              setFormContent({
+                ...formContent,
+                terminosYCondiciones: !formContent.terminosYCondiciones,
+              })
+            }
+          />
+          <label
+            htmlFor="accept-t-y-d"
+            className="sign-in-page-form-checkbox-label"
+          >
+            Acepto los Términos y Condiciones de Uso del Portal.
+          </label>
+        </div>
+        {TYCError ? (
+          <p className="sign-in-page-form-text-error">
+            * Debes aceptar los terminos y condiciones
+          </p>
+        ) : (
+          ""
+        )}
+        <div className="sign-in-page-form-checkbox-container">
+          <input
+            type="checkbox"
+            id="autorizacion-tratamiento-de-datos"
+            className="sign-in-page-form-checkbox"
+            checked={formContent.tratamientoDeDatos}
+            onChange={() =>
+              setFormContent({
+                ...formContent,
+                tratamientoDeDatos: !formContent.tratamientoDeDatos,
+              })
+            }
+          />
+          <label
+            htmlFor="autorizacion-tratamiento-de-datos"
+            className="sign-in-page-form-checkbox-label"
+          >
+            En cumplimiento del Régimen de Protección Datos Personales, autorizo
+            expresamente a TableTop, de manera directa, o a través de terceros
+            designados, para almacenar, consultar, procesar y en general, para
+            dar tratamiento a la información personal que suministre, y para ser
+            incluido en sus bases de datos, recibir información de la Compañía,
+            de conformidad con las políticas de privacidad y manejo de
+            información.
+          </label>
+        </div>
+        {TDPError ? (
+          <p className="sign-in-page-form-text-error">
+            * Debes aceptar la política de tratamiento de datos personales
+          </p>
+        ) : (
+          ""
+        )}
+        <span className="sign-in-page-form-receive-information">
+          Autorizo recibir información por
+        </span>
+        <div className="sign-in-page-form-checkbox-container">
+          <input
+            type="checkbox"
+            id="accept-email-information"
+            className="sign-in-page-form-checkbox"
+            checked={formContent.informacionCorreo}
+            onChange={() =>
+              setFormContent({
+                ...formContent,
+                informacionCorreo: !formContent.informacionCorreo,
+              })
+            }
+          />
+          <label
+            htmlFor="accept-email-information"
+            className="sign-in-page-form-checkbox-label"
+          >
+            Correo Electrónico
+          </label>
+        </div>
+        <div className="sign-in-page-form-checkbox-container">
+          <input
+            type="checkbox"
+            id="accept-sms-information"
+            className="sign-in-page-form-checkbox"
+            checked={formContent.informacionSMS}
+            onChange={() =>
+              setFormContent({
+                ...formContent,
+                informacionSMS: !formContent.informacionSMS,
+              })
+            }
+          />
+          <label
+            htmlFor="accept-sms-information"
+            className="sign-in-page-form-checkbox-label"
+          >
+            Mensajes de texto SMS (sin costo al usuario)
+          </label>
+        </div>
+        <div className="sign-in-page-form-checkbox-container">
+          <input
+            type="checkbox"
+            id="accept-wpp-information"
+            className="sign-in-page-form-checkbox"
+            checked={formContent.informacionWPP}
+            onChange={() =>
+              setFormContent({
+                ...formContent,
+                informacionWPP: !formContent.informacionWPP,
+              })
+            }
+          />
+          <label
+            htmlFor="accept-wpp-information"
+            className="sign-in-page-form-checkbox-label"
+          >
+            Mensajes de WhatsApp
+          </label>
         </div>
         <input
           type="submit"

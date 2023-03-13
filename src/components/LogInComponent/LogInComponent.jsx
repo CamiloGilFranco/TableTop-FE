@@ -2,8 +2,10 @@ import "./LogInComponent.css";
 import ForgottenPasswordComponent from "./ForgottenPasswordComponent";
 import LoginFormComponent from "./LoginFormComponent";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const LogInComponent = ({ setShowLogIn }) => {
   const [whichForm, setWhichForm] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <div className="log-in-component">
@@ -26,7 +28,10 @@ const LogInComponent = ({ setShowLogIn }) => {
           )}
         </div>
         <div className="log-in-sign-up">
-          <span className="log-in-sign-up-text">
+          <span
+            className="log-in-sign-up-text"
+            onClick={() => navigate("/registro")}
+          >
             ¿No estas registrado? Regístrate aquí
           </span>
         </div>
