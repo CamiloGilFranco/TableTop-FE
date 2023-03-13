@@ -1,6 +1,18 @@
 import './SearchbarComponent.css';
+import { useState } from 'react';
 
 const SearchbarComponent = ()=>{
+
+  const [inputValue, setInputValue] = useState('')
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  }
+
+  const handleSearchButtonClick = (event) => {
+    event.preventDefault();
+    setInputValue('');
+  }
   return (
     <section className='searchBar__container'>
       <span className='searchBar__text'>The Food You Love. Delivered With Care.</span>
@@ -8,20 +20,16 @@ const SearchbarComponent = ()=>{
         <input
           className='searchBar__inputText' 
           type='text'
-          placeholder={'Enter Your Location'}
-        >
-                    
-        </input>
-        <input
-          className='searchBar__inputText' 
-          type='text'
+          id='searchButton'
+          name='searchButton'
           placeholder={'What Are You Craving?'}
-        >
-                    
-        </input>
+          value={inputValue}
+          onChange={handleInputChange}
+        />
         <button 
           type='sumbit'
-          className='searchBar__button'  
+          className='searchBar__button'
+          onClick={handleSearchButtonClick}
         >
           <b>
             Find Food

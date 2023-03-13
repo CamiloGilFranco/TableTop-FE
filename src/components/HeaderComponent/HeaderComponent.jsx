@@ -8,12 +8,33 @@ import logo from "../../assets/logo.svg";
 import { useState } from "react";
 
 const HeaderComponent = () => {
+
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
   const [showLogIn, setShowLogIn] = useState(false);
 
   const handleClickList = () => {
     setMobileShow("");
   };
+
+
+  const [mobileShow, setMobileShow] = useState('mobileNavBar__none');
+  const [location, setLocation] = useState('bogota');
+  const [currency, setCurrency] = useState('USD');
+  const [lenguage, setLenguage] = useState('english');
+
+  const handleClickList = () => {
+    setMobileShow('');
+  }
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  }
+  const handleCurrencyChange = (event) => {
+    setCurrency(event.target.value);
+  }
+  const handleLenguageChange = (event) => {
+    setLenguage(event.target.value);
+  }
+
 
   return (
     <header className="headerNavBar">
@@ -43,14 +64,19 @@ const HeaderComponent = () => {
         </span>
       </section>
       <section className="header__buttons">
+        <select className="locationList" onChange={handleLocationChange}>
+          <option value={"bogota"}>Bog</option>
+          <option value={"medellin"}>Med</option>
+          <option value={"cali"}>Calí</option>
+        </select>
         <section className="header__optionLists">
-          <select className="currencyList">
+          <select className="currencyList" onChange={handleCurrencyChange}>
             <option value={"USD"}>USD</option>
             <option value={"COP"}>COP</option>
             <option value={"PEN"}>PEN</option>
             <option value={"MXN"}>MXN</option>
           </select>
-          <select className="lenguageList">
+          <select className="lenguageList" onChange={handleLenguageChange}>
             <option value={"english"}>EN</option>
             <option value={"spanish"}>ES</option>
           </select>

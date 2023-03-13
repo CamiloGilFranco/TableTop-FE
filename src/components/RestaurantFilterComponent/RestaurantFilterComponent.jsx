@@ -1,16 +1,46 @@
 import './RestaurantFilterComponent.css'
+import { useEffect } from 'react';
 import { BsFillFilterSquareFill } from 'react-icons/bs';
 import { useState } from 'react';
-import FilterMobile from '../FilterMobile/FilterMobile';
 import { AiOutlineMinus } from 'react-icons/ai';
 import { ImInfo } from 'react-icons/im'
 
-const RestaurantFilterComponent =()=>{
+const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating }) =>{
 
-  const [mobileFilter, setMobileFilter] = useState('mobileFilter__none');
+  const [mobileFilter, setMobileFilter] = useState('');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 765) {
+        setMobileFilter('');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleCategoriesChange = (event) =>{
+    if (categories.some((element)=> element === event.target.name)) {
+      setCategories(categories.filter((element) => element !== (event.target.name) ));
+    } else {
+      setCategories([...categories, event.target.name]);
+    }
+  }
+
+  const handleRatingChange = (event) =>{
+    if (rating.some((element)=> element === parseInt(event.target.id))) {
+      setRating(rating.filter((element) => element !== parseInt(event.target.id) ));
+    } else {
+      setRating([...rating, parseInt(event.target.name)]);
+    }
+  }
 
   const handleListClick = () => {
-    mobileFilter=== 'mobileFilter__none'? setMobileFilter('') : setMobileFilter('mobileFilter__none')
+    mobileFilter === 'Filter__none'? setMobileFilter('') : setMobileFilter('Filter__none')
   }
 
   return(
@@ -28,44 +58,11 @@ const RestaurantFilterComponent =()=>{
           <BsFillFilterSquareFill onClick={handleListClick}/>
         </section>
       </section>
-      <FilterMobile 
-        setMobileFilter={setMobileFilter}
-        mobileFilter={mobileFilter}
-      />
-      <section className='restaurantFilterDesktop'>
-        <input 
-          type='text' 
-          placeholder='Search Here' 
-          className='restaurantFilter__SearchBar'
-        />
+  
+      <section className={`restaurantFilterDesktop ${mobileFilter}`} >
          <section className='restaurantFilter__filter'>
            <p>Latest Filter</p>
-           <BsFillFilterSquareFill className='restaurantFilter_icons'/>
          </section>
-         <article>
-           <section className='restaurantFilter__filter'>
-             <p>Popular</p>
-             <AiOutlineMinus className='restaurantFilter_icons'/>
-           </section>
-           <section className='popularFilter'>
-             <label>
-              <input type='checkbox'className='filterCheckbox'/>
-               Free Delivery
-             </label>
-             <label>
-               <input type='checkbox'className='filterCheckbox'/>
-                 Reached in 20 Mins
-             </label>
-             <label>
-               <input type='checkbox'className='filterCheckbox'/>
-                 Pure Veg
-               </label>
-             <label>
-               <input type='checkbox'className='filterCheckbox'/>
-                 Non Veg
-              </label>
-            </section>
-          </article>
           <article>
             <section className='restaurantFilter__filter'>
               <p>Cuisine</p>
@@ -73,31 +70,73 @@ const RestaurantFilterComponent =()=>{
             </section>
               <section className='popularFilter'>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='asian'
+                    name='asian'
+                    onChange={handleCategoriesChange}
+                  />
                   Asian
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='seafood'
+                    name='seafood'
+                    onChange={handleCategoriesChange}
+                  />
                   Seafood
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='italian'
+                    name='italian'
+                    onChange={handleCategoriesChange}
+                  />
                   Italian
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='pizza'
+                    name='pizza'
+                    onChange={handleCategoriesChange}
+                  />
                   Pizza
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='western'
+                    name='western'
+                    onChange={handleCategoriesChange}
+                  />
                   Western
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='chinise'
+                    name='chinese'
+                    onChange={handleCategoriesChange}
+                  />
                   Chinese
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='dessert'
+                    name='dessert'
+                    onChange={handleCategoriesChange}
+                  />
                   Dessert
                 </label>
               </section>
@@ -109,57 +148,44 @@ const RestaurantFilterComponent =()=>{
               </section>
               <section className='popularFilter'>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='5'
+                    name='5'
+                    onChange={handleRatingChange}
+                  />
                   ⭐⭐⭐⭐⭐
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='4'
+                    name='4'
+                    onChange={handleRatingChange}
+                  />
                   ⭐⭐⭐⭐
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='3'
+                    name='3'
+                    onChange={handleRatingChange}
+                  />
                   ⭐⭐⭐
                 </label>
                 <label>
-                  <input type='checkbox'className='filterCheckbox'/>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='2'
+                    name='2'
+                    onChange={handleRatingChange}
+                  />
                   ⭐⭐
-                </label>
-              </section>
-            </article>
-            <article>
-              <section className='restaurantFilter__filter'>
-                <p>Cost for Two</p>
-                <AiOutlineMinus className='restaurantFilter_icons'/>
-              </section>
-              <section className='popularFilter'>
-                <label className='filterCheckbox'>
-                  0
-                  <input type='range' className='restaurantFilter__Slider' min={0} max={1500}/> 
-                  1500
-                </label>
-              </section>
-            </article>
-            <article>
-              <section className='restaurantFilter__filter'>
-                <p>Delivery Time</p>
-                <AiOutlineMinus className='restaurantFilter_icons'/>
-              </section>
-              <section className='popularFilter'>
-                <label>
-                  <input type='checkbox'className='filterCheckbox'/>
-                  Up to 20 Minutes
-                </label>
-                <label>
-                  <input type='checkbox'className='filterCheckbox'/>
-                  Up to 30 Minutes
-                </label>
-                <label>
-                  <input type='checkbox'className='filterCheckbox'/>
-                  Up to 40 Minutes
-                </label>
-                <label>
-                  <input type='checkbox'className='filterCheckbox'/>
-                  Up to 40 Minutes
                 </label>
               </section>
             </article>

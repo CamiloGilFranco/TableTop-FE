@@ -122,7 +122,17 @@
   height: 30px;
   margin: 0px 5px;
 }
-
+.locationList {
+  border: none;
+  background-color: darkgray;
+  height: 25px;
+  width: 45px;
+  margin: 0px 5px;
+  @media (min-width:769px) {
+    height: 30px;
+    width: 50px;
+  }
+}
 .header__buttons {
   @media (min-width: 769px) {
     display: flex;

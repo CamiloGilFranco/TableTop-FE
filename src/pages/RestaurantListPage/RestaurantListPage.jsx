@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import Footer from "../../components/Footer/Footer";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import SearchbarComponent from "../../components/SearchbarComponent/SearchbarComponent";
@@ -6,13 +7,24 @@ import RestaurantList from "../../components/RestaurantList/RestaurantList";
 import "./RestaurantListPage.css";
 
 const RestaurantListPage = () => {
+  const [categories, setCategories] = useState([]);
+  const [rating, setRating] = useState([]);
+
   return (
     <div className="restaurantList__page">
       <HeaderComponent />
       <SearchbarComponent />
       <div className="restaurantList__flex">
-        <RestaurantFilterComponent />
-        <RestaurantList />
+        <RestaurantFilterComponent
+          categories={categories}
+          setCategories={setCategories}
+          rating={rating}
+          setRating={setRating}
+        />
+        <RestaurantList 
+          categories={categories}
+          rating={rating}
+        />
       </div>
       <Footer />
     </div>

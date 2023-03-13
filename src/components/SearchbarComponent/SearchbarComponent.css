@@ -58,13 +58,13 @@
 @media (min-width: 765px) {
   .searchBar__inputText {
     height: 40px;
-    width: 50vh;
+    width: 98vh;
     font-size: 20px;
   }
 }
 @media (min-width: 1000px) {
   .searchBar__inputText {
-    width: 60vh;
+    width: 85vh;
   }
 }
 
