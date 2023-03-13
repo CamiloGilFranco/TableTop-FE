@@ -8,33 +8,25 @@ import logo from "../../assets/logo.svg";
 import { useState } from "react";
 
 const HeaderComponent = () => {
+  const [showLogIn, setShowLogIn] = useState(false);
 
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
-  const [showLogIn, setShowLogIn] = useState(false);
+  const [location, setLocation] = useState("bogota");
+  const [currency, setCurrency] = useState("USD");
+  const [lenguage, setLenguage] = useState("english");
 
   const handleClickList = () => {
     setMobileShow("");
   };
-
-
-  const [mobileShow, setMobileShow] = useState('mobileNavBar__none');
-  const [location, setLocation] = useState('bogota');
-  const [currency, setCurrency] = useState('USD');
-  const [lenguage, setLenguage] = useState('english');
-
-  const handleClickList = () => {
-    setMobileShow('');
-  }
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
-  }
+  };
   const handleCurrencyChange = (event) => {
     setCurrency(event.target.value);
-  }
+  };
   const handleLenguageChange = (event) => {
     setLenguage(event.target.value);
-  }
-
+  };
 
   return (
     <header className="headerNavBar">
