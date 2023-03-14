@@ -6,29 +6,26 @@ import RestaurantFilterComponent from "../../components/RestaurantFilterComponen
 import RestaurantList from "../../components/RestaurantList/RestaurantList";
 import "./RestaurantListPage.css";
 
+
 const RestaurantListPage = () => {
+  const [inputValue, setInputValue] = useState('')
   const [categories, setCategories] = useState([]);
   const [rating, setRating] = useState([]);
-  const [sortBy, setSortBy] = useState('all');
 
 
 
   return (
     <div className="restaurantList__page">
       <HeaderComponent />
-      <SearchbarComponent />
+      <SearchbarComponent inputValue={inputValue} setInputValue={setInputValue} />
       <div className="restaurantList__flex">
         <RestaurantFilterComponent
           categories={categories}
           setCategories={setCategories}
           rating={rating}
           setRating={setRating}
-          sortBy={sortBy}
-          setSortBy={setSortBy}
         />
         <RestaurantList 
-          sortBy={sortBy}
-          setSortBy={setSortBy}
           categories={categories}
           rating={rating}
         />

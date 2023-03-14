@@ -10,7 +10,7 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
   const handleSearchButtonClick = (event) => {
     event.preventDefault();
 
-    inputValue.length >= 3 ? alert(inputValue) : alert('search term must be at least 3 characters long');
+    inputValue.length >= 3 ? console.log('cumple con la condición') : alert('search term must be at least 3 characters long');
     setInputValue('');
   }
   return (

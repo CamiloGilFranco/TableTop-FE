@@ -5,82 +5,45 @@ import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardCo
 import db from "../../assets/dat.json";
 
 const PopularRestaurant = ({ inputValue }) => {
-  const [activeAll, setActiveAll] = useState('popular-restaurants-buttons-text-selected');
-  const [activePopular, setActivePopular] = useState('');
-  const [activeLatest, setActiveLatest] = useState('');
-  const [activeTrend, setActiveTrend] = useState('');
-  const [sortBy, setSortBy] = useState('all');
   const data = db;
 
+  const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
+  const [selectOrder, setSelectOrder] = useState(1);
+  const [sortList, setSortList] = useState(data);
 
-  const sortList = (str) =>{
+  const handleOrder = (order) => {
+    const actionOrder = {
+      all: () => data.sort((a, b)=> a.id - b.id),
+      latest: () => data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)), 
+      trend: () => data.sort((a, b) => b.numberOfSales - a.numberOfSales),
+      popular: () => data.sort((a, b) => b.rating - a.rating),
+    }
 
-    if (inputValue.length > 3) {
-      data.filter((a)=> a !== inputValue);
-      console.log(data.filter((a)=> a !== inputValue));
-    } else if (str === 'all') {
-      return data.sort((a, b)=> a.id - b.id);
-    } else if (str === 'popular') {
-      return data.sort((a, b) => b.rating - a.rating);
-    } else if (str === 'latest') {
-      return data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    } else if (str === 'trend') {
-      return data.sort((a, b)=> b.numberOfSales - a.numberOfSales)
-    }
+    const caseOrder = order.text.toLowerCase();
+    setSelectOrder(order.id);
+    setSortList(actionOrder[caseOrder]);
   }
-
-  const handleAllButton = (e) =>{
-    if(activeAll === ''){
-      setActiveAll('popular-restaurants-buttons-text-selected');
-      setActivePopular('');
-      setActiveLatest('');
-      setActiveTrend('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-  const handlePopular = (e) =>{
-    if(activePopular === ''){
-      setActivePopular('popular-restaurants-buttons-text-selected');
-      setActiveAll('');
-      setActiveLatest('');
-      setActiveTrend('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-  const handleLatest = (e) =>{
-    if(activeLatest === ''){
-      setActiveLatest('popular-restaurants-buttons-text-selected');
-      setActivePopular('');
-      setActiveAll('');
-      setActiveTrend('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-  const handleTrend = (e) =>{
-    if(activeTrend === ''){
-      setActiveTrend('popular-restaurants-buttons-text-selected');
-      setActivePopular('');
-      setActiveLatest('');
-      setActiveAll('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-
+  
   return (
     <div className="popular-restaurant">
       <header className="popular-restaurant-header">
         <span className="popular-restaurant-title">Popular Restaurant</span>
         <div className="popular-restaurants-buttons">
-          <p className={`popular-restaurants-buttons-text ${activeAll}`} onClick={handleAllButton}>
-            All
-          </p>
-          <p className={`popular-restaurants-buttons-text ${activePopular}`} onClick={handlePopular}>Popular</p>
-          <p className={`popular-restaurants-buttons-text ${activeLatest}`} onClick={handleLatest}>Latest</p>
-          <p className={`popular-restaurants-buttons-text ${activeTrend}`} onClick={handleTrend}>Trend</p>
+        {sortButton.map((item) => {
+            return (
+              <p 
+                key={item.id} 
+                className={`popular-restaurants-buttons-text ${selectOrder === item.id && 'popular-restaurants-buttons-text-selected'}`} 
+                onClick={() => handleOrder(item)}
+              >
+                {item.text}
+              </p>
+            )}
+          )}
         </div>
       </header>
       <main className="popular-restaurant-main">
-        {sortList(sortBy).map((element) => {
+        {sortList.map((element) => {
           return (
             <RestaurantCardComponent
               key={element.id}

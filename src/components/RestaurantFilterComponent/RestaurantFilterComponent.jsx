@@ -5,13 +5,9 @@ import { useState } from 'react';
 import { AiOutlineMinus } from 'react-icons/ai';
 import { ImInfo } from 'react-icons/im'
 
-const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, sortBy, setSortBy }) =>{
+const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, data }) =>{
 
   const [mobileFilter, setMobileFilter] = useState('');
-  
-  const handleListChange = (e) =>{
-    setSortBy(e.target.value.toLowerCase());
-  }
   
   
   useEffect(() => {
@@ -50,13 +46,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   return(
     <section className='restaurantFilter__container'>
       <section className='restaurantFilterMobile'>
-        <select className='restaurantFilter__dropdown' onChange={handleListChange}>
-          <option disabled>Filter</option>
-          <option>All</option>
-          <option>Popular</option>
-          <option>Latest</option>
-          <option>Trend</option>
-        </select>
         <section className='restaurantFilter__filter'>
           <p>Latest Filter</p>
           <BsFillFilterSquareFill onClick={handleListClick}/>

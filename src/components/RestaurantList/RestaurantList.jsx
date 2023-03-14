@@ -5,76 +5,37 @@ import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 
-const RestaurantList = ({ categories, rating, sortBy, setSortBy }) => {
+const RestaurantList = ({ categories, rating }) => {
   const data = DB;
+  const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
+  const [selectOrder, setSelectOrder] = useState(1);
+  const [sortList, setSortList] = useState(data);
 
-  const [activeAll, setActiveAll] = useState('restaurant-list-buttons-text-selected');
-  const [activePopular, setActivePopular] = useState('');
-  const [activeLatest, setActiveLatest] = useState('');
-  const [activeTrend, setActiveTrend] = useState('');
 
-  const sortList = (str) =>{
-    if (str === 'all') {
-      return data.sort((a, b)=> a.id - b.id);
-    } else if (str === 'popular') {
-      return data.sort((a, b) => b.rating - a.rating);
-    } else if (str === 'latest') {
-      return data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    } else if (str === 'trend') {
-      return data.sort((a, b)=> b.numberOfSales - a.numberOfSales)
+  const handleOrder = (order) => {
+    const actionOrder = {
+      all: () => data.sort((a, b)=> a.id - b.id),
+      latest: () => data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)), 
+      trend: () => data.sort((a, b) => b.numberOfSales - a.numberOfSales),
+      popular: () => data.sort((a, b) => b.rating - a.rating),
     }
-  }
 
-  const handleAllButton = (e) =>{
-    if(activeAll === ''){
-      setActiveAll('restaurant-list-buttons-text-selected');
-      setActivePopular('');
-      setActiveLatest('');
-      setActiveTrend('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
+    const caseOrder = order.text.toLowerCase()
+    setSelectOrder(order.id);
+    setSortList(actionOrder[caseOrder]);
   }
-  const handlePopular = (e) =>{
-    if(activePopular === ''){
-      setActivePopular('restaurant-list-buttons-text-selected');
-      setActiveAll('');
-      setActiveLatest('');
-      setActiveTrend('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-  const handleLatest = (e) =>{
-    if(activeLatest === ''){
-      setActiveLatest('restaurant-list-buttons-text-selected');
-      setActivePopular('');
-      setActiveAll('');
-      setActiveTrend('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-  const handleTrend = (e) =>{
-    if(activeTrend === ''){
-      setActiveTrend('restaurant-list-buttons-text-selected');
-      setActivePopular('');
-      setActiveLatest('');
-      setActiveAll('');
-      setSortBy(e.target.innerHTML.toLowerCase());
-    }
-  }
-
-
-
-
+  
   const data2 = data.filter((element1) => {
     return element1.categories.some((element2) => {
       return categories.includes(element2);
     });
   });
+  
 
-
-  const renderList = (data, data2) => {
+  const renderList = (data2) => {
     if (data2.length === 0) {
-      return sortList(sortBy).map((element) => {
+      return sortList.map((element) => {
+        console.log("switch");
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -108,12 +69,21 @@ const RestaurantList = ({ categories, rating, sortBy, setSortBy }) => {
     <div className="restaurant-list">
       <header className="restaurant-list-header">
         <div className="restaurant-list-buttons">
-          <p className={`restaurant-list-buttons-text ${activeAll}`} onClick={handleAllButton}>
-            All
-          </p>
-          <p className={`restaurant-list-buttons-text ${activePopular}`} onClick={handlePopular}>Popular</p>
+          {sortButton.map((item) => {
+            return (
+              <p 
+                key={item.id} 
+                className={`restaurant-list-buttons-text ${selectOrder === item.id && 'restaurant-list-buttons-text-selected'}`} 
+                onClick={() => handleOrder(item)}
+              >
+                {item.text}
+              </p>
+            )}
+          )}
+            {/* All */}
+          {/* <p className={`restaurant-list-buttons-text ${activePopular}`} onClick={handlePopular}>Popular</p>
           <p className={`restaurant-list-buttons-text ${activeLatest}`} onClick={handleLatest}>Latest</p>
-          <p className={`restaurant-list-buttons-text ${activeTrend}`} onClick={handleTrend}>Trend</p>
+          <p className={`restaurant-list-buttons-text ${activeTrend}`} onClick={handleTrend}>Trend</p> */}
         </div>
       </header>
       <main className="restaurant-list-main">
