@@ -12,8 +12,8 @@ import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent
 import Footer from "../../components/Footer/Footer";
 import CartItem from "../../components/CartItem/CartItem";
 import AlwaysFirstComponent from "../../components/AlwaysFirstComponent/AlwaysFirstComponent";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import db from "../../assets/dat.json";
 
 const RestaurantView = () => {
@@ -21,6 +21,13 @@ const RestaurantView = () => {
   const params = useParams();
 
   const data = db;
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, [pathname]);
 
   const restaurantData = data.find(
     (element) => params.restaurantPath === element.restaurantPath
