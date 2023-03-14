@@ -5,7 +5,7 @@ import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 
-const RestaurantList = ({ categories, rating }) => {
+const RestaurantList = ({ categories, rating, inputValue }) => {
   const data = DB;
   const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
   const [selectOrder, setSelectOrder] = useState(1);
@@ -24,18 +24,28 @@ const RestaurantList = ({ categories, rating }) => {
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
   }
+  //console.log(`Categories ${categories} Rating ${rating} Input value ${inputValue}`);
   
-  const data2 = data.filter((element1) => {
-    return element1.categories.some((element2) => {
-      return categories.includes(element2);
-    });
-  });
-  
+   const filteredData = data.filter((element1) => {
+     return element1.categories.some((element2) => {
+       return categories.includes(element2);
+     });
+   });
 
-  const renderList = (data2) => {
-    if (data2.length === 0) {
+  const ratingFilter = data.filter((element)=>{
+    return element.rating >= rating;
+  });
+
+  const inputFilter = data.filter((element) => {
+    return element.restaurantName.toLowerCase().includes(inputValue)
+  })
+
+  //console.log(ratingFilter);
+  console.log(filteredData);
+
+  const renderList = (data, filteredData) => {
+    if (filteredData.length === 0) {
       return sortList.map((element) => {
-        console.log("switch");
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -49,7 +59,7 @@ const RestaurantList = ({ categories, rating }) => {
         );
       });
     } else {
-      return data2.map((element) => {
+      return filteredData.map((element) => {
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -80,26 +90,10 @@ const RestaurantList = ({ categories, rating }) => {
               </p>
             )}
           )}
-            {/* All */}
-          {/* <p className={`restaurant-list-buttons-text ${activePopular}`} onClick={handlePopular}>Popular</p>
-          <p className={`restaurant-list-buttons-text ${activeLatest}`} onClick={handleLatest}>Latest</p>
-          <p className={`restaurant-list-buttons-text ${activeTrend}`} onClick={handleTrend}>Trend</p> */}
         </div>
       </header>
       <main className="restaurant-list-main">
-        {renderList(data, data2)}
-        {/*         <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent />
-        <RestaurantCardComponent /> */}
+        {renderList(data, filteredData)}
       </main>
       <footer className="restaurant-list-footer">
         <div className="restaurant-list-footer-page-button">

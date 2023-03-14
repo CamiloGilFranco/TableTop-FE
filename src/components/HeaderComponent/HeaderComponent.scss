@@ -134,10 +134,9 @@
   }
 }
 .header__buttons {
+  display: flex;
+  align-items: center;
   @media (min-width: 769px) {
-    display: flex;
-    align-items: center;
-
     span {
       padding: 0px 5px;
     }

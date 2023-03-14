@@ -33,8 +33,7 @@ const SignInPage = () => {
   const [correoError, setCorreoError] = useState(false);
   const [confirmarCorreoError, setConfirmarCorreoError] = useState(false);
   const [contraseñaError, setContraseñaError] = useState(false);
-  const [confirmarContraseñaError, setConfirmarContraseñaError] =
-    useState(false);
+  const [confirmarContraseñaError, setConfirmarContraseñaError] = useState(false);
   const [nombresError, setNombresError] = useState(false);
   const [apellidosError, setApellidosError] = useState(false);
   const [numeroDocumentoError, setNumeroDocumentoError] = useState(false);

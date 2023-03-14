@@ -17,7 +17,10 @@ const RestaurantListPage = () => {
   return (
     <div className="restaurantList__page">
       <HeaderComponent />
-      <SearchbarComponent inputValue={inputValue} setInputValue={setInputValue} />
+      <SearchbarComponent 
+        inputValue={inputValue} 
+        setInputValue={setInputValue} 
+      />
       <div className="restaurantList__flex">
         <RestaurantFilterComponent
           categories={categories}
@@ -28,6 +31,7 @@ const RestaurantListPage = () => {
         <RestaurantList 
           categories={categories}
           rating={rating}
+          inputValue={inputValue}
         />
       </div>
       <Footer />

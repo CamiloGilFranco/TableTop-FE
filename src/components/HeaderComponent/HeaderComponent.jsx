@@ -57,9 +57,11 @@ const HeaderComponent = () => {
       </section>
       <section className="header__buttons">
         <select className="locationList" onChange={handleLocationChange}>
-          <option value={"bogota"}>Bog</option>
-          <option value={"medellin"}>Med</option>
+          <option value={"bogota"}>Bogotá</option>
+          <option value={"medellin"}>Medellín</option>
           <option value={"cali"}>Calí</option>
+          <option value={"cartagena"}>Cartagena</option>
+          <option value={"bucaramanga"}>Bucaramanga</option>
         </select>
         <section className="header__optionLists">
           <select className="currencyList" onChange={handleCurrencyChange}>
