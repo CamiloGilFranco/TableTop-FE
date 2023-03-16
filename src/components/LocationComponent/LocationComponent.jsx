@@ -1,19 +1,58 @@
 import "./LocationComponent.css";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { useEffect, useState } from "react";
 
-const LocationComponent = ({ hiddenLocation }) => {
+const LocationComponent = () => {
+  const libraries = ["places"];
+
+  const [center, setCenter] = useState(null);
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "TU_CLAVE_API",
+    libraries,
+  });
+
+  useEffect(() => {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode(
+      { address: "Tu dirección o lugar de interés" },
+      (results, status) => {
+        if (status === "OK") {
+          setCenter({
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+          });
+        }
+      }
+    );
+  }, []);
+
+  const mapContainerStyle = {
+    width: "100%",
+    height: "400px",
+  };
+
+  const options = {
+    disableDefaultUI: true,
+    zoomControl: true,
+  };
+
+  if (loadError) return "Error al cargar el mapa";
+  if (!isLoaded) return "Cargando mapa...";
+
   return (
-    <div className={`restaurant-view-location-map-container ${hiddenLocation}`}>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.39281029764!2d-74.24789188291706!3d4.648625933239766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2zQm9nb3TDoQ!5e0!3m2!1ses!2sco!4v1677628873787!5m2!1ses!2sco"
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title="restaurant-location-map"
-        className="restaurant-view-location-map"
-      />
+    <div className="restaurant-view-location-map-container">
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={10}
+        options={options}
+      >
+        <Marker position={center} />
+      </GoogleMap>
     </div>
   );
 };
 
 export default LocationComponent;
+
+//token:AIzaSyAtNfgwaRlQyx9i8Jnoa3pBbtF8U7hBWEI
