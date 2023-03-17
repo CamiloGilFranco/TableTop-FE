@@ -10,6 +10,7 @@
   height: 80%;
   display: flex;
   flex-wrap: wrap;
+  gap: 14px;
   justify-content: space-between;
 
   @media (max-width: 769px) {
@@ -71,4 +72,9 @@
   padding: 6px 15px;
   font-weight: 700;
   color: white;
+  cursor: pointer;
+}
+.reserveForm__fieldError{
+  color: #ef3f3f;
+  font-size: small;
 }

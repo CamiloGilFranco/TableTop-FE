@@ -1,47 +1,85 @@
 import "./PopularRestaurant.css";
+import { useState } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 
 import db from "../../assets/dat.json";
 
-const PopularRestaurant = () => {
+const PopularRestaurant = ({ inputValue }) => {
   const data = db;
-  data.sort((a, b) => b.rating - a.rating);
 
-  const popularRestaurantsSelection = () => {
-    const popularRestaurantSelectionList = [];
-    for (let i = 0; i < 6; i++) {
-      popularRestaurantSelectionList.push(data[i]);
+  const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
+  const [selectOrder, setSelectOrder] = useState(1);
+  const [sortList, setSortList] = useState(data);
+
+  const handleOrder = (order) => {
+    const actionOrder = {
+      all: () => data.sort((a, b)=> a.id - b.id),
+      latest: () => data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)), 
+      trend: () => data.sort((a, b) => b.numberOfSales - a.numberOfSales),
+      popular: () => data.sort((a, b) => b.rating - a.rating),
     }
-    return popularRestaurantSelectionList;
-  };
 
+    const caseOrder = order.text.toLowerCase();
+    setSelectOrder(order.id);
+    setSortList(actionOrder[caseOrder]);
+  }
+
+  const filteredData = data.filter((element) => {
+    return element.restaurantName.replaceAll(' ', '').toLowerCase().includes(inputValue);
+  })
+
+  const renderList = (data, filteredData) => {
+    if (filteredData.length === 0) {
+      return sortList.map((element)=> {
+        return (
+          <RestaurantCardComponent
+            key={element.id}
+            picture={element.picture}
+            restaurantName={element.restaurantName}
+            rating={element.rating}
+            categories={element.categories}
+            schedule={element.schedule}
+            averagePrice={element.averagePrice}
+          />
+        );
+      });
+    } else {
+      return filteredData.map((element) => {
+        return (
+          <RestaurantCardComponent
+            key={element.id}
+            picture={element.picture}
+            restaurantName={element.restaurantName}
+            rating={element.rating}
+            categories={element.categories}
+            schedule={element.schedule}
+            averagePrice={element.averagePrice}
+          />
+        );
+      });
+    }
+  };
+  
   return (
     <div className="popular-restaurant">
       <header className="popular-restaurant-header">
         <span className="popular-restaurant-title">Popular Restaurant</span>
         <div className="popular-restaurants-buttons">
-          <p className="popular-restaurants-buttons-text popular-restaurants-buttons-text-selected">
-            All
-          </p>
-          <p className="popular-restaurants-buttons-text">Popular</p>
-          <p className="popular-restaurants-buttons-text">Latest</p>
-          <p className="popular-restaurants-buttons-text">Trend</p>
+        {sortButton.map((item) => {
+            return (
+              <p 
+                key={item.id} 
+                className={`popular-restaurants-buttons-text ${selectOrder === item.id && 'popular-restaurants-buttons-text-selected'}`} 
+                onClick={() => handleOrder(item)}
+              >
+                {item.text}
+              </p>
+            )}
+          )}
         </div>
       </header>
       <main className="popular-restaurant-main">
-        {popularRestaurantsSelection().map((element) => {
-          return (
-            <RestaurantCardComponent
-              key={element.id}
-              picture={element.picture}
-              restaurantName={element.restaurantName}
-              rating={element.rating}
-              categories={element.categories}
-              schedule={element.schedule}
-              averagePrice={element.averagePrice}
-            />
-          );
-        })}
+        {renderList(data, filteredData)}
       </main>
     </div>
   );

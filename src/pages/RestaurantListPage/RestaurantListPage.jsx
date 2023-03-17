@@ -6,14 +6,21 @@ import RestaurantFilterComponent from "../../components/RestaurantFilterComponen
 import RestaurantList from "../../components/RestaurantList/RestaurantList";
 import "./RestaurantListPage.css";
 
+
 const RestaurantListPage = () => {
+  const [inputValue, setInputValue] = useState('')
   const [categories, setCategories] = useState([]);
-  const [rating, setRating] = useState([]);
+  const [rating, setRating] = useState(0);
+
+
 
   return (
     <div className="restaurantList__page">
       <HeaderComponent />
-      <SearchbarComponent />
+      <SearchbarComponent 
+        inputValue={inputValue} 
+        setInputValue={setInputValue} 
+      />
       <div className="restaurantList__flex">
         <RestaurantFilterComponent
           categories={categories}
@@ -24,6 +31,7 @@ const RestaurantListPage = () => {
         <RestaurantList 
           categories={categories}
           rating={rating}
+          inputValue={inputValue}
         />
       </div>
       <Footer />
