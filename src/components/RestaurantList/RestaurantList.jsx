@@ -7,11 +7,12 @@ import DB from "../../assets/dat.json";
 
 const RestaurantList = ({ categories, rating, inputValue }) => {
   const data = DB;
+
   const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
   const [selectOrder, setSelectOrder] = useState(1);
   const [sortList, setSortList] = useState(data);
 
-
+  // Logic for the order buttons
   const handleOrder = (order) => {
     const actionOrder = {
       all: () => data.sort((a, b)=> a.id - b.id),
@@ -24,27 +25,33 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
   }
-  //console.log(`Categories ${categories} Rating ${rating} Input value ${inputValue}`);
-  
-   const filteredData = data.filter((element1) => {
-     return element1.categories.some((element2) => {
-       return categories.includes(element2);
-     });
-   });
 
-  const ratingFilter = data.filter((element)=>{
-    return element.rating >= rating;
-  });
+  // logic for the filters 
+  const filteredData = (rating, categories, inputValue)=>{
+    let result = [];
 
-  const inputFilter = data.filter((element) => {
-    return element.restaurantName.toLowerCase().includes(inputValue)
-  })
+    if (inputValue) {
+      result = data.filter((element) => element.restaurantName.replaceAll(' ', '').toLowerCase().includes(inputValue))
+    }
 
-  //console.log(ratingFilter);
-  console.log(filteredData);
+    const filterByCategorie = (arr) =>{
+      return arr.filter((element1)=>{
+        return element1.categories.some((element2)=> {
+          return categories.includes(element2)
+        })
+      })
+    };
+    if (rating >= 2 && categories.length === 0) result = data.filter(element =>  Math.round(element.rating) >= rating);
+    if (categories.length > 0 && rating < 2)  result = filterByCategorie(data)
+    if (categories.length > 0 && rating >= 2) result = data.filter(element => Math.round(element.rating) >= rating && filterByCategorie(data));
+    return result
+  };
+  // console.log('rating: ', rating, 'catories.length: ', categories.length, 'filteredData length: ', filteredData(rating, categories).length);
 
-  const renderList = (data, filteredData) => {
-    if (filteredData.length === 0) {
+
+  //  
+  const renderList = (data, displayArr) => {
+    if (displayArr.length === 0) {
       return sortList.map((element) => {
         return (
           <RestaurantCardComponent
@@ -59,7 +66,7 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
         );
       });
     } else {
-      return filteredData.map((element) => {
+      return displayArr.map((element) => {
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -93,7 +100,7 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
         </div>
       </header>
       <main className="restaurant-list-main">
-        {renderList(data, filteredData)}
+        {renderList(data, filteredData(rating, categories, inputValue))}
       </main>
       <footer className="restaurant-list-footer">
         <div className="restaurant-list-footer-page-button">

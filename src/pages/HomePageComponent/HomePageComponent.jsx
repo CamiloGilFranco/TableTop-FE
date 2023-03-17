@@ -6,12 +6,10 @@ import PopularRestaurant from "../../components/6 Popular Restaurant/PopularRest
 import DownloadPageComponent from "../../components/DownloadPageComponent/DownloadPageComponent";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const HomePageComponent = () => {
-  const [inputValue, setInputValue] = useState('')
-  const loc = useLocation();
+  const [inputValue, setInputValue] = useState('');
   return (
     <>
       <HeaderComponent />

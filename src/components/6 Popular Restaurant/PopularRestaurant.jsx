@@ -23,6 +23,42 @@ const PopularRestaurant = ({ inputValue }) => {
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
   }
+
+  const filteredData = data.filter((element) => {
+    return element.restaurantName.replaceAll(' ', '').toLowerCase().includes(inputValue);
+  })
+
+  const renderList = (data, filteredData) => {
+    if (filteredData.length === 0) {
+      return sortList.map((element)=> {
+        return (
+          <RestaurantCardComponent
+            key={element.id}
+            picture={element.picture}
+            restaurantName={element.restaurantName}
+            rating={element.rating}
+            categories={element.categories}
+            schedule={element.schedule}
+            averagePrice={element.averagePrice}
+          />
+        );
+      });
+    } else {
+      return filteredData.map((element) => {
+        return (
+          <RestaurantCardComponent
+            key={element.id}
+            picture={element.picture}
+            restaurantName={element.restaurantName}
+            rating={element.rating}
+            categories={element.categories}
+            schedule={element.schedule}
+            averagePrice={element.averagePrice}
+          />
+        );
+      });
+    }
+  };
   
   return (
     <div className="popular-restaurant">
@@ -43,19 +79,7 @@ const PopularRestaurant = ({ inputValue }) => {
         </div>
       </header>
       <main className="popular-restaurant-main">
-        {sortList.map((element) => {
-          return (
-            <RestaurantCardComponent
-              key={element.id}
-              picture={element.picture}
-              restaurantName={element.restaurantName}
-              rating={element.rating}
-              categories={element.categories}
-              schedule={element.schedule}
-              averagePrice={element.averagePrice}
-            />
-          );
-        })}
+        {renderList(data, filteredData)}
       </main>
     </div>
   );

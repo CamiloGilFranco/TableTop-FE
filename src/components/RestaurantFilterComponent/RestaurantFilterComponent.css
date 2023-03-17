@@ -98,4 +98,8 @@
 
 .Filter__none {
   display: none;
+}
+
+.restaurantFilter_clear {
+  cursor: pointer;
 }/*# sourceMappingURL=RestaurantFilterComponent.css.map */

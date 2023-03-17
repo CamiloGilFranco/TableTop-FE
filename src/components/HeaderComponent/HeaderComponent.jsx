@@ -32,17 +32,16 @@ const HeaderComponent = () => {
     <header className="headerNavBar">
       {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : ""}
 
-      <picture className="logo__container">
-        <img src={logo} alt="" className="logotipo" />
-        <span className="header__title">
-          <b>TableTop</b>
-        </span>
-      </picture>
+      <NavLink to={"/"} className='navbar__logo'>
+        <picture className="logo__container">
+          <img src={logo} alt="" className="logotipo" />
+          <span className="header__title">
+            <b>TableTop</b>
+          </span>
+        </picture>
+      </NavLink>
       <section className="header__textButtons">
         <span className="header__homeButton">
-          <NavLink to={"/"}>
-            <b className="header__text">HOME</b>
-          </NavLink>
         </span>
         <span className="header__restaurantButton">
           <NavLink to={"/restaurant"}>
@@ -50,9 +49,6 @@ const HeaderComponent = () => {
           </NavLink>
         </span>
         <span className="header__pagesButton">
-          <NavLink to={"/pages"}>
-            <b className="header__text">PAGES</b>
-          </NavLink>
         </span>
       </section>
       <section className="header__buttons">

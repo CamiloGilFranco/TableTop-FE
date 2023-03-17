@@ -11,68 +11,68 @@
     "phoneNumber": ["1234567890", "351851651", "32121516"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "20.000",
-    "categories": ["asian", "seafood", "Chino"],
+    "categories": ["western", "seafood", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2019-02-05",
     "numberOfSales": 58,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -114,68 +114,68 @@
     "phoneNumber": ["3216516121", "24224411", "63516513"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "15.000",
-    "categories": ["Desayunos", "Parrilla", "Vegetariano"],
+    "categories": ["breakfast", "western", "vegetarian"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2017-06-23",
     "numberOfSales": 104,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -217,68 +217,68 @@
     "phoneNumber": ["321981", "78946351", "987951621"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "20.000",
-    "categories": ["Parrilla", "Bar", "Típico"],
+    "categories": ["western", "bar", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2020-10-18",
     "numberOfSales": 87,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -320,68 +320,68 @@
     "phoneNumber": ["12312131", "3213216", "412123132"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "15.000",
-    "categories": ["Sopas", "Postres", "Típico"],
+    "categories": ["breakfast", "dessert", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2018-12-30",
     "numberOfSales": 72,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -423,68 +423,68 @@
     "phoneNumber": ["984312195", "3219681", "9876521985"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "18.000",
-    "categories": ["Parrilla", "Italiano", "Sopas"],
+    "categories": ["western", "italian", "breakfast"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2022-01-12",
     "numberOfSales": 120,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -526,68 +526,68 @@
     "phoneNumber": ["978456123", "36514981", "89746"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "20.000",
-    "categories": ["Sushi", "Oriental", "Chino"],
+    "categories": ["asian", "fastfood", "vegetarian"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2021-08-02",
     "numberOfSales": 93,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -629,68 +629,68 @@
     "phoneNumber": ["5654541216", "9527251", "6516894"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "5.000",
-    "categories": ["Cafe", "Parrilla", "Típico"],
+    "categories": ["coffee", "western", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2016-03-19",
     "numberOfSales": 65,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -732,68 +732,68 @@
     "phoneNumber": ["96469517", "33485218182", "848156"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "8.000",
-    "categories": ["Cafe", "Comidas Rápidas"],
+    "categories": ["coffee", "western"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2023-05-01",
     "numberOfSales": 150,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -835,68 +835,68 @@
     "phoneNumber": ["21321549", "84181263", "8781996"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "12.000",
-    "categories": ["Mejicano", "Comida Rápida"],
+    "categories": ["mexican", "fastfood"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2015-11-27",
     "numberOfSales": 82,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -938,68 +938,68 @@
     "phoneNumber": ["9781216231", "482362198", "84191632"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "20.000",
-    "categories": ["Cafe", "Mejicano", "Típico"],
+    "categories": ["coffee", "mexican", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2020-07-15",
     "numberOfSales": 115,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -1041,68 +1041,68 @@
     "phoneNumber": ["32165194984", "987951652191", "32198198"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "25,000",
-    "categories": ["Parrilla", "Típico"],
+    "categories": ["western", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2023-03-04",
     "numberOfSales": 68,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }
@@ -1144,68 +1144,68 @@
     "phoneNumber": ["1234567890", "351851651", "52454984984"],
     "schedule": ["12PM - 6PM"],
     "averagePrice": "15.000",
-    "categories": ["Cafe", "típico"],
+    "categories": ["coffee", "tipical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [],
     "createdAt": "2014-09-10",
     "numberOfSales": 96,
     "menu": {
-      "desayuno": [
+      "breakfast": [
         {
-          "title": "huevos",
-          "description": "Descripción de huevos.",
+          "title": "eggs",
+          "description": "eggs description",
           "price": 3000,
           "available": true
         },
         {
           "title": "caldo",
-          "description": "Descripción de caldo",
+          "description": "Clado description",
           "price": 5000,
           "available": true
         },
         {
           "title": "tamals",
-          "description": "Descripción de tamal",
+          "description": "Tamals description",
           "price": 5500,
           "available": true
         }
       ],
-      "almuerzo": [
+      "lunch": [
         {
-          "title": "carne",
-          "description": "Descripción de carne.",
+          "title": "Steak",
+          "description": "Steak Description",
           "price": 13000,
           "available": true
         },
         {
-          "title": "pollo",
-          "description": "Descripción de pollo",
+          "title": "Chicken Breast",
+          "description": "Chicken breast description",
           "price": 10000,
           "available": true
         },
         {
-          "title": "pescado",
-          "description": "Descripción de pescado",
+          "title": "Fresh Tuna",
+          "description": "Fresh tuna description",
           "price": 15500,
           "available": true
         }
       ],
-      "bebidas": [
+      "drinks": [
         {
-          "title": "gaseosa",
-          "description": "Descripción de gaseosa.",
+          "title": "Soda",
+          "description": "Soda description",
           "price": 1000,
           "available": true
         },
         {
-          "title": "cafe",
-          "description": "Descripción de cafe",
+          "title": "Coffe",
+          "description": "Coffee Description",
           "price": 1500,
           "available": true
         },
         {
-          "title": "jugo",
-          "description": "Descripción de jugo",
+          "title": "Natural Juice",
+          "description": "Natural juice description",
           "price": 4000,
           "available": true
         }

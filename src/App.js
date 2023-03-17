@@ -13,7 +13,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePageComponent />} />
         <Route path="/registro" element={<SignInPage />} />
-        {/* <Route path="/pages" element={<RestaurantListPage />} /> */}
         <Route path="/restaurant" element={<RestaurantListPage />}></Route>
         <Route path=":restaurantPath" element={<RestaurantView />} />
         <Route path="/order" element={<OrderPage />} />

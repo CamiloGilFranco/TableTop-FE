@@ -10,7 +10,7 @@ import "./RestaurantListPage.css";
 const RestaurantListPage = () => {
   const [inputValue, setInputValue] = useState('')
   const [categories, setCategories] = useState([]);
-  const [rating, setRating] = useState([]);
+  const [rating, setRating] = useState(0);
 
 
 

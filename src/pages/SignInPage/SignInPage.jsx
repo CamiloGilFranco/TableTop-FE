@@ -193,9 +193,10 @@ const SignInPage = () => {
             Correo
           </label>
           <input
-            type="text"
+            type="email"
             className="sign-in-page-form-text-input"
             placeholder="Correo"
+            required
             value={formContent.correo}
             onChange={(event) =>
               setFormContent({ ...formContent, correo: event.target.value })
@@ -214,9 +215,10 @@ const SignInPage = () => {
             Confirmar Correo
           </label>
           <input
-            type="text"
+            type="email"
             className="sign-in-page-form-text-input"
             placeholder="Confirmar Correo"
+            required
             value={formContent.confirmarCorreo}
             onChange={(event) =>
               setFormContent({
@@ -241,6 +243,7 @@ const SignInPage = () => {
             type="password"
             className="sign-in-page-form-text-input"
             placeholder="Contraseña"
+            required
             value={formContent.contraseña}
             onChange={(event) =>
               setFormContent({ ...formContent, contraseña: event.target.value })
@@ -261,6 +264,7 @@ const SignInPage = () => {
           </label>
           <input
             type="password"
+            required
             className="sign-in-page-form-text-input"
             placeholder="Confirmar Contraseña"
             value={formContent.confirmarContraseña}
@@ -286,6 +290,7 @@ const SignInPage = () => {
           </label>
           <input
             type="text"
+            required
             className="sign-in-page-form-text-input"
             placeholder="Nombres"
             value={formContent.nombres}
@@ -308,6 +313,7 @@ const SignInPage = () => {
           </label>
           <input
             type="text"
+            required
             className="sign-in-page-form-text-input"
             placeholder="Apellidos"
             value={formContent.apellidos}
@@ -329,6 +335,7 @@ const SignInPage = () => {
           </label>
           <div className="sign-in-page-form-input-subcontainer">
             <select
+              required
               name=""
               id=""
               className="sign-in-page-form-text-input sign-in-page-form-text-input-id-select"
@@ -348,6 +355,7 @@ const SignInPage = () => {
             </select>
             <input
               type="number"
+              required
               className="sign-in-page-form-text-input sign-in-page-form-text-input-id-text"
               placeholder="Numero del documento"
               value={formContent.numeroDocumento}
@@ -375,6 +383,7 @@ const SignInPage = () => {
             <select
               name=""
               id=""
+              required
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
               value={formContent.añoNacimiento}
               onChange={(event) =>
@@ -480,6 +489,7 @@ const SignInPage = () => {
             <select
               name=""
               id=""
+              required
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
               value={formContent.mesNacimiento}
               onChange={(event) =>
@@ -553,6 +563,7 @@ const SignInPage = () => {
             Ciudad
           </label>
           <select
+            required
             name=""
             id=""
             className="sign-in-page-form-text-input sign-in-page-form-city-input"
@@ -576,6 +587,7 @@ const SignInPage = () => {
             Dirección
           </label>
           <input
+            required
             type="text"
             className="sign-in-page-form-text-input"
             placeholder="Dirección"
@@ -600,6 +612,7 @@ const SignInPage = () => {
             Celular
           </label>
           <input
+            required
             type="number"
             className="sign-in-page-form-text-input"
             placeholder="Celular"
@@ -621,6 +634,7 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-checkbox-container">
           <input
+            required
             type="checkbox"
             id="accept-t-y-d"
             className="sign-in-page-form-checkbox"
@@ -651,6 +665,7 @@ const SignInPage = () => {
             type="checkbox"
             id="autorizacion-tratamiento-de-datos"
             className="sign-in-page-form-checkbox"
+            required
             checked={formContent.tratamientoDeDatos}
             onChange={() =>
               setFormContent({
