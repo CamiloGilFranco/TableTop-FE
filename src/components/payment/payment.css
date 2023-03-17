@@ -37,8 +37,6 @@
     margin-top: 10px;
     
 }
-
-
 .payment-form__paragraph {
     margin-bottom: 0;
     margin-top: 10px;
@@ -60,7 +58,7 @@
     width: 5rem;
     padding-right: 2px;
 }
-.form-card {
+.payment__form-card {
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
@@ -68,7 +66,7 @@
     
 }
 
-.form-card__imput {
+.form-card__input {
     width: 15rem;
     border: 2px #F0F0F0 solid;
 }
@@ -79,14 +77,14 @@
     padding-top: 2rem;
     padding-bottom: 10px;    
 }
-.payment {
+.button-payment__make-pay {
     background-color: #EF3F3F;
     color: white;
     border: none;
     width: 8rem;
     height: 2rem;
 }
-.type {
+.payment-form-way-pay {
     margin-top: 10px;
     display: flex;
     flex-direction: column;  
