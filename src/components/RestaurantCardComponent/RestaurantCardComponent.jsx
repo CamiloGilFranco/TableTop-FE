@@ -7,7 +7,7 @@ const RestaurantCardComponent = ({
   rating,
   categories,
   schedule,
-  averagePrice,
+  dishesFrom,
 }) => {
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const RestaurantCardComponent = ({
           <span>, {categories[1]}</span>
           <span>, {categories[2]}</span>
           <p>- {schedule}</p>
-          <p>- Average Prices ${averagePrice} For Dish</p>
+          <p>- Dishes from ${dishesFrom}</p>
         </div>
       </figcaption>
     </figure>

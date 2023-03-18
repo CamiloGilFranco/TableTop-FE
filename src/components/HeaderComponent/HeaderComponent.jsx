@@ -45,7 +45,7 @@ const HeaderComponent = () => {
         </span>
         <span className="header__restaurantButton">
           <NavLink to={"/restaurant"}>
-            <b className="header__text">RESTAURANT</b>
+            <b className="header__text">RESTAURANTS</b>
           </NavLink>
         </span>
         <span className="header__pagesButton">

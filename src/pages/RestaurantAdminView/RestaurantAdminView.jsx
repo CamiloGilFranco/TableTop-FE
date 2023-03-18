@@ -14,7 +14,7 @@ const RestaurantAdminView = () => {
   const [errors, setErrors] = useState({});
 
 
-
+  // logic for the sumbit of the form 
   const handleNewDishSumbit = (e) => {
     const validationErrors = {};
     const form = e.target;
@@ -58,6 +58,7 @@ const RestaurantAdminView = () => {
     form.reset();
   }
 
+  // handles the logic for the delete of a dish
   const handleDelete = (category, index) =>{
    const updatedMenu = {...menu};
    updatedMenu[category].splice(index, 1);
@@ -69,11 +70,10 @@ const RestaurantAdminView = () => {
       <HeaderComponent/>
       <div className='restaurantAdminView__container'>
         <h1 className='restaurantAdminView__title'>Hi {usersData[0].name}</h1>
-        <section>
           <article className='restauranAdminView__flex'>
             <span>
               <h3>Here's how your restaurant has been doing</h3>
-              <ul className='restauranAdminView__list'>
+              <ul className='restaurantAdminView__list'>
                 <li>Restaurant name: {restaurantExpample.restaurantName}</li>
                 <li>The total amount of sales is: {restaurantExpample.numberOfSales}</li>
                 <li>This is the rating for this restaurant: {restaurantExpample.rating}</li>
@@ -131,7 +131,6 @@ const RestaurantAdminView = () => {
               ))}
             </article>
           </article>
-        </section>
       </div>
       <Footer/>
     </>
