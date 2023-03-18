@@ -1,6 +1,9 @@
 import "./CartItem.css";
+import { useSelector } from "react-redux";
 
 const CartItem = () => {
+  const itentStore = useSelector((state) => state.cartReducer);
+  console.log(itentStore);
   return (
     <div className="cart-item">
       <span className="cart-item-header">Cart Items:</span>
