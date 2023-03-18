@@ -1,7 +1,6 @@
 import "./GalleryComponent.css";
 
 const GalleryComponent = ({ photos, setCarousel, setPictureNumber }) => {
-  console.log(photos);
   return (
     <div className="gallery-component-container">
       {photos.map((element, index) => {

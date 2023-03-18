@@ -13,7 +13,7 @@ const ControlledCarousel = ({ photos, pictureNumber }) => {
       <Carousel activeIndex={index} onSelect={handleSelect}>
         {photos.map((element, index) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={index}>
               <div className="gallery-carouse-component-container-container">
                 <img
                   src={element}

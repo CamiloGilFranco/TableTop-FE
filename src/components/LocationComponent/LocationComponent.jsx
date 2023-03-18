@@ -12,7 +12,7 @@ const LocationComponent = () => {
   });
 
   useEffect(() => {
-    const geocoder = new google.maps.Geocoder();
+    /*     const geocoder = new google.maps.Geocoder();
     geocoder.geocode(
       { address: "Tu dirección o lugar de interés" },
       (results, status) => {
@@ -23,7 +23,7 @@ const LocationComponent = () => {
           });
         }
       }
-    );
+    ); */
   }, []);
 
   const mapContainerStyle = {

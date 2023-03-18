@@ -85,9 +85,11 @@
 
 .gallery-carouse-component-container .gallery-carouse-component-container-container {
   width: 100%;
-  height: 100%;
+  height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-content: center;
   align-items: center;
 }
 
