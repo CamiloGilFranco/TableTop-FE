@@ -1,9 +1,13 @@
 import { useDispatch } from "react-redux";
-import { CartIncrementAction } from "../../store/actions/cart.action.js";
+import {
+  CartIncrementAction,
+  addSubtotalAction,
+} from "../../store/actions/cart.action.js";
 const IndividualDish = ({ title, description, price }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(CartIncrementAction(title, price));
+    dispatch(addSubtotalAction(price));
   };
   return (
     <div className="restaurant-view-individual-dish">

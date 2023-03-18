@@ -1,19 +1,25 @@
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
+export const UPLOADSUBTOTAL = "UPLOADSUBTOTAL";
 
 const initialState = [];
+const initialSubtotal = 0;
 
-const cartReducer = (state = initialState, action) => {
+export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
       return action.payload;
     case DECREMENT:
-      return {
-        ...state,
-      };
+      return action.payload;
     default:
       return state;
   }
 };
-
-export default cartReducer;
+export const subtotalReducer = (state = initialSubtotal, action) => {
+  switch (action.type) {
+    case UPLOADSUBTOTAL:
+      return action.payload;
+    default:
+      return state;
+  }
+};
