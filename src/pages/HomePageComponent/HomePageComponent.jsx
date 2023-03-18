@@ -1,6 +1,5 @@
 import SearchbarComponent from "../../components/SearchbarComponent/SearchbarComponent";
 import { CarrucelComponent } from "../../components/carrusel/CarrucelComponent";
-import PromotionBanner from "../../components/4 Promotion Banner/PromotionBanner";
 import FlowInfoComponent from "../../components/FlowInfoComponent/FlowInfoComponent";
 import PopularRestaurant from "../../components/6 Popular Restaurant/PopularRestaurant";
 import DownloadPageComponent from "../../components/DownloadPageComponent/DownloadPageComponent";
@@ -15,7 +14,6 @@ const HomePageComponent = () => {
       <HeaderComponent />
       <SearchbarComponent inputValue={inputValue} setInputValue={setInputValue}/>
       <CarrucelComponent />
-      <PromotionBanner />
       <FlowInfoComponent />
       <PopularRestaurant inputValue={inputValue}/>
       <DownloadPageComponent />
