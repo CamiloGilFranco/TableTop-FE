@@ -54,9 +54,6 @@ const GeneralAdminView = () => {
     const location = form.location.value;
     e.preventDefault();
     
-    let year = new Date().getFullYear();
-    let day = new Date().getDate();
-    let month = new Date().getMonth();
   
     const checkedValues = Object.values(checkboxValues);
     const newRestaurant = {
@@ -64,7 +61,7 @@ const GeneralAdminView = () => {
       restautantPathName: name.replaceAll(' ', '').toLowerCase(),
       restaurantName: name, 
       location, 
-      createdAt: [year, day, month+1].join('-'),
+      createdAt: [new Date().getFullYear(), new Date().getDate(), new Date().getDate()+1].join('-'),
     }
 
 
@@ -110,7 +107,7 @@ const GeneralAdminView = () => {
         <article className='generalAdminView__flex'>
           <span>
             <h3>In this page you can remove or add restaurants</h3>
-            <span className='generalAdminView__list'>There currently are #{resDB.length} restaurant{resDB.length > 0 ? 's' : ''}</span>
+            <span className='generalAdminView__list'>There currently are #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''}</span>
           </span>
           <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
           <span>Do you want to add any new restaurant?</span>
