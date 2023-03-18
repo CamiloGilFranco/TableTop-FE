@@ -61,7 +61,7 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
             rating={element.rating}
             categories={element.categories}
             schedule={element.schedule}
-            averagePrice={element.averagePrice}
+            dishesFrom={element.dishesFrom}
           />
         );
       });

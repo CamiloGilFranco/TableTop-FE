@@ -7,6 +7,7 @@ import NotFoundPageComponent from "./pages/NotFoundPageComponent/NotFoundPageCom
 import RestaurantListPage from "./pages/RestaurantListPage/RestaurantListPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import RestaurantAdminView from "./pages/RestaurantAdminView/RestaurantAdminView";
+import GeneralAdminView from "./pages/GeneralAdminView/GeneralAdminView";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/order" element={<OrderPage />} />
         {/* <Route path="/" element={}/> */}
         <Route path="/admin" element={<RestaurantAdminView/>}/>
+        <Route path="/general-admin" element={<GeneralAdminView/>}/>
         <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>
     </div>
