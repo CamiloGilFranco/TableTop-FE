@@ -38,11 +38,9 @@
 }
 
 .logotipo {
-  background-color: lightgray;
   aspect-ratio: 1/1;
   height: 90%;
   padding: 3px;
-  border-radius: 50%;
 }
 
 .header__title {
@@ -143,11 +141,11 @@
   }
 }
 
+.header__buttons {
+  display: flex;
+  align-items: center;
+}
 @media (min-width: 769px) {
-  .header__buttons {
-    display: flex;
-    align-items: center;
-  }
   .header__buttons span {
     padding: 0px 5px;
   }
@@ -187,4 +185,29 @@
     display: flex;
     align-self: center;
   }
+}
+
+.navbar__logo {
+  height: 30px;
+  margin: 1px;
+  color: black;
+  text-decoration: none;
+}
+.navbar__logo :hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+@media (min-width: 769px) {
+  .navbar__logo {
+    height: 70px;
+  }
+}
+@media (min-width: 1000px) {
+  .navbar__logo {
+    height: 80px;
+  }
+}
+
+.active {
+  color: #ef3f3f;
 }/*# sourceMappingURL=HeaderComponent.css.map */

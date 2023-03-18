@@ -5,17 +5,19 @@ import { useState } from 'react';
 import { AiOutlineMinus } from 'react-icons/ai';
 import { ImInfo } from 'react-icons/im'
 
-const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating }) =>{
+const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, data }) =>{
 
   const [mobileFilter, setMobileFilter] = useState('');
+  const [radioSelected, setRadioSelected] = useState('');
+  const [checkBoxSelected, setCheckBoxSelected] = useState([]);
 
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 765) {
         setMobileFilter('');
       }
-    };
-
+    };    
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -24,6 +26,11 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   }, []);
 
   const handleCategoriesChange = (event) =>{
+    if (event.target.checked) {
+      setCheckBoxSelected([...checkBoxSelected, event.target.name]);
+    } else {
+      setCheckBoxSelected(checkBoxSelected.filter(value => value !== checkBoxSelected));
+    }
     if (categories.some((element)=> element === event.target.name)) {
       setCategories(categories.filter((element) => element !== (event.target.name) ));
     } else {
@@ -32,27 +39,25 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   }
 
   const handleRatingChange = (event) =>{
-    if (rating.some((element)=> element === parseInt(event.target.id))) {
-      setRating(rating.filter((element) => element !== parseInt(event.target.id) ));
-    } else {
-      setRating([...rating, parseInt(event.target.name)]);
-    }
+    setRating(parseInt(event.target.id));
+    setRadioSelected(event.target.id)
   }
-
   const handleListClick = () => {
     mobileFilter === 'Filter__none'? setMobileFilter('') : setMobileFilter('Filter__none')
   }
 
+  const handleClearCuisine = () => {
+    setCategories([]);
+    setCheckBoxSelected([]);
+  }
+  const handleClearReating = () => {
+    setRating(0);
+    setRadioSelected('');
+  }
+  
   return(
     <section className='restaurantFilter__container'>
       <section className='restaurantFilterMobile'>
-        <select className='restaurantFilter__dropdown'>
-          <option disabled>Filter</option>
-          <option>All</option>
-          <option>Popular</option>
-          <option>Latest</option>
-          <option>Trend</option>
-        </select>
         <section className='restaurantFilter__filter'>
           <p>Latest Filter</p>
           <BsFillFilterSquareFill onClick={handleListClick}/>
@@ -66,7 +71,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
           <article>
             <section className='restaurantFilter__filter'>
               <p>Cuisine</p>
-              <AiOutlineMinus className='restaurantFilter_icons'/>
+              <p onClick={handleClearCuisine} className='restaurantFilter_clear'>clear filter</p>
             </section>
               <section className='popularFilter'>
                 <label>
@@ -75,6 +80,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     className='filterCheckbox'
                     id='asian'
                     name='asian'
+                    checked={checkBoxSelected.includes('asian')}
                     onChange={handleCategoriesChange}
                   />
                   Asian
@@ -83,11 +89,12 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                   <input 
                     type='checkbox'
                     className='filterCheckbox'
-                    id='seafood'
-                    name='seafood'
+                    id='fastfood'
+                    name='fastfood'
+                    checked={checkBoxSelected.includes('fastfood')}
                     onChange={handleCategoriesChange}
                   />
-                  Seafood
+                  Fast Food
                 </label>
                 <label>
                   <input 
@@ -95,6 +102,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     className='filterCheckbox'
                     id='italian'
                     name='italian'
+                    checked={checkBoxSelected.includes('italian')}
                     onChange={handleCategoriesChange}
                   />
                   Italian
@@ -103,31 +111,34 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                   <input 
                     type='checkbox'
                     className='filterCheckbox'
-                    id='pizza'
-                    name='pizza'
+                    id='mexican'
+                    name='mexican'
+                    checked={checkBoxSelected.includes('mexican')}
                     onChange={handleCategoriesChange}
                   />
-                  Pizza
+                  Mexican
                 </label>
                 <label>
                   <input 
                     type='checkbox'
                     className='filterCheckbox'
-                    id='western'
-                    name='western'
+                    id='breakfast'
+                    name='breakfast'
+                    checked={checkBoxSelected.includes('breakfast')}
                     onChange={handleCategoriesChange}
                   />
-                  Western
+                  Breakfast
                 </label>
                 <label>
                   <input 
                     type='checkbox'
                     className='filterCheckbox'
-                    id='chinise'
-                    name='chinese'
+                    id='tipical'
+                    name='tipical'
+                    checked={checkBoxSelected.includes('tipical')}
                     onChange={handleCategoriesChange}
                   />
-                  Chinese
+                  Tipical
                 </label>
                 <label>
                   <input 
@@ -135,54 +146,92 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     className='filterCheckbox'
                     id='dessert'
                     name='dessert'
+                    checked={checkBoxSelected.includes('dessert')}
                     onChange={handleCategoriesChange}
                   />
                   Dessert
+                </label>
+                <label>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='vegetarian'
+                    name='vegetarian'
+                    checked={checkBoxSelected.includes('vegetarian')}
+                    onChange={handleCategoriesChange}
+                  />
+                  Vegetarian
+                </label>
+                <label>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='bar'
+                    name='bar'
+                    checked={checkBoxSelected.includes('bar')}
+                    onChange={handleCategoriesChange}
+                  />
+                  Bar
+                </label>
+                <label>
+                  <input 
+                    type='checkbox'
+                    className='filterCheckbox'
+                    id='coffee'
+                    name='coffee'
+                    checked={checkBoxSelected.includes('coffee')}
+                    onChange={handleCategoriesChange}
+                  />
+                  Coffee
                 </label>
               </section>
             </article>
             <article>
               <section className='restaurantFilter__filter'>
                 <p>Star Category</p>
-                <AiOutlineMinus className='restaurantFilter_icons'/>
+                <p onClick={handleClearReating} className='restaurantFilter_clear'>clear filter</p>
               </section>
               <section className='popularFilter'>
-                <label>
+                <label for='5'>
                   <input 
-                    type='checkbox'
+                    type='radio'
                     className='filterCheckbox'
                     id='5'
-                    name='5'
+                    name='rating'
+                    checked={radioSelected === '5'}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐⭐⭐⭐
                 </label>
                 <label>
                   <input 
-                    type='checkbox'
+                    type='radio'
                     className='filterCheckbox'
                     id='4'
-                    name='4'
+                    name='rating'
+                    checked={radioSelected === '4'}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐⭐⭐
                 </label>
                 <label>
                   <input 
-                    type='checkbox'
+                    type='radio'
                     className='filterCheckbox'
                     id='3'
-                    name='3'
+                    name='rating'
+                    checked={radioSelected === '3'}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐⭐
                 </label>
                 <label>
                   <input 
-                    type='checkbox'
+                    type='radio'
                     className='filterCheckbox'
                     id='2'
-                    name='2'
+                    name='rating'
+                    checked={radioSelected === '2'}
                     onChange={handleRatingChange}
                   />
                   ⭐⭐

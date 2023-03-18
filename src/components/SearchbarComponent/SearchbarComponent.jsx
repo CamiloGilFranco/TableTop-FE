@@ -1,22 +1,22 @@
 import './SearchbarComponent.css';
-import { useState } from 'react';
 
-const SearchbarComponent = ()=>{
+const SearchbarComponent = ({ inputValue, setInputValue })=>{
 
-  const [inputValue, setInputValue] = useState('')
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   }
 
-  const handleSearchButtonClick = (event) => {
+  const handleSearchSumbit = (event) => {
     event.preventDefault();
+
+    inputValue.length >= 3 ? console.log('cumple con la condición') : alert('search term must be at least 3 characters long');
     setInputValue('');
   }
   return (
     <section className='searchBar__container'>
       <span className='searchBar__text'>The Food You Love. Delivered With Care.</span>
-      <form className='searchBar__form'>
+      <form className='searchBar__form'  onSubmit={handleSearchSumbit}>
         <input
           className='searchBar__inputText' 
           type='text'
@@ -29,10 +29,9 @@ const SearchbarComponent = ()=>{
         <button 
           type='sumbit'
           className='searchBar__button'
-          onClick={handleSearchButtonClick}
         >
           <b>
-            Find Food
+            Find a restaurant
           </b>
         </button>
       </form>

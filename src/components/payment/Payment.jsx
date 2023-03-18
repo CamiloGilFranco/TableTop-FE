@@ -1,6 +1,6 @@
 import "./payment.css"
 import typesCards from "./assets/typeCards.png"
-import {BsRecord2} from 'react-icons/bs'
+import { BsRecord2 } from 'react-icons/bs'
 
 
 

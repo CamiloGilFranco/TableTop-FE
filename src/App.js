@@ -5,7 +5,8 @@ import OrderPage from "./pages/OrderPage/OrderPage";
 import { Routes, Route } from "react-router";
 import NotFoundPageComponent from "./pages/NotFoundPageComponent/NotFoundPageComponent";
 import RestaurantListPage from "./pages/RestaurantListPage/RestaurantListPage";
-import SignInPage from "./pages/SignInOage/SignInPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
+import RestaurantAdminView from "./pages/RestaurantAdminView/RestaurantAdminView";
 
 function App() {
   return (
@@ -13,11 +14,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePageComponent />} />
         <Route path="/registro" element={<SignInPage />} />
-        {/* <Route path="/pages" element={<RestaurantListPage />} /> */}
-        <Route path="/restaurant" element={<RestaurantListPage />}></Route>
+        <Route path="/restaurant" element={<RestaurantListPage />}/>
         <Route path=":restaurantPath" element={<RestaurantView />} />
         <Route path="/order" element={<OrderPage />} />
         {/* <Route path="/" element={}/> */}
+        <Route path="/admin" element={<RestaurantAdminView/>}/>
         <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>
     </div>

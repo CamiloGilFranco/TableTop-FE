@@ -1,0 +1,129 @@
+.restaurantAdminView__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(238, 237, 236);
+}
+.restaurantAdminView__container h1 {
+  text-align: center;
+}
+.restaurantAdminView__container h3 {
+  text-align: center;
+  font-size: 15px;
+}
+@media (min-width: 765px) {
+  .restaurantAdminView__container h3 {
+    text-align: left;
+    font-size: 18px;
+  }
+}
+
+.restauranAdminView__flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 765px) {
+  .restauranAdminView__flex {
+    margin-top: 15px;
+    flex-direction: row;
+  }
+}
+@media (min-width: 100px) {
+  .restauranAdminView__flex {
+    justify-content: space-evenly;
+  }
+}
+
+.restaurantAdminView__form {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 5px;
+  border: 2px solid lightgray;
+  background-color: rgb(206, 204, 201);
+  border-radius: 5px;
+  padding: 10px;
+}
+.restaurantAdminView__form button {
+  background-color: #ef3f3f;
+  color: white;
+  font-weight: 700;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.restaurantAdminView__form span {
+  font-weight: 700;
+  font-size: 14px;
+}
+.restaurantAdminView__form label {
+  font-weight: 500;
+  font-size: 14px;
+}
+.restaurantAdminView__form input {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+.restaurantAdminView__form select {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.restaurantAdminView__article {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 5px;
+  border: 2px solid lightgray;
+  background-color: rgb(206, 204, 201);
+  border-radius: 5px;
+  padding: 10px;
+}
+.restaurantAdminView__article span {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.restauranAdminView__list {
+  padding: 5px 15px;
+  font-size: 13px;
+  line-height: 20px;
+}
+@media (min-width: 765px) {
+  .restauranAdminView__list {
+    font-size: 16px;
+  }
+}
+
+.restauranAdminView__itemList {
+  padding: 0px 15px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.restauranAdminView__itemTitle {
+  font-weight: 700;
+}
+
+.restaurantAdminView__error {
+  color: #ef3f3f;
+  font-weight: 700;
+}
+
+.restaurantAdminView__details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.restaurantAdminView__icon {
+  cursor: pointer;
+  height: 25px;
+}/*# sourceMappingURL=RestaurantAdminView.css.map */
