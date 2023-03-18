@@ -12,12 +12,15 @@ import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent
 import Footer from "../../components/Footer/Footer";
 import CartItem from "../../components/CartItem/CartItem";
 import AlwaysFirstComponent from "../../components/AlwaysFirstComponent/AlwaysFirstComponent";
+import ControlledCarousel from "../../components/GalleryComponent/GalleryCarouselComponent";
 import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import db from "../../assets/dat.json";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
+  const [carousel, setCarousel] = useState(false);
+  const [pictureNumber, setPictureNumber] = useState(null);
   const params = useParams();
 
   const data = db;
@@ -61,7 +64,13 @@ const RestaurantView = () => {
           />
         );
       case "GALLERY":
-        return <GalleryComponent photos={restaurantData.photos} />;
+        return (
+          <GalleryComponent
+            photos={restaurantData.photos}
+            setCarousel={setCarousel}
+            setPictureNumber={setPictureNumber}
+          />
+        );
       case "LOCATION":
         return <LocationComponent />;
       case "BOOK A TABLE":
@@ -115,6 +124,20 @@ const RestaurantView = () => {
       <div className="restaurant-view-footer">
         <Footer />
       </div>
+      {carousel ? (
+        <div className="restaurant-view-carousel">
+          <div
+            className="restaurant-view-carousel-background"
+            onClick={() => setCarousel(false)}
+          ></div>
+          <ControlledCarousel
+            photos={restaurantData.photos}
+            pictureNumber={pictureNumber}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
