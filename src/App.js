@@ -17,7 +17,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<HomePageComponent />} />
-          <Route path="/registro" element={<SignInPage />} />
+          <Route path="/register" element={<SignInPage />} />
           <Route path="/restaurant" element={<RestaurantListPage />}/>
           <Route path=":restaurantPath" element={<RestaurantView />} />
           <Route path="/order" element={<OrderPage />} />

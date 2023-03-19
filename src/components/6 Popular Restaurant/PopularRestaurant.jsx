@@ -1,11 +1,26 @@
 import "./PopularRestaurant.css";
 import { useState } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 
 import db from "../../assets/dat.json";
 
 const PopularRestaurant = ({ inputValue }) => {
   const data = db;
+  const language = useSelector(state=> state.language.code);
+
+  const popularRestaurantTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.popularRestaurantTitle
+      case 'es':
+        return es.popularRestaurantTitle
+      default:
+        return en.popularRestaurantTitle
+    }
+  }
 
   const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
   const [selectOrder, setSelectOrder] = useState(1);
@@ -18,7 +33,6 @@ const PopularRestaurant = ({ inputValue }) => {
       trend: () => data.sort((a, b) => b.numberOfSales - a.numberOfSales),
       popular: () => data.sort((a, b) => b.rating - a.rating),
     }
-
     const caseOrder = order.text.toLowerCase();
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
@@ -63,7 +77,7 @@ const PopularRestaurant = ({ inputValue }) => {
   return (
     <div className="popular-restaurant">
       <header className="popular-restaurant-header">
-        <span className="popular-restaurant-title">Popular Restaurant</span>
+        <span className="popular-restaurant-title">{popularRestaurantTitle()}</span>
         <div className="popular-restaurants-buttons">
         {sortButton.map((item) => {
             return (

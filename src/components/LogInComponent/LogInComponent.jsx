@@ -30,7 +30,7 @@ const LogInComponent = ({ setShowLogIn }) => {
         <div className="log-in-sign-up">
           <span
             className="log-in-sign-up-text"
-            onClick={() => navigate("/registro")}
+            onClick={() => navigate("/register")}
           >
             ¿No estas registrado? Regístrate aquí
           </span>
