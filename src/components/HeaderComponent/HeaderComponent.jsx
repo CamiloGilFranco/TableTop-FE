@@ -3,7 +3,7 @@ import LogInComponent from "../LogInComponent/LogInComponent";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setLanguage } from "../../features/language/languageSlice";
+import { setLanguage } from "../../store/reducers/Language.reducer";
 import { en } from "../../assets/languages/languajeEN";
 import { es } from "../../assets/languages/languageES";
 import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
