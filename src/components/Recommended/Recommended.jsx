@@ -1,10 +1,24 @@
-import "./Recommended.css";
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import { useWindowSize } from "../../hooks/useWindowSize";
 import DB from "../../assets/dat.json";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
+import "./Recommended.css";
 
 const Recommended = () => {
   const width = useWindowSize();
+  const language = useSelector(state=> state.language.code);
+  const recommendedTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.recommendedTitle
+      case 'es':
+        return es.recommendedTitle
+      default:
+        return en.recommendedTitle
+    }
+  }
 
   const data = DB;
   data.sort((a, b) => b.rating - a.rating);
@@ -41,7 +55,7 @@ const Recommended = () => {
   return (
     <div className="restaurant-view-recommended">
       <div className="restaurant-view-recommended-header">
-        <span className="restaurant-view-recommended-title">Recommended</span>
+        <span className="restaurant-view-recommended-title">{recommendedTitle()}</span>
       </div>
       <div className="restaurant-view-recommended-cards-container">
         {quantity()}

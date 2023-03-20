@@ -1,13 +1,27 @@
-import "./OrderOnline.css";
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import IndividualDish from "./IndividualDish";
+import "./OrderOnline.css";
 
 const OrderOnline = ({ hiddenOrderOnline }) => {
+  const language = useSelector(state=> state.language.code);
+  const orderSearch = () => {
+    switch (language) {
+      case 'en':
+        return en.orderSearch
+      case 'es':
+        return es.orderSearch
+      default:
+        return en.orderSearch
+    }
+  }
   return (
     <div className={`restaurant-view-order-online ${hiddenOrderOnline}`}>
       <div className="restaurant-view-order-online-search-panel">
         <input
           type="search"
-          placeholder="Search Dishes.."
+          placeholder={orderSearch()}
           className="restaurant-view-order-online-search-panel-search-input"
         />
         <ul className="restaurant-view-order-online-search-panel-list">

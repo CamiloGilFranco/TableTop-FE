@@ -1,9 +1,45 @@
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import "./CartItem.css";
 
 const CartItem = () => {
+
+  const language = useSelector(state=> state.language.code);
+  const cartTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.cartTitle
+      case 'es':
+        return es.cartTitle
+      default:
+        return en.cartTitle
+    }
+  }
+  const cartFinishWarning = () => {
+    switch (language) {
+      case 'en':
+        return en.cartFinishWarning
+      case 'es':
+        return es.cartFinishWarning
+      default:
+        return en.cartFinishWarning
+    }
+  }
+  const cartPlaceOrder = () => {
+    switch (language) {
+      case 'en':
+        return en.cartPlaceOrder
+      case 'es':
+        return es.cartPlaceOrder
+      default:
+        return en.cartPlaceOrder
+    }
+  }
+
   return (
     <div className="cart-item">
-      <span className="cart-item-header">Cart Items:</span>
+      <span className="cart-item-header">{cartTitle()}:</span>
       <div className="cart-item-product">
         <span className="cart-item-product-title">Veg Cheese Quesadillas</span>
         <span className="cart-item-product-unit-value">$12.00</span>
@@ -66,9 +102,9 @@ const CartItem = () => {
           <span className="cart-item-finish-subtotal-value">$42.00</span>
         </div>
         <p className="cart-item-finish-waring">
-          delivery changes may apply to your order
+          {cartFinishWarning()}
         </p>
-        <button className="cart-item-finish-button">PLACE ORDER</button>
+        <button className="cart-item-finish-button">{cartPlaceOrder()}</button>
       </div>
     </div>
   );

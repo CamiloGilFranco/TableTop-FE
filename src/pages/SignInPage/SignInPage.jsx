@@ -658,7 +658,7 @@ const SignInPage = () => {
             {signInEmail()}
           </label>
           <input
-            type="email"
+            type="text"
             className="sign-in-page-form-text-input"
             placeholder={signInEmail()}
             required

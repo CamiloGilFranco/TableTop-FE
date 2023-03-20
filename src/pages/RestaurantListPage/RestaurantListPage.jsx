@@ -13,7 +13,6 @@ const RestaurantListPage = () => {
   const [rating, setRating] = useState(0);
 
 
-
   return (
     <div className="restaurantList__page">
       <HeaderComponent />

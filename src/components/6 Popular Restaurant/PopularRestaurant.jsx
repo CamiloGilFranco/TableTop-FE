@@ -53,7 +53,7 @@ const PopularRestaurant = ({ inputValue }) => {
             rating={element.rating}
             categories={element.categories}
             schedule={element.schedule}
-            averagePrice={element.averagePrice}
+            dishesFrom={element.dishesFrom}
           />
         );
       });
@@ -67,7 +67,7 @@ const PopularRestaurant = ({ inputValue }) => {
             rating={element.rating}
             categories={element.categories}
             schedule={element.schedule}
-            averagePrice={element.averagePrice}
+            dishesFrom={element.dishesFrom}
           />
         );
       });

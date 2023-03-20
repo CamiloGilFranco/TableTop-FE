@@ -1,10 +1,13 @@
-import Footer from '../../components/Footer/Footer';
-import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
-import './GeneralAdminView.css';
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
+import { useState } from 'react';
 import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
+import Footer from '../../components/Footer/Footer';
+import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { AiFillDelete } from 'react-icons/ai'
-import { useState } from 'react';
+import './GeneralAdminView.css';
 
 const GeneralAdminView = () => {
   const usersData = userDB;
@@ -24,6 +27,129 @@ const GeneralAdminView = () => {
     coffee: false,
   })
 
+  const language = useSelector(state=> state.language.code);
+  const restaurantAdminTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.restaurantAdminTitle
+      case 'es':
+        return es.restaurantAdminTitle
+      default:
+        return en.restaurantAdminTitle
+    }
+  }
+  const generalAdminSubtitle = () => {
+    switch (language) {
+      case 'en':
+        return en.generalAdminSubtitle
+      case 'es':
+        return es.generalAdminSubtitle
+      default:
+        return en.generalAdminSubtitle
+    }
+  }
+  const generalAdminList = () => {
+    switch (language) {
+      case 'en':
+        return en.generalAdminList
+      case 'es':
+        return es.generalAdminList
+      default:
+        return en.generalAdminList
+    }
+  }
+
+  const newRestaurantFormTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormTitle
+      case 'es':
+        return es.newRestaurantFormTitle
+      default:
+        return en.newRestaurantFormTitle
+    }
+  }
+  const newRestaurantFormName = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormName
+      case 'es':
+        return es.newRestaurantFormName
+      default:
+        return en.newRestaurantFormName
+    }
+  }
+
+  const newRestaurantFormNameError = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormNameError
+      case 'es':
+        return es.newRestaurantFormNameError
+      default:
+        return en.newRestaurantFormNameError
+    }
+  }
+  const newRestaurantFormLocation = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormLocation
+      case 'es':
+        return es.newRestaurantFormLocation
+      default:
+        return en.newRestaurantFormLocation
+    }
+  }
+  const newRestaurantFormCategories = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormCategories
+      case 'es':
+        return es.newRestaurantFormCategories
+      default:
+        return en.newRestaurantFormCategories
+    }
+  }
+  const newRestaurantFormCategoriesError = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormCategoriesError
+      case 'es':
+        return es.newRestaurantFormCategoriesError
+      default:
+        return en.newRestaurantFormCategoriesError
+    }
+  }
+  const newRestaurantFormButton = () => {
+    switch (language) {
+      case 'en':
+        return en.newRestaurantFormButton
+      case 'es':
+        return es.newRestaurantFormButton
+      default:
+        return en.newRestaurantFormButton
+    }
+  }
+  const generalAdminFullList = () => {
+    switch (language) {
+      case 'en':
+        return en.generalAdminFullList
+      case 'es':
+        return es.generalAdminFullList
+      default:
+        return en.generalAdminFullList
+    }
+  }
+  const generalAdminDelete = () => {
+    switch (language) {
+      case 'en':
+        return en.generalAdminDelete
+      case 'es':
+        return es.generalAdminDelete
+      default:
+        return en.generalAdminDelete
+    }
+  }
   const categoriesArr = [
     {name: 'asian', label: 'asian'},
     {name: 'fastfood', label: 'fastfood'},
@@ -66,10 +192,10 @@ const GeneralAdminView = () => {
 
 
     if (name.length < 2) {
-      validationErrors.name = '* You must provide a name that is at least two characters long';
+      validationErrors.name = newRestaurantFormNameError();
     }
     if (checkedValues.every((value)=> !value)) {
-      validationErrors.categories = '* You must provide at least one category to the new restaurant';
+      validationErrors.categories = newRestaurantFormCategoriesError();
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -103,23 +229,23 @@ const GeneralAdminView = () => {
     <>
       <HeaderComponent />
       <div className='generalAdminView__container'>
-        <h1 className='generalAdminView__title'>Hi {usersData[3].name}!</h1>
+        <h1 className='generalAdminView__title'>{restaurantAdminTitle()} {usersData[3].name}!</h1>
         <article className='generalAdminView__flex'>
           <span>
-            <h3>In this page you can remove or add restaurants</h3>
-            <span className='generalAdminView__list'>There currently are #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''}</span>
+            <h3>{generalAdminSubtitle()}</h3>
+            <span className='generalAdminView__list'>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''}</span>
           </span>
           <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
-          <span>Do you want to add any new restaurant?</span>
-          <label htmlFor='newRestaurantTitle'>New restaurant name</label>
+          <span>{newRestaurantFormTitle()}</span>
+          <label htmlFor='newRestaurantTitle'>{newRestaurantFormName()}</label>
               <input 
                 type='text' 
                 name='name' 
                 id='newRestaurantTitle' 
-                placeholder='Write the new Restaurant name'
+                placeholder={newRestaurantFormName()}
               />
             {errors.name && <p className='generalAdminView__error'>{errors.name}</p>}
-            <label htmlFor='newRestaurantLocation'>New restaurant location</label>
+            <label htmlFor='newRestaurantLocation'>{newRestaurantFormLocation()}</label>
             <select id='newRestaurantLocation' name='location'>
                 <option value={'bogota'}>Bogotá</option>
                 <option value={'medellin'}>Medellín</option>
@@ -128,7 +254,7 @@ const GeneralAdminView = () => {
                 <option value={'bucaramanga'}>Bucaramanga</option>
               </select>
               <div>
-                <label className='generalAdminView__checkboxTitle'>Choose the categories of the new restaurant</label>
+                <label className='generalAdminView__checkboxTitle'>{newRestaurantFormLocation()}</label>
                 {categoriesArr.map((checkbox)=> (
                   <div key={checkbox.name} className='generalAdminView__checkbox'>
                     <input
@@ -143,11 +269,11 @@ const GeneralAdminView = () => {
                 ))}
                 {errors.categories && <p className='generalAdminView__error'>{errors.categories}</p>}
               </div>
-              <button type='sumbit'>Create the new restaurant!</button>
+              <button type='sumbit'>{newRestaurantFormButton()}</button>
           </form>
           <article className='generalAdminView__article'>
-            <span>This is a list of all the restaurants</span>
-            <p>If you want to delete something you can do it here</p>
+            <span>{generalAdminFullList()}</span>
+            <p>{generalAdminDelete()}</p>
             <ul>
               {Object.entries(restaurants).map(([key, value])=> (
                 <li key={key} className='generalAdminView__details'>
@@ -163,5 +289,4 @@ const GeneralAdminView = () => {
     </>
   )
 }
-//name, location, categories, 
 export default GeneralAdminView;

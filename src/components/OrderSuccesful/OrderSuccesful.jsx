@@ -1,16 +1,50 @@
-import './OrderSuccesful.css'
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import { BsFillCheckCircleFill } from 'react-icons/bs'
+import './OrderSuccesful.css'
 
 const OrderSuccesful = () =>{
+  const language = useSelector(state=> state.language.code);
+  const orderSuccessTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.orderSuccessTitle
+      case 'es':
+        return es.orderSuccessTitle
+      default:
+        return en.orderSuccessTitle
+    }
+  }
+  const orderSuccessBody = () => {
+    switch (language) {
+      case 'en':
+        return en.orderSuccessBody
+      case 'es':
+        return es.orderSuccessBody
+      default:
+        return en.orderSuccessBody
+    }
+  }
+  const orderSuccessFooter = () => {
+    switch (language) {
+      case 'en':
+        return en.orderSuccessFooter
+      case 'es':
+        return es.orderSuccessFooter
+      default:
+        return en.orderSuccessFooter
+    }
+  }
   return(
     <section className='orderSuccesful__container'>
       <picture>
         <BsFillCheckCircleFill className='orderSuccesful__icon'/>
       </picture>
       <section className='orderSuccesful__text'>
-        <h3>Payment Successful! Get Ready for Delicious Food.</h3>
-        <span>Thank You For Your Payment. We Have Recieved Your Payment Succesfully. Your Transaction ID Is "SHJG12155125". You Will Get An Email Invoice Soon!</span>
-        <button className='orderSuccesful__button'>Download Invoice</button>
+        <h3>{orderSuccessTitle()}</h3>
+        <span>{orderSuccessBody()}</span>
+        <button className='orderSuccesful__button'>{orderSuccessFooter()}</button>
       </section>
     </section>
   )
