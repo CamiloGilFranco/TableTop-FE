@@ -83,6 +83,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: #a1a1a1 solid 1px;
 }
 
 .restaurant-view-individual-dish-main-line-title {
@@ -98,6 +99,7 @@
   background-color: #f9f9f9;
   box-shadow: 0 2px 5px 1px lightgrey;
   padding: 3px 0;
+  margin-top: 5px;
 }
 
 .restaurant-view-individual-dish-description {
