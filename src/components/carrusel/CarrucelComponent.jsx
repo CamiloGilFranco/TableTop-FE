@@ -1,63 +1,81 @@
-import './CarrucelComponent.css'
-import mexicanFood from "./assets/mexicanfood.jpg";
-import italianFood from "./assets/italianfood.jpg";
-import chineseFood from "./assets/chinesefood.jpg";
+import "./CarrucelComponent.css";
+import foodTypes from "../../assets/cuisines.json";
+import "../../../node_modules/slick-carousel/slick/slick.css";
+import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { useEffect, useState } from "react";
 
+const CarrucelComponent = () => {
+  const [numVisibleSlides, setNumVisibleSlides] = useState(6);
+  const data = foodTypes;
+  const keys = Object.keys(data);
 
-const CarrucelComponent = () =>{
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1300) {
+        setNumVisibleSlides(5);
+      } else if (window.innerWidth >= 1000) {
+        setNumVisibleSlides(4);
+      } else if (window.innerWidth >= 850) {
+        setNumVisibleSlides(3);
+      } else {
+        setNumVisibleSlides(2);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    return(
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: numVisibleSlides,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+  };
 
-        <main className='carrucel'>
-            <section className="carrucel-list">
-                <div className="food-type">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
-                        <img src={mexicanFood} alt="mexican" className="food-type__image" ></img>
-                    </a>
-                    <h3 className='food-type__item>Mexican'>Mexican</h3>
-                    <p className='food-type__text'>23 Restaurant</p>
+  return (
+    <main className="home-carousel-component">
+      <section className="home-carousel-container">
+        <Slider {...settings} className="home-carousel-main">
+          {keys.map((element) => {
+            return (
+              <div className="home-carousel-single-item">
+                <div className="home-carousel-single-item-image-container">
+                  <img
+                    src={data[element]}
+                    alt=""
+                    className="home-carousel-single-item-image"
+                  ></img>
                 </div>
-                <div className="food-type">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
-                        <img src={chineseFood} alt="chinese" className="food-type__image"/>
-                    </a>
-                    <h3 className='food-type__item'>Chinese</h3>
-                    <p className='food-type__text'>23 Restaurant</p>
-                </div>
-                <div className="food-type">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
-                        <img src={italianFood} alt="italian food" className="food-type__image"/>
-                    </a>
-                    <h3 className='food-type__item'>Italian</h3>
-                    <p className='food-type__text'>23 Restaurant</p>
-                </div>
-                <div className="food-type">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
-                        <img src={mexicanFood} alt="chinese food" className="food-type__image"/>
-                    </a>
-                    <h3 className='food-type__item'>Bakery</h3>
-                    <p className='food-type__text'>23 Restaurant</p>
-                </div>
-                <div className="food-type">
-                    <div content-img>
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
-                        <img src={mexicanFood} alt="chinese food" className="food-type__image"/>
-                    </a>
-                    </div>
-                    <h3 className='food-type__item'>Bakery</h3>
-                    <p className='food-type__text'>23 Restaurant</p>   
-                </div>
-                <div className="food-type">
-                    <a href='https://www.pexels.com/es-es/' target='_blank' rel="noreferrer" className='content-img'>
-                        <img src={mexicanFood} alt="chinese food" className="food-type__image"/>
-                    </a>
-                    <h3 className='food-type__item'>Bakery</h3>
-                    <p className='food-type__text'>23 Restaurant</p>
-                </div>
-            </section>
-        </main>
-  
-    )
-}
+                <h3 className="home-carousel-single-item-title">{element}</h3>
+                <p className="home-carousel-single-item-quantity">
+                  23 Restaurants
+                </p>
+              </div>
+            );
+          })}
+        </Slider>
+        {/* {keys.map((element) => {
+          return (
+            <div className="food-type">
+              <img
+                src={data[element]}
+                alt=""
+                className="food-type__image"
+              ></img>
 
-export {CarrucelComponent}
+              <h3 className="food-type__item>Mexican">{element}</h3>
+              <p className="food-type__text">23 Restaurants</p>
+            </div>
+          );
+        })} */}
+      </section>
+    </main>
+  );
+};
+
+export { CarrucelComponent };
