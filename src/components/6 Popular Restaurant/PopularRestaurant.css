@@ -48,7 +48,7 @@
 .popular-restaurant-main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 @media (min-width: 765px) {
   .popular-restaurant-main {

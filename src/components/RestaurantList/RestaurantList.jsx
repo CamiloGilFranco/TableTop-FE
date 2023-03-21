@@ -4,13 +4,17 @@ import previous from "./assets/previous.svg";
 import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
+import { useSearchParams } from 'react-router-dom'
 
-const RestaurantList = ({ categories, rating, inputValue }) => {
+
+const RestaurantList = ({ categories, rating }) => {
   const data = DB;
 
   const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
   const [selectOrder, setSelectOrder] = useState(1);
   const [sortList, setSortList] = useState(data);
+  const [searchParams, setSearchParams] = useSearchParams();
+
 
   // Logic for the order buttons
   const handleOrder = (order) => {
@@ -27,11 +31,11 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
   }
 
   // logic for the filters 
-  const filteredData = (rating, categories, inputValue)=>{
+  const filteredData = (rating, categories)=>{
     let result = [];
 
-    if (inputValue) {
-      result = data.filter((element) => element.restaurantName.replaceAll(' ', '').toLowerCase().includes(inputValue))
+    if (searchParams.get('searchTerm')) {
+      result = data.filter((element) => element.restaurantName.replaceAll(' ', '').toLowerCase().includes(searchParams.get('searchTerm')))
     }
 
     const filterByCategorie = (arr) =>{
@@ -46,10 +50,8 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
     if (categories.length > 0 && rating >= 2) result = data.filter(element => Math.round(element.rating) >= rating && filterByCategorie(data));
     return result
   };
-  // console.log('rating: ', rating, 'catories.length: ', categories.length, 'filteredData length: ', filteredData(rating, categories).length);
 
 
-  //  
   const renderList = (data, displayArr) => {
     if (displayArr.length === 0) {
       return sortList.map((element) => {
@@ -100,7 +102,7 @@ const RestaurantList = ({ categories, rating, inputValue }) => {
         </div>
       </header>
       <main className="restaurant-list-main">
-        {renderList(data, filteredData(rating, categories, inputValue))}
+        {renderList(data, filteredData(rating, categories))}
       </main>
       <footer className="restaurant-list-footer">
         <div className="restaurant-list-footer-page-button">

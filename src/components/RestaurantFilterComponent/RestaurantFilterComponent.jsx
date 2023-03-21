@@ -6,8 +6,11 @@ import { useEffect } from 'react';
 import { BsFillFilterSquareFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { ImInfo } from 'react-icons/im'
+import { useSearchParams } from 'react-router-dom'
+
 
 const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, data }) =>{
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [mobileFilter, setMobileFilter] = useState('');
   const [radioSelected, setRadioSelected] = useState('');
@@ -177,10 +180,10 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   const handleCategoriesChange = (event) =>{
     if (event.target.checked) {
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
+      setSearchParams({cuisine: event.target.name})
     } else {
       setCheckBoxSelected(checkBoxSelected.filter(value => value !== checkBoxSelected));
     }
@@ -193,7 +196,8 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
 
   const handleRatingChange = (event) =>{
     setRating(parseInt(event.target.id));
-    setRadioSelected(event.target.id)
+    setRadioSelected(event.target.id);
+    setSearchParams({rating: event.target.id});
   }
   const handleListClick = () => {
     mobileFilter === 'Filter__none'? setMobileFilter('') : setMobileFilter('Filter__none')
@@ -202,10 +206,13 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   const handleClearCuisine = () => {
     setCategories([]);
     setCheckBoxSelected([]);
+    setSearchParams({});
+
   }
-  const handleClearReating = () => {
+  const handleClearRating = () => {
     setRating(0);
     setRadioSelected('');
+    setSearchParams({});
   }
   
   return(
@@ -342,7 +349,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
             <article>
               <section className='restaurantFilter__filter'>
                 <p>{filterRating()}</p>
-                <p onClick={handleClearReating} className='restaurantFilter_clear'>{filterClear()}</p>
+                <p onClick={handleClearRating} className='restaurantFilter_clear'>{filterClear()}</p>
               </section>
               <section className='popularFilter'>
                 <label for='5'>

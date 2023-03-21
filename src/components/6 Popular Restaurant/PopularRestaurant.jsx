@@ -4,10 +4,14 @@ import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardCo
 import { useSelector } from 'react-redux';
 import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
+import { useSearchParams } from 'react-router-dom'
+
 
 import db from "../../assets/dat.json";
 
 const PopularRestaurant = ({ inputValue }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const data = db;
   const language = useSelector(state=> state.language.code);
 
@@ -39,7 +43,7 @@ const PopularRestaurant = ({ inputValue }) => {
   }
 
   const filteredData = data.filter((element) => {
-    return element.restaurantName.replaceAll(' ', '').toLowerCase().includes(inputValue);
+    return element.restaurantName.replaceAll(' ', '').toLowerCase().includes(searchParams.get('searchTerm'));
   })
 
   const renderList = (data, filteredData) => {

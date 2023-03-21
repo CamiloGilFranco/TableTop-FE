@@ -2,8 +2,13 @@ import './SearchbarComponent.css';
 import { useSelector } from 'react-redux';
 import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom'
+
 
 const SearchbarComponent = ({ inputValue, setInputValue })=>{
+  const [displayText, setDisplayText] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const language = useSelector(state=> state.language.code);
 
   const titleText = () => {
@@ -38,15 +43,23 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
     }
   }
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    setDisplayText(event.target.value);
   }
 
   const handleSearchSumbit = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const searchText = form.searchButton.value
 
-    inputValue.length >= 3 ? console.log('cumple con la condición') : alert('search term must be at least 3 characters long');
-    setInputValue('');
+    if (searchText.length <= 1) {
+      alert('The search must be at least 2 characters long');
+    } else {
+      setInputValue(searchText);
+      setSearchParams({searchTerm: searchText});
+    }
+   form.reset();
   }
+  
   return (
     <section className='searchBar__container'>
       <span className='searchBar__text'>{titleText()}</span>
@@ -57,7 +70,7 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
           id='searchButton'
           name='searchButton'
           placeholder={placeholderText()}
-          value={inputValue}
+          value={displayText}
           onChange={handleInputChange}
         />
         <button 
