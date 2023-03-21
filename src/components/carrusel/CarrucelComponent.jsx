@@ -18,8 +18,10 @@ const CarrucelComponent = () => {
         setNumVisibleSlides(4);
       } else if (window.innerWidth >= 850) {
         setNumVisibleSlides(3);
-      } else {
+      } else if (window.innerWidth >= 525) {
         setNumVisibleSlides(2);
+      } else {
+        setNumVisibleSlides(1);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -59,20 +61,6 @@ const CarrucelComponent = () => {
             );
           })}
         </Slider>
-        {/* {keys.map((element) => {
-          return (
-            <div className="food-type">
-              <img
-                src={data[element]}
-                alt=""
-                className="food-type__image"
-              ></img>
-
-              <h3 className="food-type__item>Mexican">{element}</h3>
-              <p className="food-type__text">23 Restaurants</p>
-            </div>
-          );
-        })} */}
       </section>
     </main>
   );

@@ -58,7 +58,25 @@
 }
 
 .slick-prev:before {
-  left: 100px !important;
   position: relative;
   left: -30px !important;
+}
+
+@media (max-width: 525px) {
+  .home-carousel-component {
+    height: 450px;
+  }
+
+  .slick-dots {
+    bottom: -50px !important;
+  }
+
+  .slick-prev:before {
+    left: 0px !important;
+  }
+
+  .slick-next:before {
+    position: relative;
+    left: -30px !important;
+  }
 }
