@@ -1,6 +1,13 @@
+.container-imageheader {
+  height: 200px;
+
+}
+
 .imageHeader {
   display: block;
   margin: 0 auto;
   width: 100%;
+  height: 200px;
+  object-fit: cover;
 
 }

@@ -1,6 +1,6 @@
 import AlwaysFirstComponent from "../../components/AlwaysFirstComponent/AlwaysFirstComponent";
 import CartItem from "../../components/CartItem/CartItem";
-import { DeliveryAddressComponent } from "../../components/DeliveryAddressComponent/DeliveryAddressComponent";
+import DeliveryAddressComponent from "../../components/DeliveryAddressComponent/DeliveryAddressComponent";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
 import image from "./assets/pexels-ella-olsson-1640777.jpg";
@@ -14,7 +14,7 @@ const CheckoutPageComponent = () => {
         <div>
           <HeaderComponent />
         </div>
-        <div>
+        <div className="container-imageheader">
           <img src={image} alt="" className="imageHeader"/>
         </div>
         <div className="checkout-container">
