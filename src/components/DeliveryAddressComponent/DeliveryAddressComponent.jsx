@@ -1,12 +1,12 @@
 import './DeliveryAddressComponent.css'
+import DeliveryAddressBox from './DeliveryAddressBox';
 import FormComponent from './FormComponent';
 import { useModal } from './hooks/UseModal';
 import Modal from './modal/Modal';
 
-
-const DeliveryAddressComponent = () => {
+const DeliveryAddressComponent = ({data}) => {
     const [isOpenModal1, openModal1, closeModal1] = useModal(false)
-
+    
 
     return (
         <>
@@ -22,34 +22,7 @@ const DeliveryAddressComponent = () => {
                 </button>
             </div>
             <main className='main-box'>
-                <section className='personal-info'>
-                    <div className='content'>
-                        <h3 className='content__name'>Mark Jecno</h3>
-                        <button className='content__button'>Home</button>
-                    </div>
-                    <p className='personal-info-data'>549 Sulphur Springs Road</p>
-                    <p className='personal-info-data'>Downers Grove, IL</p>
-                    <p className='personal-info-data'>60515</p>
-                    <p className='personal-info-data'>Mobile: +91 123 - 456 - 7890</p>
-                    <div className='buttons'>
-                        <button className='button--green'>Edit</button>
-                        <button className='button--red'>Remove</button>
-                    </div>
-                </section>
-                <section className='personal-info'>
-                    <div className='content'>
-                        <h3 className='content__name'>Maark Jecno</h3>
-                        <button className='content__button'>Office</button>
-                    </div>
-                    <p className='personal-info-data'>549 Sulphur Springs Road</p>
-                    <p className='personal-info-data'>Downers Grove, IL</p>
-                    <p className='personal-info-data'>60515</p>
-                    <p className='personal-info-data'>Mobile: +91 123 - 456 - 7890</p>
-                    <div className='buttons'>
-                        <button className='button--green'>Edit</button>
-                        <button className='button--red'>Remove</button>
-                    </div>
-                </section>
+                {data.map((el) => <DeliveryAddressBox key={el.name} el={el}/>)}
             </main>
         </section>
         <Modal isOpen={isOpenModal1} closeModal={closeModal1}>

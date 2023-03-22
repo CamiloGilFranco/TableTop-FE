@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import image from "./assets/pexels-ella-olsson-1640777.jpg";
 import { Payment } from "../../components/payment/Payment";
 import "./CheckoutPageComponent.css";
+import data from './dataAddress.json'
 
 const CheckoutPageComponent = () => {
   return (
@@ -23,7 +24,7 @@ const CheckoutPageComponent = () => {
             <AlwaysFirstComponent />
           </div>
           <div>
-            <DeliveryAddressComponent />
+            <DeliveryAddressComponent data={data} />
             <Payment />
           </div>
         </div>
