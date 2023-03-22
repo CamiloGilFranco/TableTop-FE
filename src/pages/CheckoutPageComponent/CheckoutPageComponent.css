@@ -11,3 +11,26 @@
   object-fit: cover;
 
 }
+
+@media (min-width:700px){
+  .checkout-container {
+    margin: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+  }
+  .checkout-container__aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .checkout-container__body {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+}

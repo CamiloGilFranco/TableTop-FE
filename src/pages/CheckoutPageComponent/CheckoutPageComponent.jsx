@@ -19,11 +19,11 @@ const CheckoutPageComponent = () => {
           <img src={image} alt="" className="imageHeader"/>
         </div>
         <div className="checkout-container">
-          <div>
+          <div className="checkout-container__aside">
             <CartItem />
             <AlwaysFirstComponent />
           </div>
-          <div>
+          <div className="checkout-container__body">
             <DeliveryAddressComponent data={data} />
             <Payment />
           </div>

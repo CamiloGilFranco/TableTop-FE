@@ -1,7 +1,8 @@
 
 .payment-container {
-    border: 5px #F6F8FA solid;
+    box-shadow: 0 2px 5px 1px lightgrey;
     width: 100%;
+    margin: 20px;
     padding: 0 20px;
     padding-bottom: 10px;
 }
@@ -99,3 +100,7 @@
 .type-payment-text {
     margin-left: 10px;
 } 
+
+@media(min-width: 768px){
+    
+}

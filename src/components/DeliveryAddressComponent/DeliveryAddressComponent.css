@@ -1,11 +1,14 @@
 .container {
     margin: 20px;
+    box-shadow: 0 2px 5px 1px lightgrey;
+   
   }
   
   .save-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
   }
   
   .save-info__button {
@@ -16,6 +19,7 @@
   .main-box {
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
     gap: 20px;
    
     
@@ -71,3 +75,12 @@
     color: red;
   
   }
+
+  @media(min-width: 768px){
+    .container {      
+      margin: 20px;
+      box-shadow: 0 2px 5px 1px lightgrey;
+      padding: 20px;
+      margin-left: 100px;
+  }
+}
