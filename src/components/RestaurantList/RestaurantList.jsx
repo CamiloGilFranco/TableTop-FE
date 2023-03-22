@@ -29,9 +29,9 @@ const RestaurantList = ({ categories }) => {
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
   }
-
+  console.log(searchParams.getAll('cuisine')) //esto remplaza categories;
   // logic for the filters 
-  const filteredData = (categories)=>{
+  const filteredData = (categories) =>{
     let result = [];
 
     if (searchParams.get('searchTerm')) {

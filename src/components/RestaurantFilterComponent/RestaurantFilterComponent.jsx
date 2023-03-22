@@ -185,7 +185,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
       setSearchParams({
         searchTerm: searchParams.get('searchTerm'),
-        cuisine: searchParams.get('cuisine') + event.target.name,
+        cuisine: [event.target.name].concat(searchParams.getAll('cuisine')),
         rating: searchParams.get('rating')
       })
     } else {
@@ -215,7 +215,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
     setCheckBoxSelected([]);
     setSearchParams({
       searchTerm: searchParams.get('searchTerm'),
-      cuisine: null,
+      cuisine: [],
       rating: searchParams.get('rating')
     });
 
@@ -228,7 +228,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
       rating: null
     });
   }
-  
   return(
     <section className='restaurantFilter__container'>
       <section className='restaurantFilterMobile'>

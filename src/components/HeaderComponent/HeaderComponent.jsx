@@ -14,9 +14,6 @@ import logo from "../../assets/logo.svg";
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
   const language = useSelector(state=> state.languageReducer);
-  const test = useSelector(state=> state)
-  console.log(test);
-  //console.log(test);
   const dispatch = useDispatch();
 
 
