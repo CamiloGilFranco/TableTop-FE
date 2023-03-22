@@ -125,5 +125,17 @@
 
 .restaurantAdminView__icon {
   cursor: pointer;
+  width: 25px;
   height: 25px;
+}
+
+.restaurantAdminView__reservation {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+.restaurantAdminView__reservation p {
+  margin: 0;
+  padding: 0;
+  width: 75%;
 }/*# sourceMappingURL=RestaurantAdminView.css.map */

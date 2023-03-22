@@ -224,6 +224,10 @@ const GeneralAdminView = () => {
     const updatedRestaurant = restaurants.filter((item)=> item.id !== id);
     setRestaurants(updatedRestaurant);
   }
+  const newUserSumbit = (e) =>{
+    e.preventDefault();
+    console.log('soltame prro');
+  }
   
   return (
     <>
@@ -233,7 +237,46 @@ const GeneralAdminView = () => {
         <article className='generalAdminView__flex'>
           <span>
             <h3>{generalAdminSubtitle()}</h3>
-            <span className='generalAdminView__list'>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''}</span>
+            <span>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''}</span>
+            <h3>Here you can see all the users</h3>
+            <form className='generalAdminView__form' onSubmit={newUserSumbit}>
+              <h3>Here you can add a new user:</h3>
+              <label htmlFor='newUserFirstName'>First Name</label>
+              <input 
+                type='text' 
+                name='name' 
+                id='newUserFirstName' 
+                placeholder='New user first name'
+              />
+              <label htmlFor='newUserLastName'>Last Name</label>
+              <input 
+                type='text' 
+                name='newUserlastName' 
+                id='newUserLastName' 
+                placeholder='New user last name'
+              />
+              <label htmlFor='newUserEmail'>Email</label>
+              <input 
+                type='text' 
+                name='newUserEmail' 
+                id='newUserEmail' 
+                placeholder='New user email'
+              />
+              <label htmlFor='newUserRole'>What kind of user will this be?</label>
+              <select id='newUserRole' name='newUserRole'>
+                <option value={'restaurantAdmin'}>Restaurant Admin</option>
+                <option value={'generalAdmin'}>General Admin</option>
+                <option value={'regularUser'}>Regular User</option>
+              </select>
+              <button type='sumbit'>Create the new User!</button>
+            </form>
+              {userDB.map((item, index)=> {
+                return(
+                  <ul key={index}>
+                    <li>{item.name} {<AiFillDelete className='generalAdminView__icon'/>}</li>
+                  </ul>
+                )
+              })}
           </span>
           <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
           <span>{newRestaurantFormTitle()}</span>

@@ -289,7 +289,19 @@ const RestaurantAdminView = () => {
    updatedMenu[category].splice(index, 1);
    setMenu(updatedMenu);
   }
-  
+
+  let mockReservations = [
+    {name: 'name 1', time: '7:30 PM', date: '05-03-2023', numberOfComensals: 5},
+    {name: 'name 2', time: '7:30 PM', date: '06-03-2023', numberOfComensals: 5},
+    {name: 'name 3', time: '7:30 PM', date: '07-03-2023', numberOfComensals: 5},
+    {name: 'name 4', time: '7:30 PM', date: '08-03-2023', numberOfComensals: 5},
+    {name: 'name 5', time: '7:30 PM', date: '09-03-2023', numberOfComensals: 5}
+  ];
+
+  const handleReservationDelete = (index) => {
+    mockReservations = mockReservations.filter((item, i) => i !== index);
+    console.log(mockReservations);
+  }
   return(
     <>
       <HeaderComponent/>
@@ -303,6 +315,18 @@ const RestaurantAdminView = () => {
                 <li>{restaurantAdminResSales()}: {restaurantExpample.numberOfSales}</li>
                 <li>{restaurantAdminResRating()}: {restaurantExpample.rating}</li>
               </ul>
+              <h3>Here you can see hte upcoming reservations:</h3>
+              <p>If you want to delete something you can do it here</p>
+              <section>
+                {mockReservations.map((item, index) => {
+                  return (
+                    <span key={index} className='restaurantAdminView__reservation'>
+                      <p>Name: {item.name} - Time: {item.time} - Date: {item.date} for {item.numberOfComensals} people</p>
+                      <AiFillDelete className='restaurantAdminView__icon' onClick={()=>handleReservationDelete(index)}/>
+                    </span>                    
+                  )
+                })}
+              </section>
             </span>
             <form onSubmit={handleNewDishSumbit} className='restaurantAdminView__form'>
               <span>{newDishFormTitle()}</span>
