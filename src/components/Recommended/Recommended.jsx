@@ -8,7 +8,7 @@ import "./Recommended.css";
 
 const Recommended = () => {
   const width = useWindowSize();
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const recommendedTitle = () => {
     switch (language) {
       case 'en':

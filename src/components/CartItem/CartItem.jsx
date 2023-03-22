@@ -5,7 +5,8 @@ import "./CartItem.css";
 
 const CartItem = () => {
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
+  
   const cartTitle = () => {
     switch (language) {
       case 'en':

@@ -18,7 +18,7 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   const [showLogIn, setShowLogIn] = useState(false);
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const footerAbout = () => {
     switch (language) {
       case 'en':

@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom'
 const SearchbarComponent = ({ inputValue, setInputValue })=>{
   const [displayText, setDisplayText] = useState('');
   const [searchParams, setSearchParams] = useSearchParams({});
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
 
   const titleText = () => {
     switch (language) {

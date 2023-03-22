@@ -7,7 +7,7 @@ import './MobileNavBar.css'
 
 
 const MobileNavBar =({mobileShow, setMobileShow})=>{
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const footerHome = () => {
     switch (language) {
       case 'en':

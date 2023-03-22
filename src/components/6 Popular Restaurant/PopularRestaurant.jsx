@@ -13,8 +13,7 @@ const PopularRestaurant = ({ inputValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const data = db;
-  const language = useSelector(state=> state.language.code);
-
+  const language = useSelector(state=> state.languageReducer);
   const popularRestaurantTitle = () => {
     switch (language) {
       case 'en':

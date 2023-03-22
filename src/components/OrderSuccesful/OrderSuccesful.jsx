@@ -5,7 +5,7 @@ import { BsFillCheckCircleFill } from 'react-icons/bs'
 import './OrderSuccesful.css'
 
 const OrderSuccesful = () =>{
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const orderSuccessTitle = () => {
     switch (language) {
       case 'en':

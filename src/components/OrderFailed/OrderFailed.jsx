@@ -6,7 +6,7 @@ import './OrderFailed.css'
 
 const OrderFailed = ()=>{
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const orderFailedTitle = () => {
     switch (language) {
       case 'en':

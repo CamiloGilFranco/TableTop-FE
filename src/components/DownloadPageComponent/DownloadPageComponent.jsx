@@ -7,7 +7,7 @@ import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
 
 const DownloadPageComponent = () => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
 
   const downloadPageTitle = () => {
     switch (language) {

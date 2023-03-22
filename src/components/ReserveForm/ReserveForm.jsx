@@ -13,7 +13,7 @@ const [reserveForm, setReserveForm] = useState({
   dateAndTime: '', 
   user: ''
 })
-const language = useSelector(state=> state.language.code);
+const language = useSelector(state=> state.languageReducer);
 const signInFirstName = () => {
   switch (language) {
     case 'en':

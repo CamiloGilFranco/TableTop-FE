@@ -16,7 +16,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   const [radioSelected, setRadioSelected] = useState('');
   const [checkBoxSelected, setCheckBoxSelected] = useState([]);
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const filterTitle = () => {
     switch (language) {
       case 'en':

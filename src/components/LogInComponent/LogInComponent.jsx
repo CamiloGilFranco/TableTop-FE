@@ -9,7 +9,7 @@ import "./LogInComponent.css";
 
 const LogInComponent = ({ setShowLogIn }) => {
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const logInTitle = () => {
     switch (language) {
       case 'en':

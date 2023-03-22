@@ -7,7 +7,7 @@ import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
 
 const FlowInfoComponent =()=>{
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
 
   const flowInfoTitle = () => {
     switch (language) {

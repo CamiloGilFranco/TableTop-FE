@@ -1,11 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import languageReducer from "./reducers/Language.reducer";
+import { legacy_createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import languageReducer from './reducers/Language.reducer';
 
 
-const store = configureStore({
-  reducer: {
-    language: languageReducer,
-  }
+const rootReducer = combineReducers({
+  languageReducer,
 });
 
-export default store
+const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
+
+export default store;

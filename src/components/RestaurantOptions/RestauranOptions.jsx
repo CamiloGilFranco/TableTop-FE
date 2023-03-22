@@ -14,7 +14,7 @@ const RestauranOptions = ({
   classReviews,
 }) => {
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const restaurantOptionsOnline = () => {
     switch (language) {
       case 'en':

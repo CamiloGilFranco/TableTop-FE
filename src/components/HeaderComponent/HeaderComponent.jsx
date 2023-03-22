@@ -3,7 +3,7 @@ import LogInComponent from "../LogInComponent/LogInComponent";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setLanguage } from "../../store/reducers/Language.reducer";
+import { LANGUAGE_SWITCH } from "../../store/reducers/Language.reducer";
 import { en } from "../../assets/languages/languajeEN";
 import { es } from "../../assets/languages/languageES";
 import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
@@ -13,7 +13,10 @@ import logo from "../../assets/logo.svg";
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
+  const test = useSelector(state=> state)
+  console.log(test);
+  //console.log(test);
   const dispatch = useDispatch();
 
 
@@ -42,7 +45,7 @@ const HeaderComponent = () => {
     setCurrency(e.target.value);
   };
   const handleLanguageChange = (e) => {
-    dispatch(setLanguage(e.target.value));
+    dispatch({ type: LANGUAGE_SWITCH ,  payload: (e.target.value)});
   };
 
   return (

@@ -4,7 +4,7 @@ import { en } from '../../assets/languages/languajeEN';
 import "./AlwaysFirstComponent.css";
 
 const AlwaysFirstComponent = () => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const alwaysFirstTitle = () => {
     switch (language) {
       case 'en':

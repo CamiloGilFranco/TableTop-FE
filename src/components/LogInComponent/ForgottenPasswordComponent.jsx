@@ -4,7 +4,7 @@ import { en } from '../../assets/languages/languajeEN';
 
 const ForgottenPasswordComponent = ({ setWhichForm }) => {
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const signInEmail = () => {
     switch (language) {
       case 'en':

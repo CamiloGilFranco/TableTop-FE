@@ -10,7 +10,7 @@ const Overview = ({
   address,
   facilities,
 }) => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const signInPhone = () => {
     switch (language) {
       case 'en':

@@ -11,7 +11,7 @@ const SingleReviewComponent = ({
   date,
   description,
 }) => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const reviewBy = () => {
     switch (language) {
       case 'en':

@@ -5,7 +5,7 @@ import IndividualDish from "./IndividualDish";
 import "./OrderOnline.css";
 
 const OrderOnline = ({ hiddenOrderOnline }) => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const orderSearch = () => {
     switch (language) {
       case 'en':

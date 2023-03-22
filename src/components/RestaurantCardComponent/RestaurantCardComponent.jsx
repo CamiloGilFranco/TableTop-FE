@@ -13,7 +13,7 @@ const RestaurantCardComponent = ({
   dishesFrom,
 }) => {
   const navigate = useNavigate();
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const cardDishesFrom = () => {
     switch (language) {
       case 'en':

@@ -3,7 +3,7 @@ import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
 
 const LoginFormComponent = ({ setWhichForm }) => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer.code);
   const signInEmail = () => {
     switch (language) {
       case 'en':
