@@ -8,7 +8,7 @@ import { useSearchParams } from 'react-router-dom'
 
 const SearchbarComponent = ({ inputValue, setInputValue })=>{
   const [displayText, setDisplayText] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({});
   const language = useSelector(state=> state.language.code);
 
   const titleText = () => {
@@ -55,9 +55,13 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
       alert('The search must be at least 2 characters long');
     } else {
       setInputValue(searchText);
-      setSearchParams({searchTerm: searchText});
+      setSearchParams({
+        searchTerm: searchText,
+        cuisine: searchParams.get('cuisine'),
+        rating: searchParams.get('rating')
+      });
     }
-   form.reset();
+   form.reset();   
   }
   
   return (

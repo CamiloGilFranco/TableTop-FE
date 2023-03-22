@@ -10,7 +10,7 @@ import { useSearchParams } from 'react-router-dom'
 
 
 const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, data }) =>{
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({});
 
   const [mobileFilter, setMobileFilter] = useState('');
   const [radioSelected, setRadioSelected] = useState('');
@@ -183,7 +183,11 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   const handleCategoriesChange = (event) =>{
     if (event.target.checked) {
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
-      setSearchParams({cuisine: event.target.name})
+      setSearchParams({
+        searchTerm: searchParams.get('searchTerm'),
+        cuisine: event.target.name,
+        rating: searchParams.get('rating')
+      })
     } else {
       setCheckBoxSelected(checkBoxSelected.filter(value => value !== checkBoxSelected));
     }
@@ -197,7 +201,11 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   const handleRatingChange = (event) =>{
     setRating(parseInt(event.target.id));
     setRadioSelected(event.target.id);
-    setSearchParams({rating: event.target.id});
+    setSearchParams({
+      searchTerm: searchParams.get('searchTerm'),
+      cuisine: searchParams.get('cuisine'),
+      rating: event.target.id
+    });
   }
   const handleListClick = () => {
     mobileFilter === 'Filter__none'? setMobileFilter('') : setMobileFilter('Filter__none')
