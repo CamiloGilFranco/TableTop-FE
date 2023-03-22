@@ -7,7 +7,7 @@ import DB from "../../assets/dat.json";
 import { useSearchParams } from 'react-router-dom'
 
 
-const RestaurantList = ({ categories, rating }) => {
+const RestaurantList = ({ categories }) => {
   const data = DB;
 
   const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
@@ -31,7 +31,7 @@ const RestaurantList = ({ categories, rating }) => {
   }
 
   // logic for the filters 
-  const filteredData = (rating, categories)=>{
+  const filteredData = (categories)=>{
     let result = [];
 
     if (searchParams.get('searchTerm')) {
@@ -45,9 +45,9 @@ const RestaurantList = ({ categories, rating }) => {
         })
       })
     };
-    if (rating >= 2 && categories.length === 0) result = data.filter(element =>  Math.round(element.rating) >= rating);
-    if (categories.length > 0 && rating < 2)  result = filterByCategorie(data)
-    if (categories.length > 0 && rating >= 2) result = data.filter(element => Math.round(element.rating) >= rating && filterByCategorie(data));
+    if (searchParams.get('rating') >= 2 && categories.length === 0) result = data.filter(element =>  Math.round(element.rating) >= searchParams.get('rating'));
+    if (categories.length > 0 && searchParams.get('rating') < 2)  result = filterByCategorie(data)
+    if (categories.length > 0 && searchParams.get('rating') >= 2) result = data.filter(element => Math.round(element.rating) >= searchParams.get('rating') && filterByCategorie(data));
     return result
   };
 
@@ -102,7 +102,7 @@ const RestaurantList = ({ categories, rating }) => {
         </div>
       </header>
       <main className="restaurant-list-main">
-        {renderList(data, filteredData(rating, categories))}
+        {renderList(data, filteredData(categories))}
       </main>
       <footer className="restaurant-list-footer">
         <div className="restaurant-list-footer-page-button">

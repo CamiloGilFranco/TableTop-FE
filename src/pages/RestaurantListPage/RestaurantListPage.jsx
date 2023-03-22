@@ -10,7 +10,6 @@ import "./RestaurantListPage.css";
 const RestaurantListPage = () => {
   const [inputValue, setInputValue] = useState('')
   const [categories, setCategories] = useState([]);
-  const [rating, setRating] = useState(0);
 
 
   return (
@@ -24,12 +23,9 @@ const RestaurantListPage = () => {
         <RestaurantFilterComponent
           categories={categories}
           setCategories={setCategories}
-          rating={rating}
-          setRating={setRating}
         />
         <RestaurantList 
           categories={categories}
-          rating={rating}
           inputValue={inputValue}
         />
       </div>

@@ -185,7 +185,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
       setSearchParams({
         searchTerm: searchParams.get('searchTerm'),
-        cuisine: event.target.name,
+        cuisine: searchParams.get('cuisine') + event.target.name,
         rating: searchParams.get('rating')
       })
     } else {
@@ -199,7 +199,6 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   }
 
   const handleRatingChange = (event) =>{
-    setRating(parseInt(event.target.id));
     setRadioSelected(event.target.id);
     setSearchParams({
       searchTerm: searchParams.get('searchTerm'),
@@ -214,13 +213,20 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   const handleClearCuisine = () => {
     setCategories([]);
     setCheckBoxSelected([]);
-    setSearchParams({});
+    setSearchParams({
+      searchTerm: searchParams.get('searchTerm'),
+      cuisine: null,
+      rating: searchParams.get('rating')
+    });
 
   }
   const handleClearRating = () => {
-    setRating(0);
     setRadioSelected('');
-    setSearchParams({});
+    setSearchParams({
+      searchTerm: searchParams.get('searchTerm'),
+      cuisine: searchParams.get('cuisine'),
+      rating: null
+    });
   }
   
   return(
