@@ -19,16 +19,23 @@
 }
 
 .restaurantFilterDesktop {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
   background-color: #fff;
   padding: 10px;
-  width: 31%;
+  gap: 10px;
+  width: 85%;
+  box-shadow: 10px 10px 100px black;
 }
 @media (min-width: 765px) {
   .restaurantFilterDesktop {
     display: flex;
-    flex-direction: column;
+    position: static;
+    z-index: 0;
     gap: 10px;
+    box-shadow: none;
   }
 }
 
@@ -87,4 +94,12 @@
   .restaurantFilterMobile {
     display: none;
   }
+}
+
+.Filter__none {
+  display: none;
+}
+
+.restaurantFilter_clear {
+  cursor: pointer;
 }/*# sourceMappingURL=RestaurantFilterComponent.css.map */

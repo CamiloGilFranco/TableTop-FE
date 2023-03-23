@@ -18,14 +18,21 @@ $restaurantFilter__white: #fff;
     margin-bottom: 5px;
 }
 .restaurantFilterDesktop{
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
     background-color: $restaurantFilter__white;
     padding: 10px;
-    width: 31%;
+    gap: 10px;
+    width: 85%;
+    box-shadow: 10px 10px 100px black;
     @media (min-width:765px) {
         display: flex;
-        flex-direction: column;
+        position: static;
+        z-index: 0;
         gap: 10px;
+        box-shadow: none;
     }
 }
 .restaurantFilter__SearchBar{
@@ -76,4 +83,10 @@ $restaurantFilter__white: #fff;
     @media (min-width:765px) {
         display: none;
     }
+}
+.Filter__none{
+    display: none;
+}
+.restaurantFilter_clear {
+    cursor: pointer;
 }

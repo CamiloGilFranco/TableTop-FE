@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Rogelio Perez", 
+    "restaurantAdmin": "false",
+    "generalAdmin": "true"
+  },
+  {
+    "id": 2,
+    "name": "Aureliano Buendia", 
+    "restaurantAdmin": "true",
+    "generalAdmin": "false"
+  }, 
+  {
+    "id": 3,
+    "name": "Marc Stein", 
+    "restaurantAdmin": "false",
+    "generalAdmin": "true"
+  }, 
+  {
+    "id": 4,
+    "name": "Anya Forger", 
+    "restaurantAdmin": "true",
+    "generalAdmin": "false"
+  }, 
+  {
+    "id": 5,
+    "name": "Leo Davinci", 
+    "restaurantAdmin": "true",
+    "generalAdmin": "false"
+  }
+]

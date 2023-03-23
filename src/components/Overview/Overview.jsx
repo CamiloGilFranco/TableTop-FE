@@ -1,49 +1,112 @@
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import "./Overview.css";
 
-const Overview = ({ hiddenOverview }) => {
+const Overview = ({
+  phoneNumber,
+  categories,
+  schedule,
+  address,
+  facilities,
+}) => {
+  const language = useSelector(state=> state.languageReducer);
+  const signInPhone = () => {
+    switch (language) {
+      case 'en':
+        return en.signInPhone
+      case 'es':
+        return es.signInPhone
+      default:
+        return en.signInPhone
+    }
+  }
+  const filterCuisine = () => {
+    switch (language) {
+      case 'en':
+        return en.filterCuisine
+      case 'es':
+        return es.filterCuisine
+      default:
+        return en.filterCuisine
+    }
+  }
+  const signInAddress = () => {
+    switch (language) {
+      case 'en':
+        return en.signInAddress
+      case 'es':
+        return es.signInAddress
+      default:
+        return en.signInAddress
+    }
+  }
+  const overViewSchedule = () => {
+    switch (language) {
+      case 'en':
+        return en.overViewSchedule
+      case 'es':
+        return es.overViewSchedule
+      default:
+        return en.overViewSchedule
+    }
+  }
+  const overviewFacilities = () => {
+    switch (language) {
+      case 'en':
+        return en.overviewFacilities
+      case 'es':
+        return es.overviewFacilities
+      default:
+        return en.overviewFacilities
+    }
+  }
   return (
-    <div className={`restaurant-view-overview ${hiddenOverview}`}>
+    <div className="restaurant-view-overview">
       <div className="restaurant-view-overview-category">
         <span className="restaurant-view-overview-category-title">
-          Phone Number: 1234567890
+          {signInPhone()}:
         </span>
+        <ul className="restaurant-view-overview-category-items">
+          {phoneNumber.map((element, index) => (
+            <li key={index}>{element}</li>
+          ))}
+        </ul>
       </div>
       <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">Cuisine</span>
+        <span className="restaurant-view-overview-category-title">{filterCuisine()}</span>
         <ul className="restaurant-view-overview-category-items">
-          <li>Fast Food</li>
-          <li>Café</li>
-          <li>Italian</li>
+          {categories.map((element, index) => (
+            <li key={index}>{element}</li>
+          ))}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
         <span className="restaurant-view-overview-category-title">
-          Opening Hours
+          {overViewSchedule()}
         </span>
         <ul className="restaurant-view-overview-category-items">
-          <li>Monday To Friday: 11:00AM To 11:00PM</li>
-          <li>Saturday & Sunday: 10:00 To 12:00PM</li>
+          {schedule.map((element, index) => (
+            <li key={index}>{element}</li>
+          ))}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">Address</span>
+        <span className="restaurant-view-overview-category-title">{signInAddress()}</span>
         <ul className="restaurant-view-overview-category-items">
-          <li>Fake-St 123</li>
-          <li>real-St 321</li>
+          {address.map((element, index) => (
+            <li key={index}>{element}</li>
+          ))}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
         <span className="restaurant-view-overview-category-title">
-          Facility
+          {overviewFacilities()}
         </span>
         <ul className="restaurant-view-overview-category-items">
-          <li>card Accepted</li>
-          <li>Parking Available</li>
-          <li>Banquet Area</li>
-          <li>Home Delivery</li>
-          <li>Table Booking</li>
-          <li>Available For Events</li>
-          <li>Game Zone</li>
+          {facilities.map((element, index) => (
+            <li key={index}>{element}</li>
+          ))}
         </ul>
       </div>
     </div>

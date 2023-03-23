@@ -1,27 +1,53 @@
+import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import "./RestaurantCardComponent.css";
-import restaurant1 from "./assets/image-card-restaurant.png";
 
-const RestaurantCardComponent = () => {
+const RestaurantCardComponent = ({
+  picture,
+  restaurantName,
+  rating,
+  categories,
+  schedule,
+  dishesFrom,
+}) => {
+  const navigate = useNavigate();
+  const language = useSelector(state=> state.languageReducer);
+  const cardDishesFrom = () => {
+    switch (language) {
+      case 'en':
+        return en.cardDishesFrom
+      case 'es':
+        return es.cardDishesFrom
+      default:
+        return en.cardDishesFrom
+    }
+  }
+
+  const handleClick = () => {
+    const route = restaurantName.replace(/\s+/g, "");
+    navigate(`/${route}`);
+  };
+
   return (
-    <figure className="restaurant-card-component">
+    <figure className="restaurant-card-component" onClick={handleClick}>
       <div className="restaurant-card-component-image-container">
-        <img
-          src={restaurant1}
-          alt=""
-          className="restaurant-card-component-image"
-        />
+        <img src={picture} alt="" className="restaurant-card-component-image" />
       </div>
       <figcaption className="restaurant-card-component-info">
         <div className="restaurant-card-component-info-first-line">
           <span className="restaurant-card-component-title">
-            Italian Restro
+            {restaurantName}
           </span>
-          <span className="restaurant-card-component-rating">4.5 ⭐</span>
+          <span className="restaurant-card-component-rating">{rating} ⭐</span>
         </div>
         <div className="restaurant-card-component-info-list">
-          <p>- Fast Food, Cafe, Italian</p>
-          <p>- 11:30am - 11:30pm (Mon-Sun)</p>
-          <p>- Cost $25 For Two</p>
+          <span>- {categories[0]}</span>
+          <span>, {categories[1]}</span>
+          <span>, {categories[2]}</span>
+          <p>- {schedule}</p>
+          <p>- {cardDishesFrom()} ${dishesFrom}</p>
         </div>
       </figcaption>
     </figure>

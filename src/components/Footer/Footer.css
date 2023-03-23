@@ -11,6 +11,9 @@
     height: auto;
   }
 }
+.footer a {
+  cursor: pointer;
+}
 
 .general-footer {
   display: flex;

@@ -1,14 +1,3 @@
-.restaurantList__page{
-    .restaurant-list{
-        .restaurant-list-header{
-            display: none;
-            @media (min-width:765px) {
-                display: flex;
-            }
-        }
-    }
-}
-
 .restaurantList__flex{
     @media (min-width:765px) {
         display: flex;
