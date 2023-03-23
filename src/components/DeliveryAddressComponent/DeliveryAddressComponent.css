@@ -1,73 +1,85 @@
 .container {
     margin: 20px;
-}
-
-.save-info {
+    box-shadow: 0 2px 5px 1px lightgrey;
+   
+  }
+  
+  .save-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.save-info__button {
+    padding: 10px;
+  }
+  
+  .save-info__button {
     height: 2rem;
     background-color: white;
     border: 1px #AAAAAA solid;
-}
-.main-box {
+  }
+  .main-box {
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
     gap: 20px;
    
     
-}
-.personal-info {
+  }
+  .personal-info {
     border: 1px #AAAAAA solid;
     width: 335px;
-}
-.content {
+  }
+  .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 20px;
     
-}
-
-.content__button {
+  }
+  
+  .content__button {
     height: 2rem;
     background-color: green;
     color: white;
     border-radius: .5rem;
     padding: 0 20px;
     border: none;
-}
-.personal-info-data {
+  }
+  .personal-info-data {
     margin-left: 20px;
     color: #626060db;
-}
-
-.buttons {
+  }
+  
+  .buttons {
     display: flex;
     justify-content: space-between;
     border-top: 1px #AAAAAA solid;
     margin: 20px;
     padding: 10px;
-}
-
-.button--green {
+  }
+  
+  .button--green {
     width: 45%;
     border-radius: .3rem;
     background-color: #E1EDE0;
     border: none;
     height: 2rem;
     color: green;
-
-}
-.button--red {
+  
+  }
+  .button--red {
     width: 45%;
     border-radius: .3rem;
     background-color: #FFE3E1;
     border: none;
     height: 2rem;
     color: red;
+  
+  }
 
+  @media(min-width: 768px){
+    .container {      
+      margin: 20px;
+      box-shadow: 0 2px 5px 1px lightgrey;
+      padding: 20px;
+  }
 }

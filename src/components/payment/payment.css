@@ -1,29 +1,21 @@
-.target {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
-
-.content {
-    border: 5px #F6F8FA solid;
-    width: 60%;
+.payment-container {
+    box-shadow: 0 2px 5px 1px lightgrey;
+    margin: 20px;
     padding: 0 20px;
     padding-bottom: 10px;
 }
 
-.init-title {
+.payment-container__init-title {
     font-size: 18px;
 }
 
-.container {
+.payment-content {
     border: 2px #F6F8FA solid;
     font-size: 15px;
     
 }
-.container__header {
+.payment-content__header {
     display: flex;
     align-items: center;
     background-color: #F9F9F9;
@@ -31,40 +23,42 @@
     border-bottom: 2px #F0F0F0 solid;
 
 }
-.container__header--icon {
+.payment-content__header--icon {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.constainer__header--paragraph {
+.payment-content__header--paragraph {
     padding-left: 5px;
     font-weight: 400;
 }
-.card-info {
+.payment-form {
     padding: 0 10px;
     margin-top: 10px;
     
 }
-
-.card-info__number {
-    width: 99%;
-    border: 2px #F0F0F0 solid;
-    
-}
-.card-paragraph {
+.payment-form__paragraph {
     margin-bottom: 0;
     margin-top: 10px;
 }
-.card {
+.payment-form__input-name {
+    width: 100%;
+    border: 2px #F0F0F0 solid;
+}
+.payment-card-info {
     display: flex;
     border: 2px #F0F0F0 solid;
 
 }
-.card__number {
+.payment-card-info__number {
     width: 80vw;
     border: none;
 }
-.form-card {
+.payment-card-info__images {
+    width: 5rem;
+    padding-right: 2px;
+}
+.payment__form-card {
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
@@ -72,7 +66,7 @@
     
 }
 
-.form-card__imput {
+.form-card__input {
     width: 15rem;
     border: 2px #F0F0F0 solid;
 }
@@ -83,14 +77,14 @@
     padding-top: 2rem;
     padding-bottom: 10px;    
 }
-.payment {
+.button-payment__make-pay {
     background-color: #EF3F3F;
     color: white;
     border: none;
     width: 8rem;
     height: 2rem;
 }
-.type {
+.payment-form-way-pay {
     margin-top: 10px;
     display: flex;
     flex-direction: column;  
@@ -105,7 +99,7 @@
 .type-payment-text {
     margin-left: 10px;
 } 
-.card-images {
-    width: 5rem;
-    padding-right: 2px;
+
+@media(min-width: 768px){
+    
 }
