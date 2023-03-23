@@ -1,6 +1,10 @@
 import React from "react";
 
-const DeliveryAddressBox = ({el}) => {
+const DeliveryAddressBox = ({el, setData, data, index}) => {
+
+  const handleDelete = (index) => {
+    setData(data.filter((item, i) => i !== index))
+  }
   return (
     <section className="personal-info">
       <div className="content">
@@ -13,7 +17,7 @@ const DeliveryAddressBox = ({el}) => {
       <p className="personal-info-data">{`Mobile: ${el.mobileNumber}`}</p>
       <div className="buttons">
         <button className="button--green">Edit</button>
-        <button className="button--red">Remove</button>
+        <button className="button--red" onClick={(index) => handleDelete(index)}>Remove</button>
       </div>
     </section>
   );

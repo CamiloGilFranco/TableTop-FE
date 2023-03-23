@@ -11,22 +11,34 @@
   object-fit: cover;
 
 }
+.checkout-container__aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 50px;
+  padding: 20px;
+}
 
 @media (min-width:700px){
   .checkout-container {
-    margin: 0;
-    width: 100vw;
+   margin-top: 30px;  
+    width: 100%;
+    padding: 0 5rem;
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
     align-items: center;
-    gap: 20px;
   }
   .checkout-container__aside {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+    padding-bottom: 50px;
+    
   }
   .checkout-container__body {
     width: 70%;

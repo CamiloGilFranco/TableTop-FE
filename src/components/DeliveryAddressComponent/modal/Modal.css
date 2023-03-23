@@ -19,10 +19,10 @@
   position: relative;
   min-width: 320px;
   max-width: 480px;
-  min-height: 200px;
-  min-height: 600px;
+  min-height: 50px;
   overflow-y: auto;
   background-color: #fff;
+  border-radius: .5rem;
 }
 .modal-close {
   position: absolute;

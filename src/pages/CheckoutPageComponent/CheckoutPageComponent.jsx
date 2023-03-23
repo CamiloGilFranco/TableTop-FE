@@ -10,8 +10,7 @@ import data from './dataAddress.json'
 
 const CheckoutPageComponent = () => {
   return (
-    <>
-      <div>
+      <div className="checkout-page-content">
         <div>
           <HeaderComponent />
         </div>
@@ -28,11 +27,7 @@ const CheckoutPageComponent = () => {
             <Payment />
           </div>
         </div>
-        <div>
-          <Footer />
-        </div>
       </div>
-    </>
   );
 };
 
