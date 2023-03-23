@@ -62,5 +62,8 @@ $mobileNavBar__black: #272727;
     a{
         text-decoration: none;
         color: $mobileNavBar__black;
+        :hover{
+            color:  #ef3f3f;
+        }
     }
 }

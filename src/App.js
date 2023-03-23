@@ -12,17 +12,17 @@ import GeneralAdminView from "./pages/GeneralAdminView/GeneralAdminView";
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<HomePageComponent />} />
-        <Route path="/registro" element={<SignInPage />} />
-        <Route path="/restaurant" element={<RestaurantListPage />}/>
-        <Route path=":restaurantPath" element={<RestaurantView />} />
-        <Route path="/order" element={<OrderPage />} />
-        {/* <Route path="/" element={}/> */}
-        <Route path="/admin" element={<RestaurantAdminView/>}/>
-        <Route path="/general-admin" element={<GeneralAdminView/>}/>
-        <Route path="*" element={<NotFoundPageComponent />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePageComponent />} />
+          <Route path="/register" element={<SignInPage />} />
+          <Route path="/restaurant" element={<RestaurantListPage />}/>
+          <Route path=":restaurantPath" element={<RestaurantView />} />
+          <Route path="/order" element={<OrderPage />} />
+          {/* <Route path="/" element={}/> */}
+          <Route path="/admin" element={<RestaurantAdminView/>}/>
+          <Route path="/general-admin" element={<GeneralAdminView/>}/>
+          <Route path="*" element={<NotFoundPageComponent />} />
+        </Routes>
     </div>
   );
 }

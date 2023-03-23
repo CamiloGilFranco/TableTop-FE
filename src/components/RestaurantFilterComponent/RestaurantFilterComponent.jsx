@@ -1,17 +1,173 @@
-import './RestaurantFilterComponent.css'
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
+import './RestaurantFilterComponent.css';
 import { useEffect } from 'react';
 import { BsFillFilterSquareFill } from 'react-icons/bs';
 import { useState } from 'react';
-import { AiOutlineMinus } from 'react-icons/ai';
 import { ImInfo } from 'react-icons/im'
+import { useSearchParams } from 'react-router-dom'
+
 
 const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, data }) =>{
+  const [searchParams, setSearchParams] = useSearchParams({});
 
   const [mobileFilter, setMobileFilter] = useState('');
   const [radioSelected, setRadioSelected] = useState('');
   const [checkBoxSelected, setCheckBoxSelected] = useState([]);
 
-  
+  const language = useSelector(state=> state.languageReducer);
+  const filterTitle = () => {
+    switch (language) {
+      case 'en':
+        return en.filterTitle
+      case 'es':
+        return es.filterTitle
+      default:
+        return en.filterTitle
+    }
+  }
+  const filterCuisine = () => {
+    switch (language) {
+      case 'en':
+        return en.filterCuisine
+      case 'es':
+        return es.filterCuisine
+      default:
+        return en.filterCuisine
+    }
+  }
+  const filterClear = () => {
+    switch (language) {
+      case 'en':
+        return en.filterClear
+      case 'es':
+        return es.filterClear
+      default:
+        return en.filterClear
+    }
+  }
+  const filterAsian = () => {
+    switch (language) {
+      case 'en':
+        return en.filterAsian
+      case 'es':
+        return es.filterAsian
+      default:
+        return en.filterAsian
+    }
+  }
+  const filterFastFood = () => {
+    switch (language) {
+      case 'en':
+        return en.filterFastFood
+      case 'es':
+        return es.filterFastFood
+      default:
+        return en.filterFastFood
+    }
+  }
+  const filterItalian = () => {
+    switch (language) {
+      case 'en':
+        return en.filterItalian
+      case 'es':
+        return es.filterItalian
+      default:
+        return en.filterItalian
+    }
+  }
+  const filterMexican = () => {
+    switch (language) {
+      case 'en':
+        return en.filterMexican
+      case 'es':
+        return es.filterMexican
+      default:
+        return en.filterMexican
+    }
+  }
+  const filterBreakfast = () => {
+    switch (language) {
+      case 'en':
+        return en.filterBreakfast
+      case 'es':
+        return es.filterBreakfast
+      default:
+        return en.filterBreakfast
+    }
+  }
+  const filterTipical = () => {
+    switch (language) {
+      case 'en':
+        return en.filterTipical
+      case 'es':
+        return es.filterTipical
+      default:
+        return en.filterTipical
+    }
+  }
+  const filterDessert = () => {
+    switch (language) {
+      case 'en':
+        return en.filterDessert
+      case 'es':
+        return es.filterDessert
+      default:
+        return en.filterDessert
+    }
+  }
+  const filterVeg = () => {
+    switch (language) {
+      case 'en':
+        return en.filterVeg
+      case 'es':
+        return es.filterVeg
+      default:
+        return en.filterVeg
+    }
+  }
+  const filterCoffee = () => {
+    switch (language) {
+      case 'en':
+        return en.filterCoffee
+      case 'es':
+        return es.filterCoffee
+      default:
+        return en.filterCoffee
+    }
+  }
+  const filterRating = () => {
+    switch (language) {
+      case 'en':
+        return en.filterRating
+      case 'es':
+        return es.filterRating
+      default:
+        return en.filterRating
+    }
+  }
+  const filterHelp = () => {
+    switch (language) {
+      case 'en':
+        return en.filterHelp
+      case 'es':
+        return es.filterHelp
+      default:
+        return en.filterHelp
+    }
+  }
+  const filterShcedule = () => {
+    switch (language) {
+      case 'en':
+        return en.filterShcedule
+      case 'es':
+        return es.filterShcedule
+      default:
+        return en.filterShcedule
+    }
+  }
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 765) {
@@ -24,10 +180,14 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   const handleCategoriesChange = (event) =>{
     if (event.target.checked) {
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
+      setSearchParams({
+        searchTerm: searchParams.get('searchTerm'),
+        cuisine: [event.target.name].concat(searchParams.getAll('cuisine')),
+        rating: searchParams.get('rating')
+      })
     } else {
       setCheckBoxSelected(checkBoxSelected.filter(value => value !== checkBoxSelected));
     }
@@ -39,8 +199,12 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   }
 
   const handleRatingChange = (event) =>{
-    setRating(parseInt(event.target.id));
-    setRadioSelected(event.target.id)
+    setRadioSelected(event.target.id);
+    setSearchParams({
+      searchTerm: searchParams.get('searchTerm'),
+      cuisine: searchParams.get('cuisine'),
+      rating: event.target.id
+    });
   }
   const handleListClick = () => {
     mobileFilter === 'Filter__none'? setMobileFilter('') : setMobileFilter('Filter__none')
@@ -49,29 +213,38 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
   const handleClearCuisine = () => {
     setCategories([]);
     setCheckBoxSelected([]);
+    setSearchParams({
+      searchTerm: searchParams.get('searchTerm'),
+      cuisine: [],
+      rating: searchParams.get('rating')
+    });
+
   }
-  const handleClearReating = () => {
-    setRating(0);
+  const handleClearRating = () => {
     setRadioSelected('');
+    setSearchParams({
+      searchTerm: searchParams.get('searchTerm'),
+      cuisine: searchParams.get('cuisine'),
+      rating: null
+    });
   }
-  
   return(
     <section className='restaurantFilter__container'>
       <section className='restaurantFilterMobile'>
         <section className='restaurantFilter__filter'>
-          <p>Latest Filter</p>
+          <p>{filterTitle()}</p>
           <BsFillFilterSquareFill onClick={handleListClick}/>
         </section>
       </section>
   
       <section className={`restaurantFilterDesktop ${mobileFilter}`} >
          <section className='restaurantFilter__filter'>
-           <p>Latest Filter</p>
+           <p>{filterTitle()}</p>
          </section>
           <article>
             <section className='restaurantFilter__filter'>
-              <p>Cuisine</p>
-              <p onClick={handleClearCuisine} className='restaurantFilter_clear'>clear filter</p>
+              <p>{filterCuisine()}</p>
+              <p onClick={handleClearCuisine} className='restaurantFilter_clear'>{filterClear()}</p>
             </section>
               <section className='popularFilter'>
                 <label>
@@ -83,7 +256,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('asian')}
                     onChange={handleCategoriesChange}
                   />
-                  Asian
+                  {filterAsian()}
                 </label>
                 <label>
                   <input 
@@ -94,7 +267,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('fastfood')}
                     onChange={handleCategoriesChange}
                   />
-                  Fast Food
+                  {filterFastFood()}
                 </label>
                 <label>
                   <input 
@@ -105,7 +278,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('italian')}
                     onChange={handleCategoriesChange}
                   />
-                  Italian
+                  {filterItalian()}
                 </label>
                 <label>
                   <input 
@@ -116,7 +289,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('mexican')}
                     onChange={handleCategoriesChange}
                   />
-                  Mexican
+                  {filterMexican()}
                 </label>
                 <label>
                   <input 
@@ -127,7 +300,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('breakfast')}
                     onChange={handleCategoriesChange}
                   />
-                  Breakfast
+                  {filterBreakfast()}
                 </label>
                 <label>
                   <input 
@@ -138,7 +311,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('tipical')}
                     onChange={handleCategoriesChange}
                   />
-                  Tipical
+                  {filterTipical()}
                 </label>
                 <label>
                   <input 
@@ -149,7 +322,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('dessert')}
                     onChange={handleCategoriesChange}
                   />
-                  Dessert
+                  {filterDessert()}
                 </label>
                 <label>
                   <input 
@@ -160,7 +333,7 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('vegetarian')}
                     onChange={handleCategoriesChange}
                   />
-                  Vegetarian
+                  {filterVeg()}
                 </label>
                 <label>
                   <input 
@@ -182,14 +355,14 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
                     checked={checkBoxSelected.includes('coffee')}
                     onChange={handleCategoriesChange}
                   />
-                  Coffee
+                  {filterCoffee()}
                 </label>
               </section>
             </article>
             <article>
               <section className='restaurantFilter__filter'>
-                <p>Star Category</p>
-                <p onClick={handleClearReating} className='restaurantFilter_clear'>clear filter</p>
+                <p>{filterRating()}</p>
+                <p onClick={handleClearRating} className='restaurantFilter_clear'>{filterClear()}</p>
               </section>
               <section className='popularFilter'>
                 <label for='5'>
@@ -240,10 +413,10 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
             </article>
             <div className='helpButton'>
               <ImInfo/>
-              <b>Need help</b>
+              <b>{filterHelp()}</b>
             </div>
             <h3>856-215-211</h3>
-            <span> Monday to Friday 9:00 AM - 7:30 PM</span>
+            <span>{filterShcedule()} 9:00 AM - 7:30 PM</span>
       </section>
     </section>
   )

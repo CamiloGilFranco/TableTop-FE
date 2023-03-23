@@ -1,31 +1,48 @@
-import "./HeaderComponent.css";
-import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
 import MobileNavBar from "../MobileNavBar/MobileNavBar";
 import LogInComponent from "../LogInComponent/LogInComponent";
-import { HiOutlineViewList } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.svg";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { LANGUAGE_SWITCH } from "../../store/reducers/Language.reducer";
+import { en } from "../../assets/languages/languajeEN";
+import { es } from "../../assets/languages/languageES";
+import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
+import { HiOutlineViewList } from "react-icons/hi";
+import "./HeaderComponent.css";
+import logo from "../../assets/logo.svg";
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
+  const language = useSelector(state=> state.languageReducer);
+  const dispatch = useDispatch();
+
 
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
   const [location, setLocation] = useState("bogota");
   const [currency, setCurrency] = useState("USD");
-  const [lenguage, setLenguage] = useState("english");
+
+  const restaurantHeader = () => {
+    switch (language) {
+      case 'en':
+        return en.headerRestaurant;
+      case 'es':
+        return es.headerRestaurant;
+      default:
+        return en.headerRestaurant;
+    }
+  }
 
   const handleClickList = () => {
     setMobileShow("");
   };
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
   };
-  const handleCurrencyChange = (event) => {
-    setCurrency(event.target.value);
+  const handleCurrencyChange = (e) => {
+    setCurrency(e.target.value);
   };
-  const handleLenguageChange = (event) => {
-    setLenguage(event.target.value);
+  const handleLanguageChange = (e) => {
+    dispatch({ type: LANGUAGE_SWITCH ,  payload: (e.target.value)});
   };
 
   return (
@@ -45,7 +62,7 @@ const HeaderComponent = () => {
         </span>
         <span className="header__restaurantButton">
           <NavLink to={"/restaurant"}>
-            <b className="header__text">RESTAURANTS</b>
+            <b className="header__text">{restaurantHeader()}</b>
           </NavLink>
         </span>
         <span className="header__pagesButton">
@@ -63,12 +80,10 @@ const HeaderComponent = () => {
           <select className="currencyList" onChange={handleCurrencyChange}>
             <option value={"USD"}>USD</option>
             <option value={"COP"}>COP</option>
-            <option value={"PEN"}>PEN</option>
-            <option value={"MXN"}>MXN</option>
           </select>
-          <select className="lenguageList" onChange={handleLenguageChange}>
-            <option value={"english"}>EN</option>
-            <option value={"spanish"}>ES</option>
+          <select className="languageList" onChange={handleLanguageChange}>
+            <option value={"en"}>EN</option>
+            <option value={"es"}>ES</option>
           </select>
         </section>
         <HiOutlineViewList

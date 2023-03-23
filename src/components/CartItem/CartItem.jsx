@@ -1,13 +1,38 @@
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import "./CartItem.css";
-import { useSelector } from "react-redux";
 import SingleDishItem from "./SingleDishItem";
 
 const CartItem = () => {
+  const language = useSelector(state=> state.languageReducer);
   const itemsStore = useSelector((state) => state.cartReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
+
+  const cartFinishWarning = () => {
+    switch (language) {
+      case 'en':
+        return en.cartFinishWarning;
+      case 'es':
+        return es.cartFinishWarning;
+      default:
+        return en.cartFinishWarning;
+    }
+  }
+  const cartPlaceOrder = () => {
+    switch (language) {
+      case 'en':
+        return en.cartPlaceOrder;
+      case 'es':
+        return es.cartPlaceOrder;
+      default:
+        return en.cartPlaceOrder;
+    }
+  }
+
+
   return (
     <div className="cart-item">
-      <span className="cart-item-header">Cart Items:</span>
       {itemsStore.map((item, index) => {
         return (
           <SingleDishItem
@@ -19,7 +44,6 @@ const CartItem = () => {
           />
         );
       })}
-
       <div className="cart-item-finish">
         <div className="cart-item-finish-subtotal-container">
           <span className="cart-item-finish-subtotal-text">Subtotal</span>
@@ -28,9 +52,9 @@ const CartItem = () => {
           </span>
         </div>
         <p className="cart-item-finish-waring">
-          delivery changes may apply to your order
+          {cartFinishWarning()}
         </p>
-        <button className="cart-item-finish-button">PLACE ORDER</button>
+        <button className="cart-item-finish-button">{cartPlaceOrder()}</button>
       </div>
     </div>
   );

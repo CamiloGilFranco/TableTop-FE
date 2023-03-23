@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import { useState } from "react";
 import "./ReserveForm.css";
 
@@ -10,6 +13,97 @@ const [reserveForm, setReserveForm] = useState({
   dateAndTime: '', 
   user: ''
 })
+const language = useSelector(state=> state.languageReducer);
+const signInFirstName = () => {
+  switch (language) {
+    case 'en':
+      return en.signInFirstName
+    case 'es':
+      return es.signInFirstName
+    default:
+      return en.signInFirstName
+  }
+}
+const signInFirstNameError = () => {
+  switch (language) {
+    case 'en':
+      return en.signInFirstNameError
+    case 'es':
+      return es.signInFirstNameError
+    default:
+      return en.signInFirstNameError
+  }
+}
+const signInLastName = () => {
+  switch (language) {
+    case 'en':
+      return en.signInLastName
+    case 'es':
+      return es.signInLastName
+    default:
+      return en.signInLastName
+  }
+}
+const signInLastNameError = () => {
+  switch (language) {
+    case 'en':
+      return en.signInLastNameError
+    case 'es':
+      return es.signInLastNameError
+    default:
+      return en.signInLastNameError
+  }
+}
+const signInEmail = () => {
+  switch (language) {
+    case 'en':
+      return en.signInEmail
+    case 'es':
+      return es.signInEmail
+    default:
+      return en.signInEmail
+  }
+}
+const signInEmailError = () => {
+  switch (language) {
+    case 'en':
+      return en.signInEmailError
+    case 'es':
+      return es.signInEmailError
+    default:
+      return en.signInEmailError
+  }
+}
+const signInPhone = () => {
+  switch (language) {
+    case 'en':
+      return en.signInPhone
+    case 'es':
+      return es.signInPhone
+    default:
+      return en.signInPhone
+  }
+}
+const signInPhoneError = () => {
+  switch (language) {
+    case 'en':
+      return en.signInPhoneError
+    case 'es':
+      return es.signInPhoneError
+    default:
+      return en.signInPhoneError
+  }
+}
+const bookingButton = () => {
+  switch (language) {
+    case 'en':
+      return en.bookingButton
+    case 'es':
+      return es.bookingButton
+    default:
+      return en.bookingButton
+  }
+}
 
 const [firstNameError, setFirstNameError] = useState(false);
 const [lastNameError, setLastNameError] = useState(false);
@@ -65,7 +159,7 @@ const handleReservationSumbit = (e) => {
       <div className="reserve-form-input-container">
         <input
           type="text"
-          placeholder="First Name"
+          placeholder={signInFirstName()}
           className="reserve-form-input"
           required
           value={reserveForm.firstName}
@@ -74,14 +168,14 @@ const handleReservationSumbit = (e) => {
           }}
         />
         {firstNameError? (
-          <p className="reserveForm__fieldError"> * Escribe un nombre valido</p>
+          <p className="reserveForm__fieldError">{signInFirstNameError()}</p>
         ): 
         (
           ''
           )}
         <input
           type="text"
-          placeholder="Last Name"
+          placeholder={signInLastName()}
           className="reserve-form-input"
           required
           value={reserveForm.lastName}
@@ -90,14 +184,14 @@ const handleReservationSumbit = (e) => {
           }}
         />
         {lastNameError? (
-          <p className="reserveForm__fieldError"> * Escribe un apellido valido</p>
+          <p className="reserveForm__fieldError">{signInLastNameError()}</p>
         ): 
         (
           ''
           )}
         <input
           type="email"
-          placeholder="Email"
+          placeholder={signInEmail()}
           className="reserve-form-input"
           required
           value={reserveForm.email}
@@ -106,14 +200,14 @@ const handleReservationSumbit = (e) => {
           }}
         />
         {emailError? (
-          <p className="reserveForm__fieldError"> * Escribe un correo valido</p>
+          <p className="reserveForm__fieldError">{signInEmailError()}</p>
         ): 
         (
           ''
           )}
         <input
           type="tel"
-          placeholder="Phone No:"
+          placeholder={signInPhone()}
           className="reserve-form-input"
           required
           value={reserveForm.phoneNumber}
@@ -122,7 +216,7 @@ const handleReservationSumbit = (e) => {
           }}
         />
         {phoneError? (
-          <p className="reserveForm__fieldError"> * Escribe un número valido</p>
+          <p className="reserveForm__fieldError">{signInPhoneError()}</p>
         ): 
         (
           ''
@@ -133,7 +227,6 @@ const handleReservationSumbit = (e) => {
             className="reserve-form-input-date-text"
             min = {`${new Date()}`}
             max = "2023-03-31T8:30" 
-            placeholder="Choose Date & Time"
             required
             value={reserveForm.dateAndTime}
             onChange={(event) => {
@@ -152,7 +245,7 @@ const handleReservationSumbit = (e) => {
         />
       </div>
       <div className="reserve-form-button-container">
-        <input type="submit" value="SUBMIT" className="reserve-form-button" onClick={handleReservationClick}/>
+        <input type="submit" value={bookingButton()} className="reserve-form-button" onClick={handleReservationClick}/>
       </div>
     </form>
   );

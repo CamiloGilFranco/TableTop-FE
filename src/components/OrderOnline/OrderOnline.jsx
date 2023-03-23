@@ -1,6 +1,9 @@
-import "./OrderOnline.css";
+import { useSelector } from 'react-redux';
+import { es } from '../../assets/languages/languageES';
+import { en } from '../../assets/languages/languajeEN';
 import IndividualDish from "./IndividualDish";
 import { useMemo } from "react";
+import "./OrderOnline.css";
 
 const OrderOnline = ({ menu }) => {
   const render = useMemo(() => {

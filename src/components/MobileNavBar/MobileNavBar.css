@@ -66,4 +66,7 @@
 .mobileNavBar__title a {
   text-decoration: none;
   color: #272727;
+}
+.mobileNavBar__title a :hover {
+  color: #ef3f3f;
 }/*# sourceMappingURL=MobileNavBar.css.map */

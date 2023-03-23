@@ -118,5 +118,12 @@
 }
 .generalAdminView__icon {
   cursor: pointer;
-  height: 25px
+  height: 25px;
+  width: 25px;
+}
+.newUser__list{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
