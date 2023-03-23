@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
 import "./CartItem.css";
-import { useSelector } from "react-redux";
 import SingleDishItem from "./SingleDishItem";
 
 const CartItem = () => {
@@ -10,9 +9,31 @@ const CartItem = () => {
   const itemsStore = useSelector((state) => state.cartReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
 
+  const cartFinishWarning = () => {
+    switch (language) {
+      case 'en':
+        return en.cartFinishWarning;
+      case 'es':
+        return es.cartFinishWarning;
+      default:
+        return en.cartFinishWarning;
+    }
+  }
+  const cartPlaceOrder = () => {
+    switch (language) {
+      case 'en':
+        return en.cartPlaceOrder;
+      case 'es':
+        return es.cartPlaceOrder;
+      default:
+        return en.cartPlaceOrder;
+    }
+  }
+
+
   return (
     <div className="cart-item">
- itemsStore.map((item, index) => {
+      {itemsStore.map((item, index) => {
         return (
           <SingleDishItem
             key={index}
