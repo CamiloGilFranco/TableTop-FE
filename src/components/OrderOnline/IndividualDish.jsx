@@ -1,19 +1,31 @@
-const IndividualDish = () => {
+import { useDispatch } from "react-redux";
+import {
+  CartIncrementAction,
+  addSubtotalAction,
+} from "../../store/actions/cart.action.js";
+const IndividualDish = ({ title, description, price }) => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(CartIncrementAction(title, price));
+    dispatch(addSubtotalAction(price));
+  };
   return (
     <div className="restaurant-view-individual-dish">
       <div className="restaurant-view-individual-dish-main-line">
         <span className="restaurant-view-individual-dish-main-line-title">
-          Veg cheese Quesadillas
+          {title}
         </span>
-        <button className="restaurant-view-individual-dish-main-line-button">
+        <button
+          className="restaurant-view-individual-dish-main-line-button"
+          onClick={handleClick}
+        >
           Add
         </button>
       </div>
       <p className="restaurant-view-individual-dish-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi
-        nobis odio eveniet eaque quam sed rem nam nemo quasi eligendi nesciun
+        {description}
       </p>
-      <span className="restaurant-view-individual-dish-price">$10.00</span>
+      <span className="restaurant-view-individual-dish-price">${price}</span>
     </div>
   );
 };
