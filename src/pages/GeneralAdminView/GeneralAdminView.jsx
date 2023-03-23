@@ -14,6 +14,7 @@ const GeneralAdminView = () => {
   const resDB = restaurantDB;
   const [errors, setErrors] = useState({});
   const [restaurants, setRestaurants] = useState(resDB);
+  const [users, setUsers] = useState(userDB);
   const [checkboxValues, setCheckboxValues] = useState({
     asian: false,
     fastfood: false,
@@ -27,7 +28,7 @@ const GeneralAdminView = () => {
     coffee: false,
   })
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const restaurantAdminTitle = () => {
     switch (language) {
       case 'en':
@@ -225,8 +226,44 @@ const GeneralAdminView = () => {
     setRestaurants(updatedRestaurant);
   }
   const newUserSumbit = (e) =>{
+    const validationErrors = {};
     e.preventDefault();
-    console.log('soltame prro');
+    const form = e.target;
+    const firstName = form.newUserFirstName.value;
+    const lastName = form.newUserLastName.value;
+    const email = form.newUserEmail.value;
+    const role = form.newUserRole.value;
+
+    const newUser = {
+      id: users.length + 1,
+      name : `${firstName} ${lastName}`,
+      role,
+      email
+    }
+    
+    const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!emailRegEx.test(email)) {
+      validationErrors.email = '* Email Error';
+    }
+    if (firstName.length < 2) {
+      validationErrors.firstName = newRestaurantFormNameError();
+    }
+    if (lastName.length < 2 ) {
+      validationErrors.lastName = newRestaurantFormNameError();
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    
+    setUsers([...users, newUser])
+    setErrors({});
+    form.reset();
+  }
+  
+  const hanldeUserDelete = (id) =>{
+    setUsers(users.filter((item) => item.id !== id));
   }
   
   return (
@@ -237,24 +274,26 @@ const GeneralAdminView = () => {
         <article className='generalAdminView__flex'>
           <span>
             <h3>{generalAdminSubtitle()}</h3>
-            <span>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''}</span>
+            <span>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} and #{users.length} users</span>
             <h3>Here you can see all the users</h3>
             <form className='generalAdminView__form' onSubmit={newUserSumbit}>
               <h3>Here you can add a new user:</h3>
               <label htmlFor='newUserFirstName'>First Name</label>
               <input 
                 type='text' 
-                name='name' 
+                name='newUserFirstName' 
                 id='newUserFirstName' 
                 placeholder='New user first name'
               />
+              {errors.firstName && <p className='restaurantAdminView__error'>{errors.firstName}</p>}
               <label htmlFor='newUserLastName'>Last Name</label>
               <input 
                 type='text' 
-                name='newUserlastName' 
+                name='newUserLastName' 
                 id='newUserLastName' 
                 placeholder='New user last name'
               />
+              {errors.lastName && <p className='restaurantAdminView__error'>{errors.lastName}</p>}
               <label htmlFor='newUserEmail'>Email</label>
               <input 
                 type='text' 
@@ -262,6 +301,7 @@ const GeneralAdminView = () => {
                 id='newUserEmail' 
                 placeholder='New user email'
               />
+              {errors.email && <p className='restaurantAdminView__error'>{errors.email}</p>}
               <label htmlFor='newUserRole'>What kind of user will this be?</label>
               <select id='newUserRole' name='newUserRole'>
                 <option value={'restaurantAdmin'}>Restaurant Admin</option>
@@ -270,10 +310,10 @@ const GeneralAdminView = () => {
               </select>
               <button type='sumbit'>Create the new User!</button>
             </form>
-              {userDB.map((item, index)=> {
+              {users.map((item, index)=> {
                 return(
                   <ul key={index}>
-                    <li>{item.name} {<AiFillDelete className='generalAdminView__icon'/>}</li>
+                    <li className='newUser__list'>#{item.id} {item.name} {<AiFillDelete className='generalAdminView__icon' onClick={()=>hanldeUserDelete(item.id)}/>}</li>
                   </ul>
                 )
               })}

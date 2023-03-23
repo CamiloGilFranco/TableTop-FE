@@ -34,7 +34,7 @@ const SignInPage = () => {
     informacionWPP: false,
   });
 
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const [correoError, setCorreoError] = useState(false);
   const [confirmarCorreoError, setConfirmarCorreoError] = useState(false);
   const [contraseñaError, setContraseñaError] = useState(false);

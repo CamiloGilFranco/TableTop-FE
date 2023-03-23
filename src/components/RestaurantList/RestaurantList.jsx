@@ -29,10 +29,13 @@ const RestaurantList = ({ categories }) => {
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
   }
-  console.log(searchParams.getAll('cuisine')) //esto remplaza categories;
   // logic for the filters 
-  const filteredData = (categories) =>{
+  const filteredData = () =>{
     let result = [];
+
+    const categories = searchParams.getAll('cuisine');
+    const rating = searchParams.get('rating');
+    console.log(categories);
 
     if (searchParams.get('searchTerm')) {
       result = data.filter((element) => element.restaurantName.replaceAll(' ', '').toLowerCase().includes(searchParams.get('searchTerm')))
@@ -45,12 +48,13 @@ const RestaurantList = ({ categories }) => {
         })
       })
     };
-    if (searchParams.get('rating') >= 2 && categories.length === 0) result = data.filter(element =>  Math.round(element.rating) >= searchParams.get('rating'));
-    if (categories.length > 0 && searchParams.get('rating') < 2)  result = filterByCategorie(data)
-    if (categories.length > 0 && searchParams.get('rating') >= 2) result = data.filter(element => Math.round(element.rating) >= searchParams.get('rating') && filterByCategorie(data));
+    if (rating >= 2 && categories.length === 0) result = data.filter(element =>  Math.round(element.rating) >= rating);
+    if (categories.length > 0 && rating < 2)  result = filterByCategorie(data)
+    if (categories.length > 0 && rating >= 2) result = data.filter(element => Math.round(element.rating) >= rating && filterByCategorie(data));
     return result
   };
-
+  
+  ;
 
   const renderList = (data, displayArr) => {
     if (displayArr.length === 0) {
@@ -102,7 +106,7 @@ const RestaurantList = ({ categories }) => {
         </div>
       </header>
       <main className="restaurant-list-main">
-        {renderList(data, filteredData(categories))}
+        {renderList(data, filteredData())}
       </main>
       <footer className="restaurant-list-footer">
         <div className="restaurant-list-footer-page-button">

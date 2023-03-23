@@ -8,7 +8,7 @@ import NotFoundImg from './assets/NotFoundImg.svg'
 import './NotFoundPageComponent.css'
 
 const NotFoundPageComponent = () => {
-  const language = useSelector(state=> state.language.code);
+  const language = useSelector(state=> state.languageReducer);
   const notFoundTitle = () => {
     switch (language) {
       case 'en':
