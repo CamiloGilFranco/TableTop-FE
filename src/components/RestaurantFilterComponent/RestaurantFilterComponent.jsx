@@ -5,11 +5,12 @@ import './RestaurantFilterComponent.css';
 import { useEffect } from 'react';
 import { BsFillFilterSquareFill } from 'react-icons/bs';
 import { useState } from 'react';
-import { ImInfo } from 'react-icons/im'
-import { useSearchParams } from 'react-router-dom'
+import { ImInfo } from 'react-icons/im';
+import { useSearchParams } from 'react-router-dom';
 
 
 const RestaurantFilterComponent = ({ categories, setCategories, rating, setRating, data }) =>{
+
   const [searchParams, setSearchParams] = useSearchParams({});
 
   const [mobileFilter, setMobileFilter] = useState('');
@@ -184,9 +185,9 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
     if (event.target.checked) {
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
       setSearchParams({
-        searchTerm: searchParams.get('searchTerm'),
+        ...searchParams.get('searchTerm') && { searchTerm: searchParams.get('searchTerm')},
         cuisine: [event.target.name].concat(searchParams.getAll('cuisine')),
-        rating: searchParams.get('rating')
+        ...searchParams.get('rating') && { rating: searchParams.get('rating')}
       })
     } else {
       setCheckBoxSelected(checkBoxSelected.filter(value => value !== checkBoxSelected));
@@ -200,9 +201,10 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
 
   const handleRatingChange = (event) =>{
     setRadioSelected(event.target.id);
+    console.log(searchParams.get('searchTerm'));
     setSearchParams({
-      searchTerm: searchParams.get('searchTerm'),
-      cuisine: searchParams.get('cuisine'),
+      ...searchParams.get('searchTerm') && { searchTerm: searchParams.get('searchTerm')},
+      ...searchParams.get('cuisine') && {cuisine: searchParams.getAll('cuisine')},
       rating: event.target.id
     });
   }
@@ -214,18 +216,18 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
     setCategories([]);
     setCheckBoxSelected([]);
     setSearchParams({
-      searchTerm: searchParams.get('searchTerm'),
-      cuisine: [],
-      rating: searchParams.get('rating')
+      ...searchParams.get('searchTerm') && { searchTerm: searchParams.get('searchTerm')},
+      ...!searchParams.get('cuisine') && {cuisine: searchParams.getAll('cuisine')},
+      ...searchParams.get('rating') && { rating: searchParams.get('rating')}
     });
-
+    console.log(searchParams.getAll('cuisine'));
   }
   const handleClearRating = () => {
     setRadioSelected('');
     setSearchParams({
-      searchTerm: searchParams.get('searchTerm'),
-      cuisine: searchParams.get('cuisine'),
-      rating: null
+      ...searchParams.get('searchTerm') && { searchTerm: searchParams.get('searchTerm')},
+      ...searchParams.get('cuisine') && {cuisine: searchParams.getAll('cuisine')},
+      ...!searchParams.get('rating') && { rating: searchParams.get('rating')}
     });
   }
   return(

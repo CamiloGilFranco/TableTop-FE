@@ -43,9 +43,9 @@ const CarrucelComponent = () => {
     <main className="home-carousel-component">
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
-          {keys.map((element) => {
+          {keys.map((element, index) => {
             return (
-              <div className="home-carousel-single-item">
+              <div key={index} className="home-carousel-single-item">
                 <div className="home-carousel-single-item-image-container">
                   <img
                     src={data[element]}

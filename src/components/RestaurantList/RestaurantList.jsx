@@ -35,8 +35,6 @@ const RestaurantList = ({ categories }) => {
 
     const categories = searchParams.getAll('cuisine');
     const rating = searchParams.get('rating');
-    console.log(categories);
-
     if (searchParams.get('searchTerm')) {
       result = data.filter((element) => element.restaurantName.replaceAll(' ', '').toLowerCase().includes(searchParams.get('searchTerm')))
     }

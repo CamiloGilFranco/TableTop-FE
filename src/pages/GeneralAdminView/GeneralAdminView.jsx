@@ -188,7 +188,7 @@ const GeneralAdminView = () => {
       restautantPathName: name.replaceAll(' ', '').toLowerCase(),
       restaurantName: name, 
       location, 
-      createdAt: [new Date().getFullYear(), new Date().getDate(), new Date().getDate()+1].join('-'),
+      createdAt: [new Date().getFullYear(), new Date().getDate(), new Date().getMonth()+1].join('-'),
     }
 
 
