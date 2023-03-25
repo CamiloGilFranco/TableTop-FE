@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom';
 
 
 const SearchbarComponent = ({ inputValue, setInputValue })=>{
@@ -54,12 +54,11 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
     if (searchText.length <= 1) {
       alert('The search must be at least 2 characters long');
     } else {
-      setInputValue(searchText);
       setSearchParams({
-        searchTerm: searchText,
-        cuisine: searchParams.get('cuisine'),
-        rating: searchParams.get('rating')
-      });
+        searchTerm: searchParams.get('searchTerm'),
+        ...searchParams.get('cuisine') && {cuisine: searchParams.getAll('cuisine')},
+        ...searchParams.get('rating') && { rating: searchParams.get('rating')}
+      })
     }
    form.reset();   
   }
