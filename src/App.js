@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePageComponent />} />
           <Route path="/register" element={<SignInPage />} />
-          <Route path="/restaurant" element={<RestaurantListPage />}/>
+          <Route path="/restaurants" element={<RestaurantListPage />}/>
           <Route path=":restaurantPath" element={<RestaurantView />} />
           <Route path="/order" element={<OrderPage />} />
           <Route path="/restaurant/checkout" element={<CheckoutPageComponent/>} />

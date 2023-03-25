@@ -1,10 +1,22 @@
 import "./payment.css"
 import typesCards from "./assets/typeCards.png"
 import { BsRecord2 } from 'react-icons/bs'
-
+import { Link } from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux';
+import { ORDER_SWITCH, ORDER_ID, ORDER_NUMBER } from '../../store/reducers/Order.reducer';
 
 
 const Payment = () => {
+    const dispatch = useDispatch();
+    const oderStatus = useSelector(state => state.orderReducer);
+
+
+    const handlePaymentClick = () => {
+        dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful })
+        dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders +1})
+        dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders+1})
+      }
+      
     return (
       <main className="payment-container">
             <h2 className="payment-container__init-title">Payment</h2>
@@ -41,7 +53,9 @@ const Payment = () => {
                     </label>
                 </form>
                 <div className="button-payment">
-                    <button className="button-payment__make-pay">MAKE PAYMENT</button>
+                    <Link to={'/order'}>
+                        <button className="button-payment__make-pay" onClick={handlePaymentClick}>MAKE PAYMENT</button>
+                    </Link>
                 </div>
             </section>
             <form className="payment-form-way-pay">
