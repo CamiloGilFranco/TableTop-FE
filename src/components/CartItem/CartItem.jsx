@@ -1,6 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { es } from '../../assets/languages/languageES';
 import { en } from '../../assets/languages/languajeEN';
+import { ORDER_SWITCH, ORDER_ID, ORDER_NUMBER } from '../../store/reducers/Order.reducer';
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
 
@@ -29,7 +30,6 @@ const CartItem = () => {
         return en.cartPlaceOrder;
     }
   }
-
 
   return (
     <div className="cart-item">

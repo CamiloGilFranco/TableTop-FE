@@ -61,7 +61,7 @@ const HeaderComponent = () => {
         <span className="header__homeButton">
         </span>
         <span className="header__restaurantButton">
-          <NavLink to={"/restaurant"}>
+          <NavLink to={"/restaurants"}>
             <b className="header__text">{restaurantHeader()}</b>
           </NavLink>
         </span>

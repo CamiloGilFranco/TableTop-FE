@@ -6,6 +6,8 @@ import './OrderSuccesful.css'
 
 const OrderSuccesful = () =>{
   const language = useSelector(state=> state.languageReducer);
+  const orderID = useSelector(state => state.orderReducer.orderID)
+  console.log(orderID);
   const orderSuccessTitle = () => {
     switch (language) {
       case 'en':
@@ -44,6 +46,7 @@ const OrderSuccesful = () =>{
       <section className='orderSuccesful__text'>
         <h3>{orderSuccessTitle()}</h3>
         <span>{orderSuccessBody()}</span>
+        <span>Transaction number #{orderID}</span>
         <button className='orderSuccesful__button'>{orderSuccessFooter()}</button>
       </section>
     </section>

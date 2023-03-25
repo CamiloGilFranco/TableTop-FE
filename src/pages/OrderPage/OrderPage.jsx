@@ -1,14 +1,18 @@
 import Footer from "../../components/Footer/Footer";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
-import OrderFailed from "../../components/OrderFailed/OrderFailed"
-import OrderSuccesful from "../../components/OrderSuccesful/OrderSuccesful"
+import OrderFailed from "../../components/OrderFailed/OrderFailed";
+import OrderSuccesful from "../../components/OrderSuccesful/OrderSuccesful";
+import { useSelector } from 'react-redux';
 
 const OrderPage = () => {
+  const orderStatus = useSelector(state=> state.orderReducer);
+
+  console.log(orderStatus);
+
   return(
     <div>
       <HeaderComponent/>
-      <OrderFailed />
-      <OrderSuccesful />
+      {orderStatus.orderSuccessful? <OrderSuccesful/>: <OrderFailed/>}
       <Footer />
     </div>
   )
