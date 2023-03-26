@@ -187,10 +187,15 @@ const RestaurantFilterComponent = ({ categories, setCategories, rating, setRatin
       setSearchParams({
         ...searchParams.get('searchTerm') && { searchTerm: searchParams.get('searchTerm')},
         cuisine: [event.target.name].concat(searchParams.getAll('cuisine')),
-        ...searchParams.get('rating') && { rating: searchParams.get('rating')}
+        ...searchParams.get('rating') && { rating: searchParams.get('rating')},
       })
     } else {
-      setCheckBoxSelected(checkBoxSelected.filter(value => value !== checkBoxSelected));
+      setCheckBoxSelected(checkBoxSelected.filter(value => value !== event.target.name));
+      searchParams({
+        ...searchParams.get('searchTerm') && { searchTerm: searchParams.get('searchTerm')},
+        cuisine: 'y aint u working',
+        ...searchParams.get('rating') && { rating: searchParams.get('rating')},
+      })
     }
     if (categories.some((element)=> element === event.target.name)) {
       setCategories(categories.filter((element) => element !== (event.target.name) ));
