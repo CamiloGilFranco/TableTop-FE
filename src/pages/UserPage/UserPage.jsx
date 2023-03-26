@@ -10,6 +10,7 @@ import { RiEdit2Fill } from 'react-icons/ri'
 const UserPage = () => {
   const [user, setUser] = useState(userDB[0]);
   const [isEditable, setIsEditable] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: user.name,
     email: user.email,
@@ -29,8 +30,11 @@ const UserPage = () => {
       [name]: value,
     }));
   }
-
+  
   const handleSumbit = (event) => {
+    event.preventDefault();
+    console.log('sup');
+    const validationErrors = {};
     const form = event.target
     const name = form.userName.value;
     const email = form.userEmail.value;
@@ -46,12 +50,35 @@ const UserPage = () => {
       address,
       city
     }
+    const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
+    
+    if (name.length <= 1) {
+      validationErrors.name = 'name must be at least characters long';
+    }
+    if (emailRegEx.test(email)) {
+      validationErrors.email = 'Please enter a valid email';
+    }
+    if (passwordRegEx.test(password)) {
+      validationErrors.password = 'Please enter a valid password';
+    }
+    if (phoneNumber.length < 10) {
+      validationErrors.phoneNumber = 'Please enter a phone number that is at least 10 digits long';
+    }
+    if (address.length <= 2) {
+      validationErrors.address = 'Please enter a valid address';
+    }
+
+    
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
     setUser(updatedUser);
     setIsEditable(false);
-    event.preventDefault();
+    setErrors({});
   } 
-  console.log(user);
 
   return (
     <React.Fragment>
@@ -76,6 +103,7 @@ const UserPage = () => {
                 value={formData.name}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
+              {errors.name && <p className='restaurantAdminView__error'>{errors.name}</p>}
             </span>
             <label className='userPage__form-label' htmlFor='userEmail'>Email</label>
             <span>
@@ -90,6 +118,7 @@ const UserPage = () => {
                 value={formData.email}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
+              {errors.email && <p className='restaurantAdminView__error'>{errors.email}</p>}
             </span>
             <label className='userPage__form-label' htmlFor='userPassword'>Password</label>
             <span>
@@ -104,6 +133,7 @@ const UserPage = () => {
                 value={formData.password}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
+              {errors.password && <p className='restaurantAdminView__error'>{errors.password}</p>}
             </span>
             <label className='userPage__form-label' htmlFor='userPhoneNumber'>Phone Number</label>
             <span>
@@ -118,6 +148,7 @@ const UserPage = () => {
                 value={formData.phoneNumber}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
+              {errors.phoneNumber && <p className='restaurantAdminView__error'>{errors.phoneNumber}</p>}
             </span>
             <label className='userPage__form-label' htmlFor='userAddress'>Address</label>
             <span>
@@ -132,13 +163,13 @@ const UserPage = () => {
                 value={formData.address}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
+              {errors.address && <p className='restaurantAdminView__error'>{errors.address}</p>}
             </span>
             <label className='userPage__form-label' htmlFor='userCity'>City</label>
             <span>
               <select
                 id='userCity'
                 className='userPage__form-input userPage__form-select'
-                value={formData.city}
               >
                 <option value="bogota">Bogotá</option>
                 <option value="medellin">Medellín</option>
@@ -150,7 +181,7 @@ const UserPage = () => {
             </span>
             <button 
               type='submit'
-              className='userPage__form-button'  
+              className='userPage__form-button'
             >
               Save changes
             </button>
