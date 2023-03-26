@@ -9,6 +9,7 @@ import SignInPage from "./pages/SignInPage/SignInPage";
 import RestaurantAdminView from "./pages/RestaurantAdminView/RestaurantAdminView";
 import GeneralAdminView from "./pages/GeneralAdminView/GeneralAdminView";
 import { CheckoutPageComponent } from "./pages/CheckoutPageComponent/CheckoutPageComponent";
+import UserPage from "./pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           <Route path=":restaurantPath" element={<RestaurantView />} />
           <Route path="/order" element={<OrderPage />} />
           <Route path="/restaurant/checkout" element={<CheckoutPageComponent/>} />
-          <Route path="/admin" element={<RestaurantAdminView/>}/>
+          <Route path="/restaurant-admin" element={<RestaurantAdminView/>}/>
           <Route path="/general-admin" element={<GeneralAdminView/>}/>
+          <Route path="/user" element={<UserPage/>}/>
           <Route path="*" element={<NotFoundPageComponent />} />
         </Routes>
     </div>

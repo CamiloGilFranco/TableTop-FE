@@ -1,0 +1,96 @@
+.userPage__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  gap: 10px;
+}
+.userPage__form {
+  width: 300px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media (min-width: 765px) {
+    width: 650px;
+  }
+  @media (min-width: 1000px) {
+    width: 850px;
+  }
+}
+.userPage__title {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   gap: 10px;
+   background-color: lightgray;
+   border: gray solid 2px;
+   padding: 5px;
+   border-radius: 20px;
+   font-size: 18px;
+   font-weight: 700;
+   @media (min-width: 765px) {
+    padding: 15px;
+    font-size: 25px;
+  }
+  @media (min-width: 1000px) {
+    padding: 20px;
+  }
+}
+.userPage__form-label{
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.userPage__form-input{
+  height: 40px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: lightgray;
+  width: 270px;
+
+  &::placeholder {
+    color: grey;
+  }
+  @media (min-width: 765px) {
+    width: 590px;
+  }
+  @media (min-width: 1000px) {
+    width: 765px;;
+  }
+}
+.userPage__form-select{
+  color: grey;
+}
+
+.userPage__form-button {
+  background-color: lightgray;
+  border: grey 3px solid;
+  font-size: 20px;
+  font-weight: 700;
+  width: 200px;
+  padding: 10px;
+  border-radius: 20px;
+  align-self: center;
+  margin: 30px;
+  cursor: pointer;
+}
+
+.userPage__form-icon {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  @media (min-width: 765px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (min-width: 1000px) {
+    height: 35px;
+    width: 35px;
+  }
+}
