@@ -10,13 +10,21 @@ import { RiEdit2Fill } from 'react-icons/ri'
 const UserPage = () => {
   const [user, setUser] = useState(userDB[0]);
   const [isEditable, setIsEditable] = useState(false);
+  const [formData, setFormData] = useState({
+    name: user.name,
+    email: user.email,
+    password: user.password,
+    phoneNumber: user.phoneNumber,
+    address: user.address,
+    city: user.city
+  });
 
   const handleEditClick = () => {
     setIsEditable(true)
   }
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setUser((prevState) => ({
+    setFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -65,7 +73,7 @@ const UserPage = () => {
                 disabled={!isEditable}
                 onChange={handleInputChange}
                 placeholder={user.name}
-                value={user.name}
+                value={formData.name}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
@@ -79,7 +87,7 @@ const UserPage = () => {
                 disabled={!isEditable}
                 onChange={handleInputChange}
                 placeholder={user.email}
-                value={user.email}
+                value={formData.email}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
@@ -93,7 +101,7 @@ const UserPage = () => {
                 disabled={!isEditable}
                 onChange={handleInputChange}
                 placeholder={user.password}
-                value={user.password}
+                value={formData.password}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
@@ -107,7 +115,7 @@ const UserPage = () => {
                 disabled={!isEditable}
                 onChange={handleInputChange}
                 placeholder={user.phoneNumber}
-                value={user.phoneNumber}
+                value={formData.phoneNumber}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
@@ -121,7 +129,7 @@ const UserPage = () => {
                 disabled={!isEditable}
                 onChange={handleInputChange}
                 placeholder={user.address}
-                value={user.address}
+                value={formData.address}
               />
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
@@ -130,7 +138,7 @@ const UserPage = () => {
               <select
                 id='userCity'
                 className='userPage__form-input userPage__form-select'
-                value={user.city}
+                value={formData.city}
               >
                 <option value="bogota">Bogotá</option>
                 <option value="medellin">Medellín</option>
