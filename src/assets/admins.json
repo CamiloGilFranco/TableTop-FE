@@ -2,31 +2,47 @@
   {
     "id": 1,
     "name": "Rogelio Perez", 
-    "restaurantAdmin": "false",
-    "generalAdmin": "true"
+    "userRole": "generalAdmin", 
+    "email": "123@example",
+    "password": "Ljwe3e5e.",
+    "address": "404St",
+    "city": "cali",
+    "phoneNumber": "2"
   },
   {
     "id": 2,
     "name": "Aureliano Buendia", 
-    "restaurantAdmin": "true",
-    "generalAdmin": "false"
+    "userRole": "generalAdmin", 
+    "email": "123@example",
+    "password": "Ljwe3e5e.",
+    "address": "404St",
+    "city": "bogota"
   }, 
   {
     "id": 3,
     "name": "Marc Stein", 
-    "restaurantAdmin": "false",
-    "generalAdmin": "true"
+    "userRole": "generalAdmin", 
+    "email": "123@example",
+    "password": "Ljwe3e5e.",
+    "address": "404St",
+    "city": "bogota"
   }, 
   {
     "id": 4,
     "name": "Anya Forger", 
-    "restaurantAdmin": "true",
-    "generalAdmin": "false"
+    "userRole": "generalAdmin", 
+    "email": "123@example",
+    "password": "Ljwe3e5e.",
+    "address": "404St",
+    "city": "bogota"
   }, 
   {
     "id": 5,
     "name": "Leo Davinci", 
-    "restaurantAdmin": "true",
-    "generalAdmin": "false"
+    "userRole": "generalAdmin", 
+    "email": "123@example",
+    "password": "Ljwe3e5e.",
+    "address": "404St",
+    "city": "bogota"
   }
 ]
