@@ -13,86 +13,92 @@
   border: 2px #f6f8fa solid;
   font-size: 15px;
 }
-.payment-content__header {
-  display: flex;
-  align-items: center;
-  background-color: #f9f9f9;
-  padding-left: 10px;
-  border-bottom: 2px #f0f0f0 solid;
-}
-.payment-content__header--icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.payment-content__header--paragraph {
-  padding-left: 5px;
-  font-weight: 400;
-}
-.payment-form {
-  padding: 0 10px;
-  margin-top: 10px;
-}
-.payment-form__paragraph {
-  margin-bottom: 0;
-  margin-top: 10px;
-}
-.payment-form__input-name {
-  width: 100%;
-  border: 2px #f0f0f0 solid;
-}
-.payment-card-info {
-  display: flex;
-  border: 2px #f0f0f0 solid;
-}
-.payment-card-info__number {
-  width: 80vw;
-  border: none;
-}
-.payment-card-info__images {
-  width: 5rem;
-  padding-right: 2px;
-}
-.payment__form-card {
-  padding: 0 10px;
+
+.payment-accordion-button {
+  font-size: 30px;
+  padding: 2px 10px;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  border-radius: 10px;
+  border: 2px solid grey;
 }
 
-.form-card__input {
-  width: 15rem;
-  border: 2px #f0f0f0 solid;
-}
-.button-payment {
-  display: flex;
-  justify-content: end;
-  padding-right: 10px;
-  padding-top: 2rem;
-  padding-bottom: 10px;
-}
 .button-payment__make-pay {
   background-color: #ef3f3f;
   color: white;
   border: none;
   width: 8rem;
   height: 2rem;
-}
-.payment-form-way-pay {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.type__payment {
-  display: flex;
-  border: 2px #f0f0f0 solid;
-  background-color: #f9f9f9;
-  padding-left: 5px;
-}
-.type-payment-text {
-  margin-left: 10px;
+  margin-top: 15px;
 }
 
-@media (min-width: 768px) {
+.debit-card-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
+
+.debit-card-form-label {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.debit-card-text-input {
+  font-size: 20px;
+  border-radius: 10px;
+
+  border: lightgray solid 2px;
+  padding: 0 10px;
+}
+
+.debit-card-form-due-cvv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.debit-card-form-due-container {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.debit-card-form-cvv-container {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.debit-card-form-type-DocNum {
+  display: flex;
+  justify-content: space-between;
+}
+
+.debit-card-form-type-container {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.debit-card-form-DocNum-container {
+  display: flex;
+  flex-direction: column;
+  width: 76%;
+}
+
+.payment-form-error-message {
+  color: red;
+}
+
+@media (max-width: 500px) {
+  .debit-card-form-due-cvv {
+    flex-direction: column;
+  }
+
+  .debit-card-form-due-container,
+  .debit-card-form-cvv-container,
+  .debit-card-form-type-DocNum,
+  .debit-card-form-type-container,
+  .debit-card-form-DocNum-container {
+    width: 100%;
+  }
+} ;
