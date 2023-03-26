@@ -288,7 +288,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("asian")}
                 onChange={handleCategoriesChange}
               />
-              {filterAsian()}
+              {/* {filterAsian()} */}kuashbikudh
             </label>
             <label>
               <input

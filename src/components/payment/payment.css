@@ -1,105 +1,98 @@
-
 .payment-container {
-    box-shadow: 0 2px 5px 1px lightgrey;
-    margin: 20px;
-    padding: 0 20px;
-    padding-bottom: 10px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .payment-container__init-title {
-    font-size: 18px;
+  font-size: 32px;
+  font-weight: 700;
 }
 
 .payment-content {
-    border: 2px #F6F8FA solid;
-    font-size: 15px;
-    
+  border: 2px #f6f8fa solid;
+  font-size: 15px;
 }
 .payment-content__header {
-    display: flex;
-    align-items: center;
-    background-color: #F9F9F9;
-    padding-left: 10px;
-    border-bottom: 2px #F0F0F0 solid;
-
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding-left: 10px;
+  border-bottom: 2px #f0f0f0 solid;
 }
 .payment-content__header--icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .payment-content__header--paragraph {
-    padding-left: 5px;
-    font-weight: 400;
+  padding-left: 5px;
+  font-weight: 400;
 }
 .payment-form {
-    padding: 0 10px;
-    margin-top: 10px;
-    
+  padding: 0 10px;
+  margin-top: 10px;
 }
 .payment-form__paragraph {
-    margin-bottom: 0;
-    margin-top: 10px;
+  margin-bottom: 0;
+  margin-top: 10px;
 }
 .payment-form__input-name {
-    width: 100%;
-    border: 2px #F0F0F0 solid;
+  width: 100%;
+  border: 2px #f0f0f0 solid;
 }
 .payment-card-info {
-    display: flex;
-    border: 2px #F0F0F0 solid;
-
+  display: flex;
+  border: 2px #f0f0f0 solid;
 }
 .payment-card-info__number {
-    width: 80vw;
-    border: none;
+  width: 80vw;
+  border: none;
 }
 .payment-card-info__images {
-    width: 5rem;
-    padding-right: 2px;
+  width: 5rem;
+  padding-right: 2px;
 }
 .payment__form-card {
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .form-card__input {
-    width: 15rem;
-    border: 2px #F0F0F0 solid;
+  width: 15rem;
+  border: 2px #f0f0f0 solid;
 }
 .button-payment {
-    display: flex;
-    justify-content: end;
-    padding-right: 10px;
-    padding-top: 2rem;
-    padding-bottom: 10px;    
+  display: flex;
+  justify-content: end;
+  padding-right: 10px;
+  padding-top: 2rem;
+  padding-bottom: 10px;
 }
 .button-payment__make-pay {
-    background-color: #EF3F3F;
-    color: white;
-    border: none;
-    width: 8rem;
-    height: 2rem;
+  background-color: #ef3f3f;
+  color: white;
+  border: none;
+  width: 8rem;
+  height: 2rem;
 }
 .payment-form-way-pay {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;  
-    gap: 10px; 
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .type__payment {
-    display: flex;
-    border: 2px #F0F0F0 solid;
-    background-color: #F9F9F9;
-    padding-left: 5px;   
+  display: flex;
+  border: 2px #f0f0f0 solid;
+  background-color: #f9f9f9;
+  padding-left: 5px;
 }
 .type-payment-text {
-    margin-left: 10px;
-} 
+  margin-left: 10px;
+}
 
-@media(min-width: 768px){
-    
+@media (min-width: 768px) {
 }

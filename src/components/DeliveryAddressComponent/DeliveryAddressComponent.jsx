@@ -4,29 +4,30 @@ import FormComponent from "./FormComponent";
 import { useModal } from "./hooks/UseModal";
 import { useState } from "react";
 import Modal from "./modal/Modal";
+import addresses from "../../assets/dataAddress.json";
 
 const DeliveryAddressComponent = ({ data }) => {
   const [isOpenModal1, openModal1, closeModal1] = useModal(false);
-  const [address, setAddress] = useState(data);
+  const [address, setAddress] = useState(addresses);
 
   return (
     <>
-      <section className="container">
-        <h2 className="container-title">Delivery Address:</h2>
-        <div className="save-info">
-          <h3 className="save-info__value">Saved Address</h3>
-          <button className="save-info__button" onClick={openModal1}>
+      <section className="delivery-address-container">
+        <h2 className="delivery-container-title">Delivery Address:</h2>
+        <div className="delivery-save-info">
+          <h3 className="delivery-save-info__value">Saved Address</h3>
+          <button className="delivery-save-info__button" onClick={openModal1}>
             + Add New Address
           </button>
         </div>
-        <main className="main-box">
-          {address.map((el) => (
-            <DeliveryAddressBox 
-                key={el.name} 
-                el={el} 
-                setAddress = {setAddress}
-                data = {data}
-                index = {address.indexOf(el)}
+        <main className="delivery-main-box">
+          {address.map((el, index) => (
+            <DeliveryAddressBox
+              key={index}
+              el={el}
+              setAddress={setAddress}
+              data={data}
+              index={address.indexOf(el)}
             />
           ))}
         </main>

@@ -1,23 +1,27 @@
 import React from "react";
 
-const DeliveryAddressBox = ({el, setData, data, index}) => {
-
+const DeliveryAddressBox = ({ el, setData, data, index }) => {
   const handleDelete = (index) => {
-    setData(data.filter((item, i) => i !== index))
-  }
+    setData(data.filter((item, i) => i !== index));
+  };
   return (
-    <section className="personal-info">
-      <div className="content">
-        <h3 className="content__name">{el.name}</h3>
-        <button className="content__button">Home</button>
+    <section className="delivery-personal-info">
+      <div className="delivery-content">
+        <h3 className="delivery-content__name">{el.name}</h3>
+        <button className="delivery-content__button">Home</button>
       </div>
-      <p className="personal-info-data">{el.address}</p>
-      <p className="personal-info-data">{el.city}</p>
-      <p className="personal-info-data">{el.mobileNumber}</p>
-      <p className="personal-info-data">{`Mobile: ${el.mobileNumber}`}</p>
-      <div className="buttons">
-        <button className="button--green">Edit</button>
-        <button className="button--red" onClick={(index) => handleDelete(index)}>Remove</button>
+      <p className="delivery-personal-info-data">{el.address}</p>
+      <p className="delivery-personal-info-data">{el.city}</p>
+      <p className="delivery-personal-info-data">{el.mobileNumber}</p>
+      <p className="delivery-personal-info-data">{`Mobile: ${el.mobileNumber}`}</p>
+      <div className="delivery-buttons">
+        <button className="delivery-button--green">Edit</button>
+        <button
+          className="delivery-button--red"
+          onClick={(index) => handleDelete(index)}
+        >
+          Remove
+        </button>
       </div>
     </section>
   );

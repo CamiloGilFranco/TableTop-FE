@@ -1,85 +1,86 @@
-.container {
+.delivery-address-container {
+  box-shadow: 0 2px 5px 1px lightgrey;
+  padding: 10px;
+}
+
+.delivery-save-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.delivery-save-info__button {
+  height: 2rem;
+  background-color: #ef3f3f;
+  color: white;
+  border: none;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+.delivery-main-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+.delivery-personal-info {
+  border: 1px #aaaaaa solid;
+  width: 335px;
+}
+
+.delivery-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+.delivery-content__button {
+  height: 2rem;
+  background-color: green;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0 20px;
+  border: none;
+}
+.delivery-personal-info-data {
+  margin-left: 20px;
+  color: #626060db;
+}
+
+.delivery-buttons {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px #aaaaaa solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+.delivery-button--green {
+  width: 45%;
+  border-radius: 0.3rem;
+  background-color: #e1ede0;
+  border: none;
+  height: 2rem;
+  color: green;
+}
+.delivery-button--red {
+  width: 45%;
+  border-radius: 0.3rem;
+  background-color: #ffe3e1;
+  border: none;
+  height: 2rem;
+  color: red;
+}
+
+@media (min-width: 768px) {
+  .delivery-container {
     margin: 20px;
     box-shadow: 0 2px 5px 1px lightgrey;
-   
-  }
-  
-  .save-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .save-info__button {
-    height: 2rem;
-    background-color: white;
-    border: 1px #AAAAAA solid;
-  }
-  .main-box {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-    gap: 20px;
-   
-    
-  }
-  .personal-info {
-    border: 1px #AAAAAA solid;
-    width: 335px;
-  }
-  .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px;
-    
-  }
-  
-  .content__button {
-    height: 2rem;
-    background-color: green;
-    color: white;
-    border-radius: .5rem;
-    padding: 0 20px;
-    border: none;
-  }
-  .personal-info-data {
-    margin-left: 20px;
-    color: #626060db;
-  }
-  
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px #AAAAAA solid;
-    margin: 20px;
-    padding: 10px;
-  }
-  
-  .button--green {
-    width: 45%;
-    border-radius: .3rem;
-    background-color: #E1EDE0;
-    border: none;
-    height: 2rem;
-    color: green;
-  
-  }
-  .button--red {
-    width: 45%;
-    border-radius: .3rem;
-    background-color: #FFE3E1;
-    border: none;
-    height: 2rem;
-    color: red;
-  
-  }
-
-  @media(min-width: 768px){
-    .container {      
-      margin: 20px;
-      box-shadow: 0 2px 5px 1px lightgrey;
-      padding: 20px;
+    padding: 20px;
   }
 }

@@ -1,35 +1,41 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
-import { ORDER_SWITCH, ORDER_ID, ORDER_NUMBER } from '../../store/reducers/Order.reducer';
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { es } from "../../assets/languages/languageES";
+import { en } from "../../assets/languages/languajeEN";
+import {
+  ORDER_SWITCH,
+  ORDER_ID,
+  ORDER_NUMBER,
+} from "../../store/reducers/Order.reducer";
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
 
 const CartItem = () => {
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
   const itemsStore = useSelector((state) => state.cartReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
+  const navigate = useNavigate();
 
   const cartFinishWarning = () => {
     switch (language) {
-      case 'en':
+      case "en":
         return en.cartFinishWarning;
-      case 'es':
+      case "es":
         return es.cartFinishWarning;
       default:
         return en.cartFinishWarning;
     }
-  }
+  };
   const cartPlaceOrder = () => {
     switch (language) {
-      case 'en':
+      case "en":
         return en.cartPlaceOrder;
-      case 'es':
+      case "es":
         return es.cartPlaceOrder;
       default:
         return en.cartPlaceOrder;
     }
-  }
+  };
 
   return (
     <div className="cart-item">
@@ -51,10 +57,13 @@ const CartItem = () => {
             ${cartSubtotal}
           </span>
         </div>
-        <p className="cart-item-finish-waring">
-          {cartFinishWarning()}
-        </p>
-        <button className="cart-item-finish-button">{cartPlaceOrder()}</button>
+        <p className="cart-item-finish-waring">{cartFinishWarning()}</p>
+        <button
+          className="cart-item-finish-button"
+          onClick={() => navigate("/restaurant/checkout")}
+        >
+          {cartPlaceOrder()}
+        </button>
       </div>
     </div>
   );
