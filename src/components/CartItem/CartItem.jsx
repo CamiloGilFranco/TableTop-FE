@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { es } from "../../assets/languages/languageES";
 import { en } from "../../assets/languages/languajeEN";
 import {
@@ -15,6 +15,8 @@ const CartItem = () => {
   const itemsStore = useSelector((state) => state.cartReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
   const navigate = useNavigate();
+  const location = useLocation().pathname;
+  const pathRegExp = /checkout/;
 
   const cartFinishWarning = () => {
     switch (language) {
@@ -58,12 +60,16 @@ const CartItem = () => {
           </span>
         </div>
         <p className="cart-item-finish-waring">{cartFinishWarning()}</p>
-        <button
-          className="cart-item-finish-button"
-          onClick={() => navigate("/restaurant/checkout")}
-        >
-          {cartPlaceOrder()}
-        </button>
+        {pathRegExp.test(location) ? (
+          ""
+        ) : (
+          <button
+            className="cart-item-finish-button"
+            onClick={() => navigate("/restaurant/checkout")}
+          >
+            {cartPlaceOrder()}
+          </button>
+        )}
       </div>
     </div>
   );
