@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
+import { useSelector } from "react-redux";
+import { es } from "../../assets/languages/languageES";
+import { en } from "../../assets/languages/languajeEN";
 import "./RestaurantCardComponent.css";
 
 const RestaurantCardComponent = ({
@@ -13,21 +13,21 @@ const RestaurantCardComponent = ({
   dishesFrom,
 }) => {
   const navigate = useNavigate();
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
   const cardDishesFrom = () => {
     switch (language) {
-      case 'en':
-        return en.cardDishesFrom
-      case 'es':
-        return es.cardDishesFrom
+      case "en":
+        return en.cardDishesFrom;
+      case "es":
+        return es.cardDishesFrom;
       default:
-        return en.cardDishesFrom
+        return en.cardDishesFrom;
     }
-  }
+  };
 
   const handleClick = () => {
     const route = restaurantName.replace(/\s+/g, "");
-    navigate(`/${route}`);
+    navigate(`/restaurants/${route}`);
   };
 
   return (
@@ -47,7 +47,9 @@ const RestaurantCardComponent = ({
           <span>, {categories[1]}</span>
           <span>, {categories[2]}</span>
           <p>- {schedule}</p>
-          <p>- {cardDishesFrom()} ${dishesFrom}</p>
+          <p>
+            - {cardDishesFrom()} ${dishesFrom}
+          </p>
         </div>
       </figcaption>
     </figure>

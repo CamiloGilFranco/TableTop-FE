@@ -6,9 +6,20 @@ import { useState } from "react";
 import Modal from "./modal/Modal";
 import addresses from "../../assets/dataAddress.json";
 
-const DeliveryAddressComponent = ({ data }) => {
+const DeliveryAddressComponent = () => {
   const [isOpenModal1, openModal1, closeModal1] = useModal(false);
-  const [address, setAddress] = useState(addresses);
+  const [addressList, setAddressList] = useState(addresses);
+  const [addressSelected, setAddressSelected] = useState("");
+
+  const handleDelete = (index) => {
+    const newAddressList = [...addressList];
+    newAddressList.splice(index, 1);
+    setAddressList(newAddressList);
+  };
+
+  const handleNewAddress = (newAddress) => {
+    setAddressList([...addressList, newAddress]);
+  };
 
   return (
     <>
@@ -20,20 +31,27 @@ const DeliveryAddressComponent = ({ data }) => {
             + Add New Address
           </button>
         </div>
-        <main className="delivery-main-box">
-          {address.map((el, index) => (
+        <form className="delivery-main-box">
+          {addressList.map((element, index) => (
             <DeliveryAddressBox
               key={index}
-              el={el}
-              setAddress={setAddress}
-              data={data}
-              index={address.indexOf(el)}
+              index={index}
+              name={element.name}
+              mobileNumber={element.mobileNumber}
+              address={element.address}
+              city={element.city}
+              setAddressSelected={setAddressSelected}
+              addressSelected={addressSelected}
+              handleDelete={handleDelete}
             />
           ))}
-        </main>
+        </form>
       </section>
       <Modal isOpen={isOpenModal1} closeModal={closeModal1}>
-        <FormComponent />
+        <FormComponent
+          handleNewAddress={handleNewAddress}
+          closeModal={closeModal1}
+        />
       </Modal>
     </>
   );

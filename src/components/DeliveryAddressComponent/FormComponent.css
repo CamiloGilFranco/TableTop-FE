@@ -8,10 +8,9 @@
   flex-direction: column;
   border-radius: 10px;
 }
-.form-header{
+.form-header {
   display: flex;
   justify-content: space-between;
-
 }
 .add-address-title {
   font-size: 1.2rem;
@@ -19,46 +18,37 @@
   color: #1a202c;
 }
 
-.label {
+.form-add-address-label {
   color: rgb(0, 0, 0);
   margin-bottom: 4px;
+  margin-top: 10px;
 }
 
-.input {
+.form-add-address-input {
   padding: 10px;
-  margin-bottom: 20px;
   font-size: 1rem;
   color: #4a5568;
   outline: none;
   border: 1px solid;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
-  
-
 }
 
-.submit {
-  background-color: #1a202c;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
 .form-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-.form-button-close {
-  background-color: #6C757D;
-  color: #fff;
-  
-}
 .form-button-add {
-  background-color: #EF3F3F;
+  background-color: #ef3f3f;
   color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+}
+
+.form-add-address-error {
+  color: red;
 }

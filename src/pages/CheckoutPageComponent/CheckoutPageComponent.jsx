@@ -9,7 +9,7 @@ import "./CheckoutPageComponent.css";
 const CheckoutPageComponent = () => {
   return (
     <div className="checkout-page-content">
-      <div>
+      <div className="checkout-header-container">
         <HeaderComponent />
       </div>
       <div className="container-imageheader">

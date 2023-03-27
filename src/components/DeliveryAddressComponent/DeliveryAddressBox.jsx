@@ -1,29 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const DeliveryAddressBox = ({ el, setData, data, index }) => {
-  const handleDelete = (index) => {
-    setData(data.filter((item, i) => i !== index));
+const DeliveryAddressBox = ({
+  index,
+  name,
+  mobileNumber,
+  address,
+  city,
+  setAddressSelected,
+  addressSelected,
+  handleDelete,
+}) => {
+  const styleChange = () => {
+    if (addressSelected === `option${index}`) {
+      return "delivery-address-box-selected-style";
+    } else {
+      return "";
+    }
   };
+
+  /* const handleDelete = (index) => {
+    setData(data.filter((item, i) => i !== index));
+  }; */
   return (
-    <section className="delivery-personal-info">
-      <div className="delivery-content">
-        <h3 className="delivery-content__name">{el.name}</h3>
-        <button className="delivery-content__button">Home</button>
-      </div>
-      <p className="delivery-personal-info-data">{el.address}</p>
-      <p className="delivery-personal-info-data">{el.city}</p>
-      <p className="delivery-personal-info-data">{el.mobileNumber}</p>
-      <p className="delivery-personal-info-data">{`Mobile: ${el.mobileNumber}`}</p>
-      <div className="delivery-buttons">
-        <button className="delivery-button--green">Edit</button>
+    <div>
+      <input
+        type="radio"
+        id={`addressN${index}`}
+        name="addressOption"
+        value={`option${index}`}
+        checked={addressSelected === `option${index}`}
+        className="delivery-address-box-radio"
+        onChange={(event) => {
+          setAddressSelected(`option${index}`);
+        }}
+      />
+      <label
+        htmlFor={`addressN${index}`}
+        className={`delivery-personal-info ${styleChange()}`}
+      >
+        <h3 className="delivery-content__name">{name}</h3>
+
+        <p className="delivery-personal-info-data">{address}</p>
+        <p className="delivery-personal-info-data">{city}</p>
+        <p className="delivery-personal-info-data delivery-personal-info-data-last">
+          {mobileNumber}
+        </p>
+
         <button
           className="delivery-button--red"
-          onClick={(index) => handleDelete(index)}
+          onClick={(event) => {
+            event.preventDefault();
+            handleDelete(index);
+          }}
         >
           Remove
         </button>
-      </div>
-    </section>
+      </label>
+    </div>
   );
 };
 

@@ -13,10 +13,12 @@ import {
   AccordionIcon,
 } from "@chakra-ui/accordion";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const dispatch = useDispatch();
   const oderStatus = useSelector((state) => state.orderReducer);
+  const navigate = useNavigate();
 
   const [debitCard, setDebitCard] = useState({
     cardNumber: "",
@@ -131,6 +133,7 @@ const Payment = () => {
       dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful });
       dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders + 1 });
       dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders + 1 });
+      navigate("/order");
     }
   };
 
@@ -182,6 +185,7 @@ const Payment = () => {
       dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful });
       dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders + 1 });
       dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders + 1 });
+      navigate("/order");
     }
   };
 
@@ -191,6 +195,7 @@ const Payment = () => {
     dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful });
     dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders + 1 });
     dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders + 1 });
+    navigate("/order");
   };
 
   return (
