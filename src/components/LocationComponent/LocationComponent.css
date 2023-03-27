@@ -9,4 +9,11 @@
 .restaurant-view-location-map {
   width: 100%;
   aspect-ratio: 3/2;
+}
+
+.restaurant-view-location-map-link {
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 35px;
+  cursor: pointer;
 }/*# sourceMappingURL=LocationComponent.css.map */
