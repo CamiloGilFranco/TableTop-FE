@@ -1,34 +1,155 @@
-import './FormComponent.css'
+import { useState } from "react";
+import "./FormComponent.css";
 
-const FormComponent = () => {
-  return(
-    
-      <form className="form-add-address">
-        <div className='form-header'>
-          <span className="add-address-title">Add new Address</span>
-        </div>
+const FormComponent = ({ handleNewAddress, closeModal }) => {
+  const [addFormValues, setAddFormValues] = useState({
+    name: "",
+    mobileNumber: "",
+    address: "",
+    city: "",
+  });
 
-        <label htmlFor="name" className="label">Name</label>
-        <input type="text" id="name" name="name" required="" class="input"/>
+  const [nameError, setNameError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [numberError, setNumberError] = useState(false);
+  const [cityError, setCityError] = useState(false);
 
-        <label htmlFor="mobile" className="label">Mobile Number</label>
-        <input type="text" id="name" name="name" required="" class="input"/>
+  const addNewAddressSubmit = (event) => {
+    event.preventDefault();
+    let isValid = true;
 
-        <label htmlFor="address" className="label">Address</label>
-        <input type="text" id="address" name="address" required="" class="input"/>
+    if (!addFormValues.name) {
+      setNameError(true);
+      isValid = false;
+    } else {
+      isValid = true;
+    }
 
-        <label htmlFor="mobile" className="label">City</label>
-        <input type="text" id="mobile" name="mobile" required="" class="input"/>
+    if (!addFormValues.address) {
+      setAddressError(true);
+      isValid = false;
+    } else {
+      isValid = true;
+    }
 
-        <label htmlFor="zip" className="label">Zip</label>
-        <input type="zip" id="zip" name="zip" required="" className="input"/>
+    if (addFormValues.mobileNumber.length !== 10) {
+      setNumberError(true);
+      isValid = false;
+    } else {
+      isValid = true;
+    }
 
-        <div className='form-buttons'>
-        <button className="form-button-close">CLOSE</button>
-        <button type="submit" className="form-button-add">ADD ADDRESS</button>
-        </div>
+    if (!addFormValues.city) {
+      setCityError(true);
+      isValid = false;
+    } else {
+      isValid = true;
+    }
 
-      </form>
-  )
-}
+    if (isValid) {
+      handleNewAddress(addFormValues);
+      closeModal();
+    }
+  };
+
+  return (
+    <form className="form-add-address">
+      <div className="form-header">
+        <span className="add-address-title">Add new Address</span>
+      </div>
+
+      <label htmlFor="name" className="form-add-address-label">
+        Name
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-add-address-input"
+        value={addFormValues.name}
+        onChange={(event) =>
+          setAddFormValues({ ...addFormValues, name: event.target.value })
+        }
+      />
+      {nameError ? (
+        <p className="form-add-address-error">
+          * Todos los campos son obligatorios
+        </p>
+      ) : (
+        ""
+      )}
+
+      <label htmlFor="address" className="form-add-address-label">
+        Address
+      </label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        class="form-add-address-input"
+        value={addFormValues.address}
+        onChange={(event) =>
+          setAddFormValues({ ...addFormValues, address: event.target.value })
+        }
+      />
+      {addressError ? (
+        <p className="form-add-address-error">
+          * Todos los campos son obligatorios
+        </p>
+      ) : (
+        ""
+      )}
+
+      <label htmlFor="mobile" className="form-add-address-label">
+        Phone Number
+      </label>
+      <input
+        type="number"
+        id="name"
+        name="name"
+        class="form-add-address-input"
+        value={addFormValues.mobileNumber}
+        onChange={(event) =>
+          setAddFormValues({
+            ...addFormValues,
+            mobileNumber: event.target.value,
+          })
+        }
+      />
+      {numberError ? (
+        <p className="form-add-address-error">* introduce un teléfono valido</p>
+      ) : (
+        ""
+      )}
+
+      <label htmlFor="mobile" className="form-add-address-label">
+        City
+      </label>
+      <input
+        type="text"
+        id="mobile"
+        name="mobile"
+        class="form-add-address-input"
+        value={addFormValues.city}
+        onChange={(event) =>
+          setAddFormValues({ ...addFormValues, city: event.target.value })
+        }
+      />
+      {cityError ? (
+        <p className="form-add-address-error">
+          * Todos los campos son obligatorios
+        </p>
+      ) : (
+        ""
+      )}
+      <button
+        type="submit"
+        className="form-button-add"
+        onClick={addNewAddressSubmit}
+      >
+        ADD ADDRESS
+      </button>
+    </form>
+  );
+};
 export default FormComponent;

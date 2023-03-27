@@ -6,7 +6,8 @@
   padding: 0px 10px;
   gap: 15px;
   height: 50px;
-  position: relative;
+  position: sticky;
+  top: 0;
 
   select {
     cursor: pointer;
@@ -34,7 +35,6 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  
 }
 
 .logotipo {
@@ -128,7 +128,7 @@
   height: 25px;
   width: 45px;
   margin: 0px 5px;
-  @media (min-width:769px) {
+  @media (min-width: 769px) {
     height: 30px;
     width: 50px;
   }
@@ -179,10 +179,10 @@
   }
 }
 
-.navbar__logo{
+.navbar__logo {
   height: 30px;
   margin: 1px;
-  color:  black;
+  color: black;
   text-decoration: none;
   :hover {
     background-color: darkgray;
@@ -190,7 +190,7 @@
   }
   @media (min-width: 769px) {
     height: 70px;
-  } 
+  }
   @media (min-width: 1000px) {
     height: 80px;
   }

@@ -14,18 +14,24 @@ import UserPage from "./pages/UserPage/UserPage";
 function App() {
   return (
     <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePageComponent />} />
-          <Route path="/register" element={<SignInPage />} />
-          <Route path="/restaurants" element={<RestaurantListPage />}/>
-          <Route path=":restaurantPath" element={<RestaurantView />} />
-          <Route path="/order" element={<OrderPage />} />
-          <Route path="/restaurant/checkout" element={<CheckoutPageComponent/>} />
-          <Route path="/restaurant-admin" element={<RestaurantAdminView/>}/>
-          <Route path="/general-admin" element={<GeneralAdminView/>}/>
-          <Route path="/user" element={<UserPage/>}/>
-          <Route path="*" element={<NotFoundPageComponent />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<HomePageComponent />} />
+        <Route path="/register" element={<SignInPage />} />
+        <Route path="/restaurants" element={<RestaurantListPage />} />
+        <Route
+          path="/restaurants/:restaurantPath"
+          element={<RestaurantView />}
+        />
+        <Route path="/order" element={<OrderPage />} />
+        <Route
+          path="/restaurant/checkout"
+          element={<CheckoutPageComponent />}
+        />
+        <Route path="/restaurant-admin" element={<RestaurantAdminView />} />
+        <Route path="/general-admin" element={<GeneralAdminView />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="*" element={<NotFoundPageComponent />} />
+      </Routes>
     </div>
   );
 }
