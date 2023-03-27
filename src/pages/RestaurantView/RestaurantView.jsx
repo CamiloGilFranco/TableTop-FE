@@ -72,7 +72,9 @@ const RestaurantView = () => {
           />
         );
       case "LOCATION":
-        return <LocationComponent />;
+        return (
+          <LocationComponent restaurantName={restaurantData.restaurantName} />
+        );
       case "BOOK A TABLE":
         return <ReserveForm />;
       case "REVIEWS":
