@@ -274,7 +274,7 @@ const GeneralAdminView = () => {
         <article className='generalAdminView__flex'>
           <span>
             <h3>{generalAdminSubtitle()}</h3>
-            <span>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} and #{users.length} users</span>
+            <span className='generalAdmin__span'>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} and #{users.length} users</span>
             <h3>Here you can see all the users</h3>
             <form className='generalAdminView__form' onSubmit={newUserSumbit}>
               <h3>Here you can add a new user:</h3>
@@ -367,6 +367,12 @@ const GeneralAdminView = () => {
             </ul>
           </article>
         </article>
+        <section className='userPAge__logOut'>
+            <span>If you want to log out, click this button</span>
+            <button className='userPage__form-button'>
+              Log Out
+            </button>
+          </section>
       </div>
       <Footer/>    
     </>

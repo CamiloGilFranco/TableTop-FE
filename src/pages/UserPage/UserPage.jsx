@@ -21,7 +21,7 @@ const UserPage = () => {
   });
 
   const handleEditClick = () => {
-    setIsEditable(true)
+    setIsEditable(!isEditable)
   }
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -88,7 +88,7 @@ const UserPage = () => {
           <span>Welcome back name</span>
           <span>Here you can see and edit your details</span>
         </section>
-        <section>
+      
           <form className='userPage__form' onSubmit={handleSumbit}>
             <label className='userPage__form-label' htmlFor='userName'>Name</label>
             <span>
@@ -186,7 +186,12 @@ const UserPage = () => {
               Save changes
             </button>
           </form>
-        </section>
+          <section className='userPAge__logOut'>
+            <span>If you want to log out, click this button</span>
+            <button className='userPage__form-button'>
+              Log Out
+            </button>
+          </section>
       </div>
       <Footer/>
     </React.Fragment>

@@ -4,6 +4,7 @@ import { en } from '../../assets/languages/languajeEN';
 import { ORDER_SWITCH, ORDER_ID, ORDER_NUMBER } from '../../store/reducers/Order.reducer';
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
+import { Link } from 'react-router-dom';
 
 const CartItem = () => {
   const language = useSelector(state=> state.languageReducer);
@@ -54,7 +55,9 @@ const CartItem = () => {
         <p className="cart-item-finish-waring">
           {cartFinishWarning()}
         </p>
-        <button className="cart-item-finish-button">{cartPlaceOrder()}</button>
+        <Link to={'/restaurant/checkout'}>
+          <button className="cart-item-finish-button">{cartPlaceOrder()}</button>
+        </Link>
       </div>
     </div>
   );

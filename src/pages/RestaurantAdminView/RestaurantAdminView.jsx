@@ -317,7 +317,7 @@ const RestaurantAdminView = () => {
                 <li>{restaurantAdminResRating()}: {restaurantExpample.rating}</li>
               </ul>
               <h3>Here you can see the upcoming reservations:</h3>
-              <p>If you want to delete something you can do it here</p>
+              <p className='restaurantAdmin__view-p'>If you want to delete something you can do it here</p>
               <section>
                 {reservations.map((item, index) => {
                   return (
@@ -381,6 +381,12 @@ const RestaurantAdminView = () => {
               ))}
             </article>
           </article>
+          <section className='userPAge__logOut'>
+            <span>If you want to log out, click this button</span>
+            <button className='userPage__form-button'>
+              Log Out
+            </button>
+          </section>
       </div>
       <Footer/>
     </>

@@ -8,7 +8,6 @@
 }
 .userPage__form {
   width: 300px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -20,17 +19,17 @@
   }
 }
 .userPage__title {
-   display: flex;
-   flex-direction: column;
-   text-align: center;
-   gap: 10px;
-   background-color: lightgray;
-   border: gray solid 2px;
-   padding: 5px;
-   border-radius: 20px;
-   font-size: 18px;
-   font-weight: 700;
-   @media (min-width: 765px) {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  background-color: lightgray;
+  border: gray solid 2px;
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  @media (min-width: 765px) {
     padding: 15px;
     font-size: 25px;
   }
@@ -53,7 +52,7 @@
   font-size: 16px;
   background-color: lightgray;
   width: 270px;
-
+  
   &::placeholder {
     color: grey;
   }
@@ -92,5 +91,16 @@
   @media (min-width: 1000px) {
     height: 35px;
     width: 35px;
+  }
+}
+.userPAge__logOut{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 50px;
+  span {
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
   }
 }

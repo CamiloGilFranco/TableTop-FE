@@ -27,12 +27,23 @@
   @media (min-width:100px) {
     justify-content: space-evenly;
   }
+  h3 {
+    font-size: 18px;
+    @media (min-width: 765px) {
+      font-size: 22px;
+    }
+  }
+}
+
+.restaurantAdmin__view-p{
+  font-size: 18px;
+  padding: 5px;
 }
 
 .restaurantAdminView__form {
   display: flex;
   flex-direction: column;
-  font-size: 13px;
+  font-size: 16px;
   gap: 5px;
   border: 2px solid lightgray;
   background-color:rgb(206, 204, 201);
@@ -50,11 +61,11 @@
   }
   span {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
   } 
   label{
     font-weight: 500;
-    font-size: 14px;
+    font-size: 18px;
   }
   input{
     border: none;
@@ -78,26 +89,30 @@
   padding: 10px;
   span {
     font-weight: 700;
-    font-size: 14px;
-  } 
+    font-size: 18px;
+  }
+  p {
+    font-size: 16px;
+  }
 }
 
 .restaurantAdminView__list{
   padding: 5px 15px;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 25px;
   @media (min-width: 765px) {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 .restauranAdminView__itemList{
   padding: 0px 15px;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 25px;
 }
 
 .restauranAdminView__itemTitle {
   font-weight: 700;
+  font-size: 16px;
 }
 .restaurantAdminView__error {
   color: #ef3f3f;
@@ -123,5 +138,6 @@
     margin: 0;
     padding: 0;
     width: 75%;
+    font-size: 18px;
   }
 }
