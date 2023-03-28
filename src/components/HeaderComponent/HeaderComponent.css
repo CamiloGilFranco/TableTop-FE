@@ -6,7 +6,8 @@
   padding: 0px 10px;
   gap: 15px;
   height: 50px;
-  position: relative;
+  position: sticky;
+  top: 0;
 }
 .headerNavBar select {
   cursor: pointer;

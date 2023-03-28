@@ -4,35 +4,54 @@ import FormComponent from "./FormComponent";
 import { useModal } from "./hooks/UseModal";
 import { useState } from "react";
 import Modal from "./modal/Modal";
+import addresses from "../../assets/dataAddress.json";
 
-const DeliveryAddressComponent = ({ data }) => {
+const DeliveryAddressComponent = () => {
   const [isOpenModal1, openModal1, closeModal1] = useModal(false);
-  const [address, setAddress] = useState(data);
+  const [addressList, setAddressList] = useState(addresses);
+  const [addressSelected, setAddressSelected] = useState("");
+
+  const handleDelete = (index) => {
+    const newAddressList = [...addressList];
+    newAddressList.splice(index, 1);
+    setAddressList(newAddressList);
+  };
+
+  const handleNewAddress = (newAddress) => {
+    setAddressList([...addressList, newAddress]);
+  };
 
   return (
     <>
-      <section className="container">
-        <h2 className="container-title">Delivery Address:</h2>
-        <div className="save-info">
-          <h3 className="save-info__value">Saved Address</h3>
-          <button className="save-info__button" onClick={openModal1}>
+      <section className="delivery-address-container">
+        <h2 className="delivery-container-title">Delivery Address:</h2>
+        <div className="delivery-save-info">
+          <h3 className="delivery-save-info__value">Saved Address</h3>
+          <button className="delivery-save-info__button" onClick={openModal1}>
             + Add New Address
           </button>
         </div>
-        <main className="main-box">
-          {address.map((el) => (
-            <DeliveryAddressBox 
-                key={el.name} 
-                el={el} 
-                setAddress = {setAddress}
-                data = {data}
-                index = {address.indexOf(el)}
+        <form className="delivery-main-box">
+          {addressList.map((element, index) => (
+            <DeliveryAddressBox
+              key={index}
+              index={index}
+              name={element.name}
+              mobileNumber={element.mobileNumber}
+              address={element.address}
+              city={element.city}
+              setAddressSelected={setAddressSelected}
+              addressSelected={addressSelected}
+              handleDelete={handleDelete}
             />
           ))}
-        </main>
+        </form>
       </section>
       <Modal isOpen={isOpenModal1} closeModal={closeModal1}>
-        <FormComponent />
+        <FormComponent
+          handleNewAddress={handleNewAddress}
+          closeModal={closeModal1}
+        />
       </Modal>
     </>
   );
