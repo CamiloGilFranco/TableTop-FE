@@ -26,6 +26,8 @@ const RestaurantAdminView = () => {
 
   const [reservations, setReservations] = useState(mockReservations);
   const [editingItem, setEditingItem] = useState(null);
+  const [editingCategory, setEditingCategory] = useState(null);
+  const [editIndex, setEditIndex] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   
 
@@ -287,7 +289,7 @@ const RestaurantAdminView = () => {
       return;
     }
 
-    const updatedMenu= {
+    const updatedMenu = {
       ...menu, 
       [category]: [...menu[category], newMenuEntry]
     }
@@ -303,7 +305,9 @@ const RestaurantAdminView = () => {
    setMenu(updatedMenu);
   }
 
-  const handleEditClick = (item) => {
+  const handleEditClick = (item, index, category) => {
+    setEditingCategory(category)
+    setEditIndex(index)
     setEditingItem(item);
     setModalVisible(true);
   }
@@ -385,14 +389,22 @@ const RestaurantAdminView = () => {
                     {item.map((item, index)=> (
                       <li key={index} className='restaurantAdminView__details'>
                         {title()}: {item.title} - {price()}: {item.price}
-                        <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(item)}/>
+                        <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(item, index, category)}/>
                         <AiFillDelete className='restaurantAdminView__icon' onClick={()=> handleDelete(category, index)}/>
                       </li>
                     ))}
                   </ul>
                 </div>
               ))}
-              {modalVisible && (<EditModal item={editingItem} onClose={handleCloseModal} setModalVisible={setModalVisible}/>)}
+              {modalVisible && (<EditModal 
+                item={editingItem} 
+                onClose={handleCloseModal} 
+                setModalVisible={setModalVisible} 
+                editIndex={editIndex}
+                menu={menu}
+                setMenu={setMenu}
+                category={editingCategory}
+              /> )}
             </article>
           </article>
           <section className='userPAge__logOut'>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './EditModal.css'
 
-const EditModal = ({ item, onClose, setModalVisible }) => {
+const EditModal = ({ item, editIndex, onClose, setModalVisible, setMenu, menu, category }) => {
   const [title, setTitle] = useState(item.title);
   const [price, setPrice] = useState(item.price);
   const [description, setDescription] = useState(item.description);
   const [errors, setErrors] = useState({});
+
 
 
   const handleSumbit = (e) =>{
@@ -34,7 +35,12 @@ const EditModal = ({ item, onClose, setModalVisible }) => {
       setErrors(validationErrors);
       return;
     }
-    setModalVisible(false)
+
+    const updatedEntry = { ...item, title, price, description };
+    const updatedMenu = { ...menu };
+    updatedMenu[category][editIndex] = updatedEntry;
+
+    setModalVisible(false);
   }
   return (
     <div className='modalComponent__container'>
