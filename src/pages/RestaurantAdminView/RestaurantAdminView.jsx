@@ -6,8 +6,9 @@ import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
-import { AiFillDelete } from 'react-icons/ai'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './RestaurantAdminView.css';
+import EditModal from '../../components/EditModal/EditModal';
 
 const RestaurantAdminView = () => {
   const usersData = userDB;
@@ -23,7 +24,10 @@ const RestaurantAdminView = () => {
     {name: 'name 5', time: '7:30 PM', date: '09-03-2023', numberOfComensals: 5}
   ];
 
-  const [reservations, setReservations] = useState(mockReservations)
+  const [reservations, setReservations] = useState(mockReservations);
+  const [editingItem, setEditingItem] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  
 
   const language = useSelector(state=> state.languageReducer);
   const restaurantAdminTitle = () => {
@@ -250,13 +254,13 @@ const RestaurantAdminView = () => {
 
   // logic for the sumbit of the form 
   const handleNewDishSumbit = (e) => {
+    e.preventDefault();
     const validationErrors = {};
     const form = e.target;
     const title = form.title.value;
     const description = form.description.value;
     const price = parseInt(form.price.value);
     const category = form.category.value;
-    e.preventDefault();
     
     const newMenuEntry = {
       title,
@@ -264,10 +268,10 @@ const RestaurantAdminView = () => {
       price,
       category
     }
-    if (title.length < 2) {
+    if (title.length < 2 || typeof title !== 'string') {
       validationErrors.title = newDishFormNameError();
     }
-    if (description.length < 2) {
+    if (description.length < 2 || typeof description !== 'string') {
       validationErrors.description = newDishFormDescriptionError();
     }
     if (price.length === 0) {
@@ -299,6 +303,14 @@ const RestaurantAdminView = () => {
    setMenu(updatedMenu);
   }
 
+  const handleEditClick = (item) => {
+    setEditingItem(item);
+    setModalVisible(true);
+  }
+  const handleCloseModal = () => {
+    setEditingItem(null);
+    setModalVisible(false);
+  };  
 
   const handleReservationDelete = (index) => {
     setReservations(reservations.filter((item, i) => i !== index)) ;
@@ -373,12 +385,14 @@ const RestaurantAdminView = () => {
                     {item.map((item, index)=> (
                       <li key={index} className='restaurantAdminView__details'>
                         {title()}: {item.title} - {price()}: {item.price}
+                        <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(item)}/>
                         <AiFillDelete className='restaurantAdminView__icon' onClick={()=> handleDelete(category, index)}/>
                       </li>
                     ))}
                   </ul>
                 </div>
               ))}
+              {modalVisible && (<EditModal item={editingItem} onClose={handleCloseModal} setModalVisible={setModalVisible}/>)}
             </article>
           </article>
           <section className='userPAge__logOut'>
