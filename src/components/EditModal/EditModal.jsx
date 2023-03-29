@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './EditModal.css'
 
-const EditModal = ({ item, editIndex, onClose, setModalVisible, setMenu, menu, category }) => {
+const EditModal = ({ item, onClose, setModalVisible, handleUpdate }) => {
   const [title, setTitle] = useState(item.title);
   const [price, setPrice] = useState(item.price);
   const [description, setDescription] = useState(item.description);
@@ -36,10 +36,7 @@ const EditModal = ({ item, editIndex, onClose, setModalVisible, setMenu, menu, c
       return;
     }
 
-    const updatedEntry = { ...item, title, price, description };
-    const updatedMenu = { ...menu };
-    updatedMenu[category][editIndex] = updatedEntry;
-
+    handleUpdate(title, price, description);    
     setModalVisible(false);
   }
   return (

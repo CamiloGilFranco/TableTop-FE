@@ -316,6 +316,13 @@ const RestaurantAdminView = () => {
     setModalVisible(false);
   };  
 
+  const handleUpdate = (title, price, description) => {
+    const updatedEntry = { ...editingItem, title, price, description };
+    const updatedMenu = { ...menu };
+    updatedMenu[editingCategory][editIndex] = updatedEntry;
+
+  }
+
   const handleReservationDelete = (index) => {
     setReservations(reservations.filter((item, i) => i !== index)) ;
   }
@@ -399,11 +406,8 @@ const RestaurantAdminView = () => {
               {modalVisible && (<EditModal 
                 item={editingItem} 
                 onClose={handleCloseModal} 
-                setModalVisible={setModalVisible} 
-                editIndex={editIndex}
-                menu={menu}
-                setMenu={setMenu}
-                category={editingCategory}
+                setModalVisible={setModalVisible}
+                handleUpdate={handleUpdate}
               /> )}
             </article>
           </article>
