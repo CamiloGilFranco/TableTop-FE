@@ -277,7 +277,17 @@ const GeneralAdminView = () => {
     setEditingItem(value);
   }
 
-
+  const handleRestaurantUpdate = (updatedRestaurant)=> {
+    setRestaurants((prevRestaurants)=> {
+      return prevRestaurants.map((restaurant)=> {
+        if (restaurant.id === updatedRestaurant.id) {
+          return updatedRestaurant;
+        } else {
+          return restaurant;
+        }
+      });
+    });
+  };
   const handleCloseModal = () => {
     setModalVisible(false);
   };  
@@ -387,6 +397,7 @@ const GeneralAdminView = () => {
                 setModalVisible={setModalVisible}
                 editingItem={editingItem}
                 checkboxValues={checkboxValues}
+                handleRestaurantUpdate={handleRestaurantUpdate}
               /> )}
           </article>
         </article>

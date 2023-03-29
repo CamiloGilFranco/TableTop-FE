@@ -59,4 +59,16 @@
 
 .generalAdminModal__button-cancel {
   background-color: #ef3f3f;
+}
+
+.generalAdminModal__checkbox {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+}
+.generalAdminModal__checkbox label {
+  align-self: flex-start;
+}
+.generalAdminModal__checkbox input {
+  margin-right: 15px;
 }/*# sourceMappingURL=GeneralAdminModal.css.map */

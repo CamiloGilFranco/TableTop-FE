@@ -37,7 +37,7 @@ const EditModal = ({ item, onClose, handleUpdate }) => {
     }
 
     handleUpdate(title, price, description);    
-    onClose()
+    onClose();
   }
   return (
     <div className='modalComponent__container'>

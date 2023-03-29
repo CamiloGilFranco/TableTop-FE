@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import './GeneralAdminModal.css'
 
-const GeneralAdminModal = ({ onClose, editingItem, checkboxValues }) => {
+const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaurantUpdate }) => {
   const [title, setTitle] = useState(editingItem.restaurantName);
   const [location, setLocation] = useState(editingItem.location);
   const [categories, setCategories] = useState(editingItem.categories);
-  const [selectedCategories, setSelectedCategories] = useState([]);
   const [errors, setErrors] = useState({});
   
   const getCheckboxState = (category) => {
@@ -14,23 +13,45 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues }) => {
   const handleCategoryChange = (e) =>{
     const category = e.target.name;
     const isChecked = e.target.checked;
-    if (isChecked) {
-      setCategories([...categories, category]);
-    } else {
-      setCategories(categories.filter((cat) => cat !== category));
-    }
+    setCategories((prevCategories) => {
+      if (isChecked) {
+        return [...prevCategories, category];
+      } else {
+        return prevCategories.filter((cat) => cat !== category);
+      }
+    })
   };
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    onClose();
+    const validationErrors = {};
     const form = e.target;
     const title = form.title.value
-    const newCategories = categories.filter((cat) => selectedCategories.includes(cat));
+    const newCategories = Object.keys(checkboxValues).filter((cat) => categories.includes(cat));
+    
+    if (title.length <= 1 || typeof title !== 'string') {
+      validationErrors.title = 'title must be at least 2 characters long';
+    }
+    if (newCategories.length === 0) {
+      validationErrors.categories = 'Restaurant must have at least one category';
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
-
+    const updatedRestaurant = {
+      id: editingItem.id,
+      restaurantPathName: title.replaceAll(' ', '').toLowerCase(),
+      restaurantName: title,
+      location,
+      categories: newCategories,
+      createdAt: editingItem.createdAt
+    }
+    handleRestaurantUpdate(updatedRestaurant)
+    onClose();
   }
-
+  
   return (
     <div className='generalAdminModal__container'>
     <section className='generalAdminModal__box'>
@@ -43,9 +64,10 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues }) => {
           name='title'
           id='title'
           value={title}
+          onChange={(event) => setTitle(event.target.value)}
         />
-        {/* {errors.title && <p className='restaurantAdminView__error'>{errors.title}</p>} */}
-        <div>
+        {errors.title && <p className='restaurantAdminView__error'>{errors.title}</p>}
+        <div className='generalAdminModal__checkbox'>
           {Object.keys(checkboxValues).map((key) => (
             <label key={key}>
               <input
@@ -58,7 +80,7 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues }) => {
             </label>
           ))}
         </div>
-        {/* {errors.price && <p className='restaurantAdminView__error'>{errors.price}</p>} */}
+        {errors.categories && <p className='restaurantAdminView__error'>{errors.categories}</p>}
         <select
           name='location'
           id='location'
