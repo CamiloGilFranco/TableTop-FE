@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './EditModal.css'
 
-const EditModal = ({ item, onClose, setModalVisible, handleUpdate }) => {
+const EditModal = ({ item, onClose, handleUpdate }) => {
   const [title, setTitle] = useState(item.title);
   const [price, setPrice] = useState(item.price);
   const [description, setDescription] = useState(item.description);
@@ -37,7 +37,7 @@ const EditModal = ({ item, onClose, setModalVisible, handleUpdate }) => {
     }
 
     handleUpdate(title, price, description);    
-    setModalVisible(false);
+    onClose()
   }
   return (
     <div className='modalComponent__container'>

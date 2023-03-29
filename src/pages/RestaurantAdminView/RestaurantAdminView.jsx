@@ -320,7 +320,6 @@ const RestaurantAdminView = () => {
     const updatedEntry = { ...editingItem, title, price, description };
     const updatedMenu = { ...menu };
     updatedMenu[editingCategory][editIndex] = updatedEntry;
-
   }
 
   const handleReservationDelete = (index) => {
@@ -406,7 +405,6 @@ const RestaurantAdminView = () => {
               {modalVisible && (<EditModal 
                 item={editingItem} 
                 onClose={handleCloseModal} 
-                setModalVisible={setModalVisible}
                 handleUpdate={handleUpdate}
               /> )}
             </article>

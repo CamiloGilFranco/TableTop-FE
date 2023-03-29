@@ -6,8 +6,9 @@ import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
-import { AiFillDelete } from 'react-icons/ai'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './GeneralAdminView.css';
+import GeneralAdminModal from '../../components/GeneralAdminModal/GeneralAdminModal';
 
 const GeneralAdminView = () => {
   const usersData = userDB;
@@ -27,6 +28,9 @@ const GeneralAdminView = () => {
     bar: false,
     coffee: false,
   })
+  const [modalVisible, setModalVisible] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+
 
   const language = useSelector(state=> state.languageReducer);
   const restaurantAdminTitle = () => {
@@ -183,14 +187,18 @@ const GeneralAdminView = () => {
     
   
     const checkedValues = Object.values(checkboxValues);
+    const categories = Object.entries(checkboxValues)
+    .filter(([key, value]) => value)
+    .map(([key, value]) => key);
+
     const newRestaurant = {
       id: restaurants.length + 1,
       restautantPathName: name.replaceAll(' ', '').toLowerCase(),
       restaurantName: name, 
-      location, 
+      location,
+      categories,
       createdAt: [new Date().getFullYear(), new Date().getDate(), new Date().getMonth()+1].join('-'),
     }
-
 
     if (name.length < 2) {
       validationErrors.name = newRestaurantFormNameError();
@@ -256,7 +264,6 @@ const GeneralAdminView = () => {
       return;
     }
 
-    
     setUsers([...users, newUser])
     setErrors({});
     form.reset();
@@ -265,6 +272,15 @@ const GeneralAdminView = () => {
   const hanldeUserDelete = (id) =>{
     setUsers(users.filter((item) => item.id !== id));
   }
+  const handleEditClick = (value)=> {
+    setModalVisible(true);
+    setEditingItem(value);
+  }
+
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };  
   
   return (
     <>
@@ -361,10 +377,17 @@ const GeneralAdminView = () => {
               {Object.entries(restaurants).map(([key, value])=> (
                 <li key={key} className='generalAdminView__details'>
                   {value.restaurantName} - {value.location}
+                  <AiFillEdit className='generalAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(value)}/>
                   <AiFillDelete className='generalAdminView__icon' onClick={()=> handleDelete(parseInt(key)+1)}/>
                 </li>
               ))}
             </ul>
+            {modalVisible && (<GeneralAdminModal 
+                onClose={handleCloseModal} 
+                setModalVisible={setModalVisible}
+                editingItem={editingItem}
+                checkboxValues={checkboxValues}
+              /> )}
           </article>
         </article>
         <section className='userPAge__logOut'>
