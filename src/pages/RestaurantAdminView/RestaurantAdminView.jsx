@@ -9,6 +9,7 @@ import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './RestaurantAdminView.css';
 import EditModal from '../../components/EditModal/EditModal';
+import EditDetailsModal from '../../components/EditDetailsModal/EditDetailsModal';
 
 const RestaurantAdminView = () => {
   const usersData = userDB;
@@ -29,6 +30,9 @@ const RestaurantAdminView = () => {
   const [editingCategory, setEditingCategory] = useState(null);
   const [editIndex, setEditIndex] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [address, setAddress] = useState(restaurantExpample.address);
+  const [phoneNumber, setPhoneNumber] = useState(restaurantExpample.phoneNumber);
+  const [detailsModal, setDetailsModal] = useState(true);
   
 
   const language = useSelector(state=> state.languageReducer);
@@ -253,8 +257,7 @@ const RestaurantAdminView = () => {
         return en.price
     }
   }
-
-  // logic for the sumbit of the form 
+  // logic for the sumbit of the new dish form
   const handleNewDishSumbit = (e) => {
     e.preventDefault();
     const validationErrors = {};
@@ -305,23 +308,61 @@ const RestaurantAdminView = () => {
    setMenu(updatedMenu);
   }
 
+  // showw the modal of the edit dish
   const handleEditClick = (item, index, category) => {
     setEditingCategory(category)
     setEditIndex(index)
     setEditingItem(item);
     setModalVisible(true);
   }
+
+  //call back function that closes the modal
   const handleCloseModal = () => {
     setEditingItem(null);
     setModalVisible(false);
   };  
 
+  // updates the dish with the information from the modal
   const handleUpdate = (title, price, description) => {
     const updatedEntry = { ...editingItem, title, price, description };
     const updatedMenu = { ...menu };
-    updatedMenu[editingCategory][editIndex] = updatedEntry;
+    updatedMenu[editingCategory] = updatedMenu[editingCategory].map((item, i) => i === editIndex ? updatedEntry : item);
+    setMenu(updatedMenu);
   }
 
+  // eliminates value from the phonNumber or address array
+  const handleDetailsDelete = (arr, index) =>{
+    const updatedArr = arr.filter((item, i)=> i !== index);
+    if (arr=== restaurantExpample.address) {
+      setAddress(updatedArr);
+    } else if (arr === restaurantExpample.phoneNumber) {
+      setPhoneNumber(updatedArr);
+    }
+  }
+
+  const handleDetailsClick = (item, index) => {
+    setDetailsModal(true);
+    setEditingItem(item)
+  }
+
+  const handleUpdateAddress = (index, newValue) => {
+    const updatedAddress = [...address];
+    updatedAddress[index] = newValue;
+    setAddress(updatedAddress);
+  };
+  
+  const handleUpdatePhoneNumber = (index, newValue) => {
+    const updatedPhoneNumber = [...phoneNumber];
+    updatedPhoneNumber[index] = newValue;
+    setPhoneNumber(updatedPhoneNumber);
+  };
+
+  const handleDetailsClose = () => {
+    setDetailsModal(false);
+    setEditingItem(null)
+  }
+
+  // eliminates one element of the reservations
   const handleReservationDelete = (index) => {
     setReservations(reservations.filter((item, i) => i !== index)) ;
   }
@@ -338,6 +379,37 @@ const RestaurantAdminView = () => {
                 <li>{restaurantAdminResSales()}: {restaurantExpample.numberOfSales}</li>
                 <li>{restaurantAdminResRating()}: {restaurantExpample.rating}</li>
               </ul>
+              <h3>Here you can edit or delete some information</h3>
+              <span>This are the addresses of your restuarant</span>
+              <ul>
+                {address.map((address, index)=>{
+                  return(
+                  <li key={index}>
+                    {address}
+                    <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={(e)=>handleDetailsClick(address, index)}/>
+                    <AiFillDelete className='restaurantAdminView__icon'onClick={()=>handleDetailsDelete(restaurantExpample.address , index)}/>
+                  </li>
+                  )
+                })}
+              </ul>
+              <span>This are the phone numbers of your restuarant</span>
+              <ul>
+                {phoneNumber.map(((phoneNumber, index)=> {
+                  return(
+                  <li key={index}>
+                    {phoneNumber}
+                    <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={(e)=>handleDetailsClick(phoneNumber, index)}/>
+                    <AiFillDelete className='restaurantAdminView__icon'onClick={()=>handleDetailsDelete(restaurantExpample.phoneNumber, index)}/>
+                  </li>
+                  )
+                }))}
+              </ul>
+              {detailsModal && (<EditDetailsModal 
+                item={editingItem} 
+                onClose={handleDetailsClose} 
+                handleUpdateAddress={handleUpdateAddress}
+                handleUpdatePhoneNumber={handleUpdatePhoneNumber}
+              /> )}
               <h3>Here you can see the upcoming reservations:</h3>
               <p className='restaurantAdmin__view-p'>If you want to delete something you can do it here</p>
               <section>
