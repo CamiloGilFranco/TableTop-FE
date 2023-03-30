@@ -9,6 +9,7 @@ import {
 } from "../../store/reducers/Order.reducer";
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
+import { Link } from 'react-router-dom';
 
 const CartItem = () => {
   const language = useSelector((state) => state.languageReducer);

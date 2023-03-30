@@ -185,6 +185,8 @@ const RestaurantFilterComponent = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  // fires when a categorie is selected, adds the value to he state checkboxSelected and updates the searchParam with whats comming from the cuisine arrray and keeps the other values if they exist. 
   const handleCategoriesChange = (event) => {
     if (event.target.checked) {
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
@@ -211,9 +213,10 @@ const RestaurantFilterComponent = ({
     }
   };
 
+  // fires when a star rating is selected, updates the radioSelected state and searchParam with the value from the star rating and keeps the other values if they exist.
   const handleRatingChange = (event) => {
     setRadioSelected(event.target.id);
-    console.log(searchParams.get("searchTerm"));
+
     setSearchParams({
       ...(searchParams.get("searchTerm") && {
         searchTerm: searchParams.get("searchTerm"),
@@ -224,12 +227,15 @@ const RestaurantFilterComponent = ({
       rating: event.target.id,
     });
   };
+
+  // renders the mobile list
   const handleListClick = () => {
     mobileFilter === "Filter__none"
       ? setMobileFilter("")
       : setMobileFilter("Filter__none");
   };
 
+  // clears the categories, checkboxSelected and searchParam of the values from cuisine, clears all the checked checkboxes and removes the values from the searchparams while keeping the other values if they exist
   const handleClearCuisine = () => {
     setCategories([]);
     setCheckBoxSelected([]);
@@ -242,8 +248,9 @@ const RestaurantFilterComponent = ({
       }),
       ...(searchParams.get("rating") && { rating: searchParams.get("rating") }),
     });
-    console.log(searchParams.getAll("cuisine"));
-  };
+  }
+
+  // clears the rating and searchParam of the values from rating, clears the radioslected and removes the values from the searchparams while keeping the other values if they exist
   const handleClearRating = () => {
     setRadioSelected("");
     setSearchParams({

@@ -6,8 +6,9 @@ import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
-import { AiFillDelete } from 'react-icons/ai'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './GeneralAdminView.css';
+import GeneralAdminModal from '../../components/GeneralAdminModal/GeneralAdminModal';
 
 const GeneralAdminView = () => {
   const usersData = userDB;
@@ -27,6 +28,9 @@ const GeneralAdminView = () => {
     bar: false,
     coffee: false,
   })
+  const [modalVisible, setModalVisible] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+
 
   const language = useSelector(state=> state.languageReducer);
   const restaurantAdminTitle = () => {
@@ -183,14 +187,18 @@ const GeneralAdminView = () => {
     
   
     const checkedValues = Object.values(checkboxValues);
+    const categories = Object.entries(checkboxValues)
+    .filter(([key, value]) => value)
+    .map(([key, value]) => key);
+
     const newRestaurant = {
       id: restaurants.length + 1,
       restautantPathName: name.replaceAll(' ', '').toLowerCase(),
       restaurantName: name, 
-      location, 
+      location,
+      categories,
       createdAt: [new Date().getFullYear(), new Date().getDate(), new Date().getMonth()+1].join('-'),
     }
-
 
     if (name.length < 2) {
       validationErrors.name = newRestaurantFormNameError();
@@ -256,7 +264,6 @@ const GeneralAdminView = () => {
       return;
     }
 
-    
     setUsers([...users, newUser])
     setErrors({});
     form.reset();
@@ -265,6 +272,25 @@ const GeneralAdminView = () => {
   const hanldeUserDelete = (id) =>{
     setUsers(users.filter((item) => item.id !== id));
   }
+  const handleEditClick = (value)=> {
+    setModalVisible(true);
+    setEditingItem(value);
+  }
+
+  const handleRestaurantUpdate = (updatedRestaurant)=> {
+    setRestaurants((prevRestaurants)=> {
+      return prevRestaurants.map((restaurant)=> {
+        if (restaurant.id === updatedRestaurant.id) {
+          return updatedRestaurant;
+        } else {
+          return restaurant;
+        }
+      });
+    });
+  };
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };  
   
   return (
     <>
@@ -274,7 +300,7 @@ const GeneralAdminView = () => {
         <article className='generalAdminView__flex'>
           <span>
             <h3>{generalAdminSubtitle()}</h3>
-            <span>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} and #{users.length} users</span>
+            <span className='generalAdmin__span'>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} and #{users.length} users</span>
             <h3>Here you can see all the users</h3>
             <form className='generalAdminView__form' onSubmit={newUserSumbit}>
               <h3>Here you can add a new user:</h3>
@@ -361,12 +387,26 @@ const GeneralAdminView = () => {
               {Object.entries(restaurants).map(([key, value])=> (
                 <li key={key} className='generalAdminView__details'>
                   {value.restaurantName} - {value.location}
+                  <AiFillEdit className='generalAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(value)}/>
                   <AiFillDelete className='generalAdminView__icon' onClick={()=> handleDelete(parseInt(key)+1)}/>
                 </li>
               ))}
             </ul>
+            {modalVisible && (<GeneralAdminModal 
+                onClose={handleCloseModal} 
+                setModalVisible={setModalVisible}
+                editingItem={editingItem}
+                checkboxValues={checkboxValues}
+                handleRestaurantUpdate={handleRestaurantUpdate}
+              /> )}
           </article>
         </article>
+        <section className='userPAge__logOut'>
+            <span>If you want to log out, click this button</span>
+            <button className='userPage__form-button'>
+              Log Out
+            </button>
+          </section>
       </div>
       <Footer/>    
     </>

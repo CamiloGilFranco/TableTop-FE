@@ -9,7 +9,6 @@
 
 .userPage__form {
   width: 300px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -115,4 +114,16 @@
     height: 35px;
     width: 35px;
   }
+}
+
+.userPAge__logOut {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+.userPAge__logOut span {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
 }/*# sourceMappingURL=UserPage.css.map */
