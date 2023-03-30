@@ -1,38 +1,35 @@
 import React, { useState } from 'react';
 
 
-const EditDetailsModal = ({ item, onClose, handleUpdateAddress, handleUpdatePhoneNumber  }) => {
+const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, address, index }) => {
   const [editingItem, setEditingItem] = useState(item);
   const [errors, setErrors] = useState({});
 
+  console.log(index);
 
-  const handleSumbit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
     const validationErrors = {};
 
     const form = e.target;
     const input = form.editedItem.value;
     if (input.length === 0) {
-      validationErrors.error = 'Enter a valid Phone Number or Address'
+      validationErrors.error = 'Enter a valid Phone Number or Address';
     }
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
+
+    if (phoneNumber.includes(item)) {
+      handleDetailsUpdate(phoneNumber, index, input);
+    } else if (address.includes(item)) {
+      handleDetailsUpdate(address, index, input);
+    }
     
     setErrors({});
     onClose();
-
-    if (item === editingItem) {
-      return;
-    }
-    if (address.includes(item)) {
-      handleUpdateAddress(address.indexOf(item), editingItem);
-    } else {
-      handleUpdatePhoneNumber(phoneNumber.indexOf(item), editingItem);
-    }
-  }
+  };
 
   return (
     <div className='modalComponent__container'>
@@ -40,7 +37,7 @@ const EditDetailsModal = ({ item, onClose, handleUpdateAddress, handleUpdatePhon
         <span>
           Here you can edit the adress or phone
         </span>
-        <form className='modalComponent__form' onSubmit={handleSumbit}>
+        <form className='modalComponent__form' onSubmit={handleSubmit}>
           <input
             type='text'
             name='editedItem'

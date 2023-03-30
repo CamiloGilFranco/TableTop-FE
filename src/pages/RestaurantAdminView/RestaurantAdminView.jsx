@@ -32,7 +32,7 @@ const RestaurantAdminView = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [address, setAddress] = useState(restaurantExpample.address);
   const [phoneNumber, setPhoneNumber] = useState(restaurantExpample.phoneNumber);
-  const [detailsModal, setDetailsModal] = useState(true);
+  const [detailsModal, setDetailsModal] = useState(false);
   
 
   const language = useSelector(state=> state.languageReducer);
@@ -341,20 +341,21 @@ const RestaurantAdminView = () => {
   }
 
   const handleDetailsClick = (item, index) => {
+    setEditingItem(item);
+    setEditIndex(index);
     setDetailsModal(true);
-    setEditingItem(item)
   }
 
-  const handleUpdateAddress = (index, newValue) => {
-    const updatedAddress = [...address];
-    updatedAddress[index] = newValue;
-    setAddress(updatedAddress);
-  };
-  
-  const handleUpdatePhoneNumber = (index, newValue) => {
-    const updatedPhoneNumber = [...phoneNumber];
-    updatedPhoneNumber[index] = newValue;
-    setPhoneNumber(updatedPhoneNumber);
+  const handleDetailsUpdate = (arr, index, value) => {
+    if (arr === phoneNumber) {
+      const newPhoneNumber = [...phoneNumber];
+      newPhoneNumber[index] = value;
+      setPhoneNumber(newPhoneNumber);
+    } else if (arr === address) {
+      const newAddress = [...address];
+      newAddress[index] = value;
+      setAddress(newAddress);
+    }
   };
 
   const handleDetailsClose = () => {
@@ -362,6 +363,7 @@ const RestaurantAdminView = () => {
     setEditingItem(null)
   }
 
+  //console.log(phoneNumber);
   // eliminates one element of the reservations
   const handleReservationDelete = (index) => {
     setReservations(reservations.filter((item, i) => i !== index)) ;
@@ -406,10 +408,13 @@ const RestaurantAdminView = () => {
               </ul>
               {detailsModal && (<EditDetailsModal 
                 item={editingItem} 
-                onClose={handleDetailsClose} 
-                handleUpdateAddress={handleUpdateAddress}
-                handleUpdatePhoneNumber={handleUpdatePhoneNumber}
-              /> )}
+                onClose={handleDetailsClose}
+                handleDetailsUpdate={handleDetailsUpdate}
+                address={address}
+                phoneNumber={phoneNumber}
+                index={editIndex}
+              />
+              )}
               <h3>Here you can see the upcoming reservations:</h3>
               <p className='restaurantAdmin__view-p'>If you want to delete something you can do it here</p>
               <section>
