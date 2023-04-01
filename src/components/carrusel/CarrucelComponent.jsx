@@ -4,11 +4,13 @@ import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const CarrucelComponent = () => {
   const [numVisibleSlides, setNumVisibleSlides] = useState(6);
   const data = foodTypes;
   const keys = Object.keys(data);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,7 +47,11 @@ const CarrucelComponent = () => {
         <Slider {...settings} className="home-carousel-main">
           {keys.map((element, index) => {
             return (
-              <div key={index} className="home-carousel-single-item">
+              <div
+                key={index}
+                className="home-carousel-single-item"
+                onClick={() => navigate(`/restaurant?cuisine=${element}`)}
+              >
                 <div className="home-carousel-single-item-image-container">
                   <img
                     src={data[element]}

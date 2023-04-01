@@ -25,7 +25,9 @@ const RestaurantView = () => {
 
   const data = db;
 
-  const { pathname } = useLocation();
+  let pathname = useLocation().pathname;
+  pathname = pathname.replace("/restaurants/", "");
+
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
@@ -120,7 +122,6 @@ const RestaurantView = () => {
         </div>
         <div className="restaurant-view-lateral-column-container">
           <CartItem />
-          <AlwaysFirstComponent />
         </div>
       </div>
       <div className="restaurant-view-footer">

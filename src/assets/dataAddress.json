@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Home",
+    "mobileNumber": "915625354",
+    "address": "549 Sulphur Sprint",
+    "city": "Bucaramanga"
+  },
+  {
+    "name": "Office",
+    "mobileNumber": "65465132",
+    "address": "278 Kame House",
+    "city": "Vegita"
+  },
+  {
+    "name": "Apartment",
+    "mobileNumber": "546516",
+    "address": "278 fakeSt",
+    "city": "Bogota"
+  }
+]
