@@ -4,12 +4,11 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LANGUAGE_SWITCH } from "../../store/reducers/Language.reducer";
-import { en } from "../../assets/languages/languajeEN";
-import { es } from "../../assets/languages/languageES";
 import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
 import { HiOutlineViewList } from "react-icons/hi";
 import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";
+import languageSelector from '../../assets/languages/languageSelector';
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -20,17 +19,6 @@ const HeaderComponent = () => {
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
   const [location, setLocation] = useState("bogota");
   const [currency, setCurrency] = useState("USD");
-
-  const restaurantHeader = () => {
-    switch (language) {
-      case 'en':
-        return en.headerRestaurant;
-      case 'es':
-        return es.headerRestaurant;
-      default:
-        return en.headerRestaurant;
-    }
-  }
 
   const handleClickList = () => {
     setMobileShow("");
@@ -44,6 +32,8 @@ const HeaderComponent = () => {
   const handleLanguageChange = (e) => {
     dispatch({ type: LANGUAGE_SWITCH ,  payload: (e.target.value)});
   };
+
+  console.log(language);
 
   return (
     <header className="headerNavBar">
@@ -62,7 +52,7 @@ const HeaderComponent = () => {
         </span>
         <span className="header__restaurantButton">
           <NavLink to={"/restaurants"}>
-            <b className="header__text">{restaurantHeader()}</b>
+            <b className="header__text">{languageSelector(language, 'headerRestaurant')}</b>
           </NavLink>
         </span>
         <span className="header__pagesButton">
@@ -81,7 +71,11 @@ const HeaderComponent = () => {
             <option value={"USD"}>USD</option>
             <option value={"COP"}>COP</option>
           </select>
-          <select className="languageList" onChange={handleLanguageChange}>
+          <select 
+            className="languageList"
+            onChange={handleLanguageChange}
+            value={language}
+          >
             <option value={"en"}>EN</option>
             <option value={"es"}>ES</option>
           </select>

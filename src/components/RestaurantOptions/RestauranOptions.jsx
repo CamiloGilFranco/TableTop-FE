@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
 import "./RestaurantOptions.css";
+import languageSelector from '../../assets/languages/languageSelector';
 
 const RestauranOptions = ({
   setSelected,
@@ -15,66 +14,7 @@ const RestauranOptions = ({
 }) => {
 
   const language = useSelector(state=> state.languageReducer);
-  const restaurantOptionsOnline = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantOptionsOnline
-      case 'es':
-        return es.restaurantOptionsOnline
-      default:
-        return en.restaurantOptionsOnline
-    }
-  }
-  const restaurantOptionsOverview = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantOptionsOverview
-      case 'es':
-        return es.restaurantOptionsOverview
-      default:
-        return en.restaurantOptionsOverview
-    }
-  }
-  const restaurantOptionsGallery = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantOptionsGallery
-      case 'es':
-        return es.restaurantOptionsGallery
-      default:
-        return en.restaurantOptionsGallery
-    }
-  }
-  const restaurantOptionsLocation = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantOptionsLocation
-      case 'es':
-        return es.restaurantOptionsLocation
-      default:
-        return en.restaurantOptionsLocation
-    }
-  }
-  const restaurantOptionsBooking = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantOptionsBooking
-      case 'es':
-        return es.restaurantOptionsBooking
-      default:
-        return en.restaurantOptionsBooking
-    }
-  }
-  const restaurantOptionsReview = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantOptionsReview
-      case 'es':
-        return es.restaurantOptionsReview
-      default:
-        return en.restaurantOptionsReview
-    }
-  }
+
 
   return (
     <div className="restaurant-options">
@@ -92,7 +32,7 @@ const RestauranOptions = ({
           htmlFor="ORDER-ONLINE"
           className="restaurant-options-option-text"
         >
-          {restaurantOptionsOnline()}
+          {languageSelector(language, 'restaurantOptionsOnline')}
         </label>
       </div>
       <div className={`restaurant-options-option ${classOverview}`}>
@@ -106,7 +46,7 @@ const RestauranOptions = ({
           onChange={(e) => setSelected(e.target.value)}
         />
         <label htmlFor="OVERVIEW" className="restaurant-options-option-text">
-          {restaurantOptionsOverview()}
+          {languageSelector(language, 'restaurantOptionsOverview')}
         </label>
       </div>
       <div className={`restaurant-options-option ${classGallery}`}>
@@ -120,7 +60,7 @@ const RestauranOptions = ({
           onChange={(e) => setSelected(e.target.value)}
         />
         <label htmlFor="GALLERY" className="restaurant-options-option-text">
-          {restaurantOptionsGallery()}
+         {languageSelector(language, 'restaurantOptionsGallery')}
         </label>
       </div>
       <div className={`restaurant-options-option ${classLocation}`}>
@@ -134,7 +74,7 @@ const RestauranOptions = ({
           onChange={(e) => setSelected(e.target.value)}
         />
         <label htmlFor="LOCATION" className="restaurant-options-option-text">
-          {restaurantOptionsLocation()}
+          {languageSelector(language, 'restaurantOptionsLocation')}
         </label>
       </div>
       <div className={`restaurant-options-option ${classBookATable}`}>
@@ -151,7 +91,7 @@ const RestauranOptions = ({
           htmlFor="BOOK A TABLE"
           className="restaurant-options-option-text"
         >
-          {restaurantOptionsBooking()}
+          {languageSelector(language, 'restaurantOptionsBooking')}
         </label>
       </div>
       <div className={`restaurant-options-option ${classReviews}`}>
@@ -165,7 +105,7 @@ const RestauranOptions = ({
           onChange={(e) => setSelected(e.target.value)}
         />
         <label htmlFor="REVIEWS" className="restaurant-options-option-text">
-          {restaurantOptionsReview()}
+          {languageSelector(language, 'restaurantOptionsReview')}
         </label>
       </div>
     </div>

@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
-import { es } from "../../assets/languages/languageES";
-import { en } from "../../assets/languages/languajeEN";
 import "./RestaurantFilterComponent.css";
 import { useEffect } from "react";
 import { BsFillFilterSquareFill } from "react-icons/bs";
 import { useState } from "react";
 import { ImInfo } from "react-icons/im";
 import { useSearchParams } from "react-router-dom";
+import languageSelector from "../../assets/languages/languageSelector";
 
 const RestaurantFilterComponent = ({
   categories,
@@ -22,156 +21,7 @@ const RestaurantFilterComponent = ({
   const [checkBoxSelected, setCheckBoxSelected] = useState([]);
 
   const language = useSelector((state) => state.languageReducer);
-  const filterTitle = () => {
-    switch (language) {
-      case "en":
-        return en.filterTitle;
-      case "es":
-        return es.filterTitle;
-      default:
-        return en.filterTitle;
-    }
-  };
-  const filterCuisine = () => {
-    switch (language) {
-      case "en":
-        return en.filterCuisine;
-      case "es":
-        return es.filterCuisine;
-      default:
-        return en.filterCuisine;
-    }
-  };
-  const filterClear = () => {
-    switch (language) {
-      case "en":
-        return en.filterClear;
-      case "es":
-        return es.filterClear;
-      default:
-        return en.filterClear;
-    }
-  };
-  const filterAsian = () => {
-    switch (language) {
-      case "en":
-        return en.filterAsian;
-      case "es":
-        return es.filterAsian;
-      default:
-        return en.filterAsian;
-    }
-  };
-  const filterFastFood = () => {
-    switch (language) {
-      case "en":
-        return en.filterFastFood;
-      case "es":
-        return es.filterFastFood;
-      default:
-        return en.filterFastFood;
-    }
-  };
-  const filterItalian = () => {
-    switch (language) {
-      case "en":
-        return en.filterItalian;
-      case "es":
-        return es.filterItalian;
-      default:
-        return en.filterItalian;
-    }
-  };
-  const filterMexican = () => {
-    switch (language) {
-      case "en":
-        return en.filterMexican;
-      case "es":
-        return es.filterMexican;
-      default:
-        return en.filterMexican;
-    }
-  };
-  const filterBreakfast = () => {
-    switch (language) {
-      case "en":
-        return en.filterBreakfast;
-      case "es":
-        return es.filterBreakfast;
-      default:
-        return en.filterBreakfast;
-    }
-  };
-  const filterTipical = () => {
-    switch (language) {
-      case "en":
-        return en.filterTipical;
-      case "es":
-        return es.filterTipical;
-      default:
-        return en.filterTipical;
-    }
-  };
-  const filterDessert = () => {
-    switch (language) {
-      case "en":
-        return en.filterDessert;
-      case "es":
-        return es.filterDessert;
-      default:
-        return en.filterDessert;
-    }
-  };
-  const filterVeg = () => {
-    switch (language) {
-      case "en":
-        return en.filterVeg;
-      case "es":
-        return es.filterVeg;
-      default:
-        return en.filterVeg;
-    }
-  };
-  const filterCoffee = () => {
-    switch (language) {
-      case "en":
-        return en.filterCoffee;
-      case "es":
-        return es.filterCoffee;
-      default:
-        return en.filterCoffee;
-    }
-  };
-  const filterRating = () => {
-    switch (language) {
-      case "en":
-        return en.filterRating;
-      case "es":
-        return es.filterRating;
-      default:
-        return en.filterRating;
-    }
-  };
-  const filterHelp = () => {
-    switch (language) {
-      case "en":
-        return en.filterHelp;
-      case "es":
-        return es.filterHelp;
-      default:
-        return en.filterHelp;
-    }
-  };
-  const filterShcedule = () => {
-    switch (language) {
-      case "en":
-        return en.filterShcedule;
-      case "es":
-        return es.filterShcedule;
-      default:
-        return en.filterShcedule;
-    }
-  };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -269,20 +119,20 @@ const RestaurantFilterComponent = ({
     <section className="restaurantFilter__container">
       <section className="restaurantFilterMobile">
         <section className="restaurantFilter__filter">
-          <p>{filterTitle()}</p>
+          <p>{languageSelector(language, 'filterTitle')}</p>
           <BsFillFilterSquareFill onClick={handleListClick} />
         </section>
       </section>
 
       <section className={`restaurantFilterDesktop ${mobileFilter}`}>
         <section className="restaurantFilter__filter">
-          <p>{filterTitle()}</p>
+          <p>{languageSelector(language, 'filterTitle')}</p>
         </section>
         <article>
           <section className="restaurantFilter__filter">
-            <p>{filterCuisine()}</p>
+            <p>{languageSelector(language, 'filterCuisine')}</p>
             <p onClick={handleClearCuisine} className="restaurantFilter_clear">
-              {filterClear()}
+              {languageSelector(language, 'filterClear')}
             </p>
           </section>
           <section className="popularFilter">
@@ -306,7 +156,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("fastfood")}
                 onChange={handleCategoriesChange}
               />
-              {filterFastFood()}
+              {languageSelector(language, 'filterFastFood')}
             </label>
             <label>
               <input
@@ -317,7 +167,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("italian")}
                 onChange={handleCategoriesChange}
               />
-              {filterItalian()}
+              {languageSelector(language, 'filterItalian')}
             </label>
             <label>
               <input
@@ -328,7 +178,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("mexican")}
                 onChange={handleCategoriesChange}
               />
-              {filterMexican()}
+              {languageSelector(language, 'filterMexican')}
             </label>
             <label>
               <input
@@ -339,7 +189,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("breakfast")}
                 onChange={handleCategoriesChange}
               />
-              {filterBreakfast()}
+              {languageSelector(language, 'filterBreakfast')}
             </label>
             <label>
               <input
@@ -350,7 +200,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("tipical")}
                 onChange={handleCategoriesChange}
               />
-              {filterTipical()}
+              {languageSelector(language, 'filterTypical')}
             </label>
             <label>
               <input
@@ -361,7 +211,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("dessert")}
                 onChange={handleCategoriesChange}
               />
-              {filterDessert()}
+              {languageSelector(language, 'filterDessert')}
             </label>
             <label>
               <input
@@ -372,7 +222,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("vegetarian")}
                 onChange={handleCategoriesChange}
               />
-              {filterVeg()}
+              {languageSelector(language, 'filterVeg')}
             </label>
             <label>
               <input
@@ -394,15 +244,15 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("coffee")}
                 onChange={handleCategoriesChange}
               />
-              {filterCoffee()}
+              {languageSelector(language, 'filterCoffee')}
             </label>
           </section>
         </article>
         <article>
           <section className="restaurantFilter__filter">
-            <p>{filterRating()}</p>
+            <p>{languageSelector(language, 'filterRating')}</p>
             <p onClick={handleClearRating} className="restaurantFilter_clear">
-              {filterClear()}
+              {languageSelector(language, 'filterClear')}
             </p>
           </section>
           <section className="popularFilter">
@@ -454,10 +304,10 @@ const RestaurantFilterComponent = ({
         </article>
         <div className="helpButton">
           <ImInfo />
-          <b>{filterHelp()}</b>
+          <b>{languageSelector(language, 'filterHelp')}</b>
         </div>
         <h3>856-215-211</h3>
-        <span>{filterShcedule()} 9:00 AM - 7:30 PM</span>
+        <span>{languageSelector(language, 'filterSchedule')} 9:00 AM - 7:30 PM</span>
       </section>
     </section>
   );

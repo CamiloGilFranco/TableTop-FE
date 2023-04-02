@@ -1,9 +1,7 @@
 export const LANGUAGE_SWITCH = 'LANGUAGE_SWITCH';
 
 
-const initialState = {
-  code: 'en',
-}
+const initialState = 'en'
  const languageReducer = (state = initialState, action)=>{
   switch (action.type) {
     case LANGUAGE_SWITCH:
