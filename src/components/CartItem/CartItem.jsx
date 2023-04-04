@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { es } from "../../assets/languages/languageES";
-import { en } from "../../assets/languages/languajeEN";
 import {
   ORDER_SWITCH,
   ORDER_ID,
@@ -9,7 +7,6 @@ import {
 } from "../../store/reducers/Order.reducer";
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
-import { Link } from 'react-router-dom';
 import languageSelector from "../../assets/languages/languageSelector";
 
 const CartItem = () => {

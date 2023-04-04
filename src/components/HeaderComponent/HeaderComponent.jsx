@@ -33,7 +33,6 @@ const HeaderComponent = () => {
     dispatch({ type: LANGUAGE_SWITCH ,  payload: (e.target.value)});
   };
 
-  console.log(language);
 
   return (
     <header className="headerNavBar">

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './GeneralAdminModal.css'
+import { useSelector } from 'react-redux';
+import languageSelector from '../../assets/languages/languageSelector';
 
 const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaurantUpdate }) => {
   const [title, setTitle] = useState(editingItem.restaurantName);
   const [location, setLocation] = useState(editingItem.location);
   const [categories, setCategories] = useState(editingItem.categories);
   const [errors, setErrors] = useState({});
+  const language = useSelector(state => state.languageReducer )
   
   const getCheckboxState = (category) => {
     return categories.includes(category) || checkboxValues[category] || false;
@@ -30,10 +33,10 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaur
     const newCategories = Object.keys(checkboxValues).filter((cat) => categories.includes(cat));
     
     if (title.length <= 1 || typeof title !== 'string') {
-      validationErrors.title = 'title must be at least 2 characters long';
+      validationErrors.title = languageSelector(language, 'newRestaurantFormNameError');
     }
     if (newCategories.length === 0) {
-      validationErrors.categories = 'Restaurant must have at least one category';
+      validationErrors.categories = languageSelector(language, 'newRestaurantFormCategoriesError');
     }
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -56,7 +59,7 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaur
     <div className='generalAdminModal__container'>
     <section className='generalAdminModal__box'>
       <span>
-        Here you can edit the details of the Restaurant
+       {languageSelector(language, 'restaurantEditTitle')}
       </span>
       <form className='generalAdminModal__form' onSubmit={handleSumbit}>
         <input
@@ -95,8 +98,8 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaur
         </select>
         {/* {errors.description && <p className='restaurantAdminView__error'>{errors.description}</p>} */}
         <span className='generalAdminModal__buttons'>
-          <button className='generalAdminModal__button-save' type="submit">Save</button>
-          <button className='generalAdminModal__button-cancel' type="button" onClick={onClose}>Cancel</button>
+          <button className='generalAdminModal__button-save' type="submit">{languageSelector(language, 'save')}</button>
+          <button className='generalAdminModal__button-cancel' type="button" onClick={onClose}>{languageSelector(language, 'cancel')}</button>
         </span>
       </form>
     </section>

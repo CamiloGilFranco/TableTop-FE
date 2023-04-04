@@ -1,6 +1,4 @@
 import { useSelector } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
 import { useState } from 'react';
 import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
@@ -10,6 +8,7 @@ import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './RestaurantAdminView.css';
 import EditModal from '../../components/EditModal/EditModal';
 import EditDetailsModal from '../../components/EditDetailsModal/EditDetailsModal';
+import languageSelector from '../../assets/languages/languageSelector';
 
 const RestaurantAdminView = () => {
   const usersData = userDB;
@@ -36,227 +35,7 @@ const RestaurantAdminView = () => {
   
 
   const language = useSelector(state=> state.languageReducer);
-  const restaurantAdminTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminTitle
-      case 'es':
-        return es.restaurantAdminTitle
-      default:
-        return en.restaurantAdminTitle
-    }
-  }
-  const restaurantAdminSubtitle = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminSubtitle
-      case 'es':
-        return es.restaurantAdminSubtitle
-      default:
-        return en.restaurantAdminSubtitle
-    }
-  }
-  const restaurantAdminResTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminResTitle
-      case 'es':
-        return es.restaurantAdminResTitle
-      default:
-        return en.restaurantAdminResTitle
-    }
-  }
-  const restaurantAdminResSales = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminResSales
-      case 'es':
-        return es.restaurantAdminResSales
-      default:
-        return en.restaurantAdminResSales
-    }
-  }
-  const restaurantAdminResRating = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminResRating
-      case 'es':
-        return es.restaurantAdminResRating
-      default:
-        return en.restaurantAdminResRating
-    }
-  }
-  const newDishFormTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormTitle
-      case 'es':
-        return es.newDishFormTitle
-      default:
-        return en.newDishFormTitle
-    }
-  }
-  const newDishFormName = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormName
-      case 'es':
-        return es.newDishFormName
-      default:
-        return en.newDishFormName
-    }
-  }
-  const newDishFormNameError = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormNameError
-      case 'es':
-        return es.newDishFormNameError
-      default:
-        return en.newDishFormNameError
-    }
-  }
-  const newDishFormDescription = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormDescription
-      case 'es':
-        return es.newDishFormDescription
-      default:
-        return en.newDishFormDescription
-    }
-  }
-
-  const newDishFormDescriptionError = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormDescriptionError
-      case 'es':
-        return es.newDishFormDescriptionError
-      default:
-        return en.newDishFormDescriptionError
-    }
-  }
-  const newDishFormPrice = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormPrice
-      case 'es':
-        return es.newDishFormPrice
-      default:
-        return en.newDishFormPrice
-    }
-  }
-  const newDishFormPriceError = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormPriceError
-      case 'es':
-        return es.newDishFormPriceError
-      default:
-        return en.newDishFormPriceError
-    }
-  }
-  const newDishFormPriceErrorTwo = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormPriceErrorTwo
-      case 'es':
-        return es.newDishFormPriceErrorTwo
-      default:
-        return en.newDishFormPriceErrorTwo
-    }
-  }
-  const newDishFormCategory = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormCategory
-      case 'es':
-        return es.newDishFormCategory
-      default:
-        return en.newDishFormCategory
-    }
-  }
-  const filterBreakfast = () => {
-    switch (language) {
-      case 'en':
-        return en.filterBreakfast
-      case 'es':
-        return es.filterBreakfast
-      default:
-        return en.filterBreakfast
-    }
-  }
-  const newDishFormCategoryLunch = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormCategoryLunch
-      case 'es':
-        return es.newDishFormCategoryLunch
-      default:
-        return en.newDishFormCategoryLunch
-    }
-  }
-  const newDishFormCategoryDrinks = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormCategoryDrinks
-      case 'es':
-        return es.newDishFormCategoryDrinks
-      default:
-        return en.newDishFormCategoryDrinks
-    }
-  }
-  const newDishFormButton = () => {
-    switch (language) {
-      case 'en':
-        return en.newDishFormButton
-      case 'es':
-        return es.newDishFormButton
-      default:
-        return en.newDishFormButton
-    }
-  }
-  const restaurantAdminMenuTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminMenuTitle
-      case 'es':
-        return es.restaurantAdminMenuTitle
-      default:
-        return en.restaurantAdminMenuTitle
-    }
-  }
-  const restaurantAdminMenuSubtitle = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminMenuSubtitle
-      case 'es':
-        return es.restaurantAdminMenuSubtitle
-      default:
-        return en.restaurantAdminMenuSubtitle
-    }
-  }
-  const title = () => {
-    switch (language) {
-      case 'en':
-        return en.title
-      case 'es':
-        return es.title
-      default:
-        return en.title
-    }
-  }
-  const price = () => {
-    switch (language) {
-      case 'en':
-        return en.price
-      case 'es':
-        return es.price
-      default:
-        return en.price
-    }
-  }
+ 
   // logic for the sumbit of the new dish form
   const handleNewDishSumbit = (e) => {
     e.preventDefault();
@@ -274,17 +53,17 @@ const RestaurantAdminView = () => {
       category
     }
     if (title.length < 2 || typeof title !== 'string') {
-      validationErrors.title = newDishFormNameError();
+      validationErrors.title = languageSelector(language, 'newDishFormNameError');
     }
     if (description.length < 2 || typeof description !== 'string') {
-      validationErrors.description = newDishFormDescriptionError();
+      validationErrors.description = languageSelector(language, 'newDishFormDescriptionError');
     }
     if (price.length === 0) {
-      validationErrors.price = newDishFormPriceError();
+      validationErrors.price = languageSelector(language, 'newDishFormPriceError');
     } else if (isNaN(price)) {
       validationErrors.price= '* The price must be a number';
     } else if (price <= 0){
-      validationErrors.price = newDishFormPriceErrorTwo();
+      validationErrors.price = languageSelector(language, 'newDishFormPriceErrorTwo');
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -340,12 +119,15 @@ const RestaurantAdminView = () => {
     }
   }
 
+  // renders the modal to edit addresses or phone number
+
   const handleDetailsClick = (item, index) => {
     setEditingItem(item);
     setEditIndex(index);
     setDetailsModal(true);
   }
 
+  // updates the value from address or phone number with the value incoming from the modal
   const handleDetailsUpdate = (arr, index, value) => {
     if (arr === phoneNumber) {
       const newPhoneNumber = [...phoneNumber];
@@ -358,12 +140,12 @@ const RestaurantAdminView = () => {
     }
   };
 
+  // closes the edit modal
   const handleDetailsClose = () => {
     setDetailsModal(false);
     setEditingItem(null)
   }
 
-  //console.log(phoneNumber);
   // eliminates one element of the reservations
   const handleReservationDelete = (index) => {
     setReservations(reservations.filter((item, i) => i !== index)) ;
@@ -372,17 +154,17 @@ const RestaurantAdminView = () => {
     <>
       <HeaderComponent/>
       <div className='restaurantAdminView__container'>
-        <h1 className='restaurantAdminView__title'>{restaurantAdminTitle()} {usersData[0].name}</h1>
+        <h1 className='restaurantAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {usersData[0].name}!</h1>
           <article className='restauranAdminView__flex'>
             <span>
-              <h3>{restaurantAdminSubtitle()}</h3>
+              <h3>{languageSelector(language, 'restaurantAdminSubtitle')}</h3>
               <ul className='restaurantAdminView__list'>
-                <li>{restaurantAdminResTitle()}: {restaurantExpample.restaurantName}</li>
-                <li>{restaurantAdminResSales()}: {restaurantExpample.numberOfSales}</li>
-                <li>{restaurantAdminResRating()}: {restaurantExpample.rating}</li>
+                <li>{languageSelector(language, 'restaurantAdminResTitle')}: {restaurantExpample.restaurantName}</li>
+                <li>{languageSelector(language, 'restaurantAdminResSales')}: {restaurantExpample.numberOfSales}</li>
+                <li>{languageSelector(language, 'restaurantAdminResRating')}: {restaurantExpample.rating}</li>
               </ul>
-              <h3>Here you can edit or delete some information</h3>
-              <span>This are the addresses of your restuarant</span>
+              <h3>{languageSelector(language, 'restaurantEditDetails')}</h3>
+              <span>{languageSelector(language, 'restaurantEditAddress')}</span>
               <ul>
                 {address.map((address, index)=>{
                   return(
@@ -394,7 +176,7 @@ const RestaurantAdminView = () => {
                   )
                 })}
               </ul>
-              <span>This are the phone numbers of your restuarant</span>
+              <span>{languageSelector(language, 'restaurantEditPhoneNumber')}</span>
               <ul>
                 {phoneNumber.map(((phoneNumber, index)=> {
                   return(
@@ -415,13 +197,13 @@ const RestaurantAdminView = () => {
                 index={editIndex}
               />
               )}
-              <h3>Here you can see the upcoming reservations:</h3>
-              <p className='restaurantAdmin__view-p'>If you want to delete something you can do it here</p>
+              <h3>{languageSelector(language, 'restaurantReservationsTitle')}:</h3>
+              <p className='restaurantAdmin__view-p'>{languageSelector(language, 'restaurantReservationsEdit')}</p>
               <section>
                 {reservations.map((item, index) => {
                   return (
                     <span key={index} className='restaurantAdminView__reservation'>
-                      <p>Name: {item.name} - Time: {item.time} - Date: {item.date} for {item.numberOfComensals} people</p>
+                      <p>{languageSelector(language, 'signInFirstName')}: {item.name} - {languageSelector(language, 'restaurantReservationsTime')}: {item.time} - {languageSelector(language, 'restaurantReservationsDate')}: {item.date} {language === 'en'? 'for' : 'para'} {item.numberOfComensals} {language === 'en'? 'people' : 'personas'}</p>
                       <AiFillDelete className='restaurantAdminView__icon' onClick={()=>handleReservationDelete(index)}/>
                     </span>                    
                   )
@@ -429,49 +211,49 @@ const RestaurantAdminView = () => {
               </section>
             </span>
             <form onSubmit={handleNewDishSumbit} className='restaurantAdminView__form'>
-              <span>{newDishFormTitle()}</span>
-              <label htmlFor='newDishTitle'>{newDishFormName()}</label>
+              <span>{languageSelector(language, 'newDishFormTitle')}</span>
+              <label htmlFor='newDishTitle'>{languageSelector(language, 'newDishFormName')}</label>
               <input 
                 type='text' 
                 name='title' 
                 id='newDishTitle' 
-                placeholder={newDishFormName()}
+                placeholder={languageSelector(language, 'newDishFormName')}
               />
               {errors.title && <p className='restaurantAdminView__error'>{errors.title}</p>}
-              <label htmlFor='newDishDescription'>{newDishFormDescription()}</label>
+              <label htmlFor='newDishDescription'>{languageSelector(language, 'newDishFormDescription')}</label>
               <input 
                 type='text' 
                 name='description' 
                 id='newDishDescription' 
-                placeholder={newDishFormDescription()}
+                placeholder={languageSelector(language, 'newDishFormDescription')}
               />
               {errors.description && <p className='restaurantAdminView__error'>{errors.description}</p>}
-              <label htmlFor='newDishPrice'>{newDishFormPrice()}</label>
+              <label htmlFor='newDishPrice'>{languageSelector(language, 'newDishFormPrice')}</label>
               <input 
                 type='number' 
                 name='price'  
                 id='newDishPrice' 
-                placeholder='Write the new Dish price'
+                placeholder={languageSelector(language, 'newDishFormPrice')}
               />
               {errors.price && <p className='restaurantAdminView__error'>{errors.price}</p>}
-              <label htmlFor='newDishCategorie'>{newDishFormCategory()}</label>
+              <label htmlFor='newDishCategorie'>{languageSelector(language, 'newDishFormCategory')}</label>
               <select id='newDishCategorie' name='category'>
-                <option value={'breakfast'}>{filterBreakfast()}</option>
-                <option value={'lunch'}>{newDishFormCategoryLunch()}</option>
-                <option value={'drinks'}>{newDishFormCategoryDrinks()}</option>
+                <option value={'breakfast'}>{languageSelector(language, 'filterBreakfast')}</option>
+                <option value={'lunch'}>{languageSelector(language, 'newDishFormCategoryLunch')}</option>
+                <option value={'drinks'}>{languageSelector(language, 'newDishFormCategoryDrinks')}</option>
               </select>
-              <button type='sumbit'>{newDishFormButton()}</button>
+              <button type='sumbit'>{languageSelector(language, 'newDishFormButton')}</button>
             </form>
             <article className='restaurantAdminView__article'>
-              <span>{restaurantAdminMenuTitle()}</span>
-              <p>{restaurantAdminMenuSubtitle()}</p>
+              <span>{languageSelector(language, 'restaurantAdminMenuTitle')}</span>
+              <p>{languageSelector(language, 'restaurantAdminMenuSubtitle')}</p>
               {Object.entries(menu).map(([category, item])=> (
                 <div key={category}>
                   <p className='restauranAdminView__itemTitle'>{category}</p>
                   <ul className='restauranAdminView__itemList'>
                     {item.map((item, index)=> (
                       <li key={index} className='restaurantAdminView__details'>
-                        {title()}: {item.title} - {price()}: {item.price}
+                        {languageSelector(language, 'title')}: {item.title} - {languageSelector(language, 'price')}: {item.price}
                         <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(item, index, category)}/>
                         <AiFillDelete className='restaurantAdminView__icon' onClick={()=> handleDelete(category, index)}/>
                       </li>
@@ -487,9 +269,9 @@ const RestaurantAdminView = () => {
             </article>
           </article>
           <section className='userPAge__logOut'>
-            <span>If you want to log out, click this button</span>
+            <span>{languageSelector(language, 'logOutText')}</span>
             <button className='userPage__form-button'>
-              Log Out
+            {languageSelector(language, 'logOutButton')}
             </button>
           </section>
       </div>

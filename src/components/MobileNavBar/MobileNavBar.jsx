@@ -16,7 +16,7 @@ const MobileNavBar =({mobileShow, setMobileShow})=>{
       <abbr/>
       <section className="mobileNavBar__container">
         <span className='mobileNavBar__header' onClick={handleBackclick}>
-          <p>Back</p>
+          <p>{languageSelector(language, 'back')}</p>
           <FaGreaterThan className='mobileNavBar__BackIcon'/>
         </span>
         <article className='mobileNavBar__section'>

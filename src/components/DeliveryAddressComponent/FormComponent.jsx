@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./FormComponent.css";
+import { useSelector } from "react-redux";
+import languageSelector from "../../assets/languages/languageSelector";
 
 const FormComponent = ({ handleNewAddress, closeModal }) => {
   const [addFormValues, setAddFormValues] = useState({
@@ -9,6 +11,7 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
     city: "",
   });
 
+  const language = useSelector(state => state.languageReducer)
   const [nameError, setNameError] = useState(false);
   const [addressError, setAddressError] = useState(false);
   const [numberError, setNumberError] = useState(false);
@@ -55,11 +58,11 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
   return (
     <form className="form-add-address">
       <div className="form-header">
-        <span className="add-address-title">Add new Address</span>
+        <span className="add-address-title">{languageSelector(language, 'addAddress')}</span>
       </div>
 
       <label htmlFor="name" className="form-add-address-label">
-        Name
+        {languageSelector(language, 'name')}
       </label>
       <input
         type="text"
@@ -73,14 +76,14 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       />
       {nameError ? (
         <p className="form-add-address-error">
-          * Todos los campos son obligatorios
+          {languageSelector(language, 'newAddressError')}
         </p>
       ) : (
         ""
       )}
 
       <label htmlFor="address" className="form-add-address-label">
-        Address
+        {languageSelector(language, 'address')}
       </label>
       <input
         type="text"
@@ -94,14 +97,14 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       />
       {addressError ? (
         <p className="form-add-address-error">
-          * Todos los campos son obligatorios
+          {languageSelector(language, 'newAddressError')}
         </p>
       ) : (
         ""
       )}
 
       <label htmlFor="mobile" className="form-add-address-label">
-        Phone Number
+        {languageSelector(language, 'signInPhone')}
       </label>
       <input
         type="number"
@@ -117,13 +120,13 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
         }
       />
       {numberError ? (
-        <p className="form-add-address-error">* introduce un teléfono valido</p>
+        <p className="form-add-address-error">{languageSelector(language, 'signInPhoneError')}</p>
       ) : (
         ""
       )}
 
       <label htmlFor="mobile" className="form-add-address-label">
-        City
+        {languageSelector(language, 'city')}
       </label>
       <input
         type="text"
@@ -137,7 +140,7 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       />
       {cityError ? (
         <p className="form-add-address-error">
-          * Todos los campos son obligatorios
+          {languageSelector(language, 'newAddressError')}
         </p>
       ) : (
         ""
@@ -147,7 +150,9 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
         className="form-button-add"
         onClick={addNewAddressSubmit}
       >
-        ADD ADDRESS
+        <b>
+          {languageSelector(language, 'addNewAddress')}
+        </b>
       </button>
     </form>
   );
