@@ -177,7 +177,7 @@ const GeneralAdminView = () => {
           <span>
             <h3>{languageSelector(language, 'generalAdminSubtitle')}</h3>
             <span className='generalAdmin__span'>
-              {languageSelector(language, 'generalAdminList')} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} {language === 'en' ? 'and': 'y'} #{users.length} {language === 'en'? 'users': 'usuarios'}
+              {languageSelector(language, 'generalAdminList')} #{restaurants.length} restaurant{restaurants.length? 's' : ''} {language === 'en' ? 'and': 'y'} #{users.length} {language === 'en'? 'users': 'usuarios'}
             </span>
             <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
             <form className='generalAdminView__form' onSubmit={newUserSumbit}>
@@ -214,7 +214,7 @@ const GeneralAdminView = () => {
               </select>
               <button type='sumbit'>{languageSelector(language, 'generalAdminAddUserButton')}</button>
             </form>
-              {users.map((item, index)=> {
+              {users && users.map((item, index)=> {
                 return(
                   <ul key={index}>
                     <li className='newUser__list'>#{item.id} {item.name} {<AiFillDelete className='generalAdminView__icon' onClick={()=>hanldeUserDelete(item.id)}/>}</li>
@@ -242,7 +242,7 @@ const GeneralAdminView = () => {
               </select>
               <div>
                 <label className='generalAdminView__checkboxTitle'>{languageSelector(language, 'newRestaurantFormLocation')}</label>
-                {categoriesArr.map((checkbox)=> (
+                {categoriesArr && categoriesArr.map((checkbox)=> (
                   <div key={checkbox.name} className='generalAdminView__checkbox'>
                     <input
                       type='checkbox'

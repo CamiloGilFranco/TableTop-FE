@@ -217,7 +217,7 @@ const Payment = () => {
             <AccordionPanel pb={4}>
               <form action="" className="debit-card-form">
                 <label htmlFor="debitNumber" className="debit-card-form-label">
-                {languageSelector(language, 'paymentCardNumber')}
+                  {languageSelector(language, 'paymentCardNumber')}
                 </label>
                 <input
                   type="text"

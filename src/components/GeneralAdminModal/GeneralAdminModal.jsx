@@ -8,7 +8,7 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaur
   const [location, setLocation] = useState(editingItem.location);
   const [categories, setCategories] = useState(editingItem.categories);
   const [errors, setErrors] = useState({});
-  const language = useSelector(state => state.languageReducer )
+  const language = useSelector(state => state.languageReducer);
   
   const getCheckboxState = (category) => {
     return categories.includes(category) || checkboxValues[category] || false;
@@ -31,14 +31,16 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaur
     const form = e.target;
     const title = form.title.value
     const newCategories = Object.keys(checkboxValues).filter((cat) => categories.includes(cat));
-    
-    if (title.length <= 1 || typeof title !== 'string') {
+
+    const isTitle = !title.length || typeof title !== 'string';
+
+    if(isTitle) {
       validationErrors.title = languageSelector(language, 'newRestaurantFormNameError');
     }
-    if (newCategories.length === 0) {
+    if (!newCategories.length) {
       validationErrors.categories = languageSelector(language, 'newRestaurantFormCategoriesError');
     }
-    if (Object.keys(validationErrors).length > 0) {
+    if (Object.keys(validationErrors).length) {
       setErrors(validationErrors);
       return;
     }

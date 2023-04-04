@@ -6,7 +6,6 @@ import languageSelector from '../../assets/languages/languageSelector';
 const OrderSuccesful = () =>{
   const language = useSelector(state=> state.languageReducer);
   const orderID = useSelector(state => state.orderReducer.orderID)
-  console.log(orderID);
 
   return(
     <section className='orderSuccesful__container'>
@@ -15,8 +14,7 @@ const OrderSuccesful = () =>{
       </picture>
       <section className='orderSuccesful__text'>
         <h3>{languageSelector(language, 'orderSuccessTitle')}</h3>
-        <span>{languageSelector(language, 'orderSuccessBody')}</span>
-        <span>Transaction number #{orderID}</span>
+        <span>{languageSelector(language, 'orderSuccessBody')} #{orderID} {languageSelector(language, 'orderSuccessBodyTwo')}</span>
         <button className='orderSuccesful__button'>{languageSelector(language, 'orderSuccessFooter')}</button>
       </section>
     </section>
