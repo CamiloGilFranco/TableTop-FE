@@ -1,9 +1,8 @@
 import './SearchbarComponent.css';
 import { useSelector } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import languageSelector from '../../assets/languages/languageSelector';
 
 
 const SearchbarComponent = ({ inputValue, setInputValue })=>{
@@ -11,37 +10,6 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
   const [searchParams, setSearchParams] = useSearchParams({});
   const language = useSelector(state=> state.languageReducer);
 
-  const titleText = () => {
-    switch (language) {
-      case 'en':
-        return en.searchBarTitle
-      case 'es':
-        return es.searchBarTitle
-      default:
-        return en.searchBarTitle
-    }
-  }
-  const placeholderText = () => {
-    switch (language) {
-      case 'en':
-        return en.searchBarPlaceHolder
-      case 'es':
-        return es.searchBarPlaceHolder
-      default:
-        return en.searchBarPlaceHolder
-    }
-  }
-
-  const buttonText = () => {
-    switch (language) {
-      case 'en':
-        return en.searchBarButton
-      case 'es':
-        return es.searchBarButton
-      default:
-        return en.searchBarButton
-    }
-  }
   const handleInputChange = (event) => {
     setDisplayText(event.target.value);
   }
@@ -65,14 +33,14 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
   
   return (
     <section className='searchBar__container'>
-      <span className='searchBar__text'>{titleText()}</span>
+      <span className='searchBar__text'>{languageSelector(language, 'searchBarTitle')}</span>
       <form className='searchBar__form'  onSubmit={handleSearchSumbit}>
         <input
           className='searchBar__inputText' 
           type='text'
           id='searchButton'
           name='searchButton'
-          placeholder={placeholderText()}
+          placeholder={languageSelector(language, 'searchBarPlaceHolder')}
           value={displayText}
           onChange={handleInputChange}
         />
@@ -81,7 +49,7 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
           className='searchBar__button'
         >
           <b>
-            {buttonText()}
+            {languageSelector(language, 'searchBarButton')}
           </b>
         </button>
       </form>

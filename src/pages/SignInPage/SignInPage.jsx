@@ -7,8 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
+import languageSelector from "../../assets/languages/languageSelector";
 
 
 const SignInPage = () => {
@@ -158,466 +157,6 @@ const SignInPage = () => {
     }
   };
 
-  const signInTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.signInTitle
-      case 'es':
-        return es.signInTitle
-      default:
-        return en.signInTitle
-    }
-  }
-  const signInFormTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.signInFormTitle
-      case 'es':
-        return es.signInFormTitle
-      default:
-        return en.signInFormTitle
-    }
-  }
-  const signInEmail = () => {
-    switch (language) {
-      case 'en':
-        return en.signInEmail
-      case 'es':
-        return es.signInEmail
-      default:
-        return en.signInEmail
-    }
-  }
-  const signInEmailError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInEmailError
-      case 'es':
-        return es.signInEmailError
-      default:
-        return en.signInEmailError
-    }
-  }
-  const signInEmailConfirmation = () => {
-    switch (language) {
-      case 'en':
-        return en.signInEmailConfirmation
-      case 'es':
-        return es.signInEmailConfirmation
-      default:
-        return en.signInEmailConfirmation
-    }
-  }
-  const signInEmailConfirmationError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInEmailConfirmationError
-      case 'es':
-        return es.signInEmailConfirmationError
-      default:
-        return en.signInEmailConfirmationError
-    }
-  }
-  const signInPassword = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPassword
-      case 'es':
-        return es.signInPassword
-      default:
-        return en.signInPassword
-    }
-  }
-  const signInPasswordError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPasswordError
-      case 'es':
-        return es.signInPasswordError
-      default:
-        return en.signInPasswordError
-    }
-  }
-  const signInPasswordConfirmation = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPasswordConfirmation
-      case 'es':
-        return es.signInPasswordConfirmation
-      default:
-        return en.signInPasswordConfirmation
-    }
-  }
-  const signInPasswordConfirmationError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPasswordConfirmationError
-      case 'es':
-        return es.signInPasswordConfirmationError
-      default:
-        return en.signInPasswordConfirmationError
-    }
-  }
-  const signInFirstName = () => {
-    switch (language) {
-      case 'en':
-        return en.signInFirstName
-      case 'es':
-        return es.signInFirstName
-      default:
-        return en.signInFirstName
-    }
-  }
-  const signInFirstNameError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInFirstNameError
-      case 'es':
-        return es.signInFirstNameError
-      default:
-        return en.signInFirstNameError
-    }
-  }
-  const signInLastName = () => {
-    switch (language) {
-      case 'en':
-        return en.signInLastName
-      case 'es':
-        return es.signInLastName
-      default:
-        return en.signInLastName
-    }
-  }
-  const signInLastNameError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInLastNameError
-      case 'es':
-        return es.signInLastNameError
-      default:
-        return en.signInLastNameError
-    }
-  }
-  const signInIdCC = () => {
-    switch (language) {
-      case 'en':
-        return en.signInIdCC
-      case 'es':
-        return es.signInIdCC
-      default:
-        return en.signInIdCC
-    }
-  }
-  const signInId = () => {
-    switch (language) {
-      case 'en':
-        return en.signInId
-      case 'es':
-        return es.signInId
-      default:
-        return en.signInId
-    }
-  }
-  const signInIdCE = () => {
-    switch (language) {
-      case 'en':
-        return en.signInIdCE
-      case 'es':
-        return es.signInIdCE
-      default:
-        return en.signInIdCE
-    }
-  }
-  const signInIdPassport = () => {
-    switch (language) {
-      case 'en':
-        return en.signInIdPassport
-      case 'es':
-        return es.signInIdPassport
-      default:
-        return en.signInIdPassport
-    }
-  }
-  const signInIdNumber = () => {
-    switch (language) {
-      case 'en':
-        return en.signInIdNumber
-      case 'es':
-        return es.signInIdNumber
-      default:
-        return en.signInIdNumber
-    }
-  }
-  const signInIdNumberError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInIdNumberError
-      case 'es':
-        return es.signInIdNumberError
-      default:
-        return en.signInIdNumberError
-    }
-  }
-  const signInDoB = () => {
-    switch (language) {
-      case 'en':
-        return en.signInDoB
-      case 'es':
-        return es.signInDoB
-      default:
-        return en.signInDoB
-    }
-  }
-  const signInJan = () => {
-    switch (language) {
-      case 'en':
-        return en.signInJan
-      case 'es':
-        return es.signInJan
-      default:
-        return en.signInJan
-    }
-  }
-  const signInFeb = () => {
-    switch (language) {
-      case 'en':
-        return en.signInFeb
-      case 'es':
-        return es.signInFeb
-      default:
-        return en.signInFeb
-    }
-  }
-  const signInMar = () => {
-    switch (language) {
-      case 'en':
-        return en.signInMar
-      case 'es':
-        return es.signInMar
-      default:
-        return en.signInMar
-    }
-  }
-  const signInApr = () => {
-    switch (language) {
-      case 'en':
-        return en.signInApr
-      case 'es':
-        return es.signInApr
-      default:
-        return en.signInApr
-    }
-  }
-  const signInMay = () => {
-    switch (language) {
-      case 'en':
-        return en.signInMay
-      case 'es':
-        return es.signInMay
-      default:
-        return en.signInMay
-    }
-  }
-  const signInJune = () => {
-    switch (language) {
-      case 'en':
-        return en.signInJune
-      case 'es':
-        return es.signInJune
-      default:
-        return en.signInJune
-    }
-  }
-  const signInJul = () => {
-    switch (language) {
-      case 'en':
-        return en.signInJul
-      case 'es':
-        return es.signInJul
-      default:
-        return en.signInJul
-    }
-  }
-  const signInAug = () => {
-    switch (language) {
-      case 'en':
-        return en.signInAug
-      case 'es':
-        return es.signInAug
-      default:
-        return en.signInAug
-    }
-  }
-  const signInSep = () => {
-    switch (language) {
-      case 'en':
-        return en.signInSep
-      case 'es':
-        return es.signInSep
-      default:
-        return en.signInSep
-    }
-  }
-  const signInOct = () => {
-    switch (language) {
-      case 'en':
-        return en.signInOct
-      case 'es':
-        return es.signInOct
-      default:
-        return en.signInOct
-    }
-  }
-  const signInNov = () => {
-    switch (language) {
-      case 'en':
-        return en.signInNov
-      case 'es':
-        return es.signInNov
-      default:
-        return en.signInNov
-    }
-  }
-  const signInDec = () => {
-    switch (language) {
-      case 'en':
-        return en.signInDec
-      case 'es':
-        return es.signInDec
-      default:
-        return en.signInDec
-    }
-  }
-  const signInCity = () => {
-    switch (language) {
-      case 'en':
-        return en.signInCity
-      case 'es':
-        return es.signInCity
-      default:
-        return en.signInCity
-    }
-  }
-  const signInAddress = () => {
-    switch (language) {
-      case 'en':
-        return en.signInAddress
-      case 'es':
-        return es.signInAddress
-      default:
-        return en.signInAddress
-    }
-  }
-  const signInAddressError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInAddressError
-      case 'es':
-        return es.signInAddressError
-      default:
-        return en.signInAddressError
-    }
-  }
-  const signInPhone = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPhone
-      case 'es':
-        return es.signInPhone
-      default:
-        return en.signInPhone
-    }
-  }
-  const signInPhoneError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPhoneError
-      case 'es':
-        return es.signInPhoneError
-      default:
-        return en.signInPhoneError
-    }
-  }
-  const signInTC = () => {
-    switch (language) {
-      case 'en':
-        return en.signInTC
-      case 'es':
-        return es.signInTC
-      default:
-        return en.signInTC
-    }
-  }
-  const signInTCError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInTCError
-      case 'es':
-        return es.signInTCError
-      default:
-        return en.signInTCError
-    }
-  }
-  const signInPrivacy = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPrivacy
-      case 'es':
-        return es.signInPrivacy
-      default:
-        return en.signInPrivacy
-    }
-  }
-  const signInPrivacyError = () => {
-    switch (language) {
-      case 'en':
-        return en.signInPrivacyError
-      case 'es':
-        return es.signInPrivacyError
-      default:
-        return en.signInPrivacyError
-    }
-  }
-  const signInSubcribe = () => {
-    switch (language) {
-      case 'en':
-        return en.signInSubcribe
-      case 'es':
-        return es.signInSubcribe
-      default:
-        return en.signInSubcribe
-    }
-  }
-  const signInTextMessage = () => {
-    switch (language) {
-      case 'en':
-        return en.signInTextMessage
-      case 'es':
-        return es.signInTextMessage
-      default:
-        return en.signInTextMessage
-    }
-  }
-  const signInWhatsApp = () => {
-    switch (language) {
-      case 'en':
-        return en.signInWhatsApp
-      case 'es':
-        return es.signInWhatsApp
-      default:
-        return en.signInWhatsApp
-    }
-  }
-  const signInButton = () => {
-    switch (language) {
-      case 'en':
-        return en.signInButton
-      case 'es':
-        return es.signInButton
-      default:
-        return en.signInButton
-    }
-  }
   return (
     <div className="sign-in-page">
       <div className="sign-in-page-header">
@@ -625,7 +164,7 @@ const SignInPage = () => {
       </div>
       <div className="sign-in-page-social-media-container">
         <span className="sign-in-page-social-media-container-title">
-          {signInTitle()}
+          {languageSelector(language, 'signInTitle')}
         </span>
         <div className="sign-in-page-social-media-container-icons">
           <div className="sign-in-page-social-media-single-icon-container">
@@ -651,17 +190,16 @@ const SignInPage = () => {
           </div>
         </div>
       </div>
-      <span className="sign-in-page-subtitle">{signInFormTitle()}</span>
+      <span className="sign-in-page-subtitle">{languageSelector(language, 'signInFormTitle')}</span>
       <form action="" className="sign-in-page-form" onSubmit={handleSubmit}>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInEmail()}
+            {languageSelector(language, 'signInEmail')}
           </label>
           <input
             type="text"
             className="sign-in-page-form-text-input"
-            placeholder={signInEmail()}
-            required
+            placeholder={languageSelector(language, 'signInEmail')}
             value={formContent.correo}
             onChange={(event) =>
               setFormContent({ ...formContent, correo: event.target.value })
@@ -669,7 +207,7 @@ const SignInPage = () => {
           />
           {correoError ? (
             <p className="sign-in-page-form-text-error">
-              {signInEmailError()}
+              {languageSelector(language, 'signInEmailError')}
             </p>
           ) : (
             ""
@@ -677,13 +215,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInEmailConfirmation()}
+            {languageSelector(language, 'signInEmailConfirmation')}
           </label>
           <input
             type="email"
             className="sign-in-page-form-text-input"
-            placeholder={signInEmailConfirmation()}
-            required
+            placeholder={languageSelector(language, 'signInEmailConfirmation')}
             value={formContent.confirmarCorreo}
             onChange={(event) =>
               setFormContent({
@@ -694,7 +231,7 @@ const SignInPage = () => {
           />
           {confirmarCorreoError ? (
             <p className="sign-in-page-form-text-error">
-              {signInEmailConfirmationError()}
+              {languageSelector(language, 'signInEmailConfirmationError')}
             </p>
           ) : (
             ""
@@ -702,13 +239,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInPassword()}
+            {languageSelector(language, 'signInPassword')}
           </label>
           <input
             type="password"
             className="sign-in-page-form-text-input"
-            placeholder={signInPassword()}
-            required
+            placeholder={languageSelector(language, 'signInPassword')}
             value={formContent.contraseña}
             onChange={(event) =>
               setFormContent({ ...formContent, contraseña: event.target.value })
@@ -716,7 +252,7 @@ const SignInPage = () => {
           />
           {contraseñaError ? (
             <p className="sign-in-page-form-text-error">
-             {signInPasswordError()}
+             {languageSelector(language, 'signInPasswordError')}
             </p>
           ) : (
             ""
@@ -724,13 +260,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInPasswordConfirmation()}
+            {languageSelector(language, 'signInPasswordConfirmation')}
           </label>
           <input
             type="password"
-            required
             className="sign-in-page-form-text-input"
-            placeholder={signInPasswordConfirmation()}
+            placeholder={languageSelector(language, 'signInPasswordConfirmation')}
             value={formContent.confirmarContraseña}
             onChange={(event) =>
               setFormContent({
@@ -741,7 +276,7 @@ const SignInPage = () => {
           />
           {confirmarContraseñaError ? (
             <p className="sign-in-page-form-text-error">
-              {signInPasswordConfirmationError()}
+              {languageSelector(language, 'signInPasswordConfirmationError')}
             </p>
           ) : (
             ""
@@ -749,13 +284,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInFirstName()}
+            {languageSelector(language, 'signInFirstName')}
           </label>
           <input
             type="text"
-            required
             className="sign-in-page-form-text-input"
-            placeholder={signInFirstName()}
+            placeholder={languageSelector(language, 'signInFirstName')}
             value={formContent.nombres}
             onChange={(event) =>
               setFormContent({ ...formContent, nombres: event.target.value })
@@ -763,7 +297,7 @@ const SignInPage = () => {
           />
           {nombresError ? (
             <p className="sign-in-page-form-text-error">
-              {signInFirstNameError()}
+              {languageSelector(language, 'signInFirstNameError')}
             </p>
           ) : (
             ""
@@ -771,13 +305,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInLastName()}
+            {languageSelector(language, 'signInLastName')}
           </label>
           <input
             type="text"
-            required
             className="sign-in-page-form-text-input"
-            placeholder={signInLastName()}
+            placeholder={languageSelector(language, 'signInLastName')}
             value={formContent.apellidos}
             onChange={(event) =>
               setFormContent({ ...formContent, apellidos: event.target.value })
@@ -785,7 +318,7 @@ const SignInPage = () => {
           />
           {apellidosError ? (
             <p className="sign-in-page-form-text-error">
-              {signInLastNameError()}
+              {languageSelector(language, 'signInLastNameError')}
             </p>
           ) : (
             ""
@@ -793,11 +326,10 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInId()}
+            {languageSelector(language, 'signInId')}
           </label>
           <div className="sign-in-page-form-input-subcontainer">
             <select
-              required
               name=""
               id=""
               className="sign-in-page-form-text-input sign-in-page-form-text-input-id-select"
@@ -809,17 +341,20 @@ const SignInPage = () => {
                 })
               }
             >
-              <option value="Cédula de Ciudadanía">{signInIdCC()}</option>
-              <option value="Cédula de Extranjería">
-                {signInIdCE()}
+              <option value="Cédula de Ciudadanía">
+                {languageSelector(language, 'signInIdCC')}
               </option>
-              <option value="Pasaporte">{signInIdPassport()}</option>
+              <option value="Cédula de Extranjería">
+                {languageSelector(language, 'signInIdCE')}
+              </option>
+              <option value="Pasaporte">
+                {languageSelector(language, 'signInIdPassport')}
+              </option>
             </select>
             <input
               type="number"
-              required
               className="sign-in-page-form-text-input sign-in-page-form-text-input-id-text"
-              placeholder={signInIdNumber()}
+              placeholder={languageSelector(language, 'signInIdNumber')}
               value={formContent.numeroDocumento}
               onChange={(event) =>
                 setFormContent({
@@ -831,7 +366,7 @@ const SignInPage = () => {
           </div>
           {numeroDocumentoError ? (
             <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
-              {signInIdNumberError()}
+              {languageSelector(language, 'signInIdNumberError')}
             </span>
           ) : (
             ""
@@ -839,13 +374,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInDoB()}
+            {languageSelector(language, 'signInDoB')}
           </label>
           <div className="sign-in-page-form-input-subcontainer">
             <select
               name=""
               id=""
-              required
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
               value={formContent.añoNacimiento}
               onChange={(event) =>
@@ -950,7 +484,7 @@ const SignInPage = () => {
             <select
               name=""
               id=""
-              required
+
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
               value={formContent.mesNacimiento}
               onChange={(event) =>
@@ -960,18 +494,18 @@ const SignInPage = () => {
                 })
               }
             >
-              <option value="january">{signInJan()}</option>
-              <option value="february">{signInFeb()}</option>
-              <option value="march">{signInMar()}</option>
-              <option value="april">{signInApr()}</option>
-              <option value="may">{signInMay()}</option>
-              <option value="june">{signInJune()}</option>
-              <option value="july">{signInJul()}</option>
-              <option value="august">{signInAug()}</option>
-              <option value="september">{signInSep()}</option>
-              <option value="october">{signInOct()}</option>
-              <option value="november">{signInNov()}</option>
-              <option value="december">{signInDec()}</option>
+              <option value="january">{languageSelector(language, 'signInJan')}</option>
+              <option value="february">{languageSelector(language, 'signInFeb')}</option>
+              <option value="march">{languageSelector(language, 'signInMar')}</option>
+              <option value="april">{languageSelector(language, 'signInApr')}</option>
+              <option value="may">{languageSelector(language, 'signInMay')}</option>
+              <option value="june">{languageSelector(language, 'signInJune')}</option>
+              <option value="july">{languageSelector(language, 'signInJul')}</option>
+              <option value="august">{languageSelector(language, 'signInAug')}</option>
+              <option value="september">{languageSelector(language, 'signInSep')}</option>
+              <option value="october">{languageSelector(language, 'signInOct')}</option>
+              <option value="november">{languageSelector(language, 'signInNov')}</option>
+              <option value="december">{languageSelector(language, 'signInDec')}</option>
             </select>
             <select
               name=""
@@ -1021,10 +555,9 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInCity()}
+            {languageSelector(language, 'signInCity')}
           </label>
           <select
-            required
             name=""
             id=""
             className="sign-in-page-form-text-input sign-in-page-form-city-input"
@@ -1045,13 +578,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInAddress()}
+            {languageSelector(language, 'signInAddress')}
           </label>
           <input
-            required
             type="text"
             className="sign-in-page-form-text-input"
-            placeholder={signInAddress()}
+            placeholder={languageSelector(language, 'signInAddress')}
             value={formContent.direccion}
             onChange={(event) =>
               setFormContent({
@@ -1062,7 +594,7 @@ const SignInPage = () => {
           />
           {direccionError ? (
             <p className="sign-in-page-form-text-error">
-              {signInAddressError()}
+              {languageSelector(language, 'signInAddressError')}
             </p>
           ) : (
             ""
@@ -1070,13 +602,12 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-input-container">
           <label htmlFor="" className="sign-in-page-form-label">
-            {signInPhone()}
+            {languageSelector(language, 'signInPhone')}
           </label>
           <input
-            required
             type="number"
             className="sign-in-page-form-text-input"
-            placeholder={signInPhone()}
+            placeholder={languageSelector(language, 'signInPhone')}
             value={formContent.celular}
             onChange={(event) =>
               setFormContent({
@@ -1087,7 +618,7 @@ const SignInPage = () => {
           />
           {celularError ? (
             <p className="sign-in-page-form-text-error">
-              {signInPhoneError()}
+              {languageSelector(language, 'signInPhoneError')}
             </p>
           ) : (
             ""
@@ -1095,7 +626,6 @@ const SignInPage = () => {
         </div>
         <div className="sign-in-page-form-checkbox-container">
           <input
-            required
             type="checkbox"
             id="accept-t-y-d"
             className="sign-in-page-form-checkbox"
@@ -1111,12 +641,12 @@ const SignInPage = () => {
             htmlFor="accept-t-y-d"
             className="sign-in-page-form-checkbox-label"
           >
-            {signInTC()}
+            {languageSelector(language, 'signInTC')}
           </label>
         </div>
         {TYCError ? (
           <p className="sign-in-page-form-text-error">
-            {signInTCError()}
+            {languageSelector(language, 'signInTCError')}
           </p>
         ) : (
           ""
@@ -1126,7 +656,6 @@ const SignInPage = () => {
             type="checkbox"
             id="autorizacion-tratamiento-de-datos"
             className="sign-in-page-form-checkbox"
-            required
             checked={formContent.tratamientoDeDatos}
             onChange={() =>
               setFormContent({
@@ -1139,18 +668,18 @@ const SignInPage = () => {
             htmlFor="autorizacion-tratamiento-de-datos"
             className="sign-in-page-form-checkbox-label"
           >
-           {signInPrivacy()}
+           {languageSelector(language, 'signInPrivacy')}
           </label>
         </div>
         {TDPError ? (
           <p className="sign-in-page-form-text-error">
-            {signInPrivacyError()}
+            {languageSelector(language, 'signInPrivacyError')}
           </p>
         ) : (
           ""
         )}
         <span className="sign-in-page-form-receive-information">
-          {signInSubcribe()}
+          {languageSelector(language, 'signInSubcribe')}
         </span>
         <div className="sign-in-page-form-checkbox-container">
           <input
@@ -1169,7 +698,7 @@ const SignInPage = () => {
             htmlFor="accept-email-information"
             className="sign-in-page-form-checkbox-label"
           >
-            {signInEmail()}
+            {languageSelector(language, 'signInTextMessage')}
           </label>
         </div>
         <div className="sign-in-page-form-checkbox-container">
@@ -1189,7 +718,7 @@ const SignInPage = () => {
             htmlFor="accept-sms-information"
             className="sign-in-page-form-checkbox-label"
           >
-            {signInTextMessage()}
+            {languageSelector(language, 'signInWhatsApp')}
           </label>
         </div>
         <div className="sign-in-page-form-checkbox-container">
@@ -1209,12 +738,12 @@ const SignInPage = () => {
             htmlFor="accept-wpp-information"
             className="sign-in-page-form-checkbox-label"
           >
-            {signInWhatsApp()}
+            {languageSelector(language, 'signInButton')}
           </label>
         </div>
         <input
           type="submit"
-          value={signInButton()}
+          value={languageSelector(language, 'signInButton')}
           className="sign-in-page-form-submit-button"
         />
       </form>

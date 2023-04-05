@@ -1,6 +1,4 @@
 import { useSelector } from 'react-redux';
-import { es } from '../../assets/languages/languageES';
-import { en } from '../../assets/languages/languajeEN';
 import { useState } from 'react';
 import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
@@ -9,6 +7,7 @@ import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './GeneralAdminView.css';
 import GeneralAdminModal from '../../components/GeneralAdminModal/GeneralAdminModal';
+import languageSelector from '../../assets/languages/languageSelector';
 
 const GeneralAdminView = () => {
   const usersData = userDB;
@@ -30,131 +29,8 @@ const GeneralAdminView = () => {
   })
   const [modalVisible, setModalVisible] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-
-
   const language = useSelector(state=> state.languageReducer);
-  const restaurantAdminTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.restaurantAdminTitle
-      case 'es':
-        return es.restaurantAdminTitle
-      default:
-        return en.restaurantAdminTitle
-    }
-  }
-  const generalAdminSubtitle = () => {
-    switch (language) {
-      case 'en':
-        return en.generalAdminSubtitle
-      case 'es':
-        return es.generalAdminSubtitle
-      default:
-        return en.generalAdminSubtitle
-    }
-  }
-  const generalAdminList = () => {
-    switch (language) {
-      case 'en':
-        return en.generalAdminList
-      case 'es':
-        return es.generalAdminList
-      default:
-        return en.generalAdminList
-    }
-  }
 
-  const newRestaurantFormTitle = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormTitle
-      case 'es':
-        return es.newRestaurantFormTitle
-      default:
-        return en.newRestaurantFormTitle
-    }
-  }
-  const newRestaurantFormName = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormName
-      case 'es':
-        return es.newRestaurantFormName
-      default:
-        return en.newRestaurantFormName
-    }
-  }
-
-  const newRestaurantFormNameError = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormNameError
-      case 'es':
-        return es.newRestaurantFormNameError
-      default:
-        return en.newRestaurantFormNameError
-    }
-  }
-  const newRestaurantFormLocation = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormLocation
-      case 'es':
-        return es.newRestaurantFormLocation
-      default:
-        return en.newRestaurantFormLocation
-    }
-  }
-  const newRestaurantFormCategories = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormCategories
-      case 'es':
-        return es.newRestaurantFormCategories
-      default:
-        return en.newRestaurantFormCategories
-    }
-  }
-  const newRestaurantFormCategoriesError = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormCategoriesError
-      case 'es':
-        return es.newRestaurantFormCategoriesError
-      default:
-        return en.newRestaurantFormCategoriesError
-    }
-  }
-  const newRestaurantFormButton = () => {
-    switch (language) {
-      case 'en':
-        return en.newRestaurantFormButton
-      case 'es':
-        return es.newRestaurantFormButton
-      default:
-        return en.newRestaurantFormButton
-    }
-  }
-  const generalAdminFullList = () => {
-    switch (language) {
-      case 'en':
-        return en.generalAdminFullList
-      case 'es':
-        return es.generalAdminFullList
-      default:
-        return en.generalAdminFullList
-    }
-  }
-  const generalAdminDelete = () => {
-    switch (language) {
-      case 'en':
-        return en.generalAdminDelete
-      case 'es':
-        return es.generalAdminDelete
-      default:
-        return en.generalAdminDelete
-    }
-  }
   const categoriesArr = [
     {name: 'asian', label: 'asian'},
     {name: 'fastfood', label: 'fastfood'},
@@ -201,10 +77,10 @@ const GeneralAdminView = () => {
     }
 
     if (name.length < 2) {
-      validationErrors.name = newRestaurantFormNameError();
+      validationErrors.name = languageSelector(language, 'newRestaurantFormNameError');
     }
     if (checkedValues.every((value)=> !value)) {
-      validationErrors.categories = newRestaurantFormCategoriesError();
+      validationErrors.categories = languageSelector(language, 'newRestaurantFormCategoriesError');
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -251,13 +127,13 @@ const GeneralAdminView = () => {
     
     const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!emailRegEx.test(email)) {
-      validationErrors.email = '* Email Error';
+      validationErrors.email = languageSelector(language, 'signInEmailError');
     }
     if (firstName.length < 2) {
-      validationErrors.firstName = newRestaurantFormNameError();
+      validationErrors.firstName = languageSelector(language, 'signInFirstNameError');
     }
     if (lastName.length < 2 ) {
-      validationErrors.lastName = newRestaurantFormNameError();
+      validationErrors.lastName = languageSelector(language, 'signInLastNameError');
     }
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -296,47 +172,49 @@ const GeneralAdminView = () => {
     <>
       <HeaderComponent />
       <div className='generalAdminView__container'>
-        <h1 className='generalAdminView__title'>{restaurantAdminTitle()} {usersData[3].name}!</h1>
+        <h1 className='generalAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {usersData[3].name}!</h1>
         <article className='generalAdminView__flex'>
           <span>
-            <h3>{generalAdminSubtitle()}</h3>
-            <span className='generalAdmin__span'>{generalAdminList()} #{restaurants.length} restaurant{restaurants.length > 1 ? 's' : ''} and #{users.length} users</span>
-            <h3>Here you can see all the users</h3>
+            <h3>{languageSelector(language, 'generalAdminSubtitle')}</h3>
+            <span className='generalAdmin__span'>
+              {languageSelector(language, 'generalAdminList')} #{restaurants.length} restaurant{restaurants.length? 's' : ''} {language === 'en' ? 'and': 'y'} #{users.length} {language === 'en'? 'users': 'usuarios'}
+            </span>
+            <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
             <form className='generalAdminView__form' onSubmit={newUserSumbit}>
-              <h3>Here you can add a new user:</h3>
-              <label htmlFor='newUserFirstName'>First Name</label>
+              <h3>{languageSelector(language, 'generalAdminAddUserTitle')}:</h3>
+              <label htmlFor='newUserFirstName'>{languageSelector(language, 'signInFirstName')}</label>
               <input 
                 type='text' 
                 name='newUserFirstName' 
                 id='newUserFirstName' 
-                placeholder='New user first name'
+                placeholder={languageSelector(language, 'signInFirstName')}
               />
               {errors.firstName && <p className='restaurantAdminView__error'>{errors.firstName}</p>}
-              <label htmlFor='newUserLastName'>Last Name</label>
+              <label htmlFor='newUserLastName'>{languageSelector(language, 'signInLastName')}</label>
               <input 
                 type='text' 
                 name='newUserLastName' 
                 id='newUserLastName' 
-                placeholder='New user last name'
+                placeholder={languageSelector(language, 'signInLastName')}
               />
               {errors.lastName && <p className='restaurantAdminView__error'>{errors.lastName}</p>}
-              <label htmlFor='newUserEmail'>Email</label>
+              <label htmlFor='newUserEmail'>{languageSelector(language, 'signInEmail')}</label>
               <input 
                 type='text' 
                 name='newUserEmail' 
                 id='newUserEmail' 
-                placeholder='New user email'
+                placeholder={languageSelector(language, 'signInEmail')}
               />
               {errors.email && <p className='restaurantAdminView__error'>{errors.email}</p>}
-              <label htmlFor='newUserRole'>What kind of user will this be?</label>
+              <label htmlFor='newUserRole'>{languageSelector(language, 'generalAdminAddUserRole')}</label>
               <select id='newUserRole' name='newUserRole'>
-                <option value={'restaurantAdmin'}>Restaurant Admin</option>
-                <option value={'generalAdmin'}>General Admin</option>
-                <option value={'regularUser'}>Regular User</option>
+                <option value={'restaurantAdmin'}>{languageSelector(language, 'generalAdminAddUserResAdmin')}</option>
+                <option value={'generalAdmin'}>{languageSelector(language, 'generalAdminAddUserGenAdmin')}</option>
+                <option value={'regularUser'}>{languageSelector(language, 'generalAdminAddUserRegUser')}</option>
               </select>
-              <button type='sumbit'>Create the new User!</button>
+              <button type='sumbit'>{languageSelector(language, 'generalAdminAddUserButton')}</button>
             </form>
-              {users.map((item, index)=> {
+              {users && users.map((item, index)=> {
                 return(
                   <ul key={index}>
                     <li className='newUser__list'>#{item.id} {item.name} {<AiFillDelete className='generalAdminView__icon' onClick={()=>hanldeUserDelete(item.id)}/>}</li>
@@ -345,16 +223,16 @@ const GeneralAdminView = () => {
               })}
           </span>
           <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
-          <span>{newRestaurantFormTitle()}</span>
-          <label htmlFor='newRestaurantTitle'>{newRestaurantFormName()}</label>
+          <span>{languageSelector(language, 'newRestaurantFormTitle')}</span>
+          <label htmlFor='newRestaurantTitle'>{languageSelector(language, 'newRestaurantFormName')}</label>
               <input 
                 type='text' 
                 name='name' 
                 id='newRestaurantTitle' 
-                placeholder={newRestaurantFormName()}
+                placeholder={languageSelector(language, 'newRestaurantFormName')}
               />
             {errors.name && <p className='generalAdminView__error'>{errors.name}</p>}
-            <label htmlFor='newRestaurantLocation'>{newRestaurantFormLocation()}</label>
+            <label htmlFor='newRestaurantLocation'>{languageSelector(language, 'newRestaurantFormLocation')}</label>
             <select id='newRestaurantLocation' name='location'>
                 <option value={'bogota'}>Bogotá</option>
                 <option value={'medellin'}>Medellín</option>
@@ -363,8 +241,8 @@ const GeneralAdminView = () => {
                 <option value={'bucaramanga'}>Bucaramanga</option>
               </select>
               <div>
-                <label className='generalAdminView__checkboxTitle'>{newRestaurantFormLocation()}</label>
-                {categoriesArr.map((checkbox)=> (
+                <label className='generalAdminView__checkboxTitle'>{languageSelector(language, 'newRestaurantFormLocation')}</label>
+                {categoriesArr && categoriesArr.map((checkbox)=> (
                   <div key={checkbox.name} className='generalAdminView__checkbox'>
                     <input
                       type='checkbox'
@@ -378,11 +256,11 @@ const GeneralAdminView = () => {
                 ))}
                 {errors.categories && <p className='generalAdminView__error'>{errors.categories}</p>}
               </div>
-              <button type='sumbit'>{newRestaurantFormButton()}</button>
+              <button type='sumbit'>{languageSelector(language, 'newRestaurantFormButton')}</button>
           </form>
           <article className='generalAdminView__article'>
-            <span>{generalAdminFullList()}</span>
-            <p>{generalAdminDelete()}</p>
+            <span>{languageSelector(language, 'generalAdminFullList')}</span>
+            <p>{languageSelector(language, 'generalAdminDelete')}</p>
             <ul>
               {Object.entries(restaurants).map(([key, value])=> (
                 <li key={key} className='generalAdminView__details'>
@@ -402,9 +280,9 @@ const GeneralAdminView = () => {
           </article>
         </article>
         <section className='userPAge__logOut'>
-            <span>If you want to log out, click this button</span>
+            <span>{languageSelector(language, 'logOutText')}</span>
             <button className='userPage__form-button'>
-              Log Out
+              {languageSelector(language, 'logOutButton')}
             </button>
           </section>
       </div>

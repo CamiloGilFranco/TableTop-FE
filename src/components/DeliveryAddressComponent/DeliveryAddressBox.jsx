@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import languageSelector from "../../assets/languages/languageSelector";
 
 const DeliveryAddressBox = ({
   index,
@@ -18,9 +20,8 @@ const DeliveryAddressBox = ({
     }
   };
 
-  /* const handleDelete = (index) => {
-    setData(data.filter((item, i) => i !== index));
-  }; */
+  const language = useSelector(state => state.languageReducer)
+
   return (
     <div>
       <input
@@ -53,7 +54,7 @@ const DeliveryAddressBox = ({
             handleDelete(index);
           }}
         >
-          Remove
+          {languageSelector(language, 'remove')}
         </button>
       </label>
     </div>

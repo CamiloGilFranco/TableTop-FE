@@ -14,11 +14,13 @@ import {
 } from "@chakra-ui/accordion";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import languageSelector from "../../assets/languages/languageSelector";
 
 const Payment = () => {
   const dispatch = useDispatch();
   const oderStatus = useSelector((state) => state.orderReducer);
   const navigate = useNavigate();
+  const language = useSelector(state => state.languageReducer);
 
   const [debitCard, setDebitCard] = useState({
     cardNumber: "",
@@ -200,14 +202,14 @@ const Payment = () => {
 
   return (
     <main className="payment-container">
-      <h2 className="payment-container__init-title">Payment</h2>
+      <h2 className="payment-container__init-title">{languageSelector(language, 'payment')}</h2>
       <section className="payment-content">
         <Accordion allowToggle>
           <AccordionItem>
             <h2>
               <AccordionButton className="payment-accordion-button">
                 <div as="span" flex="1" textAlign="left">
-                  Debit Card
+                  {languageSelector(language, 'paymentDebitCard')}
                 </div>
                 <AccordionIcon />
               </AccordionButton>
@@ -215,7 +217,7 @@ const Payment = () => {
             <AccordionPanel pb={4}>
               <form action="" className="debit-card-form">
                 <label htmlFor="debitNumber" className="debit-card-form-label">
-                  Card Number
+                  {languageSelector(language, 'paymentCardNumber')}
                 </label>
                 <input
                   type="text"
@@ -228,13 +230,13 @@ const Payment = () => {
                 />
                 {debitCardNumberError ? (
                   <p className="payment-form-error-message">
-                    * Introduce un numero de tarjeta de crédito valido
+                    {languageSelector(language, 'paymentCreditError')}
                   </p>
                 ) : (
                   ""
                 )}
                 <label htmlFor="debitNames" className="debit-card-form-label">
-                  Names
+                  {languageSelector(language, 'name')}
                 </label>
                 <input
                   type="text"
@@ -247,7 +249,7 @@ const Payment = () => {
                 />
                 {debitNamesError ? (
                   <p className="payment-form-error-message">
-                    * Introduce los nombres como están impresos en la tarjeta
+                    {languageSelector(language, 'paymentNameError')}
                   </p>
                 ) : (
                   ""
@@ -255,7 +257,7 @@ const Payment = () => {
                 <div className="debit-card-form-due-cvv">
                   <div className="debit-card-form-due-container">
                     <label htmlFor="debitDue" className="debit-card-form-label">
-                      Due Date
+                      {languageSelector(language, 'paymentValidThrough')}
                     </label>
                     <input
                       type="text"
@@ -268,7 +270,7 @@ const Payment = () => {
                     />
                     {debitDueDateError ? (
                       <p className="payment-form-error-message">
-                        * Introduce una fecha valida
+                        {languageSelector(language, 'paymentDateError')}
                       </p>
                     ) : (
                       ""
@@ -289,8 +291,7 @@ const Payment = () => {
                     />
                     {debitCVVError ? (
                       <p className="payment-form-error-message">
-                        * Introduce el código CVV que esta al respaldo de tu
-                        tarjeta
+                        {languageSelector(language, 'paymentCvvError')}
                       </p>
                     ) : (
                       ""
@@ -304,7 +305,7 @@ const Payment = () => {
                       htmlFor="debitType"
                       className="debit-card-form-label"
                     >
-                      Type
+                      {languageSelector(language, 'signInId')}
                     </label>
                     <select
                       type="text"
@@ -326,7 +327,7 @@ const Payment = () => {
                       htmlFor="debitDocNum"
                       className="debit-card-form-label"
                     >
-                      Number
+                      {languageSelector(language, 'number')}
                     </label>
                     <input
                       type="number"
@@ -342,7 +343,7 @@ const Payment = () => {
                     />
                     {debitDocNumberError ? (
                       <p className="payment-form-error-message">
-                        * Introduce tu numero de documento de identidad
+                        {languageSelector(language, 'paymentNumberError')}
                       </p>
                     ) : (
                       ""
@@ -353,7 +354,9 @@ const Payment = () => {
                   className="button-payment__make-pay"
                   onClick={debitSubmit}
                 >
-                  MAKE PAYMENT
+                  <b>
+                    {languageSelector(language, 'paymentMakePayment')}
+                  </b>
                 </button>
               </form>
             </AccordionPanel>
@@ -363,7 +366,7 @@ const Payment = () => {
             <h2>
               <AccordionButton className="payment-accordion-button">
                 <div as="span" flex="1" textAlign="left">
-                  Credit Card
+                  {languageSelector(language, 'paymentCreditCard')}
                 </div>
                 <AccordionIcon />
               </AccordionButton>
@@ -371,7 +374,7 @@ const Payment = () => {
             <AccordionPanel pb={4}>
               <form action="" className="debit-card-form">
                 <label htmlFor="debitNumber" className="debit-card-form-label">
-                  Card Number
+                  {languageSelector(language, 'paymentCardNumber')}
                 </label>
                 <input
                   type="text"
@@ -384,13 +387,13 @@ const Payment = () => {
                 />
                 {creditCardNumberError ? (
                   <p className="payment-form-error-message">
-                    * Introduce un numero de tarjeta de crédito valido
+                    {languageSelector(language, 'paymentCreditError')}
                   </p>
                 ) : (
                   ""
                 )}
                 <label htmlFor="debitNames" className="debit-card-form-label">
-                  Names
+                  {languageSelector(language, 'name')}
                 </label>
                 <input
                   type="text"
@@ -403,7 +406,7 @@ const Payment = () => {
                 />
                 {creditNamesError ? (
                   <p className="payment-form-error-message">
-                    * Introduce los nombres como están impresos en la tarjeta
+                    {languageSelector(language, 'paymentNameError')}
                   </p>
                 ) : (
                   ""
@@ -411,7 +414,7 @@ const Payment = () => {
                 <div className="debit-card-form-due-cvv">
                   <div className="debit-card-form-due-container">
                     <label htmlFor="debitDue" className="debit-card-form-label">
-                      Due Date
+                      {languageSelector(language, 'paymentValidThrough')}
                     </label>
                     <input
                       type="text"
@@ -427,7 +430,7 @@ const Payment = () => {
                     />
                     {creditDueDateError ? (
                       <p className="payment-form-error-message">
-                        * Introduce una fecha valida
+                        {languageSelector(language, 'paymentDateError')}
                       </p>
                     ) : (
                       ""
@@ -451,8 +454,7 @@ const Payment = () => {
                     />
                     {creditCVVError ? (
                       <p className="payment-form-error-message">
-                        * Introduce el código CVV que esta al respaldo de tu
-                        tarjeta
+                        {languageSelector(language, 'paymentCvvError')}
                       </p>
                     ) : (
                       ""
@@ -466,7 +468,7 @@ const Payment = () => {
                       htmlFor="debitType"
                       className="debit-card-form-label"
                     >
-                      Type
+                      {languageSelector(language, 'signInId')}
                     </label>
                     <select
                       type="text"
@@ -488,7 +490,7 @@ const Payment = () => {
                       htmlFor="debitDocNum"
                       className="debit-card-form-label"
                     >
-                      Number
+                      {languageSelector(language, 'number')}
                     </label>
                     <input
                       type="number"
@@ -504,7 +506,7 @@ const Payment = () => {
                     />
                     {creditDocNumberError ? (
                       <p className="payment-form-error-message">
-                        * Introduce tu numero de documento de identidad
+                       {languageSelector(language, 'paymentNumberError')}
                       </p>
                     ) : (
                       ""
@@ -515,7 +517,9 @@ const Payment = () => {
                   className="button-payment__make-pay"
                   onClick={creditSubmit}
                 >
-                  MAKE PAYMENT
+                  <b>
+                    {languageSelector(language, 'paymentMakePayment')}
+                  </b>
                 </button>
               </form>
             </AccordionPanel>
@@ -536,7 +540,7 @@ const Payment = () => {
                   htmlFor="bank-list-pse"
                   className="debit-card-form-label"
                 >
-                  Selecciona tu banco
+                  {languageSelector(language, 'paymentSelectBank')}
                 </label>
                 <select
                   name="bank"
@@ -608,7 +612,9 @@ const Payment = () => {
                   className="button-payment__make-pay"
                   onClick={PSESubmit}
                 >
-                  MAKE PAYMENT
+                  <b>
+                  {languageSelector(language, 'paymentMakePayment')}
+                  </b>
                 </button>
               </form>
             </AccordionPanel>

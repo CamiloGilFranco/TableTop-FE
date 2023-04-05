@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './EditModal.css'
+import { useSelector } from 'react-redux';
+import languageSelector from '../../assets/languages/languageSelector';
 
 const EditModal = ({ item, onClose, handleUpdate }) => {
   const [title, setTitle] = useState(item.title);
   const [price, setPrice] = useState(item.price);
   const [description, setDescription] = useState(item.description);
   const [errors, setErrors] = useState({});
+  const language = useSelector(state=> state.languageReducer);
+
 
 
 
@@ -43,7 +47,7 @@ const EditModal = ({ item, onClose, handleUpdate }) => {
     <div className='modalComponent__container'>
       <section className='modalComponent__box'>
         <span>
-          Here you can edit the details of the dish
+          {languageSelector(language, 'editDishTitle')}
         </span>
         <form className='modalComponent__form' onSubmit={handleSumbit}>
           <input
@@ -70,8 +74,8 @@ const EditModal = ({ item, onClose, handleUpdate }) => {
           />
           {errors.description && <p className='restaurantAdminView__error'>{errors.description}</p>}
           <span className='modalComponent__buttons'>
-            <button className='modalComponent__button-save' type="submit">Save</button>
-            <button className='modalComponent__button-cancel' type="button" onClick={onClose}>Cancel</button>
+            <button className='modalComponent__button-save' type="submit">{languageSelector(language, 'save')}</button>
+            <button className='modalComponent__button-cancel' type="button" onClick={onClose}>{languageSelector(language, 'cancel')}</button>
           </span>
         </form>
       </section>

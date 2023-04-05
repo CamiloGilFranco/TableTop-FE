@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { es } from "../../assets/languages/languageES";
-import { en } from "../../assets/languages/languajeEN";
 import {
   ORDER_SWITCH,
   ORDER_ID,
@@ -9,7 +7,7 @@ import {
 } from "../../store/reducers/Order.reducer";
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
-import { Link } from 'react-router-dom';
+import languageSelector from "../../assets/languages/languageSelector";
 
 const CartItem = () => {
   const language = useSelector((state) => state.languageReducer);
@@ -18,27 +16,6 @@ const CartItem = () => {
   const navigate = useNavigate();
   const location = useLocation().pathname;
   const pathRegExp = /checkout/;
-
-  const cartFinishWarning = () => {
-    switch (language) {
-      case "en":
-        return en.cartFinishWarning;
-      case "es":
-        return es.cartFinishWarning;
-      default:
-        return en.cartFinishWarning;
-    }
-  };
-  const cartPlaceOrder = () => {
-    switch (language) {
-      case "en":
-        return en.cartPlaceOrder;
-      case "es":
-        return es.cartPlaceOrder;
-      default:
-        return en.cartPlaceOrder;
-    }
-  };
 
   return (
     <div className="cart-item">
@@ -60,7 +37,7 @@ const CartItem = () => {
             ${cartSubtotal}
           </span>
         </div>
-        <p className="cart-item-finish-waring">{cartFinishWarning()}</p>
+        <p className="cart-item-finish-waring">{languageSelector(language, 'cartFinishWarning')}</p>
         {pathRegExp.test(location) ? (
           ""
         ) : (
@@ -68,7 +45,7 @@ const CartItem = () => {
             className="cart-item-finish-button"
             onClick={() => navigate("/restaurant/checkout")}
           >
-            {cartPlaceOrder()}
+            {languageSelector(language, 'cartPlaceOrder')}
           </button>
         )}
       </div>
