@@ -7,7 +7,7 @@ import star3 from "./assets/star3.png";
 import star4 from "./assets/star4.png";
 import star5 from "./assets/star5.png";
 
-const ReviewsComponent = ({ reviews }) => {
+const ReviewsComponent = ({ reviews, handleNewReview }) => {
   const [newReview, setNewReview] = useState({
     stars: "",
     title: "",
@@ -45,6 +45,8 @@ const ReviewsComponent = ({ reviews }) => {
 
     if (isOk) {
       console.log("comentario enviado");
+      handleNewReview(newReview);
+
       setNewReview({
         stars: "",
         title: "",

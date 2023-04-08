@@ -11,7 +11,7 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
     city: "",
   });
 
-  const language = useSelector(state => state.languageReducer)
+  const language = useSelector((state) => state.languageReducer);
   const [nameError, setNameError] = useState(false);
   const [addressError, setAddressError] = useState(false);
   const [numberError, setNumberError] = useState(false);
@@ -58,17 +58,19 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
   return (
     <form className="form-add-address">
       <div className="form-header">
-        <span className="add-address-title">{languageSelector(language, 'addAddress')}</span>
+        <span className="add-address-title">
+          {languageSelector(language, "addAddress")}
+        </span>
       </div>
 
       <label htmlFor="name" className="form-add-address-label">
-        {languageSelector(language, 'name')}
+        {languageSelector(language, "name")}
       </label>
       <input
         type="text"
         id="name"
         name="name"
-        class="form-add-address-input"
+        className="form-add-address-input"
         value={addFormValues.name}
         onChange={(event) =>
           setAddFormValues({ ...addFormValues, name: event.target.value })
@@ -76,20 +78,20 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       />
       {nameError ? (
         <p className="form-add-address-error">
-          {languageSelector(language, 'newAddressError')}
+          {languageSelector(language, "newAddressError")}
         </p>
       ) : (
         ""
       )}
 
       <label htmlFor="address" className="form-add-address-label">
-        {languageSelector(language, 'address')}
+        {languageSelector(language, "address")}
       </label>
       <input
         type="text"
         id="address"
         name="address"
-        class="form-add-address-input"
+        className="form-add-address-input"
         value={addFormValues.address}
         onChange={(event) =>
           setAddFormValues({ ...addFormValues, address: event.target.value })
@@ -97,20 +99,20 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       />
       {addressError ? (
         <p className="form-add-address-error">
-          {languageSelector(language, 'newAddressError')}
+          {languageSelector(language, "newAddressError")}
         </p>
       ) : (
         ""
       )}
 
       <label htmlFor="mobile" className="form-add-address-label">
-        {languageSelector(language, 'signInPhone')}
+        {languageSelector(language, "signInPhone")}
       </label>
       <input
         type="number"
-        id="name"
+        id="mobile"
         name="name"
-        class="form-add-address-input"
+        className="form-add-address-input"
         value={addFormValues.mobileNumber}
         onChange={(event) =>
           setAddFormValues({
@@ -120,19 +122,21 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
         }
       />
       {numberError ? (
-        <p className="form-add-address-error">{languageSelector(language, 'signInPhoneError')}</p>
+        <p className="form-add-address-error">
+          {languageSelector(language, "signInPhoneError")}
+        </p>
       ) : (
         ""
       )}
 
-      <label htmlFor="mobile" className="form-add-address-label">
-        {languageSelector(language, 'city')}
+      <label htmlFor="city" className="form-add-address-label">
+        {languageSelector(language, "city")}
       </label>
       <input
         type="text"
-        id="mobile"
+        id="city"
         name="mobile"
-        class="form-add-address-input"
+        className="form-add-address-input"
         value={addFormValues.city}
         onChange={(event) =>
           setAddFormValues({ ...addFormValues, city: event.target.value })
@@ -140,7 +144,7 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       />
       {cityError ? (
         <p className="form-add-address-error">
-          {languageSelector(language, 'newAddressError')}
+          {languageSelector(language, "newAddressError")}
         </p>
       ) : (
         ""
@@ -150,9 +154,7 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
         className="form-button-add"
         onClick={addNewAddressSubmit}
       >
-        <b>
-          {languageSelector(language, 'addNewAddress')}
-        </b>
+        <b>{languageSelector(language, "addNewAddress")}</b>
       </button>
     </form>
   );

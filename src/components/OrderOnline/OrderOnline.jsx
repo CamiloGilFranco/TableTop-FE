@@ -11,9 +11,9 @@ const OrderOnline = ({ menu }) => {
     return Object.keys(menu).map((category, index) => {
       return (
         <div
-          className="restaurant-view-order-online-category"
           key={index}
           id={category}
+          className="restaurant-view-order-online-category"
         >
           <span className="restaurant-view-order-online-category-title"></span>
           <div className="restaurant-view-order-online-subcategory">
@@ -47,10 +47,12 @@ const OrderOnline = ({ menu }) => {
         <div className="restaurant-view-order-online-search-panel-list-container">
           {Object.keys(menu).map((category, index) => {
             return (
-              <div className="restaurant-view-order-online-search-panel-element-container">
+              <div
+                key={index}
+                className="restaurant-view-order-online-search-panel-element-container"
+              >
                 <a
                   href={`#${category}`}
-                  key={index}
                   className="restaurant-view-order-online-search-panel-element"
                 >
                   <div className="restaurant-view-order-online-search-panel-element-container-a">
