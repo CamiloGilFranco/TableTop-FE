@@ -6,7 +6,7 @@ export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
 const initialState = {
-  user: null,
+  user: {},
   loading: false,
   error: null
 };

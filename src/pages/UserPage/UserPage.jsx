@@ -6,6 +6,7 @@ import { RiEdit2Fill } from 'react-icons/ri'
 import { useParams } from 'react-router';
 import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector, useDispatch } from 'react-redux';
+import loadingGif from '../../assets/fotos/loading/loading-gif.gif'
 import axios from 'axios';
 import {
   fetchUserRequest,
@@ -20,8 +21,7 @@ const UserPage = () => {
   const { id } = useParams();
   const language = useSelector(state => state.languageReducer);
   const loading = useSelector((state) => state.userReducer.loading);
-  
-  // const [user, setUser] = useState(null);
+  const user = useSelector(state => state.userReducer.user);
   const [isEditable, setIsEditable] = useState(false);
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
@@ -35,35 +35,30 @@ const UserPage = () => {
     address: [],
     city: ''
   });
-  const user = useSelector(state => state.userReducer.user);
-  console.log(useSelector(state =>state.userReducer.loading));
 
 
+  // does a get request on mount 
   useEffect(() => {
-    dispatch(fetchUserRequest());
-    axios.get(`http://localhost:8080/api/users/${id}`)
-      .then(response => {
+    const fetchUser = async () => {
+      dispatch(fetchUserRequest());
+      try {
+        const response = await axios.get(`http://localhost:8080/api/users/${id}`);
         dispatch(fetchUserSuccess(response.data.data));
-        // setUser(response.data.data);
         setFormData({
           name: response.data.data.name,
-          last_name:  response.data.data.last_name,
+          last_name: response.data.data.last_name,
           email: response.data.data.email,
           password: response.data.data.password,
           phone_numbers: response.data.data.phone_numbers,
           address: response.data.data.addresses,
-          city: response.data.data.city
+          city: response.data.data.city,
         });
-      })
-      .catch(error =>{
+      } catch (error) {
         dispatch(fetchUserFailure(error));
-      })
+      }
+    };
+    fetchUser();
   }, [id, dispatch]);
-
-  if (loading) {
-    console.log('loading');
-    return <div>Loading...</div>;
-  }
 
   // enables the editing of the inputs
   const handleEditClick = () => {
@@ -93,8 +88,9 @@ const UserPage = () => {
       }));
     }
   };    
+
   // handles the sumbit of the form
-  const handleSumbit = (event) => {
+  const handleSumbit = async (event) => {
     event.preventDefault();
     const validationErrors = {};
     const form = event.target
@@ -106,12 +102,15 @@ const UserPage = () => {
     const address = formData.address;
     const city = formData.city;
     
+    // updates the specific field of numbers that was modified
     const updatedPhoneNumbers = formData.phone_numbers.map((phoneNumber, index) => {
       return {
         id_user_phone_number: phoneNumber.id_user_phone_number,
         phone_number: formData.phone_numbers[index].phone_number,
       };
     });
+
+    //updates the specific field of the address that was modified
     const updatedAddresses = formData.address.map((address, index) => {
       return {
         id_address: address.id_address,
@@ -121,6 +120,7 @@ const UserPage = () => {
       };
     });
   
+    // creates new user obj with the information from the form
     const updatedUser = {
       user_id: user.user_id,
       name,
@@ -135,7 +135,7 @@ const UserPage = () => {
     const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
   
-    // validates thee fields
+    // validates the fields
     if (!name.length) {
       validationErrors.name = languageSelector(language, 'signInFirstNameError');
     }
@@ -157,28 +157,38 @@ const UserPage = () => {
       return;
     }
   
-    axios.put(`http://localhost:8080/api/users/${id}`, updatedUser)
-    .then(response => {
-      dispatch(updateUserSuccess(response.data.data));
-      // setUser(response.data.data);
+    // sends the information to the back end and does a new petition
+    try {
+      await axios.put(`http://localhost:8080/api/users/${id}`, updatedUser);
+      dispatch(updateUserSuccess(updatedUser));
       setIsEditable(false);
       setErrors({});
+      const response = await axios.get(`http://localhost:8080/api/users/${id}`);
+      dispatch(fetchUserSuccess(response.data.data));
       setFormData({
-        name: updatedUser.name,
-        last_name: updatedUser.last_name,
-        email: updatedUser.email,
-        password: updatedUser.password,
-        phone_numbers: updatedUser.phone_numbers,
-        address: updatedUser.addresses,
-        city: updatedUser.city
+        name: response.data.data.name,
+        last_name: response.data.data.last_name,
+        email: response.data.data.email,
+        password: response.data.data.password,
+        phone_numbers: response.data.data.phone_numbers,
+        address: response.data.data.addresses,
+        city: response.data.data.city
       });
-    })
-    .catch(error => {
+    } catch (error) {
       dispatch(updateUserFailure(error));
-      console.log(error);
-    });
+    }
+  };
+   
+  // displayed when loading is true
+  if (loading) {
+    return (
+      <div>
+        <img src={`${loadingGif}`} alt='loading'/>
+        <h1>Loading...</h1> 
+      </div>
+    );
   }
-  
+
   return (
     <React.Fragment>
       <Header/>
