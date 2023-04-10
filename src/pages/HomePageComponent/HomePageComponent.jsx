@@ -6,19 +6,23 @@ import DownloadPageComponent from "../../components/DownloadPageComponent/Downlo
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
 import { useState } from "react";
+import "./HomePageComponent.css";
 
 const HomePageComponent = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   return (
-    <>
+    <div className="home-page-component">
       <HeaderComponent />
-      <SearchbarComponent inputValue={inputValue} setInputValue={setInputValue}/>
+      <SearchbarComponent
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+      />
       <CarrucelComponent />
       <FlowInfoComponent />
-      <PopularRestaurant inputValue={inputValue}/>
+      <PopularRestaurant inputValue={inputValue} />
       <DownloadPageComponent />
       <Footer />
-    </>
+    </div>
   );
 };
 

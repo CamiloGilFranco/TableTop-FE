@@ -1,112 +1,99 @@
 $downloadPage__orange: #ef3f3f;
 
 .downloadPage__Container {
-    margin-top: 10px;
-
-    @media (min-width: 765px) {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-}
-.downloadPage__buttonsContainer{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    padding: 10px;
-
-    @media (min-width:765px) {
-        width: 50%;
-        text-align: left;
-        align-items: flex-start;
-        margin-left: 15px;
-
-        h4{
-            font-size: 16px;
-        }
-        p {
-            font-size: 16px;
-        }
-    }
-    @media (min-width:1020px) {
-        width: 50%;
-        text-align: left;
-        align-items: flex-start;
-        margin-left: 15px;
-
-        h4{
-            font-size: 20px;
-        }
-        p{
-            font-size: 18px;
-        }
-    }
+  display: flex;
+  padding: 10px;
+  justify-content: center;
 }
 
-.downloadPage__buttons{
-    display: flex;
-    gap: 15px;
-    
+.downloadPage__buttonsContainer {
+  background-color: #f9f9f9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 50%;
+  font-size: 20px;
+  font-size: 18px;
+
+  @media (max-width: 765px) {
+    width: 100%;
+  }
+
+  @media (min-width: 765px) {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.downloadPage__buttons {
+  display: flex;
+  gap: 15px;
+
+  button {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  @media (min-width: 765px) {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
     button {
-        border: none;
-        padding: 5px;
-        border-radius: 5px;
+      width: 15vh;
+      height: fit-content;
+      font-size: 16px;
     }
-    @media (min-width:765px) {
-        
-        border: none;
-        padding: 5px;
-        border-radius: 5px;
-        button{
-            width: 15vh;
-            height: fit-content;
-            font-size: 16px;
-        }
-    }
+  }
 
-    @media (min-width:1000px) {
-        font-size: 16px;
-    }
+  @media (min-width: 1000px) {
+    font-size: 16px;
+  }
 }
 
-.downloadPage__icons{
-    margin-right: 5px;
+.downloadPage__icons {
+  margin-right: 5px;
 }
 
 .downloadPage__title {
-    margin: 10px;
+  margin: 10px;
 
-    @media (min-width:765px) {
-        margin-left: 0;
-        font-size: 24px;
-    }
-    @media (min-width:1023) {
-        font-size: 28px;
-    }
+  @media (min-width: 765px) {
+    margin-left: 0;
+    font-size: 24px;
+  }
+  @media (min-width: 1023) {
+    font-size: 28px;
+  }
 }
 
 .downloadPage__android {
-    color: $downloadPage__orange;
-    background-color: #ffffff;
-    cursor: pointer;
+  color: $downloadPage__orange;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 .downloadPage__iOS {
-    background-color: $downloadPage__orange;
-    color: #ffffff;
-    cursor: pointer;
+  background-color: $downloadPage__orange;
+  color: #ffffff;
+  cursor: pointer;
 }
-.downloadPage__picture{
-    display: none;
 
-    @media (min-width:765px) {
-        display: block;
-        height: 50vh;
-        width: 75vh;
-    }
-    @media (min-width:1000px) {
-        width: 90vh;
-    }
+.downloadPage__photo-Container {
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 765px) {
+    display: none;
+  }
+}
+
+.downloadPage__picture {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
 }
