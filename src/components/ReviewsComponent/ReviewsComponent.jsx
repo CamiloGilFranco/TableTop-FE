@@ -44,7 +44,6 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
     }
 
     if (isOk) {
-      console.log("comentario enviado");
       handleNewReview(newReview);
 
       setNewReview({
