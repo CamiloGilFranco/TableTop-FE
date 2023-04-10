@@ -20,7 +20,7 @@ const Payment = () => {
   const dispatch = useDispatch();
   const oderStatus = useSelector((state) => state.orderReducer);
   const navigate = useNavigate();
-  const language = useSelector(state => state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
 
   const [debitCard, setDebitCard] = useState({
     cardNumber: "",
@@ -202,14 +202,16 @@ const Payment = () => {
 
   return (
     <main className="payment-container">
-      <h2 className="payment-container__init-title">{languageSelector(language, 'payment')}</h2>
+      <h2 className="payment-container__init-title">
+        {languageSelector(language, "payment")}
+      </h2>
       <section className="payment-content">
         <Accordion allowToggle>
           <AccordionItem>
             <h2>
               <AccordionButton className="payment-accordion-button">
-                <div as="span" flex="1" textAlign="left">
-                  {languageSelector(language, 'paymentDebitCard')}
+                <div as="span" flex="1" textalign="left">
+                  {languageSelector(language, "paymentDebitCard")}
                 </div>
                 <AccordionIcon />
               </AccordionButton>
@@ -217,7 +219,7 @@ const Payment = () => {
             <AccordionPanel pb={4}>
               <form action="" className="debit-card-form">
                 <label htmlFor="debitNumber" className="debit-card-form-label">
-                  {languageSelector(language, 'paymentCardNumber')}
+                  {languageSelector(language, "paymentCardNumber")}
                 </label>
                 <input
                   type="text"
@@ -230,13 +232,13 @@ const Payment = () => {
                 />
                 {debitCardNumberError ? (
                   <p className="payment-form-error-message">
-                    {languageSelector(language, 'paymentCreditError')}
+                    {languageSelector(language, "paymentCreditError")}
                   </p>
                 ) : (
                   ""
                 )}
                 <label htmlFor="debitNames" className="debit-card-form-label">
-                  {languageSelector(language, 'name')}
+                  {languageSelector(language, "name")}
                 </label>
                 <input
                   type="text"
@@ -249,7 +251,7 @@ const Payment = () => {
                 />
                 {debitNamesError ? (
                   <p className="payment-form-error-message">
-                    {languageSelector(language, 'paymentNameError')}
+                    {languageSelector(language, "paymentNameError")}
                   </p>
                 ) : (
                   ""
@@ -257,7 +259,7 @@ const Payment = () => {
                 <div className="debit-card-form-due-cvv">
                   <div className="debit-card-form-due-container">
                     <label htmlFor="debitDue" className="debit-card-form-label">
-                      {languageSelector(language, 'paymentValidThrough')}
+                      {languageSelector(language, "paymentValidThrough")}
                     </label>
                     <input
                       type="text"
@@ -270,7 +272,7 @@ const Payment = () => {
                     />
                     {debitDueDateError ? (
                       <p className="payment-form-error-message">
-                        {languageSelector(language, 'paymentDateError')}
+                        {languageSelector(language, "paymentDateError")}
                       </p>
                     ) : (
                       ""
@@ -291,7 +293,7 @@ const Payment = () => {
                     />
                     {debitCVVError ? (
                       <p className="payment-form-error-message">
-                        {languageSelector(language, 'paymentCvvError')}
+                        {languageSelector(language, "paymentCvvError")}
                       </p>
                     ) : (
                       ""
@@ -305,7 +307,7 @@ const Payment = () => {
                       htmlFor="debitType"
                       className="debit-card-form-label"
                     >
-                      {languageSelector(language, 'signInId')}
+                      {languageSelector(language, "signInId")}
                     </label>
                     <select
                       type="text"
@@ -327,7 +329,7 @@ const Payment = () => {
                       htmlFor="debitDocNum"
                       className="debit-card-form-label"
                     >
-                      {languageSelector(language, 'number')}
+                      {languageSelector(language, "number")}
                     </label>
                     <input
                       type="number"
@@ -343,7 +345,7 @@ const Payment = () => {
                     />
                     {debitDocNumberError ? (
                       <p className="payment-form-error-message">
-                        {languageSelector(language, 'paymentNumberError')}
+                        {languageSelector(language, "paymentNumberError")}
                       </p>
                     ) : (
                       ""
@@ -354,9 +356,7 @@ const Payment = () => {
                   className="button-payment__make-pay"
                   onClick={debitSubmit}
                 >
-                  <b>
-                    {languageSelector(language, 'paymentMakePayment')}
-                  </b>
+                  <b>{languageSelector(language, "paymentMakePayment")}</b>
                 </button>
               </form>
             </AccordionPanel>
@@ -365,8 +365,8 @@ const Payment = () => {
           <AccordionItem>
             <h2>
               <AccordionButton className="payment-accordion-button">
-                <div as="span" flex="1" textAlign="left">
-                  {languageSelector(language, 'paymentCreditCard')}
+                <div as="span" flex="1" textalign="left">
+                  {languageSelector(language, "paymentCreditCard")}
                 </div>
                 <AccordionIcon />
               </AccordionButton>
@@ -374,7 +374,7 @@ const Payment = () => {
             <AccordionPanel pb={4}>
               <form action="" className="debit-card-form">
                 <label htmlFor="debitNumber" className="debit-card-form-label">
-                  {languageSelector(language, 'paymentCardNumber')}
+                  {languageSelector(language, "paymentCardNumber")}
                 </label>
                 <input
                   type="text"
@@ -387,13 +387,13 @@ const Payment = () => {
                 />
                 {creditCardNumberError ? (
                   <p className="payment-form-error-message">
-                    {languageSelector(language, 'paymentCreditError')}
+                    {languageSelector(language, "paymentCreditError")}
                   </p>
                 ) : (
                   ""
                 )}
                 <label htmlFor="debitNames" className="debit-card-form-label">
-                  {languageSelector(language, 'name')}
+                  {languageSelector(language, "name")}
                 </label>
                 <input
                   type="text"
@@ -406,7 +406,7 @@ const Payment = () => {
                 />
                 {creditNamesError ? (
                   <p className="payment-form-error-message">
-                    {languageSelector(language, 'paymentNameError')}
+                    {languageSelector(language, "paymentNameError")}
                   </p>
                 ) : (
                   ""
@@ -414,7 +414,7 @@ const Payment = () => {
                 <div className="debit-card-form-due-cvv">
                   <div className="debit-card-form-due-container">
                     <label htmlFor="debitDue" className="debit-card-form-label">
-                      {languageSelector(language, 'paymentValidThrough')}
+                      {languageSelector(language, "paymentValidThrough")}
                     </label>
                     <input
                       type="text"
@@ -430,7 +430,7 @@ const Payment = () => {
                     />
                     {creditDueDateError ? (
                       <p className="payment-form-error-message">
-                        {languageSelector(language, 'paymentDateError')}
+                        {languageSelector(language, "paymentDateError")}
                       </p>
                     ) : (
                       ""
@@ -454,7 +454,7 @@ const Payment = () => {
                     />
                     {creditCVVError ? (
                       <p className="payment-form-error-message">
-                        {languageSelector(language, 'paymentCvvError')}
+                        {languageSelector(language, "paymentCvvError")}
                       </p>
                     ) : (
                       ""
@@ -468,7 +468,7 @@ const Payment = () => {
                       htmlFor="debitType"
                       className="debit-card-form-label"
                     >
-                      {languageSelector(language, 'signInId')}
+                      {languageSelector(language, "signInId")}
                     </label>
                     <select
                       type="text"
@@ -490,7 +490,7 @@ const Payment = () => {
                       htmlFor="debitDocNum"
                       className="debit-card-form-label"
                     >
-                      {languageSelector(language, 'number')}
+                      {languageSelector(language, "number")}
                     </label>
                     <input
                       type="number"
@@ -506,7 +506,7 @@ const Payment = () => {
                     />
                     {creditDocNumberError ? (
                       <p className="payment-form-error-message">
-                       {languageSelector(language, 'paymentNumberError')}
+                        {languageSelector(language, "paymentNumberError")}
                       </p>
                     ) : (
                       ""
@@ -517,9 +517,7 @@ const Payment = () => {
                   className="button-payment__make-pay"
                   onClick={creditSubmit}
                 >
-                  <b>
-                    {languageSelector(language, 'paymentMakePayment')}
-                  </b>
+                  <b>{languageSelector(language, "paymentMakePayment")}</b>
                 </button>
               </form>
             </AccordionPanel>
@@ -528,7 +526,7 @@ const Payment = () => {
           <AccordionItem>
             <h2>
               <AccordionButton className="payment-accordion-button">
-                <div as="span" flex="1" textAlign="left">
+                <div as="span" flex="1" textalign="left">
                   PSE
                 </div>
                 <AccordionIcon />
@@ -540,7 +538,7 @@ const Payment = () => {
                   htmlFor="bank-list-pse"
                   className="debit-card-form-label"
                 >
-                  {languageSelector(language, 'paymentSelectBank')}
+                  {languageSelector(language, "paymentSelectBank")}
                 </label>
                 <select
                   name="bank"
@@ -612,9 +610,7 @@ const Payment = () => {
                   className="button-payment__make-pay"
                   onClick={PSESubmit}
                 >
-                  <b>
-                  {languageSelector(language, 'paymentMakePayment')}
-                  </b>
+                  <b>{languageSelector(language, "paymentMakePayment")}</b>
                 </button>
               </form>
             </AccordionPanel>

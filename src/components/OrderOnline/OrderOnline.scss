@@ -8,41 +8,41 @@
   width: 25%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  padding-top: 10px;
   border-right: darkgray solid 1px;
+  padding: 10px;
+  position: sticky;
+  top: 70px;
 
   @media (max-width: 769px) {
     display: none;
   }
 }
 
-.restaurant-view-order-online-search-panel-search-input {
-  background-color: #f9f9f9;
-  color: darkgrey;
-  padding-left: 10px;
-  border: none;
-  width: 90%;
-  border-radius: 5px;
-  font-size: 16px;
-  height: 30px;
+.restaurant-view-order-online-search-panel-list-container {
+  position: sticky;
+  top: 100px;
 }
 
-.restaurant-view-order-online-search-panel-list {
-  font-size: 14px;
-  width: 90%;
-  list-style: none;
+.restaurant-view-order-online-search-panel-element-container {
+  width: 100%;
+}
+
+.restaurant-view-order-online-search-panel-element {
+  text-decoration: none;
+}
+
+.restaurant-view-order-online-search-panel-element-container-a {
   font-weight: 700;
-}
+  font-size: 18px;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
 
-.search-panel-list-subcategory {
-  padding-left: 15px;
-}
-.search-panel-list-category:hover,
-.search-panel-list-subcategory:hover {
-  background-color: #f9f9f9;
-  cursor: pointer;
+  &:hover {
+    background-color: #ef3f3f;
+    color: white;
+  }
 }
 
 .restaurant-view-order-online-menu-container {
@@ -57,6 +57,10 @@
 
 .restaurant-view-order-online-menu-container > :nth-child(1n + 2) {
   border-top: grey solid 2px;
+}
+
+.restaurant-view-order-online-category {
+  scroll-margin-top: 100px;
 }
 
 .restaurant-view-order-online-category-title {
