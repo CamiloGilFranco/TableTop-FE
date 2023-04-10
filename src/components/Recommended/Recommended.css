@@ -1,20 +1,13 @@
 .restaurant-view-recommended {
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-}
-
-.restaurant-view-recommended-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 700;
 }
 
 .restaurant-view-recommended-title {
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 22px;
 }
 
 .restaurant-view-recommended-cards-container {
@@ -22,12 +15,9 @@
   display: flex;
   align-items: center;
   align-content: center;
-  justify-content: space-between;
-}
-@media (max-width: 769px) {
-  .restaurant-view-recommended-cards-container {
-    justify-content: center;
-  }
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
 }
 
 .restaurant-view-recommended-card {
