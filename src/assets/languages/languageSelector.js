@@ -207,7 +207,12 @@ const languageSelector = (lang, str) => {
     paymentNumberError: '* Enter your identity document number',
     paymentMakePayment: 'MAKE PAYMENT!',
     paymentCardNumber: 'Card Number',
-    paymentSelectBank: 'Choose your bank'
+    paymentSelectBank: 'Choose your bank',
+    userAddressError : 'Please enter a valir Address',
+    userSubtitle: 'Here you can see and edit your details',
+    userSaveChanges: 'Save Changes',
+    signOut: 'Sign Out',
+    signOutText: 'If you want to log out, click this button'
   }
 
    const es = {
@@ -417,7 +422,13 @@ const languageSelector = (lang, str) => {
     paymentNumberError: '* Introduce tu número de documento de identidad',
     paymentMakePayment: '¡HACER EL PAGO!',
     paymentCardNumber: 'Número de la tarjeta',
-    paymentSelectBank: 'Selecciona tu banco'
+    paymentSelectBank: 'Selecciona tu banco',
+    userAddressError : 'Escribe una dirección valida',
+    userSubtitle: 'Aquí puedes ver y editar tus datos',
+    userSaveChanges: 'Guardar cambios',
+    signOut: 'Cerrar sesión',
+    signOutText: 'Si deseas cerrar sesión, haz clic en este botón'
+
   }
   
   if (lang === 'en') {
