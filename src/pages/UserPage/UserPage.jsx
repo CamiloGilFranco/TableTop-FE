@@ -25,6 +25,7 @@ const UserPage = () => {
   const [isEditable, setIsEditable] = useState(false);
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const apiUrl = process.env.REACT_APP_API_URL;
   
   const [formData, setFormData] = useState({
     name: '',
@@ -42,23 +43,32 @@ const UserPage = () => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
       try {
-        const response = await axios.get(`http://localhost:8080/api/users/${id}`);
+        const response = await axios.get(`${apiUrl}/users/${id}`);
         dispatch(fetchUserSuccess(response.data.data));
+        const { 
+          name, 
+          last_name, 
+          email, 
+          password, 
+          phone_numbers, 
+          addresses, 
+          city 
+        } = response.data.data;
         setFormData({
-          name: response.data.data.name,
-          last_name: response.data.data.last_name,
-          email: response.data.data.email,
-          password: response.data.data.password,
-          phone_numbers: response.data.data.phone_numbers,
+          name,
+          last_name,
+          email,
+          password,
+          phone_numbers,
           address: response.data.data.addresses,
-          city: response.data.data.city,
+          city,
         });
       } catch (error) {
         dispatch(fetchUserFailure(error));
       }
     };
     fetchUser();
-  }, [id, dispatch]);
+  }, [id, dispatch, apiUrl]);
 
   // enables the editing of the inputs
   const handleEditClick = () => {
@@ -70,9 +80,16 @@ const UserPage = () => {
     const { name, value } = event.target;
     const matches = name.match(/^(\w+)\[(\d+)\](\[\w+\])?$/);
     if (matches) {
-      const fieldName = matches[1];
-      const fieldIndex = parseInt(matches[2], 10);
-      const nestedFieldName = matches[3] ? matches[3].slice(1, -1) : undefined;
+      const fieldNameIndex = 1;
+      const fieldIndexIndex = 2;
+      const nestedFieldNameIndex = 3;
+    
+      const fieldName = matches[fieldNameIndex];
+      const fieldIndex = parseInt(matches[fieldIndexIndex], 10);
+      const nestedFieldName = matches[nestedFieldNameIndex]
+        ? matches[nestedFieldNameIndex].slice(1, -1)
+        : undefined;
+
       setFormData((prevState) => ({
         ...prevState,
         [fieldName]: prevState[fieldName].map((item, index) =>
@@ -90,7 +107,7 @@ const UserPage = () => {
   };    
 
   // handles the sumbit of the form
-  const handleSumbit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = {};
     const form = event.target
@@ -103,7 +120,7 @@ const UserPage = () => {
     const city = formData.city;
     
     // updates the specific field of numbers that was modified
-    const updatedPhoneNumbers = formData.phone_numbers.map((phoneNumber, index) => {
+    const updatedPhoneNumbers = phone_numbers.map((phoneNumber, index) => {
       return {
         id_user_phone_number: phoneNumber.id_user_phone_number,
         phone_number: formData.phone_numbers[index].phone_number,
@@ -159,11 +176,11 @@ const UserPage = () => {
   
     // sends the information to the back end and does a new petition
     try {
-      await axios.put(`http://localhost:8080/api/users/${id}`, updatedUser);
+      await axios.put(`${apiUrl}/users/${id}`, updatedUser);
       dispatch(updateUserSuccess(updatedUser));
       setIsEditable(false);
       setErrors({});
-      const response = await axios.get(`http://localhost:8080/api/users/${id}`);
+      const response = await axios.get(`${apiUrl}/users/${id}`);
       dispatch(fetchUserSuccess(response.data.data));
       setFormData({
         name: response.data.data.name,
@@ -197,7 +214,7 @@ const UserPage = () => {
           <span>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</span>
           <span>{languageSelector(language, 'userSubtitle')}</span>
         </section>
-          <form className='userPage__form' onSubmit={handleSumbit}>
+          <form className='userPage__form' onSubmit={handleSubmit}>
             <label className='userPage__form-label' htmlFor='userName'>{languageSelector(language, 'name')}</label>
             <span>
               <input
