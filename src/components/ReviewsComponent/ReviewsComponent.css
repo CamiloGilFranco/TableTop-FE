@@ -25,4 +25,87 @@
 
 .star-icon {
   height: 18px;
+}
+
+.reviews-component-new-review-title {
+  font-weight: 700;
+  font-size: 20px;
+  display: block;
+  margin: 15px 0;
+}
+
+.reviews-component-new-review {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews-component-new-review-stars-container {
+  display: flex;
+  align-items: center;
+}
+
+.reviews-component-new-review-label {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.reviews-component-new-review-label-rating {
+  margin: 0;
+}
+
+.reviews-component-new-review-star-button {
+  height: 25px;
+  width: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  overflow: hidden;
+}
+.reviews-component-new-review-star-button:hover {
+  background-color: darkgray;
+}
+
+.reviews-component-new-review-star-img {
+  width: 100%;
+}
+
+.reviews-component-new-review-star-button-active {
+  background-color: #479744;
+}
+
+.star-radio-input {
+  display: none;
+}
+
+.reviews-component-new-review-title-input {
+  padding: 0 10px;
+  border-radius: 10px;
+  border: solid 1px grey;
+}
+
+.reviews-component-new-review-comments-textarea {
+  resize: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.reviews-component-new-review-submit {
+  width: 200px;
+  background-color: #ef3f3f;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  font-weight: 700;
+  color: white;
+  margin: 10px 0;
+  align-self: flex-end;
+  font-size: 18px;
+}
+
+.reviews-component-new-review-error-message {
+  color: red;
 }/*# sourceMappingURL=ReviewsComponent.css.map */

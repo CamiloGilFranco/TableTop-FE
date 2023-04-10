@@ -15,6 +15,9 @@ const RestaurantCardComponent = ({
   const language = useSelector((state) => state.languageReducer);
 
   const handleClick = () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
     const route = restaurantName.replace(/\s+/g, "");
     navigate(`/restaurants/${route}`);
   };
@@ -37,7 +40,7 @@ const RestaurantCardComponent = ({
           <span>, {categories[2]}</span>
           <p>- {schedule}</p>
           <p>
-            - {languageSelector(language, 'cardDishesFrom')} ${dishesFrom}
+            - {languageSelector(language, "cardDishesFrom")} ${dishesFrom}
           </p>
         </div>
       </figcaption>

@@ -50,7 +50,7 @@ const CarrucelComponent = () => {
               <div
                 key={index}
                 className="home-carousel-single-item"
-                onClick={() => navigate(`/restaurant?cuisine=${element}`)}
+                onClick={() => navigate(`/restaurants?cuisine=${element}`)}
               >
                 <div className="home-carousel-single-item-image-container">
                   <img
