@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import languageSelector from "../../assets/languages/languageSelector";
+import axios from "axios";
 
 
 const SignInPage = () => {
@@ -45,6 +46,7 @@ const SignInPage = () => {
   const [celularError, setCelularError] = useState(false);
   const [TYCError, setTYCError] = useState(false);
   const [TDPError, setTDPError] = useState(false);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -53,9 +55,41 @@ const SignInPage = () => {
     }, 0);
   }, [pathname]);
 
-  const handleSubmit = (event) => {
+  // makes post petition to the backend
+  const sendUserData = async (input) => {
+    try {
+      const response = await axios.post(`${apiUrl}/users`, input);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  // handles de submit of the form 
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let isValid = true;
+
+    const monthNameToNumber = (monthName) => {
+      const monthNames = [
+        "january",
+        "february",
+        "march",
+        "april",
+        "may",
+        "june",
+        "july",
+        "august",
+        "september",
+        "october",
+        "november",
+        "december",
+      ];
+    
+      return monthNames.indexOf(monthName) + 1;
+    };
+    console.log(formContent);
 
     const correoRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const contraseñaRegExp =
@@ -152,8 +186,28 @@ const SignInPage = () => {
     }
 
     if (isValid) {
-      //logica de procesamiento del formulario
-      console.log("formulario procesado");
+
+      const monthNumber = monthNameToNumber(formContent.mesNacimiento);
+      const dateString = `${formContent.añoNacimiento}-${monthNumber}-${formContent.diaNacimiento}`;
+      const parsedDateOfBirth = new Date(dateString);
+
+      const userObject = {
+        email: formContent.correo,
+        password: formContent.contraseña,
+        name: formContent.nombres,
+        last_name: formContent.apellidos,
+        document_type: formContent.tipoDocumento,
+        document_number: formContent.numeroDocumento,
+        date_of_birth: parsedDateOfBirth,
+        city: formContent.ciudad,
+        contact_email: formContent.correo,
+        contact_sms: formContent.sms,
+        contact_wpp: formContent.wpp,
+        user_role: 'user'
+      };
+
+      await sendUserData(userObject);
+      console.log("form proccessed correctly");
     }
   };
 
@@ -193,11 +247,13 @@ const SignInPage = () => {
       <span className="sign-in-page-subtitle">{languageSelector(language, 'signInFormTitle')}</span>
       <form action="" className="sign-in-page-form" onSubmit={handleSubmit}>
         <div className="sign-in-page-form-input-container">
-          <label htmlFor="" className="sign-in-page-form-label">
+          <label htmlFor="email" className="sign-in-page-form-label">
             {languageSelector(language, 'signInEmail')}
           </label>
           <input
             type="text"
+            id="email"
+            name="email"
             className="sign-in-page-form-text-input"
             placeholder={languageSelector(language, 'signInEmail')}
             value={formContent.correo}
@@ -238,11 +294,13 @@ const SignInPage = () => {
           )}
         </div>
         <div className="sign-in-page-form-input-container">
-          <label htmlFor="" className="sign-in-page-form-label">
+          <label htmlFor="password" className="sign-in-page-form-label">
             {languageSelector(language, 'signInPassword')}
           </label>
           <input
             type="password"
+            name="password"
+            id="password"
             className="sign-in-page-form-text-input"
             placeholder={languageSelector(language, 'signInPassword')}
             value={formContent.contraseña}
@@ -341,13 +399,13 @@ const SignInPage = () => {
                 })
               }
             >
-              <option value="Cédula de Ciudadanía">
+              <option value="CC">
                 {languageSelector(language, 'signInIdCC')}
               </option>
-              <option value="Cédula de Extranjería">
+              <option value="CE">
                 {languageSelector(language, 'signInIdCE')}
               </option>
-              <option value="Pasaporte">
+              <option value="PP">
                 {languageSelector(language, 'signInIdPassport')}
               </option>
             </select>
