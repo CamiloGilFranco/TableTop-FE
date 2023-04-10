@@ -11,8 +11,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .checkout-body {
@@ -21,9 +20,8 @@
   justify-content: center;
   gap: 30px;
   margin: 20px 0;
-}
-@media (max-width: 1000px) {
-  .checkout-body {
+
+  @media (max-width: 1000px) {
     flex-direction: column-reverse;
     padding: 0 15px;
   }
@@ -31,18 +29,16 @@
 
 .checkout-body-left-container {
   width: 70%;
-}
-@media (max-width: 1000px) {
-  .checkout-body-left-container {
+
+  @media (max-width: 1000px) {
     width: 100%;
   }
 }
 
 .checkout-body-right-container {
   width: 23%;
-}
-@media (max-width: 1000px) {
-  .checkout-body-right-container {
+
+  @media (max-width: 1000px) {
     width: 100%;
   }
-}/*# sourceMappingURL=CheckoutPageComponent.css.map */
+}
