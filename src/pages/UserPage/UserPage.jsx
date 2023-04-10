@@ -123,23 +123,25 @@ const UserPage = () => {
     const updatedPhoneNumbers = phone_numbers.map((phoneNumber, index) => {
       return {
         id_user_phone_number: phoneNumber.id_user_phone_number,
-        phone_number: formData.phone_numbers[index].phone_number,
+        phone_number: phone_numbers[index].phone_number,
       };
     });
 
     //updates the specific field of the address that was modified
     const updatedAddresses = formData.address.map((address, index) => {
+      const { id_address, address_name } = address;
       return {
-        id_address: address.id_address,
-        address_name: address.address_name,
+        id_address,
+        address_name,
         address: formData.address[index].address,
         city: formData.address[index].city,
       };
     });
   
     // creates new user obj with the information from the form
+    const { user_id } = user;
     const updatedUser = {
-      user_id: user.user_id,
+      user_id,
       name,
       last_name,
       email,
@@ -182,21 +184,29 @@ const UserPage = () => {
       setErrors({});
       const response = await axios.get(`${apiUrl}/users/${id}`);
       dispatch(fetchUserSuccess(response.data.data));
+      const { 
+        name, 
+        last_name, 
+        email, 
+        password, 
+        phone_numbers, 
+        addresses, 
+        city 
+      } = response.data.data;
       setFormData({
-        name: response.data.data.name,
-        last_name: response.data.data.last_name,
-        email: response.data.data.email,
-        password: response.data.data.password,
-        phone_numbers: response.data.data.phone_numbers,
+        name,
+        last_name,
+        email,
+        password,
+        phone_numbers,
         address: response.data.data.addresses,
-        city: response.data.data.city
+        city,
       });
     } catch (error) {
       dispatch(updateUserFailure(error));
     }
   };
    
-  // displayed when loading is true
   if (loading) {
     return (
       <div>
