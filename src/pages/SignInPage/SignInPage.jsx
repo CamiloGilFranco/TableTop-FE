@@ -5,13 +5,14 @@ import twitter from "./assets/twitter.svg";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import languageSelector from "../../assets/languages/languageSelector";
 import axios from "axios";
 
 
 const SignInPage = () => {
+  const navigate = useNavigate();
   const [formContent, setFormContent] = useState({
     correo: "",
     confirmarCorreo: "",
@@ -19,7 +20,7 @@ const SignInPage = () => {
     confirmarContraseña: "",
     nombres: "",
     apellidos: "",
-    tipoDocumento: "Cédula de Ciudadanía",
+    tipoDocumento: "CC",
     numeroDocumento: "",
     añoNacimiento: "1925",
     mesNacimiento: "Enero",
@@ -46,6 +47,7 @@ const SignInPage = () => {
   const [celularError, setCelularError] = useState(false);
   const [TYCError, setTYCError] = useState(false);
   const [TDPError, setTDPError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const { pathname } = useLocation();
@@ -86,11 +88,8 @@ const SignInPage = () => {
         "november",
         "december",
       ];
-    
       return monthNames.indexOf(monthName) + 1;
     };
-    console.log(formContent);
-
     const correoRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const contraseñaRegExp =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
@@ -203,11 +202,15 @@ const SignInPage = () => {
         contact_email: formContent.correo,
         contact_sms: formContent.sms,
         contact_wpp: formContent.wpp,
-        user_role: 'user'
+        user_role: 'user',
+        address: formContent.direccion,
+        phone_number: formContent.celular
       };
-
       await sendUserData(userObject);
-      console.log("form proccessed correctly");
+      setSuccessMessage(languageSelector(language, 'signInSuccess'))
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     }
   };
 
@@ -216,6 +219,7 @@ const SignInPage = () => {
       <div className="sign-in-page-header">
         <HeaderComponent />
       </div>
+      <div>{successMessage && <div className="signIn_success">{successMessage}</div>}</div>
       <div className="sign-in-page-social-media-container">
         <span className="sign-in-page-social-media-container-title">
           {languageSelector(language, 'signInTitle')}
