@@ -47,7 +47,7 @@ const RestaurantList = ({ categories }) => {
       );
     }
   
-    const filterByCategorie = (arr) => {
+    const filterByCategory = (arr) => {
       return arr.filter((element1) => {
         return element1.categories.some((element2) => {
           return categories.includes(element2);
@@ -57,20 +57,20 @@ const RestaurantList = ({ categories }) => {
   
     if (rating >= 2 && categories.length === 0)
       result = data.filter((element) => Math.round(element.rating) >= rating);
-    if (categories.length > 0 && rating < 2) result = filterByCategorie(data);
+    if (categories.length > 0 && rating < 2) result = filterByCategory(data);
     if (categories.length > 0 && rating >= 2)
       result = data.filter(
         (element) =>
-          Math.round(element.rating) >= rating && filterByCategorie([element]).length > 0
+          Math.round(element.rating) >= rating && filterByCategory([element]).length
       );
     return result;
   };
   
   const renderList = (data, displayArr) => {
-    const hasCuisine = searchParams.getAll('cuisine').length > 0;
+    const hasCuisine = searchParams.getAll('cuisine').length;
     const hasRating = searchParams.get('rating') && searchParams.get('rating') >= 2;
   
-    if (displayArr.length === 0 && (hasCuisine || hasRating)) {
+    if (!displayArr.length && (hasCuisine || hasRating)) {
       return (
         <div>
           <p>{languageSelector(language, 'restaurantSearchNull')}</p>

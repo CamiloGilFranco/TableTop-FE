@@ -33,7 +33,7 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
         });
       }
    form.reset();   
-  };
+  }
   
   return (
     <section className='searchBar__container'>
