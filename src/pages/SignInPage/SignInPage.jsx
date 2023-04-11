@@ -129,7 +129,7 @@ const SignInPage = () => {
 
   if (
     namesRegExp.test(formContent.firstName) ||
-    formContent.firstName.length === 0
+    formContent.firstName.length
   ) {
     setFirstNameError(true);
     isValid = false;
@@ -154,14 +154,14 @@ const SignInPage = () => {
     setDocumentNumberError(false);
   }
 
-  if (formContent.address.length < 1) {
+  if (!formContent.address.length) {
     setAddressError(true);
     isValid = false;
   } else {
     setAddressError(false);
   }
 
-  if (formContent.phoneNumber.length !== 10) {
+  if (formContent.phoneNumber.length < 10) {
     setPhoneNumberError(true);
     isValid = false;
   } else {
@@ -282,7 +282,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInEmailError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -306,7 +306,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInEmailConfirmationError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -329,7 +329,7 @@ const SignInPage = () => {
              {languageSelector(language, 'signInPasswordError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -353,7 +353,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInPasswordConfirmationError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -374,7 +374,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInFirstNameError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -395,7 +395,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInLastNameError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container sign-in-page-form-input-container">
@@ -443,7 +443,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInIdNumberError')}
             </span>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -670,7 +670,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInAddressError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -694,7 +694,7 @@ const SignInPage = () => {
               {languageSelector(language, 'signInPhoneError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-checkbox-container">
@@ -722,7 +722,7 @@ const SignInPage = () => {
             {languageSelector(language, 'signInTCError')}
           </p>
         ) : (
-          ""
+          <></>
         )}
         <div className="sign-in-page-form-checkbox-container">
           <input
@@ -749,7 +749,7 @@ const SignInPage = () => {
             {languageSelector(language, 'signInPrivacyError')}
           </p>
         ) : (
-          ""
+          <></>
         )}
         <span className="sign-in-page-form-receive-information">
           {languageSelector(language, 'signInSubcribe')}
