@@ -214,7 +214,8 @@ const languageSelector = (lang, str) => {
     userSaveChanges: 'Save Changes',
     signOut: 'Sign Out',
     signOutText: 'If you want to log out, click this button',
-    generalError: 'An Error ocurred'
+    generalError: 'An Error ocurred',
+    restaurantSearchNull: 'No restaurants match your search criteria.',
   }
 
    const es = {
@@ -426,6 +427,7 @@ const languageSelector = (lang, str) => {
     paymentMakePayment: '¡HACER EL PAGO!',
     paymentCardNumber: 'Número de la tarjeta',
     paymentSelectBank: 'Selecciona tu banco',
+    restaurantSearchNull: 'Ningún restaurante coincide con tu criterios de búsqueda.',
     userAddressError : 'Escribe una dirección valida',
     userSubtitle: 'Aquí puedes ver y editar tus datos',
     userSaveChanges: 'Guardar cambios',
