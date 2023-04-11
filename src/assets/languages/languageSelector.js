@@ -207,7 +207,8 @@ const languageSelector = (lang, str) => {
     paymentNumberError: '* Enter your identity document number',
     paymentMakePayment: 'MAKE PAYMENT!',
     paymentCardNumber: 'Card Number',
-    paymentSelectBank: 'Choose your bank'
+    paymentSelectBank: 'Choose your bank',
+    restaurantSearchNull: 'No restaurants match your search criteria.',
   }
 
    const es = {
@@ -417,7 +418,8 @@ const languageSelector = (lang, str) => {
     paymentNumberError: '* Introduce tu número de documento de identidad',
     paymentMakePayment: '¡HACER EL PAGO!',
     paymentCardNumber: 'Número de la tarjeta',
-    paymentSelectBank: 'Selecciona tu banco'
+    paymentSelectBank: 'Selecciona tu banco',
+    restaurantSearchNull: 'Ningún restaurante coincide con tu criterios de búsqueda.',
   }
   
   if (lang === 'en') {

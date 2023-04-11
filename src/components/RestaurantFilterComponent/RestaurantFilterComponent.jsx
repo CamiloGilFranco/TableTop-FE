@@ -302,12 +302,6 @@ const RestaurantFilterComponent = ({
             </label>
           </section>
         </article>
-        <div className="helpButton">
-          <ImInfo />
-          <b>{languageSelector(language, 'filterHelp')}</b>
-        </div>
-        <h3>856-215-211</h3>
-        <span>{languageSelector(language, 'filterSchedule')} 9:00 AM - 7:30 PM</span>
       </section>
     </section>
   );
