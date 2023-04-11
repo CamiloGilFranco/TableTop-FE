@@ -1,7 +1,7 @@
 import './SearchbarComponent.css';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import languageSelector from '../../assets/languages/languageSelector';
 
 
@@ -9,6 +9,8 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
   const [displayText, setDisplayText] = useState('');
   const [searchParams, setSearchParams] = useSearchParams({});
   const language = useSelector(state=> state.languageReducer);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleInputChange = (event) => {
     setDisplayText(event.target.value);
@@ -17,17 +19,19 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
   const handleSearchSumbit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const searchText = form.searchButton.value
+    const searchTerm = form.searchButton.value
 
-    if (searchText.length <= 1) {
+    if (searchTerm.length <= 1) {
       alert('The search must be at least 2 characters long');
+    } else if (location.pathname === '/'){
+        navigate(`/restaurants?searchTerm=${searchTerm}`);
     } else {
-      setSearchParams({
-        searchTerm: searchParams.get('searchTerm'),
-        ...searchParams.get('cuisine') && {cuisine: searchParams.getAll('cuisine')},
-        ...searchParams.get('rating') && { rating: searchParams.get('rating')}
-      })
-    }
+        setSearchParams({
+          searchTerm,
+          ...searchParams.get('cuisine') && {cuisine: searchParams.getAll('cuisine')},
+          ...searchParams.get('rating') && { rating: searchParams.get('rating')}
+        });
+      }
    form.reset();   
   }
   
