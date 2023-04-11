@@ -57,7 +57,6 @@ const SignInPage = () => {
     }, 0);
   }, [pathname]);
 
-  // makes post petition to the backend
   const sendUserData = async (input) => {
     try {
       const response = await axios.post(`${apiUrl}/users`, input);
@@ -188,22 +187,36 @@ const SignInPage = () => {
     const monthNumber = monthNameToNumber(formContent.birthMonth);
     const dateString = `${formContent.birthYear}-${monthNumber}-${formContent.birthDay}`;
     const parsedDateOfBirth = new Date(dateString);
+    const {
+      email,
+      password,
+      name,
+      last_name,
+      document_type,
+      document_number,
+      city,
+      contact_email,
+      contact_sms,
+      contact_wpp,
+      address,
+      phone_number
+    } = formContent;
 
     const userObject = {
-      email: formContent.email,
-      password: formContent.password,
-      name: formContent.firstName,
-      last_name: formContent.lastName,
-      document_type: formContent.documentType,
-      document_number: formContent.documentNumber,
+      email,
+      password,
+      name,
+      last_name,
+      document_type,
+      document_number,
       date_of_birth: parsedDateOfBirth,
-      city: formContent.city,
-      contact_email: formContent.emailInformation,
-      contact_sms: formContent.smsInformation,
-      contact_wpp: formContent.wppInformation,
+      city,
+      contact_email,
+      contact_sms,
+      contact_wpp,
       user_role: 'user',
-      address: formContent.address,
-      phone_number: formContent.phoneNumber
+      address,
+      phone_number
     };
       await sendUserData(userObject);
       setSuccessMessage(languageSelector(language, 'signInSuccess'))
