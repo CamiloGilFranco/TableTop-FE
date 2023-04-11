@@ -22,7 +22,6 @@ const RestaurantFilterComponent = ({
 
   const language = useSelector((state) => state.languageReducer);
 
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 765) {
@@ -36,7 +35,7 @@ const RestaurantFilterComponent = ({
     };
   }, []);
 
-  // fires when a categorie is selected, adds the value to he state checkboxSelected and updates the searchParam with whats comming from the cuisine arrray and keeps the other values if they exist. 
+  // fires when a categorie is selected, adds the value to he state checkboxSelected and updates the searchParam with whats comming from the cuisine arrray and keeps the other values if they exist.
   const handleCategoriesChange = (event) => {
     if (event.target.checked) {
       setCheckBoxSelected([...checkBoxSelected, event.target.name]);
@@ -98,7 +97,7 @@ const RestaurantFilterComponent = ({
       }),
       ...(searchParams.get("rating") && { rating: searchParams.get("rating") }),
     });
-  }
+  };
 
   // clears the rating and searchParam of the values from rating, clears the radioslected and removes the values from the searchparams while keeping the other values if they exist
   const handleClearRating = () => {
@@ -119,20 +118,20 @@ const RestaurantFilterComponent = ({
     <section className="restaurantFilter__container">
       <section className="restaurantFilterMobile">
         <section className="restaurantFilter__filter">
-          <p>{languageSelector(language, 'filterTitle')}</p>
+          <p>{languageSelector(language, "filterTitle")}</p>
           <BsFillFilterSquareFill onClick={handleListClick} />
         </section>
       </section>
 
       <section className={`restaurantFilterDesktop ${mobileFilter}`}>
         <section className="restaurantFilter__filter">
-          <p>{languageSelector(language, 'filterTitle')}</p>
+          <p>{languageSelector(language, "filterTitle")}</p>
         </section>
         <article>
           <section className="restaurantFilter__filter">
-            <p>{languageSelector(language, 'filterCuisine')}</p>
+            <p>{languageSelector(language, "filterCuisine")}</p>
             <p onClick={handleClearCuisine} className="restaurantFilter_clear">
-              {languageSelector(language, 'filterClear')}
+              {languageSelector(language, "filterClear")}
             </p>
           </section>
           <section className="popularFilter">
@@ -156,7 +155,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("fastfood")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterFastFood')}
+              {languageSelector(language, "filterFastFood")}
             </label>
             <label>
               <input
@@ -167,7 +166,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("italian")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterItalian')}
+              {languageSelector(language, "filterItalian")}
             </label>
             <label>
               <input
@@ -178,7 +177,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("mexican")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterMexican')}
+              {languageSelector(language, "filterMexican")}
             </label>
             <label>
               <input
@@ -189,7 +188,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("breakfast")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterBreakfast')}
+              {languageSelector(language, "filterBreakfast")}
             </label>
             <label>
               <input
@@ -200,7 +199,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("tipical")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterTypical')}
+              {languageSelector(language, "filterTypical")}
             </label>
             <label>
               <input
@@ -211,7 +210,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("dessert")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterDessert')}
+              {languageSelector(language, "filterDessert")}
             </label>
             <label>
               <input
@@ -222,7 +221,7 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("vegetarian")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterVeg')}
+              {languageSelector(language, "filterVeg")}
             </label>
             <label>
               <input
@@ -244,19 +243,19 @@ const RestaurantFilterComponent = ({
                 checked={checkBoxSelected.includes("coffee")}
                 onChange={handleCategoriesChange}
               />
-              {languageSelector(language, 'filterCoffee')}
+              {languageSelector(language, "filterCoffee")}
             </label>
           </section>
         </article>
         <article>
           <section className="restaurantFilter__filter">
-            <p>{languageSelector(language, 'filterRating')}</p>
+            <p>{languageSelector(language, "filterRating")}</p>
             <p onClick={handleClearRating} className="restaurantFilter_clear">
-              {languageSelector(language, 'filterClear')}
+              {languageSelector(language, "filterClear")}
             </p>
           </section>
           <section className="popularFilter">
-            <label for="5">
+            <label htmlFor="5">
               <input
                 type="radio"
                 className="filterCheckbox"
