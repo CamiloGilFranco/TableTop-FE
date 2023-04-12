@@ -1,262 +1,132 @@
 import { useSelector } from "react-redux";
 import "./RestaurantFilterComponent.css";
 import { useEffect } from "react";
-import { BsFillFilterSquareFill } from "react-icons/bs";
 import { useState } from "react";
-import { ImInfo } from "react-icons/im";
 import { useSearchParams } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
+import burger from "../../assets/hamburger.svg";
+import CheckboxFilter from "./CheckboxFilter";
+import cuisinesDB from "../../assets/cuisines.json";
 
-const RestaurantFilterComponent = ({
-  categories,
-  setCategories,
-  rating,
-  setRating,
-  data,
-}) => {
+const RestaurantFilterComponent = () => {
+  const cuisines = Object.keys(cuisinesDB);
   const [searchParams, setSearchParams] = useSearchParams({});
 
-  const [mobileFilter, setMobileFilter] = useState("");
   const [radioSelected, setRadioSelected] = useState("");
-  const [checkBoxSelected, setCheckBoxSelected] = useState([]);
+  const [mobileView, setMobileView] = useState(false);
 
   const language = useSelector((state) => state.languageReducer);
 
-
+  //the existence of a rating type filter in the url is verified, if so, the corresponding value is applied to the state of the radio buttons so that it is shown selected
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 765) {
-        setMobileFilter("");
-      }
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if (Object.fromEntries(searchParams.entries()).rating) {
+      setRadioSelected(Object.fromEntries(searchParams.entries()).rating);
+    }
   }, []);
 
-  // fires when a categorie is selected, adds the value to he state checkboxSelected and updates the searchParam with whats comming from the cuisine arrray and keeps the other values if they exist. 
-  const handleCategoriesChange = (event) => {
-    if (event.target.checked) {
-      setCheckBoxSelected([...checkBoxSelected, event.target.name]);
+  // This function is executed from the checkboxes component, it receives the name of the checkbox and its value, if the value is "true" it adds the value to the searchParams, otherwise it removes it
+  const handleCategoriesChange = (element, value) => {
+    if (value) {
       setSearchParams({
-        ...(searchParams.get("searchTerm") && {
-          searchTerm: searchParams.get("searchTerm"),
-        }),
-        cuisine: [event.target.name].concat(searchParams.getAll("cuisine")),
-        ...(searchParams.get("rating") && {
-          rating: searchParams.get("rating"),
-        }),
+        ...Object.fromEntries(searchParams.entries()),
+        [element]: true,
       });
     } else {
-      setCheckBoxSelected(
-        checkBoxSelected.filter((value) => value !== checkBoxSelected)
-      );
-    }
-    if (categories.some((element) => element === event.target.name)) {
-      setCategories(
-        categories.filter((element) => element !== event.target.name)
-      );
-    } else {
-      setCategories([...categories, event.target.name]);
+      const objectDeleting = { ...Object.fromEntries(searchParams.entries()) };
+      delete objectDeleting[element];
+      setSearchParams({ ...objectDeleting });
     }
   };
 
-  // fires when a star rating is selected, updates the radioSelected state and searchParam with the value from the star rating and keeps the other values if they exist.
+  // set the value of the selected radio button, then add the rating value to the url keeping the previous values
   const handleRatingChange = (event) => {
     setRadioSelected(event.target.id);
-
     setSearchParams({
-      ...(searchParams.get("searchTerm") && {
-        searchTerm: searchParams.get("searchTerm"),
-      }),
-      ...(searchParams.get("cuisine") && {
-        cuisine: searchParams.getAll("cuisine"),
-      }),
+      ...Object.fromEntries(searchParams.entries()),
       rating: event.target.id,
     });
   };
 
-  // renders the mobile list
-  const handleListClick = () => {
-    mobileFilter === "Filter__none"
-      ? setMobileFilter("")
-      : setMobileFilter("Filter__none");
-  };
-
-  // clears the categories, checkboxSelected and searchParam of the values from cuisine, clears all the checked checkboxes and removes the values from the searchparams while keeping the other values if they exist
+  // verifies the existence of a rating type value in the url, if it exists it stores it in a variable and generates a new searchParams object only with that value, otherwise an empty object is assigned to the searchParams
   const handleClearCuisine = () => {
-    setCategories([]);
-    setCheckBoxSelected([]);
-    setSearchParams({
-      ...(searchParams.get("searchTerm") && {
-        searchTerm: searchParams.get("searchTerm"),
-      }),
-      ...(!searchParams.get("cuisine") && {
-        cuisine: searchParams.getAll("cuisine"),
-      }),
-      ...(searchParams.get("rating") && { rating: searchParams.get("rating") }),
-    });
-  }
-
-  // clears the rating and searchParam of the values from rating, clears the radioslected and removes the values from the searchparams while keeping the other values if they exist
-  const handleClearRating = () => {
-    setRadioSelected("");
-    setSearchParams({
-      ...(searchParams.get("searchTerm") && {
-        searchTerm: searchParams.get("searchTerm"),
-      }),
-      ...(searchParams.get("cuisine") && {
-        cuisine: searchParams.getAll("cuisine"),
-      }),
-      ...(!searchParams.get("rating") && {
-        rating: searchParams.get("rating"),
-      }),
-    });
+    if (searchParams.get("rating")) {
+      const saveRating = searchParams.get("rating");
+      setSearchParams({ rating: saveRating });
+    } else {
+      setSearchParams({});
+    }
   };
+
+  // If there is a value of type rating in the searchParams, it eliminates it keeping the other existing values, also, it sets the state of the radio buttons as an empty string so that no radio button is shown selected
+  const handleClearRating = () => {
+    if (searchParams.get("rating")) {
+      const cleaningRating = { ...Object.fromEntries(searchParams.entries()) };
+      delete cleaningRating.rating;
+      setSearchParams({ ...cleaningRating });
+    }
+    setRadioSelected("");
+  };
+
   return (
     <section className="restaurantFilter__container">
-      <section className="restaurantFilterMobile">
-        <section className="restaurantFilter__filter">
-          <p>{languageSelector(language, 'filterTitle')}</p>
-          <BsFillFilterSquareFill onClick={handleListClick} />
-        </section>
-      </section>
+      <div className="restaurantFilter__container-header">
+        <span className="restaurantFilter__container-header-title">
+          {languageSelector(language, "filterTitle")}
+        </span>
+        <img
+          src={burger}
+          alt=""
+          className={`restaurantFilter__container-header-icon ${
+            mobileView ? "restaurantFilter__container-header-icon-active" : ""
+          }`}
+          onClick={() => setMobileView(!mobileView)}
+        />
+      </div>
+      <div
+        className={`restaurantFilter__container-main-container ${
+          mobileView
+            ? "restaurantFilter__container-main-container-mobile-active"
+            : ""
+        }`}
+      >
+        <div className="restaurantFilter__container-main-container-cuisines">
+          <div className="restaurantFilter__container-main-container-cuisines-head">
+            <span className="restaurantFilter__container-main-container-cuisines-title">
+              {languageSelector(language, "filterCuisine")}
+            </span>
+            <button
+              className="restaurantFilter__container-main-container-cuisines-clear"
+              onClick={handleClearCuisine}
+            >
+              {languageSelector(language, "filterClear")}
+            </button>
+          </div>
+          <div className="restaurantFilter__container-main-container-cuisines-checks">
+            {cuisines.map((element, index) => (
+              <CheckboxFilter
+                key={index}
+                element={element}
+                handleCategoriesChange={handleCategoriesChange}
+                objectParams={Object.fromEntries(searchParams.entries())}
+              />
+            ))}
+          </div>
+        </div>
 
-      <section className={`restaurantFilterDesktop ${mobileFilter}`}>
-        <section className="restaurantFilter__filter">
-          <p>{languageSelector(language, 'filterTitle')}</p>
-        </section>
-        <article>
-          <section className="restaurantFilter__filter">
-            <p>{languageSelector(language, 'filterCuisine')}</p>
-            <p onClick={handleClearCuisine} className="restaurantFilter_clear">
-              {languageSelector(language, 'filterClear')}
-            </p>
-          </section>
-          <section className="popularFilter">
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="asian"
-                name="asian"
-                checked={checkBoxSelected.includes("asian")}
-                onChange={handleCategoriesChange}
-              />
-              {/* {filterAsian()} */}kuashbikudh
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="fastfood"
-                name="fastfood"
-                checked={checkBoxSelected.includes("fastfood")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterFastFood')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="italian"
-                name="italian"
-                checked={checkBoxSelected.includes("italian")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterItalian')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="mexican"
-                name="mexican"
-                checked={checkBoxSelected.includes("mexican")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterMexican')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="breakfast"
-                name="breakfast"
-                checked={checkBoxSelected.includes("breakfast")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterBreakfast')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="tipical"
-                name="tipical"
-                checked={checkBoxSelected.includes("tipical")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterTypical')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="dessert"
-                name="dessert"
-                checked={checkBoxSelected.includes("dessert")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterDessert')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="vegetarian"
-                name="vegetarian"
-                checked={checkBoxSelected.includes("vegetarian")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterVeg')}
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="bar"
-                name="bar"
-                checked={checkBoxSelected.includes("bar")}
-                onChange={handleCategoriesChange}
-              />
-              Bar
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                className="filterCheckbox"
-                id="coffee"
-                name="coffee"
-                checked={checkBoxSelected.includes("coffee")}
-                onChange={handleCategoriesChange}
-              />
-              {languageSelector(language, 'filterCoffee')}
-            </label>
-          </section>
-        </article>
-        <article>
-          <section className="restaurantFilter__filter">
-            <p>{languageSelector(language, 'filterRating')}</p>
-            <p onClick={handleClearRating} className="restaurantFilter_clear">
-              {languageSelector(language, 'filterClear')}
-            </p>
-          </section>
-          <section className="popularFilter">
-            <label for="5">
+        <div className="restaurantFilter__container-main-container-stars">
+          <div className="restaurantFilter__container-main-container-stars-head">
+            <span className="restaurantFilter__container-main-container-stars-title">
+              {languageSelector(language, "filterRating")}
+            </span>
+            <button
+              className="restaurantFilter__container-main-container-stars-clear"
+              onClick={handleClearRating}
+            >
+              {languageSelector(language, "filterClear")}
+            </button>
+          </div>
+          <div className="restaurantFilter__container-main-container-stars-radios">
+            <label htmlFor="5">
               <input
                 type="radio"
                 className="filterCheckbox"
@@ -300,15 +170,9 @@ const RestaurantFilterComponent = ({
               />
               ⭐⭐
             </label>
-          </section>
-        </article>
-        <div className="helpButton">
-          <ImInfo />
-          <b>{languageSelector(language, 'filterHelp')}</b>
+          </div>
         </div>
-        <h3>856-215-211</h3>
-        <span>{languageSelector(language, 'filterSchedule')} 9:00 AM - 7:30 PM</span>
-      </section>
+      </div>
     </section>
   );
 };

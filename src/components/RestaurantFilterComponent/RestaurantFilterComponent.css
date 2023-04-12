@@ -5,104 +5,123 @@
   flex-direction: column;
   gap: 15px;
 }
-
-.restaurantFilter__dropdown {
-  border: none;
-  font-size: 16px;
-}
-
-.restaurantFilter__filter {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.restaurantFilterDesktop {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 1;
-  background-color: #fff;
-  padding: 10px;
-  gap: 10px;
-  width: 85%;
-  box-shadow: 10px 10px 100px black;
-}
-@media (min-width: 765px) {
-  .restaurantFilterDesktop {
-    display: flex;
-    position: static;
-    z-index: 0;
-    gap: 10px;
-    box-shadow: none;
+@media (max-width: 765px) {
+  .restaurantFilter__container {
+    box-shadow: 0 2px 5px 1px lightgrey;
   }
 }
 
-.restaurantFilter__SearchBar {
-  border: none;
-  background-color: lightgray;
-  padding: 10px;
-}
-
-.restaurantFilter_icons {
-  cursor: pointer;
-}
-
-.popularFilter {
+.restaurantFilter__container-header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-}
-
-.helpButton {
-  background-color: #ef3f3f;
-  color: #fff;
-  border-radius: 15px;
-  text-align: center;
-  width: 40%;
-  height: 45px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: larger;
-  gap: 15px;
-  cursor: pointer;
-}
-@media (min-width: 765px) {
-  .helpButton {
-    font-size: medium;
-    height: 40px;
-    max-width: 40%;
-    gap: 7px;
-  }
-}
-
-.filterCheckbox {
+  justify-content: space-between;
   margin-right: 10px;
+}
+
+.restaurantFilter__container-header-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.restaurantFilter__container-header-icon {
+  height: 40px;
+  border-radius: 100%;
   cursor: pointer;
-}
-
-.restaurantFilter__Slider {
-  cursor: pointer;
-  width: 25vh;
-  margin: 10px;
-}
-
-@media (min-width: 765px) {
-  .restaurantFilterMobile {
-    display: none;
-  }
-}
-
-.Filter__none {
   display: none;
 }
+.restaurantFilter__container-header-icon:hover {
+  background-color: #ef3f3f;
+}
+@media (max-width: 765px) {
+  .restaurantFilter__container-header-icon {
+    display: initial;
+  }
+}
 
-.restaurantFilter_clear {
-  cursor: pointer;
-  border: 1px solid black;
-  padding: 1px;
-  background-color: lightgray;
+.restaurantFilter__container-header-icon-active {
+  background-color: #ef3f3f;
+}
+
+.restaurantFilter__container-main-container {
+  background-color: #fff;
+}
+@media (max-width: 765px) {
+  .restaurantFilter__container-main-container {
+    position: absolute;
+    top: 335px;
+    width: 100%;
+    left: 0;
+    transition: transform 0.3s ease;
+    transform: translate(-100%, 0);
+  }
+}
+
+.restaurantFilter__container-main-container-mobile-active {
+  transform: translate(0, 0);
+}
+
+.restaurantFilter__container-main-container-cuisines {
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+}
+
+.restaurantFilter__container-main-container-cuisines-head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.restaurantFilter__container-main-container-cuisines-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.restaurantFilter__container-main-container-cuisines-clear {
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #ef3f3f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.restaurantFilter__container-main-container-cuisines-checks {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurantFilter__container-main-container-stars {
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+}
+
+.restaurantFilter__container-main-container-stars-head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+}
+
+.restaurantFilter__container-main-container-stars-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.restaurantFilter__container-main-container-stars-clear {
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #ef3f3f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.restaurantFilter__container-main-container-stars-radios {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=RestaurantFilterComponent.css.map */
