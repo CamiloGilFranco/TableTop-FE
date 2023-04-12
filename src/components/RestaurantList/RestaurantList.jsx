@@ -18,6 +18,7 @@ const RestaurantList = ({ categories }) => {
   const [selectOrder, setSelectOrder] = useState(1);
   const [sortList, setSortList] = useState(data);
   const [searchParams, setSearchParams] = useSearchParams();
+  const language = useSelector((state) => state.languageReducer);
 
   // Logic for the order buttons
   const handleOrder = (order) => {
@@ -69,22 +70,19 @@ const RestaurantList = ({ categories }) => {
   };
 
   const renderList = (data, displayArr) => {
-    if (displayArr.length === 0) {
-      return sortList.map((element) => {
-        return (
-          <RestaurantCardComponent
-            key={element.id}
-            picture={element.picture}
-            restaurantName={element.restaurantName}
-            rating={element.rating}
-            categories={element.categories}
-            schedule={element.schedule}
-            dishesFrom={element.dishesFrom}
-          />
-        );
-      });
+    const hasCuisine = searchParams.getAll("cuisine").length;
+    const hasRating =
+      searchParams.get("rating") && searchParams.get("rating") >= 2;
+
+    if (!displayArr.length && (hasCuisine || hasRating)) {
+      return (
+        <div>
+          <p>{languageSelector(language, "restaurantSearchNull")}</p>
+        </div>
+      );
     } else {
-      return displayArr.map((element) => {
+      const listToRender = displayArr.length > 0 ? displayArr : sortList;
+      return listToRender.map((element) => {
         return (
           <RestaurantCardComponent
             key={element.id}

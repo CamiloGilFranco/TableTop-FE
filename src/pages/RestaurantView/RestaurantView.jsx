@@ -11,9 +11,8 @@ import ReserveForm from "../../components/ReserveForm/ReserveForm";
 import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent";
 import Footer from "../../components/Footer/Footer";
 import CartItem from "../../components/CartItem/CartItem";
-import AlwaysFirstComponent from "../../components/AlwaysFirstComponent/AlwaysFirstComponent";
 import ControlledCarousel from "../../components/GalleryComponent/GalleryCarouselComponent";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import db from "../../assets/dat.json";
 
@@ -25,17 +24,14 @@ const RestaurantView = () => {
 
   const data = db;
 
-  let pathname = useLocation().pathname;
-  pathname = pathname.replace("/restaurants/", "");
-
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 0);
-  }, [pathname]);
+  }, []);
 
-  const restaurantData = data.find(
-    (element) => params.restaurantPath === element.restaurantPath
+  const [restaurantData, setRestaurantData] = useState(
+    data.find((element) => params.restaurantPath === element.restaurantPath)
   );
 
   const classOrderOnline =
@@ -50,6 +46,20 @@ const RestaurantView = () => {
     selected === "BOOK A TABLE" ? "restaurant-options-option-selected" : "";
   const classReviews =
     selected === "REVIEWS" ? "restaurant-options-option-selected" : "";
+
+  const handleNewReview = (newReviewData) => {
+    setRestaurantData({
+      ...restaurantData,
+      reviews: [
+        ...restaurantData.reviews,
+        {
+          rating: parseInt(newReviewData.stars),
+          title: newReviewData.title,
+          description: newReviewData.comments,
+        },
+      ],
+    });
+  };
 
   const showComponent = () => {
     switch (selected) {
@@ -80,7 +90,12 @@ const RestaurantView = () => {
       case "BOOK A TABLE":
         return <ReserveForm />;
       case "REVIEWS":
-        return <ReviewsComponent reviews={restaurantData.reviews} />;
+        return (
+          <ReviewsComponent
+            reviews={restaurantData.reviews}
+            handleNewReview={handleNewReview}
+          />
+        );
       default:
         break;
     }

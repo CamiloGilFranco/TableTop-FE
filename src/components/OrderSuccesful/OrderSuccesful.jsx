@@ -5,7 +5,7 @@ import languageSelector from '../../assets/languages/languageSelector';
 
 const OrderSuccesful = () =>{
   const language = useSelector(state=> state.languageReducer);
-  const orderID = useSelector(state => state.orderReducer.orderID)
+  const orderID = useSelector(state => state.orderReducer.orderID);
 
   return(
     <section className='orderSuccesful__container'>

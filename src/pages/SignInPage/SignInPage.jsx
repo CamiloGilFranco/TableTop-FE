@@ -5,46 +5,50 @@ import twitter from "./assets/twitter.svg";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import languageSelector from "../../assets/languages/languageSelector";
+import axios from "axios";
 
 
 const SignInPage = () => {
+  const navigate = useNavigate();
   const [formContent, setFormContent] = useState({
-    correo: "",
-    confirmarCorreo: "",
-    contraseña: "",
-    confirmarContraseña: "",
-    nombres: "",
-    apellidos: "",
-    tipoDocumento: "Cédula de Ciudadanía",
-    numeroDocumento: "",
-    añoNacimiento: "1925",
-    mesNacimiento: "Enero",
-    diaNacimiento: "01",
-    ciudad: "Bogota",
-    direccion: "",
-    celular: "",
-    terminosYCondiciones: false,
-    tratamientoDeDatos: false,
-    informacionCorreo: false,
-    informacionSMS: false,
-    informacionWPP: false,
+    email: "",
+    confirmEmail: "",
+    password: "",
+    confirmPassword: "",
+    firstName: "",
+    lastName: "",
+    documentType: "CC",
+    documentNumber: "",
+    birthYear: "1925",
+    birthMonth: "January",
+    birthDay: "01",
+    city: "Bogota",
+    address: "",
+    phoneNumber: "",
+    termsAndConditions: false,
+    dataProcessing: false,
+    emailInformation: false,
+    smsInformation: false,
+    wppInformation: false,
   });
 
   const language = useSelector(state=> state.languageReducer);
-  const [correoError, setCorreoError] = useState(false);
-  const [confirmarCorreoError, setConfirmarCorreoError] = useState(false);
-  const [contraseñaError, setContraseñaError] = useState(false);
-  const [confirmarContraseñaError, setConfirmarContraseñaError] = useState(false);
-  const [nombresError, setNombresError] = useState(false);
-  const [apellidosError, setApellidosError] = useState(false);
-  const [numeroDocumentoError, setNumeroDocumentoError] = useState(false);
-  const [direccionError, setDireccionError] = useState(false);
-  const [celularError, setCelularError] = useState(false);
-  const [TYCError, setTYCError] = useState(false);
-  const [TDPError, setTDPError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [confirmEmailError, setConfirmEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [documentNumberError, setDocumentNumberError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [TACError, setTACError] = useState(false);
+  const [DPError, setDPError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -53,107 +57,172 @@ const SignInPage = () => {
     }, 0);
   }, [pathname]);
 
-  const handleSubmit = (event) => {
+  const sendUserData = async (input) => {
+    try {
+      const response = await axios.post(`${apiUrl}/users`, input);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  // handles de submit of the form 
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let isValid = true;
+  let isValid = true;
 
-    const correoRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    const contraseñaRegExp =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
-    const nombresRegExp = /[^a-zA-ZñÑáéíóúAÉÍÓÚ\s]/g;
+  const monthNameToNumber = (monthName) => {
+    const monthNames = [
+      "january",
+      "february",
+      "march",
+      "april",
+      "may",
+      "june",
+      "july",
+      "august",
+      "september",
+      "october",
+      "november",
+      "december",
+    ];
+    return monthNames.indexOf(monthName) + 1;
+  };
+  const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const passwordRegEx =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
+  const namesRegExp = /[^a-zA-ZñÑáéíóúAÉÍÓÚ\s]/g;
 
-    if (!correoRegExp.test(formContent.correo)) {
-      setCorreoError(true);
-      isValid = false;
-    } else {
-      setCorreoError(false);
-    }
+  if (!emailRegEx.test(formContent.email)) {
+    setEmailError(true);
+    isValid = false;
+  } else {
+    setEmailError(false);
+  }
 
-    if (
-      formContent.confirmarCorreo !== formContent.correo ||
-      formContent.confirmarCorreo.length === 0
-    ) {
-      setConfirmarCorreoError(true);
-      isValid = false;
-    } else {
-      setConfirmarCorreoError(false);
-    }
+  if (
+    formContent.confirmEmail !== formContent.email ||
+    formContent.confirmEmail.length === 0
+  ) {
+    setConfirmEmailError(true);
+    isValid = false;
+  } else {
+    setConfirmEmailError(false);
+  }
 
-    if (!contraseñaRegExp.test(formContent.contraseña)) {
-      setContraseñaError(true);
-      isValid = false;
-    } else {
-      setContraseñaError(false);
-    }
+  if (!passwordRegEx.test(formContent.password)) {
+    setPasswordError(true);
+    isValid = false;
+  } else {
+    setPasswordError(false);
+  }
 
-    if (
-      formContent.confirmarContraseña !== formContent.contraseña ||
-      formContent.confirmarContraseña.length === 0
-    ) {
-      setConfirmarContraseñaError(true);
-      isValid = false;
-    } else {
-      setConfirmarContraseñaError(false);
-    }
+  if (
+    formContent.confirmPassword !== formContent.password ||
+    formContent.confirmPassword.length === 0
+  ) {
+    setConfirmPasswordError(true);
+    isValid = false;
+  } else {
+    setConfirmPasswordError(false);
+  }
 
-    if (
-      nombresRegExp.test(formContent.nombres) ||
-      formContent.nombres.length === 0
-    ) {
-      setNombresError(true);
-      isValid = false;
-    } else {
-      setNombresError(false);
-    }
+  if (
+    namesRegExp.test(formContent.firstName) ||
+    formContent.firstName.length
+  ) {
+    setFirstNameError(true);
+    isValid = false;
+  } else {
+    setFirstNameError(false);
+  }
 
-    if (
-      nombresRegExp.test(formContent.apellidos) ||
-      formContent.apellidos.length === 0
-    ) {
-      setApellidosError(true);
-      isValid = false;
-    } else {
-      setApellidosError(false);
-    }
+  if (
+    namesRegExp.test(formContent.lastName) ||
+    formContent.lastName.length === 0
+  ) {
+    setLastNameError(true);
+    isValid = false;
+  } else {
+    setLastNameError(false);
+  }
 
-    if (formContent.numeroDocumento.length < 6) {
-      setNumeroDocumentoError(true);
-      isValid = false;
-    } else {
-      setNumeroDocumentoError(false);
-    }
+  if (formContent.documentNumber.length < 6) {
+    setDocumentNumberError(true);
+    isValid = false;
+  } else {
+    setDocumentNumberError(false);
+  }
 
-    if (formContent.direccion.length < 1) {
-      setDireccionError(true);
-      isValid = false;
-    } else {
-      setDireccionError(false);
-    }
+  if (!formContent.address.length) {
+    setAddressError(true);
+    isValid = false;
+  } else {
+    setAddressError(false);
+  }
 
-    if (formContent.celular.length !== 10) {
-      setCelularError(true);
-      isValid = false;
-    } else {
-      setCelularError(false);
-    }
+  if (formContent.phoneNumber.length < 10) {
+    setPhoneNumberError(true);
+    isValid = false;
+  } else {
+    setPhoneNumberError(false);
+  }
 
-    if (!formContent.terminosYCondiciones) {
-      setTYCError(true);
-      isValid = false;
-    } else {
-      setTYCError(false);
-    }
+  if (!formContent.termsAndConditions) {
+    setTACError(true);
+    isValid = false;
+  } else {
+    setTACError(false);
+  }
 
-    if (!formContent.tratamientoDeDatos) {
-      setTDPError(true);
-      isValid = false;
-    } else {
-      setTDPError(false);
-    }
+  if (!formContent.dataProcessing) {
+    setDPError(true);
+    isValid = false;
+  } else {
+    setDPError(false);
+  }
 
-    if (isValid) {
-      //logica de procesamiento del formulario
-      console.log("formulario procesado");
+  if (isValid) {
+
+    const monthNumber = monthNameToNumber(formContent.birthMonth);
+    const dateString = `${formContent.birthYear}-${monthNumber}-${formContent.birthDay}`;
+    const parsedDateOfBirth = new Date(dateString);
+    const {
+      email,
+      password,
+      name,
+      last_name,
+      document_type,
+      document_number,
+      city,
+      contact_email,
+      contact_sms,
+      contact_wpp,
+      address,
+      phone_number
+    } = formContent;
+
+    const userObject = {
+      email,
+      password,
+      name,
+      last_name,
+      document_type,
+      document_number,
+      date_of_birth: parsedDateOfBirth,
+      city,
+      contact_email,
+      contact_sms,
+      contact_wpp,
+      user_role: 'user',
+      address,
+      phone_number
+    };
+      await sendUserData(userObject);
+      setSuccessMessage(languageSelector(language, 'signInSuccess'))
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     }
   };
 
@@ -162,6 +231,7 @@ const SignInPage = () => {
       <div className="sign-in-page-header">
         <HeaderComponent />
       </div>
+      <div>{successMessage && <div className="signIn_success">{successMessage}</div>}</div>
       <div className="sign-in-page-social-media-container">
         <span className="sign-in-page-social-media-container-title">
           {languageSelector(language, 'signInTitle')}
@@ -193,24 +263,26 @@ const SignInPage = () => {
       <span className="sign-in-page-subtitle">{languageSelector(language, 'signInFormTitle')}</span>
       <form action="" className="sign-in-page-form" onSubmit={handleSubmit}>
         <div className="sign-in-page-form-input-container">
-          <label htmlFor="" className="sign-in-page-form-label">
+          <label htmlFor="email" className="sign-in-page-form-label">
             {languageSelector(language, 'signInEmail')}
           </label>
           <input
             type="text"
+            id="email"
+            name="email"
             className="sign-in-page-form-text-input"
             placeholder={languageSelector(language, 'signInEmail')}
-            value={formContent.correo}
+            value={formContent.email}
             onChange={(event) =>
-              setFormContent({ ...formContent, correo: event.target.value })
+              setFormContent({ ...formContent, email: event.target.value })
             }
           />
-          {correoError ? (
+          {emailError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInEmailError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -229,20 +301,22 @@ const SignInPage = () => {
               })
             }
           />
-          {confirmarCorreoError ? (
+          {confirmEmailError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInEmailConfirmationError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
-          <label htmlFor="" className="sign-in-page-form-label">
+          <label htmlFor="password" className="sign-in-page-form-label">
             {languageSelector(language, 'signInPassword')}
           </label>
           <input
             type="password"
+            name="password"
+            id="password"
             className="sign-in-page-form-text-input"
             placeholder={languageSelector(language, 'signInPassword')}
             value={formContent.contraseña}
@@ -250,12 +324,12 @@ const SignInPage = () => {
               setFormContent({ ...formContent, contraseña: event.target.value })
             }
           />
-          {contraseñaError ? (
+          {passwordError ? (
             <p className="sign-in-page-form-text-error">
              {languageSelector(language, 'signInPasswordError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -274,12 +348,12 @@ const SignInPage = () => {
               })
             }
           />
-          {confirmarContraseñaError ? (
+          {confirmPasswordError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInPasswordConfirmationError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -295,12 +369,12 @@ const SignInPage = () => {
               setFormContent({ ...formContent, nombres: event.target.value })
             }
           />
-          {nombresError ? (
+          {firstNameError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInFirstNameError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -316,12 +390,12 @@ const SignInPage = () => {
               setFormContent({ ...formContent, apellidos: event.target.value })
             }
           />
-          {apellidosError ? (
+          {lastNameError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInLastNameError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container sign-in-page-form-input-container">
@@ -341,13 +415,13 @@ const SignInPage = () => {
                 })
               }
             >
-              <option value="Cédula de Ciudadanía">
+              <option value="CC">
                 {languageSelector(language, 'signInIdCC')}
               </option>
-              <option value="Cédula de Extranjería">
+              <option value="CE">
                 {languageSelector(language, 'signInIdCE')}
               </option>
-              <option value="Pasaporte">
+              <option value="PP">
                 {languageSelector(language, 'signInIdPassport')}
               </option>
             </select>
@@ -364,12 +438,12 @@ const SignInPage = () => {
               }
             />
           </div>
-          {numeroDocumentoError ? (
+          {documentNumberError ? (
             <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
               {languageSelector(language, 'signInIdNumberError')}
             </span>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -484,7 +558,6 @@ const SignInPage = () => {
             <select
               name=""
               id=""
-
               className="sign-in-page-form-text-input sign-in-page-form-text-input-birth-select"
               value={formContent.mesNacimiento}
               onChange={(event) =>
@@ -592,12 +665,12 @@ const SignInPage = () => {
               })
             }
           />
-          {direccionError ? (
+          {addressError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInAddressError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-input-container">
@@ -616,12 +689,12 @@ const SignInPage = () => {
               })
             }
           />
-          {celularError ? (
+          {phoneNumberError ? (
             <p className="sign-in-page-form-text-error">
               {languageSelector(language, 'signInPhoneError')}
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="sign-in-page-form-checkbox-container">
@@ -644,12 +717,12 @@ const SignInPage = () => {
             {languageSelector(language, 'signInTC')}
           </label>
         </div>
-        {TYCError ? (
+        {TACError ? (
           <p className="sign-in-page-form-text-error">
             {languageSelector(language, 'signInTCError')}
           </p>
         ) : (
-          ""
+          <></>
         )}
         <div className="sign-in-page-form-checkbox-container">
           <input
@@ -671,12 +744,12 @@ const SignInPage = () => {
            {languageSelector(language, 'signInPrivacy')}
           </label>
         </div>
-        {TDPError ? (
+        {DPError ? (
           <p className="sign-in-page-form-text-error">
             {languageSelector(language, 'signInPrivacyError')}
           </p>
         ) : (
-          ""
+          <></>
         )}
         <span className="sign-in-page-form-receive-information">
           {languageSelector(language, 'signInSubcribe')}

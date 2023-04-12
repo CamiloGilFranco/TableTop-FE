@@ -8,7 +8,7 @@ const initialState = {
   numberOfOrders: 0
 }
 
-const orderReducer = (state= initialState, action) => {
+const orderReducer = (state = initialState, action) => {
   switch (action.type) {
     case ORDER_SWITCH:
       return {...state, orderSuccessful : action.payload}
