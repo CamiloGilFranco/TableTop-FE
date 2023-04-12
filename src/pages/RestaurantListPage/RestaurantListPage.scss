@@ -1,13 +1,12 @@
-.restaurantList__flex{
-    @media (min-width:765px) {
-        display: flex;
-        justify-content: space-between;
-        .restaurant-list{
-            padding-top: 20px;
-            width: 75%;
-        }
-        .restaurantFilterDesktop{
-            width: 100%;
-        }
+.restaurantList__flex {
+  @media (min-width: 765px) {
+    display: flex;
+    justify-content: space-between;
+    .restaurant-list {
+      width: 75%;
     }
+    .restaurantFilterDesktop {
+      width: 100%;
+    }
+  }
 }

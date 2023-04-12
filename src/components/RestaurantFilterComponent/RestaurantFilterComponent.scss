@@ -47,7 +47,7 @@ $restaurantFilter__white: #fff;
   background-color: #fff;
   @media (max-width: 765px) {
     position: absolute;
-    top: 335px;
+    top: 355px;
     width: 100%;
     left: 0;
     transition: transform 0.3s ease;
@@ -89,6 +89,10 @@ $restaurantFilter__white: #fff;
 .restaurantFilter__container-main-container-cuisines-checks {
   display: flex;
   flex-direction: column;
+}
+
+.restaurant-filter-filter-Checkbox {
+  margin-right: 5px;
 }
 
 .restaurantFilter__container-main-container-stars {

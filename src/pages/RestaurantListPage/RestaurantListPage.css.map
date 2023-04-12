@@ -1,1 +1,1 @@
-{"version":3,"sources":["RestaurantListPage.scss","RestaurantListPage.css"],"names":[],"mappings":"AACI;EADJ;IAEQ,aAAA;IACA,8BAAA;ECCN;EDAM;IACI,iBAAA;IACA,UAAA;ECEV;EDAM;IACI,WAAA;ECEV;AACF","file":"RestaurantListPage.css"}
+{"version":3,"sources":["RestaurantListPage.scss","RestaurantListPage.css"],"names":[],"mappings":"AACE;EADF;IAEI,aAAA;IACA,8BAAA;ECCF;EDAE;IACE,UAAA;ECEJ;EDAE;IACE,WAAA;ECEJ;AACF","file":"RestaurantListPage.css"}

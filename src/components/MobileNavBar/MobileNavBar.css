@@ -36,7 +36,7 @@
   gap: 5px;
   align-items: center;
   font-weight: 700;
-  justify-content: flex-end;
+  justify-content: center;
   cursor: pointer;
   margin-top: 15px;
   padding-bottom: 5px;
@@ -45,7 +45,7 @@
   color: #272727;
 }
 .mobileNavBar__header p {
-  font-size: medium;
+  font-size: 18px;
 }
 
 .mobileNavBar__BackIcon {
@@ -67,6 +67,24 @@
   text-decoration: none;
   color: #272727;
 }
-.mobileNavBar__title a :hover {
+.mobileNavBar__title a:hover {
   color: #ef3f3f;
+}
+
+.mobileNavBar-location-list {
+  border: none;
+  background-color: darkgray;
+  height: 30px;
+  margin: 0px 5px;
+  align-self: flex-start;
+  width: 150px;
+}
+
+.mobileNavBar-language-list {
+  border: none;
+  background-color: darkgray;
+  height: 30px;
+  margin: 0px 5px;
+  align-self: flex-start;
+  width: 150px;
 }/*# sourceMappingURL=MobileNavBar.css.map */

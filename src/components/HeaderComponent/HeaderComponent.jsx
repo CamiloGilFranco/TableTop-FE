@@ -8,17 +8,15 @@ import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
 import { HiOutlineViewList } from "react-icons/hi";
 import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";
-import languageSelector from '../../assets/languages/languageSelector';
+import languageSelector from "../../assets/languages/languageSelector";
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
-
 
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
   const [location, setLocation] = useState("bogota");
-  const [currency, setCurrency] = useState("USD");
 
   const handleClickList = () => {
     setMobileShow("");
@@ -26,19 +24,16 @@ const HeaderComponent = () => {
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
-  const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
-  };
-  const handleLanguageChange = (e) => {
-    dispatch({ type: LANGUAGE_SWITCH ,  payload: (e.target.value)});
-  };
 
+  const handleLanguageChange = (e) => {
+    dispatch({ type: LANGUAGE_SWITCH, payload: e.target.value });
+  };
 
   return (
     <header className="headerNavBar">
       {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : ""}
 
-      <NavLink to={"/"} className='navbar__logo'>
+      <NavLink to={"/"} className="navbar__logo">
         <picture className="logo__container">
           <img src={logo} alt="" className="logotipo" />
           <span className="header__title">
@@ -47,18 +42,20 @@ const HeaderComponent = () => {
         </picture>
       </NavLink>
       <section className="header__textButtons">
-        <span className="header__homeButton">
-        </span>
         <span className="header__restaurantButton">
           <NavLink to={"/restaurants"}>
-            <b className="header__text">{languageSelector(language, 'headerRestaurant')}</b>
+            <b className="header__text">
+              {languageSelector(language, "headerRestaurant")}
+            </b>
           </NavLink>
-        </span>
-        <span className="header__pagesButton">
         </span>
       </section>
       <section className="header__buttons">
-        <select className="locationList" onChange={handleLocationChange}>
+        <select
+          className="locationList"
+          onChange={handleLocationChange}
+          value={location}
+        >
           <option value={"bogota"}>Bogotá</option>
           <option value={"medellin"}>Medellín</option>
           <option value={"cali"}>Calí</option>
@@ -66,11 +63,7 @@ const HeaderComponent = () => {
           <option value={"bucaramanga"}>Bucaramanga</option>
         </select>
         <section className="header__optionLists">
-          <select className="currencyList" onChange={handleCurrencyChange}>
-            <option value={"USD"}>USD</option>
-            <option value={"COP"}>COP</option>
-          </select>
-          <select 
+          <select
             className="languageList"
             onChange={handleLanguageChange}
             value={language}
@@ -86,9 +79,15 @@ const HeaderComponent = () => {
         <div onClick={() => setShowLogIn(true)}>
           <BsFillPersonFill className="header__personIcon header__icons" />
         </div>
-        <BsFillGearFill className="header__gearIcon header__icons" />
       </section>
-      <MobileNavBar setMobileShow={setMobileShow} mobileShow={mobileShow} />
+      <MobileNavBar
+        setMobileShow={setMobileShow}
+        mobileShow={mobileShow}
+        handleLocationChange={handleLocationChange}
+        location={location}
+        language={language}
+        handleLanguageChange={handleLanguageChange}
+      />
     </header>
   );
 };

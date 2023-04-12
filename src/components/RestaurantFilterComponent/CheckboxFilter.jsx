@@ -24,7 +24,7 @@ const CheckboxFilter = ({
     <label key={index}>
       <input
         type="checkbox"
-        className="filterCheckbox"
+        className="restaurant-filter-filter-Checkbox"
         id={element}
         name={element}
         checked={isChecked}

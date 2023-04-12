@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding: 0px 10px;
   gap: 15px;
-  height: 50px;
+  height: 70px;
   position: sticky;
   top: 0;
 }
@@ -14,20 +14,19 @@
 }
 @media (min-width: 769px) {
   .headerNavBar {
-    height: 70px;
     justify-content: space-around;
   }
-  .headerNavBar span {
-    font-size: 20px;
-  }
 }
-@media (min-width: 1000px) {
-  .headerNavBar {
-    height: 80px;
-  }
+
+.navbar__logo {
+  height: 70px;
+  margin: 1px;
+  color: black;
+  text-decoration: none;
 }
-.headerNavBar span {
-  font-size: 25px;
+.navbar__logo :hover {
+  background-color: darkgray;
+  cursor: pointer;
 }
 
 .logo__container {
@@ -47,40 +46,9 @@
 .header__title {
   margin-top: 5px;
   padding-left: 5px;
-}
-@media (min-width: 769px) {
-  .header__title {
-    margin-top: 10px;
-    font-size: 25px;
-  }
-}
-@media (min-width: 1000px) {
-  .header__title {
-    font-size: 30px;
-  }
+  font-size: 25px;
 }
 
-@media (min-width: 769px) {
-  .logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 75px;
-  }
-}
-@media (min-width: 1000px) {
-  .logo {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-.header__text {
-  display: none;
-}
-
-.header__textButtons {
-  gap: 15px;
-}
 .header__textButtons a {
   text-decoration: none;
   color: black;
@@ -92,57 +60,20 @@
   background-color: darkgray;
   cursor: pointer;
 }
-
-.header__icons {
-  height: 45px;
-  width: 20px;
-}
-.header__icons :hover {
-  cursor: pointer;
-  background-color: darkgray;
-}
-
-.header__personIcon {
-  margin: 0px 5px;
-}
 @media (min-width: 769px) {
-  .header__personIcon {
-    height: 25px;
-    width: auto;
+  .header__textButtons {
+    display: flex;
     align-self: center;
   }
 }
 
-.header__optionLists {
+.header__text {
   display: none;
-  margin: 0px 5px;
-}
-
-.currencyList {
-  border: none;
-  background-color: darkgray;
-  height: 30px;
-  margin: 0px 5px;
-}
-
-.languageList {
-  border: none;
-  background-color: darkgray;
-  height: 30px;
-  margin: 0px 5px;
-}
-
-.locationList {
-  border: none;
-  background-color: darkgray;
-  height: 25px;
-  width: 45px;
-  margin: 0px 5px;
+  font-size: 25px;
 }
 @media (min-width: 769px) {
-  .locationList {
-    height: 30px;
-    width: 50px;
+  .header__text {
+    display: block;
   }
 }
 
@@ -161,55 +92,64 @@
   }
 }
 
+.locationList {
+  border: none;
+  background-color: darkgray;
+  height: 25px;
+  margin: 0px 5px;
+  display: none;
+}
 @media (min-width: 769px) {
-  .header__gearIcon {
-    display: none;
+  .locationList {
+    height: 30px;
+    width: 50px;
+    display: block;
   }
 }
 
+.header__optionLists {
+  display: none;
+  margin: 0px 5px;
+}
+@media (min-width: 769px) {
+  .header__optionLists {
+    display: initial;
+  }
+}
+
+.languageList {
+  border: none;
+  background-color: darkgray;
+  height: 30px;
+  margin: 0px 5px;
+}
+
+.header__listIcon {
+  cursor: pointer;
+}
 @media (min-width: 769px) {
   .header__listIcon {
     display: none;
   }
 }
 
-@media (min-width: 769px) {
-  .header__text {
-    display: block;
-  }
+.header__icons {
+  height: 35px;
+  width: 35px;
 }
-
-@media (min-width: 769px) {
-  .header__optionLists {
-    display: block;
-  }
-}
-
-@media (min-width: 769px) {
-  .header__textButtons {
-    display: flex;
-    align-self: center;
-  }
-}
-
-.navbar__logo {
-  height: 30px;
-  margin: 1px;
-  color: black;
-  text-decoration: none;
-}
-.navbar__logo :hover {
-  background-color: darkgray;
+.header__icons :hover {
   cursor: pointer;
+  background-color: darkgray;
+}
+
+.header__personIcon {
+  margin: 0px 5px;
 }
 @media (min-width: 769px) {
-  .navbar__logo {
-    height: 70px;
-  }
-}
-@media (min-width: 1000px) {
-  .navbar__logo {
-    height: 80px;
+  .header__personIcon {
+    height: 30px;
+    width: auto;
+    align-self: center;
   }
 }
 
