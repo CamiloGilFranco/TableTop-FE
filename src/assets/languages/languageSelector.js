@@ -78,6 +78,7 @@ const languageSelector = (lang, str) => {
     signInTextMessage: 'SMS text messages (at no cost to the user)',
     signInWhatsApp: 'WhatsApp messages',
     signInButton: 'Register!',
+    signInSuccess: 'User created successfully, you are being redirected to the home page now.',
     filterTitle: 'Latest Filter',
     filterCuisine: 'Cuisine',
     filterClear: 'clear filter',
@@ -213,6 +214,7 @@ const languageSelector = (lang, str) => {
     userSaveChanges: 'Save Changes',
     signOut: 'Sign Out',
     signOutText: 'If you want to log out, click this button',
+    generalError: 'An Error ocurred',
     restaurantSearchNull: 'No restaurants match your search criteria.',
   }
 
@@ -294,6 +296,7 @@ const languageSelector = (lang, str) => {
     signInTextMessage: 'Mensajes de texto SMS (sin costo al usuario)',
     signInWhatsApp: 'Mensajes de WhatsApp',
     signInButton: '¡Registarme!',
+    signInSuccess: 'El usuario se creó con éxito, ahora serás redirigido a la página de inicio.',
     filterTitle: 'Último filtro',
     filterCuisine: 'Tipo de cocina',
     filterClear: 'limpiar filtro',
@@ -429,8 +432,8 @@ const languageSelector = (lang, str) => {
     userSubtitle: 'Aquí puedes ver y editar tus datos',
     userSaveChanges: 'Guardar cambios',
     signOut: 'Cerrar sesión',
-    signOutText: 'Si deseas cerrar sesión, haz clic en este botón'
-
+    signOutText: 'Si deseas cerrar sesión, haz clic en este botón',
+    generalError: 'Ocurrio un error'
   }
   
   if (lang === 'en') {
