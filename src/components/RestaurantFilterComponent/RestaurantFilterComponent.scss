@@ -6,6 +6,7 @@ $restaurantFilter__white: #fff;
   display: flex;
   flex-direction: column;
   gap: 15px;
+
   @media (max-width: 765px) {
     box-shadow: 0 2px 5px 1px lightgrey;
   }
@@ -50,6 +51,7 @@ $restaurantFilter__white: #fff;
     top: 355px;
     width: 100%;
     left: 0;
+    box-shadow: 0 2px 5px 1px lightgrey;
     transition: transform 0.3s ease;
     transform: translate(-100%, 0);
   }
