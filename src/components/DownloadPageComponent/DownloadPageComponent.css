@@ -1,68 +1,49 @@
-.downloadPage__Container {
-  margin-top: 10px;
-}
-@media (min-width: 765px) {
-  .downloadPage__Container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
+.download-page-container {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
 }
 
-.downloadPage__buttonsContainer {
+.download-page-buttons-container {
+  background-color: #f9f9f9;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
   padding: 10px;
+  width: 50%;
+  font-size: 20px;
+  font-size: 18px;
+}
+@media (max-width: 765px) {
+  .download-page-buttons-container {
+    width: 100%;
+  }
 }
 @media (min-width: 765px) {
-  .downloadPage__buttonsContainer {
-    width: 50%;
+  .download-page-buttons-container {
     text-align: left;
     align-items: flex-start;
-    margin-left: 15px;
-  }
-  .downloadPage__buttonsContainer h4 {
-    font-size: 16px;
-  }
-  .downloadPage__buttonsContainer p {
-    font-size: 16px;
-  }
-}
-@media (min-width: 1020px) {
-  .downloadPage__buttonsContainer {
-    width: 50%;
-    text-align: left;
-    align-items: flex-start;
-    margin-left: 15px;
-  }
-  .downloadPage__buttonsContainer h4 {
-    font-size: 20px;
-  }
-  .downloadPage__buttonsContainer p {
-    font-size: 18px;
   }
 }
 
-.downloadPage__buttons {
+.download-page-buttons {
   display: flex;
   gap: 15px;
 }
-.downloadPage__buttons button {
+.download-page-buttons button {
   border: none;
   padding: 5px;
   border-radius: 5px;
 }
 @media (min-width: 765px) {
-  .downloadPage__buttons {
+  .download-page-buttons {
     border: none;
     padding: 5px;
     border-radius: 5px;
   }
-  .downloadPage__buttons button {
+  .download-page-buttons button {
     width: 15vh;
     height: -moz-fit-content;
     height: fit-content;
@@ -70,54 +51,58 @@
   }
 }
 @media (min-width: 1000px) {
-  .downloadPage__buttons {
+  .download-page-buttons {
     font-size: 16px;
   }
 }
 
-.downloadPage__icons {
+.download-page-icons {
   margin-right: 5px;
 }
 
-.downloadPage__title {
+.download-page-title {
   margin: 10px;
 }
 @media (min-width: 765px) {
-  .downloadPage__title {
+  .download-page-title {
     margin-left: 0;
     font-size: 24px;
   }
 }
 @media (min-width: 1023) {
-  .downloadPage__title {
+  .download-page-title {
     font-size: 28px;
   }
 }
 
-.downloadPage__android {
+.download-page-android {
   color: #ef3f3f;
   background-color: #ffffff;
   cursor: pointer;
 }
 
-.downloadPage__iOS {
+.download-page-iOS {
   background-color: #ef3f3f;
   color: #ffffff;
   cursor: pointer;
 }
 
+.download-page-photo-Container {
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 765px) {
+  .download-page-photo-Container {
+    display: none;
+  }
+}
+
 .downloadPage__picture {
-  display: none;
-}
-@media (min-width: 765px) {
-  .downloadPage__picture {
-    display: block;
-    height: 50vh;
-    width: 75vh;
-  }
-}
-@media (min-width: 1000px) {
-  .downloadPage__picture {
-    width: 90vh;
-  }
+  min-width: 100%;
+  min-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=DownloadPageComponent.css.map */

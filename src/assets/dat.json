@@ -11,7 +11,7 @@
     "phoneNumber": ["1234567890", "351851651", "32121516"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "20.000",
-    "categories": ["western", "seafood", "tipical"],
+    "categories": ["Asian", "Bar", "Café"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -125,7 +125,7 @@
     "phoneNumber": ["3216516121", "24224411", "63516513"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "15.000",
-    "categories": ["breakfast", "western", "vegetarian"],
+    "categories": ["Desserts", "Fastfood", "Gourmet"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -239,7 +239,7 @@
     "phoneNumber": ["321981", "78946351", "987951621"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "20.000",
-    "categories": ["western", "bar", "tipical"],
+    "categories": ["Italian", "Latin", "Sea"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -353,7 +353,7 @@
     "phoneNumber": ["12312131", "3213216", "412123132"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "15.000",
-    "categories": ["breakfast", "dessert", "tipical"],
+    "categories": ["Mexican", "Grill", "Typical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -467,7 +467,7 @@
     "phoneNumber": ["984312195", "3219681", "9876521985"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "18.000",
-    "categories": ["western", "italian", "breakfast"],
+    "categories": ["Vegan", "Vegetarian", "Grill"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -581,7 +581,7 @@
     "phoneNumber": ["978456123", "36514981", "89746"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "20.000",
-    "categories": ["asian", "fastfood", "vegetarian"],
+    "categories": ["Asian", "Gourmet", "Vegetarian"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -695,7 +695,7 @@
     "phoneNumber": ["5654541216", "9527251", "6516894"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "5.000",
-    "categories": ["coffee", "western", "tipical"],
+    "categories": ["Café", "Sea", "Desserts"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -809,7 +809,7 @@
     "phoneNumber": ["96469517", "33485218182", "848156"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "8.000",
-    "categories": ["coffee", "western"],
+    "categories": ["Bar", "Latin", "Typical"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -923,7 +923,7 @@
     "phoneNumber": ["21321549", "84181263", "8781996"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "12.000",
-    "categories": ["mexican", "fastfood"],
+    "categories": ["Mexican", "Fastfood", "Grill"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -1037,7 +1037,7 @@
     "phoneNumber": ["9781216231", "482362198", "84191632"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "20.000",
-    "categories": ["coffee", "mexican", "tipical"],
+    "categories": ["Vegan", "Mexican", "Italian"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -1151,7 +1151,7 @@
     "phoneNumber": ["32165194984", "987951652191", "32198198"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "25,000",
-    "categories": ["western", "tipical"],
+    "categories": ["Italian", "Typical", "Bar"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",
@@ -1265,7 +1265,7 @@
     "phoneNumber": ["1234567890", "351851651", "52454984984"],
     "schedule": ["12PM - 6PM"],
     "dishesFrom": "15.000",
-    "categories": ["coffee", "tipical"],
+    "categories": ["Sea", "Mexican", "Italian"],
     "facilities": ["datáfono", "parking", "etc", "game zone"],
     "photos": [
       "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/foto13.jpg",

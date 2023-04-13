@@ -1,9 +1,8 @@
 import "./PopularRestaurant.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
-import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom'
-
+import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 import db from "../../assets/dat.json";
 import languageSelector from "../../assets/languages/languageSelector";
@@ -12,31 +11,45 @@ const PopularRestaurant = ({ inputValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const data = db;
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
 
-  const sortButton =  [{ id: 1, text:'All' }, { id: 2, text:'Popular' }, { id: 3, text:'Latest' }, { id: 4, text:'Trend' }];
+  const sortButton = [
+    { id: 1, text: "All" },
+    { id: 2, text: "Popular" },
+    { id: 3, text: "Latest" },
+    { id: 4, text: "Trend" },
+  ];
   const [selectOrder, setSelectOrder] = useState(1);
   const [sortList, setSortList] = useState(data);
 
   const handleOrder = (order) => {
     const actionOrder = {
-      all: () => data.sort((a, b)=> a.id - b.id),
-      latest: () => data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)), 
+      all: () => data.sort((a, b) => a.id - b.id),
+      latest: () =>
+        data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
       trend: () => data.sort((a, b) => b.numberOfSales - a.numberOfSales),
       popular: () => data.sort((a, b) => b.rating - a.rating),
-    }
+    };
     const caseOrder = order.text.toLowerCase();
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
-  }
+  };
 
   const filteredData = data.filter((element) => {
-    return element.restaurantName.replaceAll(' ', '').toLowerCase().includes(searchParams.get('searchTerm'));
-  })
+    return element.restaurantName
+      .replaceAll(" ", "")
+      .toLowerCase()
+      .includes(searchParams.get("searchTerm"));
+  });
 
   const renderList = (data, filteredData) => {
-    if (filteredData.length === 0) {
-      return sortList.map((element)=> {
+    const shortList = [];
+    for (let i = 0; i < 4; i++) {
+      shortList.push(sortList[i]);
+    }
+
+    if (!filteredData.length) {
+      return shortList.map((element) => {
         return (
           <RestaurantCardComponent
             key={element.id}
@@ -65,23 +78,28 @@ const PopularRestaurant = ({ inputValue }) => {
       });
     }
   };
-  
+
   return (
     <div className="popular-restaurant">
       <header className="popular-restaurant-header">
-        <span className="popular-restaurant-title">{languageSelector(language, 'popularRestaurantTitle')}</span>
+        <span className="popular-restaurant-title">
+          {languageSelector(language, "popularRestaurantTitle")}
+        </span>
         <div className="popular-restaurants-buttons">
-        {sortButton.map((item) => {
+          {sortButton.map((item) => {
             return (
-              <p 
-                key={item.id} 
-                className={`popular-restaurants-buttons-text ${selectOrder === item.id && 'popular-restaurants-buttons-text-selected'}`} 
+              <p
+                key={item.id}
+                className={`popular-restaurants-buttons-text ${
+                  selectOrder === item.id &&
+                  "popular-restaurants-buttons-text-selected"
+                }`}
                 onClick={() => handleOrder(item)}
               >
                 {item.text}
               </p>
-            )}
-          )}
+            );
+          })}
         </div>
       </header>
       <main className="popular-restaurant-main">

@@ -46,57 +46,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  @media (min-width: 765px) {
-    justify-content: center;
-  }
-
-  @media (min-width: 1000px) {
-    gap: 35px;
-  }
-}
-.popular-restaurant-card {
-  margin-top: 30px;
-  height: 400px;
-  width: 350px;
-  box-shadow: 0 2px 5px 1px lightgrey;
-}
-
-.popular-restaurant-card-image-container {
-  cursor: pointer;
-  height: 60%;
-  width: 100%;
-  display: flex;
-}
-
-.popular-restaurant-card-image {
-  width: 100%;
-  object-fit: cover;
-}
-
-.popular-restaurant-card-info {
-  padding: 20px;
-}
-
-.popular-restaurant-card-info-first-line {
-  display: flex;
-  cursor: pointer;
-}
-
-.popular-restaurant-card-title {
-  font-size: 25px;
-  font-weight: 700;
-}
-
-.popular-restaurant-card-rating {
-  margin-left: 30px;
-  background-color: #479744;
-  padding: 5px 10px;
-}
-
-.popular-restaurant-card-info-list {
-  margin-top: 15px;
-  color: gray;
-  list-style-position: inside;
-  list-style-type: square;
+  gap: 35px;
 }

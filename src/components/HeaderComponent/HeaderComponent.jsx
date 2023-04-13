@@ -8,17 +8,16 @@ import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
 import { HiOutlineViewList } from "react-icons/hi";
 import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";
-import languageSelector from '../../assets/languages/languageSelector';
+import languageSelector from "../../assets/languages/languageSelector";
+import cities from "../../assets/cities.json";
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
 
-
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
-  const [location, setLocation] = useState("bogota");
-  const [currency, setCurrency] = useState("USD");
+  const [location, setLocation] = useState("Bogotá");
 
   const handleClickList = () => {
     setMobileShow("");
@@ -26,52 +25,47 @@ const HeaderComponent = () => {
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
-  const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
-  };
-  const handleLanguageChange = (e) => {
-    dispatch({ type: LANGUAGE_SWITCH ,  payload: (e.target.value)});
-  };
 
+  const handleLanguageChange = (e) => {
+    dispatch({ type: LANGUAGE_SWITCH, payload: e.target.value });
+  };
 
   return (
     <header className="headerNavBar">
       {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : ""}
 
-      <NavLink to={"/"} className='navbar__logo'>
-        <picture className="logo__container">
+      <NavLink to={"/"} className="navbar-logo">
+        <picture className="logo-container">
           <img src={logo} alt="" className="logotipo" />
-          <span className="header__title">
+          <span className="header-title">
             <b>TableTop</b>
           </span>
         </picture>
       </NavLink>
-      <section className="header__textButtons">
-        <span className="header__homeButton">
-        </span>
-        <span className="header__restaurantButton">
+      <section className="header-textButtons">
+        <span className="header-restaurant-button">
           <NavLink to={"/restaurants"}>
-            <b className="header__text">{languageSelector(language, 'headerRestaurant')}</b>
+            <b className="header-text">
+              {languageSelector(language, "headerRestaurant")}
+            </b>
           </NavLink>
         </span>
-        <span className="header__pagesButton">
-        </span>
       </section>
-      <section className="header__buttons">
-        <select className="locationList" onChange={handleLocationChange}>
-          <option value={"bogota"}>Bogotá</option>
-          <option value={"medellin"}>Medellín</option>
-          <option value={"cali"}>Calí</option>
-          <option value={"cartagena"}>Cartagena</option>
-          <option value={"bucaramanga"}>Bucaramanga</option>
+      <section className="header-buttons">
+        <select
+          className="location-list"
+          onChange={handleLocationChange}
+          value={location}
+        >
+          {cities.map((element, index) => (
+            <option key={index} value={element}>
+              {element}
+            </option>
+          ))}
         </select>
-        <section className="header__optionLists">
-          <select className="currencyList" onChange={handleCurrencyChange}>
-            <option value={"USD"}>USD</option>
-            <option value={"COP"}>COP</option>
-          </select>
-          <select 
-            className="languageList"
+        <section className="header-optionLists">
+          <select
+            className="language-list"
             onChange={handleLanguageChange}
             value={language}
           >
@@ -80,15 +74,22 @@ const HeaderComponent = () => {
           </select>
         </section>
         <HiOutlineViewList
-          className="header__listIcon header__icons"
+          className="header-list-icon header-icons"
           onClick={handleClickList}
         />
         <div onClick={() => setShowLogIn(true)}>
-          <BsFillPersonFill className="header__personIcon header__icons" />
+          <BsFillPersonFill className="header-person-icon header-icons" />
         </div>
-        <BsFillGearFill className="header__gearIcon header__icons" />
       </section>
-      <MobileNavBar setMobileShow={setMobileShow} mobileShow={mobileShow} />
+      <MobileNavBar
+        setMobileShow={setMobileShow}
+        mobileShow={mobileShow}
+        handleLocationChange={handleLocationChange}
+        location={location}
+        language={language}
+        handleLanguageChange={handleLanguageChange}
+        cities={cities}
+      />
     </header>
   );
 };

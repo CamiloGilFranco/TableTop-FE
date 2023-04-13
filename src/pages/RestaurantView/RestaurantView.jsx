@@ -131,13 +131,13 @@ const RestaurantView = () => {
           <div className="restaurant-view-body-main-content">
             {showComponent()}
           </div>
-          <div className="restaurant-view-body-recommended-places">
-            <Recommended />
-          </div>
         </div>
         <div className="restaurant-view-lateral-column-container">
           <CartItem />
         </div>
+      </div>
+      <div className="restaurant-view-body-recommended-places">
+        <Recommended />
       </div>
       <div className="restaurant-view-footer">
         <Footer />
