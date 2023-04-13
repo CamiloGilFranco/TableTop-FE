@@ -48,7 +48,7 @@ const PopularRestaurant = ({ inputValue }) => {
       shortList.push(sortList[i]);
     }
 
-    if (filteredData.length === 0) {
+    if (!filteredData.length) {
       return shortList.map((element) => {
         return (
           <RestaurantCardComponent

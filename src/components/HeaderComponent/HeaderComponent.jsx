@@ -9,6 +9,7 @@ import { HiOutlineViewList } from "react-icons/hi";
 import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";
 import languageSelector from "../../assets/languages/languageSelector";
+import cities from "../../assets/cities.json";
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -16,7 +17,7 @@ const HeaderComponent = () => {
   const dispatch = useDispatch();
 
   const [mobileShow, setMobileShow] = useState("mobileNavBar__none");
-  const [location, setLocation] = useState("bogota");
+  const [location, setLocation] = useState("Bogotá");
 
   const handleClickList = () => {
     setMobileShow("");
@@ -33,38 +34,38 @@ const HeaderComponent = () => {
     <header className="headerNavBar">
       {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : ""}
 
-      <NavLink to={"/"} className="navbar__logo">
-        <picture className="logo__container">
+      <NavLink to={"/"} className="navbar-logo">
+        <picture className="logo-container">
           <img src={logo} alt="" className="logotipo" />
-          <span className="header__title">
+          <span className="header-title">
             <b>TableTop</b>
           </span>
         </picture>
       </NavLink>
-      <section className="header__textButtons">
-        <span className="header__restaurantButton">
+      <section className="header-textButtons">
+        <span className="header-restaurant-button">
           <NavLink to={"/restaurants"}>
-            <b className="header__text">
+            <b className="header-text">
               {languageSelector(language, "headerRestaurant")}
             </b>
           </NavLink>
         </span>
       </section>
-      <section className="header__buttons">
+      <section className="header-buttons">
         <select
-          className="locationList"
+          className="location-list"
           onChange={handleLocationChange}
           value={location}
         >
-          <option value={"bogota"}>Bogotá</option>
-          <option value={"medellin"}>Medellín</option>
-          <option value={"cali"}>Calí</option>
-          <option value={"cartagena"}>Cartagena</option>
-          <option value={"bucaramanga"}>Bucaramanga</option>
+          {cities.map((element, index) => (
+            <option key={index} value={element}>
+              {element}
+            </option>
+          ))}
         </select>
-        <section className="header__optionLists">
+        <section className="header-optionLists">
           <select
-            className="languageList"
+            className="language-list"
             onChange={handleLanguageChange}
             value={language}
           >
@@ -73,11 +74,11 @@ const HeaderComponent = () => {
           </select>
         </section>
         <HiOutlineViewList
-          className="header__listIcon header__icons"
+          className="header-list-icon header-icons"
           onClick={handleClickList}
         />
         <div onClick={() => setShowLogIn(true)}>
-          <BsFillPersonFill className="header__personIcon header__icons" />
+          <BsFillPersonFill className="header-person-icon header-icons" />
         </div>
       </section>
       <MobileNavBar
@@ -87,6 +88,7 @@ const HeaderComponent = () => {
         location={location}
         language={language}
         handleLanguageChange={handleLanguageChange}
+        cities={cities}
       />
     </header>
   );

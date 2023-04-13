@@ -1,12 +1,12 @@
 import { useState } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
-import previous from "./assets/previous.svg";
-import next from "./assets/next.svg";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 import { useSearchParams } from "react-router-dom";
+import languageSelector from "../../assets/languages/languageSelector";
+import { useSelector } from "react-redux";
 
-const RestaurantList = ({ categories }) => {
+const RestaurantList = () => {
   const data = DB;
 
   const sortButton = [
@@ -17,10 +17,9 @@ const RestaurantList = ({ categories }) => {
   ];
   const [selectOrder, setSelectOrder] = useState(1);
   const [sortList, setSortList] = useState(data);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const language = useSelector((state) => state.languageReducer);
 
-  // Logic for the order buttons
   const handleOrder = (order) => {
     const actionOrder = {
       all: () => data.sort((a, b) => a.id - b.id),
@@ -34,7 +33,7 @@ const RestaurantList = ({ categories }) => {
     setSelectOrder(order.id);
     setSortList(actionOrder[caseOrder]);
   };
-  // logic for the filters
+
   const filteredData = () => {
     let result = [];
 
@@ -48,9 +47,10 @@ const RestaurantList = ({ categories }) => {
           .toLowerCase()
           .includes(searchParams.get("searchTerm"))
       );
+      return result;
     }
 
-    const filterByCategorie = (arr) => {
+    const filterByCategory = (arr) => {
       return arr.filter((element1) => {
         return element1.categories.some((element2) => {
           return categories.includes(element2);
@@ -60,21 +60,29 @@ const RestaurantList = ({ categories }) => {
 
     if (rating >= 2 && categories.length === 0)
       result = data.filter((element) => Math.round(element.rating) >= rating);
-    if (categories.length > 0 && rating < 2) result = filterByCategorie(data);
+    if (categories.length > 0 && rating < 2) result = filterByCategory(data);
     if (categories.length > 0 && rating >= 2)
       result = data.filter(
         (element) =>
-          Math.round(element.rating) >= rating && filterByCategorie(data)
+          Math.round(element.rating) >= rating &&
+          filterByCategory([element]).length
       );
     return result;
   };
 
-  const renderList = (data, displayArr) => {
-    const hasCuisine = searchParams.getAll("cuisine").length;
-    const hasRating =
-      searchParams.get("rating") && searchParams.get("rating") >= 2;
+  const renderList = (displayArr) => {
+    const categoriesObject = Object.fromEntries(searchParams.entries());
+    if (categoriesObject.rating) {
+      delete categoriesObject.rating;
+    }
+    if (categoriesObject.searchTerm) {
+      delete categoriesObject.searchTerm;
+    }
 
-    if (!displayArr.length && (hasCuisine || hasRating)) {
+    const cuisines = Object.keys(categoriesObject).length;
+    const rate = searchParams.get("rating") && searchParams.get("rating") >= 2;
+
+    if (!displayArr.length && (cuisines || rate)) {
       return (
         <div>
           <p>{languageSelector(language, "restaurantSearchNull")}</p>

@@ -1,12 +1,12 @@
 $downloadPage__orange: #ef3f3f;
 
-.downloadPage__Container {
+.download-page-container {
   display: flex;
   padding: 10px;
   justify-content: center;
 }
 
-.downloadPage__buttonsContainer {
+.download-page-buttons-container {
   background-color: #f9f9f9;
   text-align: center;
   display: flex;
@@ -28,7 +28,7 @@ $downloadPage__orange: #ef3f3f;
   }
 }
 
-.downloadPage__buttons {
+.download-page-buttons {
   display: flex;
   gap: 15px;
 
@@ -53,11 +53,11 @@ $downloadPage__orange: #ef3f3f;
   }
 }
 
-.downloadPage__icons {
+.download-page-icons {
   margin-right: 5px;
 }
 
-.downloadPage__title {
+.download-page-title {
   margin: 10px;
 
   @media (min-width: 765px) {
@@ -69,18 +69,18 @@ $downloadPage__orange: #ef3f3f;
   }
 }
 
-.downloadPage__android {
+.download-page-android {
   color: $downloadPage__orange;
   background-color: #ffffff;
   cursor: pointer;
 }
-.downloadPage__iOS {
+.download-page-iOS {
   background-color: $downloadPage__orange;
   color: #ffffff;
   cursor: pointer;
 }
 
-.downloadPage__photo-Container {
+.download-page-photo-Container {
   width: 50%;
   overflow: hidden;
   display: flex;

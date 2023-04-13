@@ -13,16 +13,8 @@ const Recommended = () => {
   data.sort((a, b) => b.rating - a.rating);
 
   const quantity = () => {
-    let cardsQuantity;
+    let cardsQuantity = width < 769 ? 2 : width >= 769 && width < 1335 ? 3 : 4;
     const cardsInfo = [];
-
-    if (width < 769) {
-      cardsQuantity = 2;
-    } else if (width < 1335) {
-      cardsQuantity = 3;
-    } else {
-      cardsQuantity = 4;
-    }
 
     for (let i = 0; i < cardsQuantity; i++) {
       cardsInfo.push(data[i]);

@@ -1,10 +1,10 @@
-.downloadPage__Container {
+.download-page-container {
   display: flex;
   padding: 10px;
   justify-content: center;
 }
 
-.downloadPage__buttonsContainer {
+.download-page-buttons-container {
   background-color: #f9f9f9;
   text-align: center;
   display: flex;
@@ -17,33 +17,33 @@
   font-size: 18px;
 }
 @media (max-width: 765px) {
-  .downloadPage__buttonsContainer {
+  .download-page-buttons-container {
     width: 100%;
   }
 }
 @media (min-width: 765px) {
-  .downloadPage__buttonsContainer {
+  .download-page-buttons-container {
     text-align: left;
     align-items: flex-start;
   }
 }
 
-.downloadPage__buttons {
+.download-page-buttons {
   display: flex;
   gap: 15px;
 }
-.downloadPage__buttons button {
+.download-page-buttons button {
   border: none;
   padding: 5px;
   border-radius: 5px;
 }
 @media (min-width: 765px) {
-  .downloadPage__buttons {
+  .download-page-buttons {
     border: none;
     padding: 5px;
     border-radius: 5px;
   }
-  .downloadPage__buttons button {
+  .download-page-buttons button {
     width: 15vh;
     height: -moz-fit-content;
     height: fit-content;
@@ -51,43 +51,43 @@
   }
 }
 @media (min-width: 1000px) {
-  .downloadPage__buttons {
+  .download-page-buttons {
     font-size: 16px;
   }
 }
 
-.downloadPage__icons {
+.download-page-icons {
   margin-right: 5px;
 }
 
-.downloadPage__title {
+.download-page-title {
   margin: 10px;
 }
 @media (min-width: 765px) {
-  .downloadPage__title {
+  .download-page-title {
     margin-left: 0;
     font-size: 24px;
   }
 }
 @media (min-width: 1023) {
-  .downloadPage__title {
+  .download-page-title {
     font-size: 28px;
   }
 }
 
-.downloadPage__android {
+.download-page-android {
   color: #ef3f3f;
   background-color: #ffffff;
   cursor: pointer;
 }
 
-.downloadPage__iOS {
+.download-page-iOS {
   background-color: #ef3f3f;
   color: #ffffff;
   cursor: pointer;
 }
 
-.downloadPage__photo-Container {
+.download-page-photo-Container {
   width: 50%;
   overflow: hidden;
   display: flex;
@@ -95,7 +95,7 @@
   justify-content: center;
 }
 @media (max-width: 765px) {
-  .downloadPage__photo-Container {
+  .download-page-photo-Container {
     display: none;
   }
 }
