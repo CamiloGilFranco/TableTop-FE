@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/HeaderComponent/HeaderComponent';
 import Footer from '../../components/Footer/Footer';
 import './UserPage.css';
-import { RiEdit2Fill } from 'react-icons/ri'
+import { RiEdit2Fill } from 'react-icons/ri';
 import { useParams } from 'react-router';
 import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector, useDispatch } from 'react-redux';
-import loadingGif from '../../assets/fotos/loading/loading-gif.gif'
+import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import {
   fetchUserRequest,
@@ -26,6 +27,13 @@ const UserPage = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const apiUrl = process.env.REACT_APP_API_URL;
+  const jwtToken = Cookies.get('jwtToken');
+  Cookies.set('jwtToken', jwtToken, { expires: 7 });
+  const config = {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  };
   
   const [formData, setFormData] = useState({
     name: '',
@@ -43,16 +51,16 @@ const UserPage = () => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
       try {
-        const response = await axios.get(`${apiUrl}/users/${id}`);
+        const response = await axios.get(`${apiUrl}/users/${id}`, config);
         dispatch(fetchUserSuccess(response.data.data));
-        const { 
+        const {
           name, 
-          last_name, 
-          email, 
-          password, 
-          phone_numbers, 
-          addresses, 
-          city 
+          last_name,
+          email,
+          password,
+          phone_numbers,
+          addresses,
+          city
         } = response.data.data;
         setFormData({
           name,
@@ -68,7 +76,7 @@ const UserPage = () => {
       }
     };
     fetchUser();
-  }, [id, dispatch, apiUrl]);
+  }, [dispatch, apiUrl, jwtToken]);
 
   // enables the editing of the inputs
   const handleEditClick = () => {
@@ -104,13 +112,13 @@ const UserPage = () => {
         [name]: value,
       }));
     }
-  };    
+  };
 
   // handles the sumbit of the form
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = {};
-    const form = event.target
+    const form = event.target;
     const name = form.userName.value;
     const last_name = form.userLastName.value;
     const email = form.userEmail.value;
@@ -178,20 +186,20 @@ const UserPage = () => {
   
     // sends the information to the back end and does a new petition
     try {
-      await axios.put(`${apiUrl}/users/${id}`, updatedUser);
+      await axios.put(`${apiUrl}/users/`, updatedUser, config);
       dispatch(updateUserSuccess(updatedUser));
       setIsEditable(false);
       setErrors({});
-      const response = await axios.get(`${apiUrl}/users/${id}`);
+      const response = await axios.get(`${apiUrl}/api/users`, config);
       dispatch(fetchUserSuccess(response.data.data));
       const { 
-        name, 
-        last_name, 
-        email, 
-        password, 
-        phone_numbers, 
-        addresses, 
-        city 
+        name,
+        last_name,
+        email,
+        password,
+        phone_numbers,
+        addresses,
+        city
       } = response.data.data;
       setFormData({
         name,
@@ -211,7 +219,7 @@ const UserPage = () => {
     return (
       <div>
         <img src={`${loadingGif}`} alt='loading'/>
-        <h1>Loading...</h1> 
+        <h1>Loading...</h1>
       </div>
     );
   }
@@ -340,7 +348,7 @@ const UserPage = () => {
               </select>
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
-            <button 
+            <button
               type='submit'
               className='userPage__form-button'
             >
