@@ -222,6 +222,7 @@ const languageSelector = (lang, str) => {
     paymentMakePayment: "MAKE PAYMENT!",
     paymentCardNumber: "Card Number",
     paymentSelectBank: "Choose your bank",
+    restaurantSearchNull: 'No restaurants match your search criteria.',
   };
 
   const es = {
@@ -450,6 +451,7 @@ const languageSelector = (lang, str) => {
     paymentMakePayment: "¡HACER EL PAGO!",
     paymentCardNumber: "Número de la tarjeta",
     paymentSelectBank: "Selecciona tu banco",
+    restaurantSearchNull: 'Ningún restaurante coincide con tu criterios de búsqueda.',
   };
 
   if (lang === "en") {

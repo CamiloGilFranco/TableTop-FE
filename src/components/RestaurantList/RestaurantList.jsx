@@ -127,7 +127,7 @@ const RestaurantList = () => {
         </div>
       </header>
       <main className="restaurant-list-main">
-        {renderList(data, filteredData())}
+        {renderList(filteredData())}
       </main>
     </div>
   );
