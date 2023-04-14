@@ -7,7 +7,7 @@ import { useParams } from 'react-router';
 import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector, useDispatch } from 'react-redux';
 import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
-import Cookies from 'js-cookie';
+import Cookies from 'universal-cookie';
 import axios from 'axios';
 import {
   fetchUserRequest,
@@ -20,6 +20,7 @@ import {
 
 const UserPage = () => {
   const { id } = useParams();
+  const cookies = new Cookies();
   const language = useSelector(state => state.languageReducer);
   const loading = useSelector((state) => state.userReducer.loading);
   const user = useSelector(state => state.userReducer.user);
@@ -27,8 +28,8 @@ const UserPage = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const apiUrl = process.env.REACT_APP_API_URL;
-  const jwtToken = Cookies.get('jwtToken');
-  Cookies.set('jwtToken', jwtToken, { expires: 7 });
+  const jwtToken = cookies.get('jwtToken');
+  cookies.set("token", jwtToken, { path: '/', maxAge: 604800 });
   const config = {
     headers: {
       Authorization: `Bearer ${jwtToken}`,

@@ -28,7 +28,7 @@ const LogInComponent = ({ setShowLogIn }) => {
         </div>
         <div className="log-in-form-main-form">
           {whichForm ? (
-            <LoginFormComponent setWhichForm={setWhichForm} />
+            <LoginFormComponent setWhichForm={setWhichForm} closeModal={() => setShowLogIn(false)}/>
           ) : (
             <ForgottenPasswordComponent setWhichForm={setWhichForm} />
           )}

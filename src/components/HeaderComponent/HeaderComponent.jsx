@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LANGUAGE_SWITCH } from "../../store/reducers/Language.reducer";
-import { BsFillPersonFill, BsFillGearFill } from "react-icons/bs";
+import { BsFillPersonFill} from "react-icons/bs";
 import { HiOutlineViewList } from "react-icons/hi";
 import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";

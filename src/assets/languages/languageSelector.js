@@ -228,6 +228,8 @@ const languageSelector = (lang, str) => {
     userSaveChanges: 'Save Changes',
     signOut: 'Sign Out',
     signOutText: 'If you want to log out, click this button',
+    generalError: 'An error has ocurred, please try again.',
+    logInSuccessfull: 'You have logged in successfully!',
   };
 
   const es = {
@@ -461,7 +463,9 @@ const languageSelector = (lang, str) => {
     userSubtitle: 'Aquí puedes ver y editar tus datos',
     userSaveChanges: 'Guardar cambios',
     signOut: 'Cerrar sesión',
-    signOutText: 'Si deseas cerrar sesión, haz clic en este botón'
+    signOutText: 'Si deseas cerrar sesión, haz clic en este botón',
+    generalError: 'Ocurrio un error, por favor vuelve a intentarlo.',
+    logInSuccessfull: '¡Has iniciado sesión correctamente!',
   };
 
   if (lang === "en") {
