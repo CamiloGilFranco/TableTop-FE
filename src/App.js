@@ -15,7 +15,7 @@ import Cookies from "universal-cookie";
 const Private = ({ children }) => {
   const cookies = new Cookies();
   const ticket = cookies.get("token");
-  return ticket ? children : <Navigate to={"/"}/>
+  return ticket ? children : <Navigate to={"/"}/>;
 }
 
 function App() {

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
@@ -13,25 +13,36 @@ const LoginFormComponent = ({ setWhichForm, closeModal }) => {
   const dispatch = useDispatch();
   const authUrl = process.env.REACT_APP_AUTH_URL;
   const language = useSelector(state=> state.languageReducer);
+  const [timerModal, setTimerModal] = useState(null);
   const [dataUser, setDataUser] = useState({
     email: "",
     password: ""
   });
 
+  useEffect(() => {
+    return () => {
+      if (timerModal) {
+        clearTimeout(timerModal);
+      }
+    };
+  }, [timerModal]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(`${authUrl}/local/login`, dataUser);
-      cookies.set("token", data.token);
-      cookies.set("name", data.data.name);
-      cookies.set("last_name", data.data.last_name);
-      cookies.set("email", data.data.email);
+      const { token, data: { name, last_name, email } } = data;
+      cookies.set("token", token);
+      cookies.set("name", name);
+      cookies.set("last_name", last_name);
+      cookies.set("email", email);
       dispatch(setUser(data.data));
       toast.success(languageSelector(language, "logInSuccessfull"));
 
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         closeModal();
       }, 6000);
+      setTimerModal(timer);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         toast.error(error.response.data.message);
@@ -39,7 +50,7 @@ const LoginFormComponent = ({ setWhichForm, closeModal }) => {
         toast.error(languageSelector(language, "generalError"));
       }
     }
-  }
+  };  
 
   const handleChange = (e) => {
    const { value, name } = e.target;

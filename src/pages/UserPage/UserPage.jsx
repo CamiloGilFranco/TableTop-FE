@@ -60,7 +60,7 @@ const UserPage = () => {
           email,
           password,
           phone_numbers,
-          addresses, //try later addresses: address ,
+          addresses: address,
           city
         } = response.data.data;
         setFormData({
@@ -69,7 +69,7 @@ const UserPage = () => {
           email,
           password,
           phone_numbers,
-          address: response.data.data.addresses,
+          address,
           city,
         });
       } catch (error) {
