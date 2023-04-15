@@ -8,8 +8,6 @@ const RestaurantCardComponent = ({
   restaurantName,
   rating,
   categories,
-  schedule,
-  dishesFrom,
 }) => {
   const navigate = useNavigate();
   const language = useSelector((state) => state.languageReducer);
@@ -35,13 +33,23 @@ const RestaurantCardComponent = ({
           <span className="restaurant-card-component-rating">{rating} ⭐</span>
         </div>
         <div className="restaurant-card-component-info-list">
-          <span>- {categories[0]}</span>
-          <span>, {categories[1]}</span>
-          <span>, {categories[2]}</span>
-          <p>- {schedule}</p>
-          <p>
-            - {languageSelector(language, "cardDishesFrom")} ${dishesFrom}
-          </p>
+          {categories.map((element, index) => (
+            <span
+              key={index}
+              className="restaurant-card-component-info-list-cuisine"
+            >
+              - {element.cuisine_category}
+            </span>
+          ))}
+          {/* <span className="restaurant-card-component-info-list-cuisine">
+            - {categories[0]}
+          </span>
+          <span className="restaurant-card-component-info-list-cuisine">
+            - {categories[1]}
+          </span>
+          <span className="restaurant-card-component-info-list-cuisine">
+            - {categories[2]}
+          </span> */}
         </div>
       </figcaption>
     </figure>

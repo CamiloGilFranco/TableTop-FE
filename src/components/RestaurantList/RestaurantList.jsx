@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 import "./RestaurantList.css";
 import DB from "../../assets/dat.json";
 import { useSearchParams } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const RestaurantList = () => {
   const data = DB;
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/restaurants/withcuisines/all`)
+      .then((res) => {
+        setSortList(res.data.data);
+      });
+  }, []);
 
   const sortButton = [
     { id: 1, text: "All" },
@@ -16,17 +25,18 @@ const RestaurantList = () => {
     { id: 4, text: "Trend" },
   ];
   const [selectOrder, setSelectOrder] = useState(1);
-  const [sortList, setSortList] = useState(data);
+  const [sortList, setSortList] = useState([]);
   const [searchParams] = useSearchParams();
   const language = useSelector((state) => state.languageReducer);
 
   const handleOrder = (order) => {
     const actionOrder = {
-      all: () => data.sort((a, b) => a.id - b.id),
+      all: () => sortList.sort((a, b) => a.id_restaurant - b.id_restaurant),
       latest: () =>
-        data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
-      trend: () => data.sort((a, b) => b.numberOfSales - a.numberOfSales),
-      popular: () => data.sort((a, b) => b.rating - a.rating),
+        sortList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
+      trend: () =>
+        sortList.sort((a, b) => b.number_of_sales - a.number_of_sales),
+      popular: () => sortList.sort((a, b) => b.rating - a.rating),
     };
 
     const caseOrder = order.text.toLowerCase();
@@ -37,12 +47,22 @@ const RestaurantList = () => {
   const filteredData = () => {
     let result = [];
 
-    const categories = Array.from(searchParams.keys());
+    const categoriesObject = Object.fromEntries(searchParams.entries());
+
+    if (categoriesObject.rating) {
+      delete categoriesObject.rating;
+    }
+
+    if (categoriesObject.searchTerm) {
+      delete categoriesObject.searchTerm;
+    }
+
+    const categoriesArray = Object.keys(categoriesObject);
     const rating = searchParams.get("rating");
 
     if (searchParams.get("searchTerm")) {
-      result = data.filter((element) =>
-        element.restaurantName
+      result = sortList.filter((element) =>
+        element.restaurant_name
           .replaceAll(" ", "")
           .toLowerCase()
           .includes(searchParams.get("searchTerm"))
@@ -52,21 +72,32 @@ const RestaurantList = () => {
 
     const filterByCategory = (arr) => {
       return arr.filter((element1) => {
-        return element1.categories.some((element2) => {
-          return categories.includes(element2);
+        const cuisinesPerRestaurant = [];
+        for (let i = 0; i < element1.cuisines.length; i++) {
+          cuisinesPerRestaurant.push(element1.cuisines[i].cuisine_category);
+        }
+        return cuisinesPerRestaurant.some((element2) => {
+          return categoriesArray.includes(element2);
         });
       });
     };
 
-    if (rating >= 2 && categories.length === 0)
-      result = data.filter((element) => Math.round(element.rating) >= rating);
-    if (categories.length > 0 && rating < 2) result = filterByCategory(data);
-    if (categories.length > 0 && rating >= 2)
-      result = data.filter(
+    if (rating >= 2 && categoriesArray.length === 0) {
+      result = sortList.filter(
+        (element) => Math.round(element.rating) >= rating
+      );
+    }
+    if (categoriesArray.length > 0 && rating < 2) {
+      result = filterByCategory(sortList);
+    }
+    if (categoriesArray.length > 0 && rating >= 2) {
+      result = sortList.filter(
         (element) =>
           Math.round(element.rating) >= rating &&
           filterByCategory([element]).length
       );
+    }
+
     return result;
   };
 
@@ -93,13 +124,11 @@ const RestaurantList = () => {
       return listToRender.map((element) => {
         return (
           <RestaurantCardComponent
-            key={element.id}
-            picture={element.picture}
-            restaurantName={element.restaurantName}
+            key={element.id_restaurant}
+            picture={element.main_photo}
+            restaurantName={element.restaurant_name}
             rating={element.rating}
-            categories={element.categories}
-            schedule={element.schedule}
-            averagePrice={element.averagePrice}
+            categories={element.cuisines}
           />
         );
       });
