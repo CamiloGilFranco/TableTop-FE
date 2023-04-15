@@ -12,7 +12,7 @@
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .checkout-body {
@@ -22,7 +22,6 @@
   gap: 30px;
   margin: 20px 0;
 }
-
 @media (max-width: 1000px) {
   .checkout-body {
     flex-direction: column-reverse;
@@ -33,7 +32,6 @@
 .checkout-body-left-container {
   width: 70%;
 }
-
 @media (max-width: 1000px) {
   .checkout-body-left-container {
     width: 100%;
@@ -43,9 +41,8 @@
 .checkout-body-right-container {
   width: 23%;
 }
-
 @media (max-width: 1000px) {
   .checkout-body-right-container {
     width: 100%;
   }
-} /*# sourceMappingURL=CheckoutPageComponent.css.map */
+}/*# sourceMappingURL=CheckoutPageComponent.css.map */

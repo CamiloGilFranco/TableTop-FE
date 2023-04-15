@@ -82,7 +82,9 @@ const languageSelector = (lang, str) => {
     signInSubcribe: "I authorize to receive information by",
     signInTextMessage: "SMS text messages (at no cost to the user)",
     signInWhatsApp: "WhatsApp messages",
+    signInEmailSub:'Receive email notifications',
     signInButton: "Register!",
+    signInSuccess: 'User created successfully, you are being redirected to the home page now.',
     filterTitle: "Filters",
     filterCuisine: "Cuisine",
     filterClear: "clear filter",
@@ -222,6 +224,16 @@ const languageSelector = (lang, str) => {
     paymentMakePayment: "MAKE PAYMENT!",
     paymentCardNumber: "Card Number",
     paymentSelectBank: "Choose your bank",
+    restaurantSearchNull: 'No restaurants match your search criteria.',
+    userAddressError : 'Please enter a valir Address',
+    userSubtitle: 'Here you can see and edit your details',
+    userSaveChanges: 'Save Changes',
+    signOut: 'Sign Out',
+    signOutText: 'If you want to log out, click this button',
+    generalError: 'An error has ocurred, please try again.',
+    logInSuccessfull: 'You have logged in successfully!',
+    userUpdatedMessage: 'User updated successfully!',
+    userUpdateFailedMessage: "Couldn't update the user, there's been an error, please try again."
   };
 
   const es = {
@@ -307,7 +319,9 @@ const languageSelector = (lang, str) => {
     signInSubcribe: "Autorizo recibir información por",
     signInTextMessage: "Mensajes de texto SMS (sin costo al usuario)",
     signInWhatsApp: "Mensajes de WhatsApp",
+    signInEmailSub:'Recibir notificaciones por correo electrónico',
     signInButton: "¡Registarme!",
+    signInSuccess: 'El usuario se creó con éxito, ahora serás redirigido a la página de inicio.',
     filterTitle: "Filtros",
     filterCuisine: "Tipo de cocina",
     filterClear: "limpiar filtro",
@@ -450,6 +464,16 @@ const languageSelector = (lang, str) => {
     paymentMakePayment: "¡HACER EL PAGO!",
     paymentCardNumber: "Número de la tarjeta",
     paymentSelectBank: "Selecciona tu banco",
+    restaurantSearchNull: 'Ningún restaurante coincide con tu criterios de búsqueda.',
+    userAddressError : 'Escribe una dirección valida',
+    userSubtitle: 'Aquí puedes ver y editar tus datos',
+    userSaveChanges: 'Guardar cambios',
+    signOut: 'Cerrar sesión',
+    signOutText: 'Si deseas cerrar sesión, haz clic en este botón',
+    generalError: 'Ocurrio un error, por favor vuelve a intentarlo.',
+    logInSuccessfull: '¡Has iniciado sesión correctamente!',
+    userUpdatedMessage: '¡Usuario actualizado con éxito!',
+    userUpdateFailedMessage: 'No se pudo actualizar el usuario, ocurrio un error, intenta nuevamente.'
   };
 
   if (lang === "en") {

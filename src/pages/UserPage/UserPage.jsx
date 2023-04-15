@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/HeaderComponent/HeaderComponent';
 import Footer from '../../components/Footer/Footer';
 import './UserPage.css';
-import { RiEdit2Fill } from 'react-icons/ri'
-import { useParams } from 'react-router';
+import { RiEdit2Fill } from 'react-icons/ri';
 import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector, useDispatch } from 'react-redux';
-import loadingGif from '../../assets/fotos/loading/loading-gif.gif'
+import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
+import Cookies from 'universal-cookie';
 import axios from 'axios';
 import {
   fetchUserRequest,
@@ -16,9 +16,11 @@ import {
   updateUserSuccess,
   updateUserFailure
 } from '../../store/actions/user.action';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserPage = () => {
-  const { id } = useParams();
+  const cookies = new Cookies();
   const language = useSelector(state => state.languageReducer);
   const loading = useSelector((state) => state.userReducer.loading);
   const user = useSelector(state => state.userReducer.user);
@@ -26,6 +28,13 @@ const UserPage = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const apiUrl = process.env.REACT_APP_API_URL;
+  const jwtToken = cookies.get('token');
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  };
   
   const [formData, setFormData] = useState({
     name: '',
@@ -43,16 +52,16 @@ const UserPage = () => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
       try {
-        const response = await axios.get(`${apiUrl}/users/${id}`);
+        const response = await axios.get(`${apiUrl}/users/profile`, config);
         dispatch(fetchUserSuccess(response.data.data));
-        const { 
+        const {
           name, 
-          last_name, 
-          email, 
-          password, 
-          phone_numbers, 
-          addresses, 
-          city 
+          last_name,
+          email,
+          password,
+          phone_numbers,
+          addresses: address,
+          city
         } = response.data.data;
         setFormData({
           name,
@@ -60,7 +69,7 @@ const UserPage = () => {
           email,
           password,
           phone_numbers,
-          address: response.data.data.addresses,
+          address,
           city,
         });
       } catch (error) {
@@ -68,7 +77,7 @@ const UserPage = () => {
       }
     };
     fetchUser();
-  }, [id, dispatch, apiUrl]);
+  }, [dispatch, apiUrl, jwtToken]);
 
   // enables the editing of the inputs
   const handleEditClick = () => {
@@ -104,13 +113,25 @@ const UserPage = () => {
         [name]: value,
       }));
     }
-  };    
+  };
+
+  const showToast = () => {
+    toast.success(languageSelector(language, 'userUpdatedMessage'), {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
+
+  const showErrorToast = (errorMessage) => {
+    toast.error(errorMessage, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
 
   // handles the sumbit of the form
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = {};
-    const form = event.target
+    const form = event.target;
     const name = form.userName.value;
     const last_name = form.userLastName.value;
     const email = form.userEmail.value;
@@ -178,20 +199,21 @@ const UserPage = () => {
   
     // sends the information to the back end and does a new petition
     try {
-      await axios.put(`${apiUrl}/users/${id}`, updatedUser);
+      await axios.put(`${apiUrl}/users/`, updatedUser, config);
       dispatch(updateUserSuccess(updatedUser));
       setIsEditable(false);
       setErrors({});
-      const response = await axios.get(`${apiUrl}/users/${id}`);
+      const response = await axios.get(`${apiUrl}/users/profile`, config);
       dispatch(fetchUserSuccess(response.data.data));
+      showToast();
       const { 
-        name, 
-        last_name, 
-        email, 
-        password, 
-        phone_numbers, 
-        addresses, 
-        city 
+        name,
+        last_name,
+        email,
+        password,
+        phone_numbers,
+        addresses,
+        city
       } = response.data.data;
       setFormData({
         name,
@@ -204,6 +226,10 @@ const UserPage = () => {
       });
     } catch (error) {
       dispatch(updateUserFailure(error));
+      const errorMessage = error.response && error.response.data.message
+        ? error.response.data.message
+        : languageSelector(language, 'userUpdateFailedMessage');
+      showErrorToast(errorMessage);
     }
   };
    
@@ -211,7 +237,7 @@ const UserPage = () => {
     return (
       <div>
         <img src={`${loadingGif}`} alt='loading'/>
-        <h1>Loading...</h1> 
+        <h1>Loading...</h1>
       </div>
     );
   }
@@ -219,6 +245,7 @@ const UserPage = () => {
   return (
     <React.Fragment>
       <Header/>
+      <ToastContainer />
       <div className='userPage__container'>
         <section className='userPage__title'>
           <span>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</span>
@@ -340,19 +367,13 @@ const UserPage = () => {
               </select>
               <RiEdit2Fill onClick={handleEditClick}  className='userPage__form-icon'/>
             </span>
-            <button 
+            <button
               type='submit'
               className='userPage__form-button'
             >
               {languageSelector(language, 'userSaveChanges')}
             </button>
           </form>
-          <section className='userPAge__logOut'>
-            <span>{languageSelector(language, 'signOutText')}</span>
-            <button className='userPage__form-button'>
-              {languageSelector(language, 'signOut')}
-            </button>
-          </section>
       </div>
       <Footer/>
     </React.Fragment>
