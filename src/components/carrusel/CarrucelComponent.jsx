@@ -55,7 +55,6 @@ const CarrucelComponent = () => {
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
           {cuisinesList.map((element, index) => {
-            console.log(element);
             return (
               <div
                 key={index}
