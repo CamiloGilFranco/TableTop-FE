@@ -3,7 +3,6 @@ import Header from '../../components/HeaderComponent/HeaderComponent';
 import Footer from '../../components/Footer/Footer';
 import './UserPage.css';
 import { RiEdit2Fill } from 'react-icons/ri';
-import { useParams } from 'react-router';
 import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector, useDispatch } from 'react-redux';
 import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
@@ -17,9 +16,10 @@ import {
   updateUserSuccess,
   updateUserFailure
 } from '../../store/actions/user.action';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserPage = () => {
-  const { id } = useParams();
   const cookies = new Cookies();
   const language = useSelector(state => state.languageReducer);
   const loading = useSelector((state) => state.userReducer.loading);
@@ -28,8 +28,8 @@ const UserPage = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const apiUrl = process.env.REACT_APP_API_URL;
-  const jwtToken = cookies.get('jwtToken');
-  cookies.set("token", jwtToken, { path: '/', maxAge: 604800 });
+  const jwtToken = cookies.get('token');
+
   const config = {
     headers: {
       Authorization: `Bearer ${jwtToken}`,
@@ -52,7 +52,7 @@ const UserPage = () => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
       try {
-        const response = await axios.get(`${apiUrl}/users/${id}`, config);
+        const response = await axios.get(`${apiUrl}/users/profile`, config);
         dispatch(fetchUserSuccess(response.data.data));
         const {
           name, 
@@ -60,7 +60,7 @@ const UserPage = () => {
           email,
           password,
           phone_numbers,
-          addresses,
+          addresses, //try later addresses: address ,
           city
         } = response.data.data;
         setFormData({
@@ -113,6 +113,18 @@ const UserPage = () => {
         [name]: value,
       }));
     }
+  };
+
+  const showToast = () => {
+    toast.success(languageSelector(language, 'userUpdatedMessage'), {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
+
+  const showErrorToast = (errorMessage) => {
+    toast.error(errorMessage, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
   };
 
   // handles the sumbit of the form
@@ -191,8 +203,9 @@ const UserPage = () => {
       dispatch(updateUserSuccess(updatedUser));
       setIsEditable(false);
       setErrors({});
-      const response = await axios.get(`${apiUrl}/api/users`, config);
+      const response = await axios.get(`${apiUrl}/users/profile`, config);
       dispatch(fetchUserSuccess(response.data.data));
+      showToast();
       const { 
         name,
         last_name,
@@ -213,6 +226,10 @@ const UserPage = () => {
       });
     } catch (error) {
       dispatch(updateUserFailure(error));
+      const errorMessage = error.response && error.response.data.message
+        ? error.response.data.message
+        : languageSelector(language, 'userUpdateFailedMessage');
+      showErrorToast(errorMessage);
     }
   };
    
@@ -228,6 +245,7 @@ const UserPage = () => {
   return (
     <React.Fragment>
       <Header/>
+      <ToastContainer />
       <div className='userPage__container'>
         <section className='userPage__title'>
           <span>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</span>
@@ -356,12 +374,6 @@ const UserPage = () => {
               {languageSelector(language, 'userSaveChanges')}
             </button>
           </form>
-          <section className='userPAge__logOut'>
-            <span>{languageSelector(language, 'signOutText')}</span>
-            <button className='userPage__form-button'>
-              {languageSelector(language, 'signOut')}
-            </button>
-          </section>
       </div>
       <Footer/>
     </React.Fragment>

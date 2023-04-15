@@ -5,9 +5,12 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/actions/user.action";
 
 const LoginFormComponent = ({ setWhichForm, closeModal }) => {
   const cookies = new Cookies();
+  const dispatch = useDispatch();
   const authUrl = process.env.REACT_APP_AUTH_URL;
   const language = useSelector(state=> state.languageReducer);
   const [dataUser, setDataUser] = useState({
@@ -23,6 +26,7 @@ const LoginFormComponent = ({ setWhichForm, closeModal }) => {
       cookies.set("name", data.data.name);
       cookies.set("last_name", data.data.last_name);
       cookies.set("email", data.data.email);
+      dispatch(setUser(data.data));
       toast.success(languageSelector(language, "logInSuccessfull"));
 
       setTimeout(() => {

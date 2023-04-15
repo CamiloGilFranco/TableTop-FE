@@ -36,7 +36,7 @@ function App() {
         />
         <Route path="/restaurant-admin" element={<RestaurantAdminView />} />
         <Route path="/general-admin" element={<GeneralAdminView />} />
-        <Route path="/user/:id" element={<UserPage />} />
+        <Route path="/user" element={<UserPage />} />
         <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>
     </div>

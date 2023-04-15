@@ -232,6 +232,8 @@ const languageSelector = (lang, str) => {
     signOutText: 'If you want to log out, click this button',
     generalError: 'An error has ocurred, please try again.',
     logInSuccessfull: 'You have logged in successfully!',
+    userUpdatedMessage: 'User updated successfully!',
+    userUpdateFailedMessage: "Couldn't update the user, there's been an error, please try again."
   };
 
   const es = {
@@ -470,6 +472,8 @@ const languageSelector = (lang, str) => {
     signOutText: 'Si deseas cerrar sesión, haz clic en este botón',
     generalError: 'Ocurrio un error, por favor vuelve a intentarlo.',
     logInSuccessfull: '¡Has iniciado sesión correctamente!',
+    userUpdatedMessage: '¡Usuario actualizado con éxito!',
+    userUpdateFailedMessage: 'No se pudo actualizar el usuario, ocurrio un error, intenta nuevamente.'
   };
 
   if (lang === "en") {
