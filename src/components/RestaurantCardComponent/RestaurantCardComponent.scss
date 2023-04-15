@@ -54,4 +54,12 @@
   color: gray;
   list-style-type: square;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-card-component-info-list-cuisine {
+  display: block;
+  margin-left: 10px;
+  font-size: 16px;
 }
