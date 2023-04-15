@@ -129,6 +129,7 @@ const RestaurantList = () => {
             restaurantName={element.restaurant_name}
             rating={element.rating}
             categories={element.cuisines}
+            path={element.restaurant_path}
           />
         );
       });

@@ -13,7 +13,8 @@ const RestaurantInfoBanner = ({ logo, restaurantName, rating, categories }) => {
       <section className="restaurantInfoBanner__text">
         <h3>{restaurantName}</h3>
         <span>
-          {categories.map((element) => ` ${element} |`)} Rating: {rating}
+          {categories.map((element) => ` ${element.cuisine_category} |`)}{" "}
+          Rating: {rating}
         </span>
       </section>
     </article>

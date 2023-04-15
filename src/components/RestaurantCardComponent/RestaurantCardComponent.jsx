@@ -8,6 +8,7 @@ const RestaurantCardComponent = ({
   restaurantName,
   rating,
   categories,
+  path,
 }) => {
   const navigate = useNavigate();
   const language = useSelector((state) => state.languageReducer);
@@ -16,8 +17,8 @@ const RestaurantCardComponent = ({
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 0);
-    const route = restaurantName.replace(/\s+/g, "");
-    navigate(`/restaurants/${route}`);
+
+    navigate(`/restaurants/${path}`);
   };
 
   return (
@@ -41,15 +42,6 @@ const RestaurantCardComponent = ({
               - {element.cuisine_category}
             </span>
           ))}
-          {/* <span className="restaurant-card-component-info-list-cuisine">
-            - {categories[0]}
-          </span>
-          <span className="restaurant-card-component-info-list-cuisine">
-            - {categories[1]}
-          </span>
-          <span className="restaurant-card-component-info-list-cuisine">
-            - {categories[2]}
-          </span> */}
         </div>
       </figcaption>
     </figure>

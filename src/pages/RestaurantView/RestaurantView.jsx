@@ -15,24 +15,31 @@ import ControlledCarousel from "../../components/GalleryComponent/GalleryCarouse
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import db from "../../assets/dat.json";
+import axios from "axios";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
   const [carousel, setCarousel] = useState(false);
   const [pictureNumber, setPictureNumber] = useState(null);
+  const [restaurantData, setRestaurantData] = useState({});
   const params = useParams();
 
-  const data = db;
+  useEffect(() => {
+    axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/restaurants/path/${params.restaurantPath}`
+      )
+      .then((res) => {
+        setRestaurantData(res.data.data);
+      });
+  }, []);
+  console.log(restaurantData);
 
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 0);
   }, []);
-
-  const [restaurantData, setRestaurantData] = useState(
-    data.find((element) => params.restaurantPath === element.restaurantPath)
-  );
 
   const classOrderOnline =
     selected === "ORDER ONLINE" ? "restaurant-options-option-selected" : "";
@@ -64,17 +71,9 @@ const RestaurantView = () => {
   const showComponent = () => {
     switch (selected) {
       case "ORDER ONLINE":
-        return <OrderOnline menu={restaurantData.menu} />;
+        return <OrderOnline menu={restaurantData.dishes_categories} />;
       case "OVERVIEW":
-        return (
-          <Overview
-            phoneNumber={restaurantData.phoneNumber}
-            categories={restaurantData.categories}
-            schedule={restaurantData.schedule}
-            address={restaurantData.address}
-            facilities={restaurantData.facilities}
-          />
-        );
+        return <Overview venues={restaurantData.venues} />;
       case "GALLERY":
         return (
           <GalleryComponent
@@ -85,7 +84,7 @@ const RestaurantView = () => {
         );
       case "LOCATION":
         return (
-          <LocationComponent restaurantName={restaurantData.restaurantName} />
+          <LocationComponent restaurantName={restaurantData.restaurant_name} />
         );
       case "BOOK A TABLE":
         return <ReserveForm />;
@@ -109,9 +108,9 @@ const RestaurantView = () => {
       <div className="restaurant-view-restaurant-info-banner">
         <RestaurantInfoBanner
           logo={restaurantData.logo}
-          restaurantName={restaurantData.restaurantName}
+          restaurantName={restaurantData.restaurant_name}
           rating={restaurantData.rating}
-          categories={restaurantData.categories}
+          categories={restaurantData.cuisines}
         />
       </div>
       <div className="restaurant-view-content-container">
