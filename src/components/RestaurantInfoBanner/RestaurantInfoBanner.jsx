@@ -1,6 +1,16 @@
+import { useState, useEffect } from "react";
 import "./RestaurantInfoBanner.css";
 
 const RestaurantInfoBanner = ({ logo, restaurantName, rating, categories }) => {
+  const [categoriesList, setCategoriesList] = useState([]);
+
+  useEffect(() => {
+    if (categories) {
+      setCategoriesList(categories);
+    }
+  }, [categories]);
+
+  console.log(categoriesList);
   return (
     <article className="restaurantInfoBanner__container">
       <picture>
@@ -13,7 +23,7 @@ const RestaurantInfoBanner = ({ logo, restaurantName, rating, categories }) => {
       <section className="restaurantInfoBanner__text">
         <h3>{restaurantName}</h3>
         <span>
-          {categories.map((element) => ` ${element.cuisine_category} |`)}{" "}
+          {categoriesList.map((element) => ` ${element.cuisine_category} |`)}{" "}
           Rating: {rating}
         </span>
       </section>

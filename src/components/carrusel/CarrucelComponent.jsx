@@ -18,6 +18,9 @@ const CarrucelComponent = () => {
       .get(`${process.env.REACT_APP_API_URL}/cuisine-categories`)
       .then((res) => {
         setCuisinesList(res.data.data);
+      })
+      .catch((err) => {
+        setCuisinesList([]);
       });
   }, []);
 

@@ -2,29 +2,37 @@ import { useSelector } from "react-redux";
 import { es } from "../../assets/languages/languageES";
 import { en } from "../../assets/languages/languajeEN";
 import IndividualDish from "./IndividualDish";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./OrderOnline.css";
 import { Link } from "react-router-dom";
 
 const OrderOnline = ({ menu }) => {
+  const [menuList, setMenuList] = useState([]);
+
+  useEffect(() => {
+    if (menu) {
+      setMenuList(menu);
+    }
+  }, [menu]);
+
   const render = useMemo(() => {
-    return Object.keys(menu).map((category, index) => {
+    return menuList.map((category, index) => {
       return (
         <div
           key={index}
-          id={category}
+          id={category.id_dishes_category}
           className="restaurant-view-order-online-category"
         >
           <span className="restaurant-view-order-online-category-title"></span>
           <div className="restaurant-view-order-online-subcategory">
             <span className="restaurant-view-order-online-subcategory-title">
-              {category}
+              {category.dishes_category}
             </span>
             <span className="restaurant-view-order-online-subcategory-quantity">
-              {menu[category].length} Items
+              {category.dishes.length} Items
             </span>
             <div className="restaurant-view-order-online-dish">
-              {menu[category].map((dish, index) => {
+              {category.dishes.map((dish, index) => {
                 return (
                   <IndividualDish
                     key={index}
@@ -39,24 +47,24 @@ const OrderOnline = ({ menu }) => {
         </div>
       );
     });
-  }, []);
+  });
 
   return (
     <div className="restaurant-view-order-online">
       <div className="restaurant-view-order-online-search-panel">
         <div className="restaurant-view-order-online-search-panel-list-container">
-          {Object.keys(menu).map((category, index) => {
+          {menuList.map((category, index) => {
             return (
               <div
                 key={index}
                 className="restaurant-view-order-online-search-panel-element-container"
               >
                 <a
-                  href={`#${category}`}
+                  href={`#${category.id_dishes_category}`}
                   className="restaurant-view-order-online-search-panel-element"
                 >
                   <div className="restaurant-view-order-online-search-panel-element-container-a">
-                    {category}
+                    {category.dishes_category}
                   </div>
                 </a>
               </div>
