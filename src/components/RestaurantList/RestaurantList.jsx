@@ -82,15 +82,15 @@ const RestaurantList = () => {
       });
     };
 
-    if (rating >= 2 && categoriesArray.length === 0) {
+    if (rating >= 2 && !categoriesArray.length) {
       result = sortList.filter(
         (element) => Math.round(element.rating) >= rating
       );
     }
-    if (categoriesArray.length > 0 && rating < 2) {
+    if (categoriesArray.length && rating < 2) {
       result = filterByCategory(sortList);
     }
-    if (categoriesArray.length > 0 && rating >= 2) {
+    if (categoriesArray.length && rating >= 2) {
       result = sortList.filter(
         (element) =>
           Math.round(element.rating) >= rating &&

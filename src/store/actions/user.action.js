@@ -1,11 +1,16 @@
-import { 
+import {
   FETCH_USER_FAILURE,
-  FETCH_USER_SUCCESS, 
-  FETCH_USER_REQUEST, 
-  UPDATE_USER_FAILURE, 
-  UPDATE_USER_REQUEST, 
-  UPDATE_USER_SUCCESS 
-} from "../reducers/User.reducer"
+  FETCH_USER_SUCCESS,
+  FETCH_USER_REQUEST,
+  UPDATE_USER_FAILURE,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+  SET_USER
+} from "../reducers/User.reducer";
+
+export const setUser = (user) => {
+  return { type: SET_USER, payload: user };
+};
 
 export const fetchUserRequest = () => {
   return { type: FETCH_USER_REQUEST };

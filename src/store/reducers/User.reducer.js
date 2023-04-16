@@ -4,6 +4,7 @@ export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
+export const SET_USER = 'SET_USER';
 
 const initialState = {
   user: {},
@@ -13,6 +14,11 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_USER:
+      return{
+        ...state,
+        user:action.payload
+      };
     case FETCH_USER_REQUEST:
     case UPDATE_USER_REQUEST: 
       return {
