@@ -23,17 +23,15 @@ const RestaurantView = () => {
   const [pictureNumber, setPictureNumber] = useState(null);
   const [restaurantData, setRestaurantData] = useState({});
   const params = useParams();
+  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/restaurants/path/${params.restaurantPath}`
-      )
+      .get(`${URL}/restaurants/path/${params.restaurantPath}`)
       .then((res) => {
         setRestaurantData(res.data.data);
       });
   }, []);
-  console.log(restaurantData);
 
   useEffect(() => {
     setTimeout(() => {

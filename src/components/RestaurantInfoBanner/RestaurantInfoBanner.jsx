@@ -10,7 +10,6 @@ const RestaurantInfoBanner = ({ logo, restaurantName, rating, categories }) => {
     }
   }, [categories]);
 
-  console.log(categoriesList);
   return (
     <article className="restaurantInfoBanner__container">
       <picture>

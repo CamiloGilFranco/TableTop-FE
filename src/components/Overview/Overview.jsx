@@ -19,9 +19,7 @@ const Overview = ({
         </span>
         <ul className="restaurant-view-overview-category-items">
           {phoneNumber &&
-            phoneNumber.map((element, index) => (
-              <li key={element}>{element}</li>
-            ))}
+            phoneNumber.map((element, index) => <li key={index}>{element}</li>)}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
@@ -30,7 +28,7 @@ const Overview = ({
         </span>
         <ul className="restaurant-view-overview-category-items">
           {categories &&
-            categories.map((element) => <li key={element}>{element}</li>)}
+            categories.map((element, index) => <li key={index}>{element}</li>)}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
@@ -39,7 +37,7 @@ const Overview = ({
         </span>
         <ul className="restaurant-view-overview-category-items">
           {schedule &&
-            schedule.map((element) => <li key={element}>{element}</li>)}
+            schedule.map((element, index) => <li key={index}>{element}</li>)}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
@@ -48,7 +46,7 @@ const Overview = ({
         </span>
         <ul className="restaurant-view-overview-category-items">
           {address &&
-            address.map((element) => <li key={element}>{element}</li>)}
+            address.map((element, index) => <li key={index}>{element}</li>)}
         </ul>
       </div>
       <div className="restaurant-view-overview-category">
@@ -57,7 +55,7 @@ const Overview = ({
         </span>
         <ul className="restaurant-view-overview-category-items">
           {facilities &&
-            facilities.map((element) => <li key={element}>{element}</li>)}
+            facilities.map((element, index) => <li key={index}>{element}</li>)}
         </ul>
       </div>
     </div>
