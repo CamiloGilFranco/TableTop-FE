@@ -236,6 +236,8 @@ const languageSelector = (lang, str) => {
     userUpdateFailedMessage: "Couldn't update the user, there's been an error, please try again.",
     userPage: 'Go to the user page',
     logOutSuccess: "You've logged out successfully",
+    restaurantAdminPage: 'Administrate your restaurant',
+    appAdminPage: 'Administrate the plataform'
   };
 
   const es = {
@@ -478,6 +480,8 @@ const languageSelector = (lang, str) => {
     userUpdateFailedMessage: 'No se pudo actualizar el usuario, ocurrio un error, intenta nuevamente.',
     userPage: 'Ve a la pagina de usuario',
     logOutSuccess: "Sesión terminada correctamente",
+    restaurantAdminPage: 'Administra tu restaurante',
+    appAdminPage: 'Administra la plataforma'
   };
 
   if (lang === "en") {

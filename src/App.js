@@ -2,7 +2,7 @@ import "./App.css";
 import RestaurantView from "./pages/RestaurantView/RestaurantView";
 import HomePageComponent from "./pages/HomePageComponent/HomePageComponent";
 import OrderPage from "./pages/OrderPage/OrderPage";
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route } from "react-router";
 import NotFoundPageComponent from "./pages/NotFoundPageComponent/NotFoundPageComponent";
 import RestaurantListPage from "./pages/RestaurantListPage/RestaurantListPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
@@ -10,13 +10,8 @@ import RestaurantAdminView from "./pages/RestaurantAdminView/RestaurantAdminView
 import GeneralAdminView from "./pages/GeneralAdminView/GeneralAdminView";
 import { CheckoutPageComponent } from "./pages/CheckoutPageComponent/CheckoutPageComponent";
 import UserPage from "./pages/UserPage/UserPage";
-import Cookies from "universal-cookie";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-const Private = ({ children }) => {
-  const cookies = new Cookies();
-  const ticket = cookies.get("token");
-  return ticket ? children : <Navigate to={"/"}/>;
-}
 
 function App() {
   return (
@@ -34,8 +29,22 @@ function App() {
           path="/restaurant/checkout"
           element={<CheckoutPageComponent />}
         />
-        <Route path="/restaurant-admin" element={<RestaurantAdminView />} />
-        <Route path="/general-admin" element={<GeneralAdminView />} />
+        <Route
+          path="/restaurant-admin" 
+          element={
+            <PrivateRoute role="restaurantAdmin">
+              <RestaurantAdminView />
+            </PrivateRoute>
+            }
+          />
+        <Route
+          path="/general-admin"
+          element={
+            <PrivateRoute role="appAdmin">
+              <GeneralAdminView />
+            </PrivateRoute>
+            }
+          />        
         <Route path="/user" element={<UserPage />} />
         <Route path="*" element={<NotFoundPageComponent />} />
       </Routes>

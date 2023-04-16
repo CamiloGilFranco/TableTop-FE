@@ -13,6 +13,7 @@ const LogInComponent = ({ setShowLogIn }) => {
 
   const language = useSelector(state=> state.languageReducer);
   const user = useSelector(state => state.userReducer.user);
+  console.log("🚀 ~ file: LogInComponent.jsx:16 ~ LogInComponent ~ user:", user)
   const dispatch = useDispatch();
   const [whichForm, setWhichForm] = useState(true);
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const LogInComponent = ({ setShowLogIn }) => {
     toast.success(languageSelector(language, "logOutSuccess"));
   };
   const isUserLoggedIn = Object.keys(user).length;
+  const isAdmin = user.user_role === "restaurantAdmin" || user.user_role === "appAdmin";
 
   return (
     <>
@@ -44,13 +46,32 @@ const LogInComponent = ({ setShowLogIn }) => {
             </span>
           </div>
           <div className="log-in-form-main-form">
-          {isUserLoggedIn ? (
-              <div className='log-in-main-form-buttons-container'>
-                <button className='log-in-main-form-buttons' onClick={() => navigate('/user')}>
-                  {languageSelector(language, 'userPage')}
+            {isUserLoggedIn ? (
+                <div className='log-in-main-form-buttons-container'>
+                  <button className='log-in-main-form-buttons' onClick={() => navigate('/user')}>
+                    {languageSelector(language, 'userPage')}
+                  </button>
+                  {isAdmin && (
+                    <button
+                      className="log-in-main-form-buttons"
+                      onClick={() =>
+                        navigate(
+                          user.user_role === "restaurantAdmin"
+                          ? "/restaurant-admin"
+                          : "/general-admin"
+                        )
+                      }
+                    >
+                    {languageSelector(
+                      language,
+                      user.user_role === "restaurantAdmin"
+                      ? "restaurantAdminPage"
+                      : "appAdminPage"
+                    )}
                 </button>
+              )}
                 <button className='log-in-main-form-buttons' onClick={handleLogout}>
-                  {languageSelector(language, 'logOutText')}
+                  {languageSelector(language, 'signOut')}
                 </button>
               </div>
             ) : (
