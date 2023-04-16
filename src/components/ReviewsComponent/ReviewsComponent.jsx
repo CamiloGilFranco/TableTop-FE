@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ReviewsComponent.css";
 import SingleReviewComponent from "./SingleReviewComponent.jsx";
 import star1 from "./assets/star1.png";
@@ -8,6 +8,14 @@ import star4 from "./assets/star4.png";
 import star5 from "./assets/star5.png";
 
 const ReviewsComponent = ({ reviews, handleNewReview }) => {
+  const [reviewsList, setReviewsList] = useState([]);
+
+  useEffect(() => {
+    if (reviews) {
+      setReviewsList(reviews);
+    }
+  }, [reviews]);
+
   const [newReview, setNewReview] = useState({
     stars: "",
     title: "",
@@ -56,15 +64,15 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
 
   return (
     <div className="reviews-component-container">
-      {reviews.map((element, index) => {
+      {reviewsList.map((element, index) => {
+        const createdAtText = new Date(element.createdAt);
         return (
           <SingleReviewComponent
             key={index}
             rating={element.rating}
             title={element.title}
-            author={element.author}
-            date={element.date}
-            description={element.description}
+            date={createdAtText.toDateString()}
+            description={element.comment}
           />
         );
       })}

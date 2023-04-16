@@ -16,7 +16,7 @@ const ControlledCarousel = ({ photos, pictureNumber }) => {
             <Carousel.Item key={index}>
               <div className="gallery-carouse-component-container-container">
                 <img
-                  src={element}
+                  src={element.photo_link}
                   alt=""
                   className="gallery-carouse-component-container-image"
                 />

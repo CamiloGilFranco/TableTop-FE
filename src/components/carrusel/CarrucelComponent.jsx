@@ -12,12 +12,16 @@ const CarrucelComponent = () => {
   const [cuisinesList, setCuisinesList] = useState([]);
 
   const navigate = useNavigate();
+  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/cuisine-categories`)
+      .get(`${URL}/cuisine-categories`)
       .then((res) => {
         setCuisinesList(res.data.data);
+      })
+      .catch((err) => {
+        setCuisinesList([]);
       });
   }, []);
 

@@ -1,17 +1,26 @@
 import "./GalleryComponent.css";
+import { useState, useEffect } from "react";
 
 const GalleryComponent = ({ photos, setCarousel, setPictureNumber }) => {
+  const [photosList, setPhotosList] = useState([]);
+
+  useEffect(() => {
+    if (photos) {
+      setPhotosList(photos);
+    }
+  }, [photos]);
+
   return (
     <div className="gallery-component-container">
-      {photos.map((element, index) => {
+      {photosList.map((element, index) => {
         return (
           <img
-            src={element}
-            alt=""
             key={index}
-            id={index}
+            src={element.photo_link}
+            alt=""
+            id={element.id_restaurant_photo}
             className="gallery-component-prev-photo"
-            onClick={(event) => {
+            onClick={() => {
               setCarousel(true);
               setPictureNumber(index);
             }}
