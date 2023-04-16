@@ -7,15 +7,24 @@ import languageSelector from "../../assets/languages/languageSelector";
 import burger from "../../assets/hamburger.svg";
 import CheckboxFilter from "./CheckboxFilter";
 import cuisinesDB from "../../assets/cuisines.json";
+import axios from "axios";
 
 const RestaurantFilterComponent = () => {
-  const cuisines = Object.keys(cuisinesDB);
+  const [cuisines, setCuisines] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams({});
 
   const [radioSelected, setRadioSelected] = useState("");
   const [mobileView, setMobileView] = useState(false);
 
   const language = useSelector((state) => state.languageReducer);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/cuisine-categories`)
+      .then((res) => {
+        setCuisines(res.data.data);
+      });
+  }, []);
 
   /*
   The existence of a rating type filter in the url is verified,
@@ -123,7 +132,7 @@ const RestaurantFilterComponent = () => {
             {cuisines.map((element, index) => (
               <CheckboxFilter
                 key={index}
-                element={element}
+                element={element.cuisine_category}
                 handleCategoriesChange={handleCategoriesChange}
                 objectParams={Object.fromEntries(searchParams.entries())}
               />

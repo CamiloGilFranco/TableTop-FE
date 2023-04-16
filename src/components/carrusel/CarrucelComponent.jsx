@@ -1,16 +1,29 @@
 import "./CarrucelComponent.css";
-import foodTypes from "../../assets/cuisines.json";
+
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const CarrucelComponent = () => {
   const [numVisibleSlides, setNumVisibleSlides] = useState(6);
-  const data = foodTypes;
-  const keys = Object.keys(data);
+  const [cuisinesList, setCuisinesList] = useState([]);
+
   const navigate = useNavigate();
+  const URL = process.env.REACT_APP_API_URL;
+
+  useEffect(() => {
+    axios
+      .get(`${URL}/cuisine-categories`)
+      .then((res) => {
+        setCuisinesList(res.data.data);
+      })
+      .catch((err) => {
+        setCuisinesList([]);
+      });
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,21 +58,25 @@ const CarrucelComponent = () => {
     <main className="home-carousel-component">
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
-          {keys.map((element, index) => {
+          {cuisinesList.map((element, index) => {
             return (
               <div
                 key={index}
                 className="home-carousel-single-item"
-                onClick={() => navigate(`/restaurants?cuisine=${element}`)}
+                onClick={() =>
+                  navigate(`/restaurants?cuisine=${element.cuisine_category}`)
+                }
               >
                 <div className="home-carousel-single-item-image-container">
                   <img
-                    src={data[element]}
+                    src={element.cuisine_photo}
                     alt=""
                     className="home-carousel-single-item-image"
                   ></img>
                 </div>
-                <h3 className="home-carousel-single-item-title">{element}</h3>
+                <h3 className="home-carousel-single-item-title">
+                  {element.cuisine_category}
+                </h3>
                 <p className="home-carousel-single-item-quantity">
                   23 Restaurants
                 </p>

@@ -8,8 +8,7 @@ const RestaurantCardComponent = ({
   restaurantName,
   rating,
   categories,
-  schedule,
-  dishesFrom,
+  path,
 }) => {
   const navigate = useNavigate();
   const language = useSelector((state) => state.languageReducer);
@@ -18,8 +17,8 @@ const RestaurantCardComponent = ({
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 0);
-    const route = restaurantName.replace(/\s+/g, "");
-    navigate(`/restaurants/${route}`);
+
+    navigate(`/restaurants/${path}`);
   };
 
   return (
@@ -35,13 +34,14 @@ const RestaurantCardComponent = ({
           <span className="restaurant-card-component-rating">{rating} ⭐</span>
         </div>
         <div className="restaurant-card-component-info-list">
-          <span>- {categories[0]}</span>
-          <span>, {categories[1]}</span>
-          <span>, {categories[2]}</span>
-          <p>- {schedule}</p>
-          <p>
-            - {languageSelector(language, "cardDishesFrom")} ${dishesFrom}
-          </p>
+          {categories.map((element, index) => (
+            <span
+              key={index}
+              className="restaurant-card-component-info-list-cuisine"
+            >
+              - {element.cuisine_category}
+            </span>
+          ))}
         </div>
       </figcaption>
     </figure>
