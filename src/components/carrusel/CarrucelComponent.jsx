@@ -62,31 +62,32 @@ const CarrucelComponent = () => {
     <main className="home-carousel-component">
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
-          {cuisinesList.map((element, index) => {
-            return (
-              <div
-                key={index}
-                className="home-carousel-single-item"
-                onClick={() =>
-                  navigate(`/restaurants?cuisine=${element.cuisine_category}`)
-                }
-              >
-                <div className="home-carousel-single-item-image-container">
-                  <img
-                    src={element.cuisine_photo}
-                    alt=""
-                    className="home-carousel-single-item-image"
-                  ></img>
+          {cuisinesList &&
+            cuisinesList.map((element, index) => {
+              return (
+                <div
+                  key={index}
+                  className="home-carousel-single-item"
+                  onClick={() =>
+                    navigate(`/restaurants?cuisine=${element.cuisine_category}`)
+                  }
+                >
+                  <div className="home-carousel-single-item-image-container">
+                    <img
+                      src={element.cuisine_photo}
+                      alt=""
+                      className="home-carousel-single-item-image"
+                    ></img>
+                  </div>
+                  <h3 className="home-carousel-single-item-title">
+                    {element.cuisine_category}
+                  </h3>
+                  <p className="home-carousel-single-item-quantity">
+                    23 Restaurants
+                  </p>
                 </div>
-                <h3 className="home-carousel-single-item-title">
-                  {element.cuisine_category}
-                </h3>
-                <p className="home-carousel-single-item-quantity">
-                  23 Restaurants
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
         </Slider>
       </section>
     </main>
