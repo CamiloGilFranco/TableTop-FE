@@ -11,9 +11,11 @@ import { useNavigate } from "react-router-dom";
 const RestaurantList = () => {
   const navigate = useNavigate();
 
+  const URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/restaurants/withcuisines/all`)
+      .get(`${URL}/restaurants/withcuisines/all`)
       .then((res) => {
         setSortList(res.data.data);
       })
