@@ -20,6 +20,7 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
+import { inputNameRegex } from '../../constants/regexConstants';
 
 const UserPage = () => {
   const cookies = new Cookies();
@@ -89,7 +90,7 @@ const UserPage = () => {
   // handles the changes of the inputs
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    const matches = name.match(/^(\w+)\[(\d+)\](\[\w+\])?$/);
+    const matches = name.match(inputNameRegex);
     if (matches) {
       const fieldNameIndex = 1;
       const fieldIndexIndex = 2;

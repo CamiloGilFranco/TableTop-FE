@@ -11,26 +11,27 @@ import GeneralAdminView from "./pages/GeneralAdminView/GeneralAdminView";
 import { CheckoutPageComponent } from "./pages/CheckoutPageComponent/CheckoutPageComponent";
 import UserPage from "./pages/UserPage/UserPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import routePaths from "./constants/routePaths";
 
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePageComponent />} />
-        <Route path="/register" element={<SignInPage />} />
-        <Route path="/restaurants" element={<RestaurantListPage />} />
+        <Route path={routePaths.home} element={<HomePageComponent />} />
+        <Route path={routePaths.register} element={<SignInPage />} />
+        <Route path={routePaths.restaurants} element={<RestaurantListPage />} />
         <Route
-          path="/restaurants/:restaurantPath"
+          path={routePaths.restaurantView}
           element={<RestaurantView />}
         />
-        <Route path="/order" element={<OrderPage />} />
+        <Route path={routePaths.order} element={<OrderPage />} />
         <Route
-          path="/restaurant/checkout"
+          path={routePaths.checkout}
           element={<CheckoutPageComponent />}
         />
         <Route
-          path="/restaurant-admin" 
+          path={routePaths.restaurantAdmin} 
           element={
             <PrivateRoute role="restaurantAdmin">
               <RestaurantAdminView />
@@ -38,15 +39,15 @@ function App() {
             }
           />
         <Route
-          path="/general-admin"
+          path={routePaths.generalAdmin}
           element={
             <PrivateRoute role="appAdmin">
               <GeneralAdminView />
             </PrivateRoute>
             }
           />        
-        <Route path="/user" element={<UserPage />} />
-        <Route path="*" element={<NotFoundPageComponent />} />
+        <Route path={routePaths.user} element={<UserPage />} />
+        <Route path={routePaths.notFound} element={<NotFoundPageComponent />} />
       </Routes>
     </div>
   );

@@ -8,12 +8,12 @@ import LoginFormComponent from "./LoginFormComponent";
 import "./LogInComponent.css";
 import languageSelector from '../../assets/languages/languageSelector';
 import { setUser } from '../../store/actions/user.action';
+import routePaths from '../../constants/routePaths';
 
 const LogInComponent = ({ setShowLogIn }) => {
 
   const language = useSelector(state=> state.languageReducer);
   const user = useSelector(state => state.userReducer.user);
-  console.log("🚀 ~ file: LogInComponent.jsx:16 ~ LogInComponent ~ user:", user)
   const dispatch = useDispatch();
   const [whichForm, setWhichForm] = useState(true);
   const navigate = useNavigate();
@@ -57,8 +57,8 @@ const LogInComponent = ({ setShowLogIn }) => {
                       onClick={() =>
                         navigate(
                           user.user_role === "restaurantAdmin"
-                          ? "/restaurant-admin"
-                          : "/general-admin"
+                          ? routePaths.restaurantAdmin
+                          : routePaths.generalAdmin
                         )
                       }
                     >
