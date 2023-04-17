@@ -12,7 +12,7 @@ import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent
 import Footer from "../../components/Footer/Footer";
 import CartItem from "../../components/CartItem/CartItem";
 import ControlledCarousel from "../../components/GalleryComponent/GalleryCarouselComponent";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import db from "../../assets/dat.json";
 import axios from "axios";
@@ -24,12 +24,16 @@ const RestaurantView = () => {
   const [restaurantData, setRestaurantData] = useState({});
   const params = useParams();
   const URL = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`${URL}/restaurants/path/${params.restaurantPath}`)
       .then((res) => {
         setRestaurantData(res.data.data);
+      })
+      .catch(() => {
+        navigate("/something-went-wrong");
       });
   }, []);
 

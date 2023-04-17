@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
 import burger from "../../assets/hamburger.svg";
 import CheckboxFilter from "./CheckboxFilter";
-import cuisinesDB from "../../assets/cuisines.json";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RestaurantFilterComponent = () => {
@@ -18,11 +18,18 @@ const RestaurantFilterComponent = () => {
 
   const language = useSelector((state) => state.languageReducer);
 
+  const navigate = useNavigate();
+
+  const URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/cuisine-categories`)
+      .get(`${URL}/cuisine-categories`)
       .then((res) => {
         setCuisines(res.data.data);
+      })
+      .catch(() => {
+        navigate("/something-went-wrong");
       });
   }, []);
 

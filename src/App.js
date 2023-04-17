@@ -12,7 +12,7 @@ import { CheckoutPageComponent } from "./pages/CheckoutPageComponent/CheckoutPag
 import UserPage from "./pages/UserPage/UserPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import routePaths from "./constants/routePaths";
-
+import SomethingWentWrongPage from "./pages/SomethingWentWrong/SomethingWentWrongPage";
 
 function App() {
   return (
@@ -21,33 +21,31 @@ function App() {
         <Route path={routePaths.home} element={<HomePageComponent />} />
         <Route path={routePaths.register} element={<SignInPage />} />
         <Route path={routePaths.restaurants} element={<RestaurantListPage />} />
-        <Route
-          path={routePaths.restaurantView}
-          element={<RestaurantView />}
-        />
+        <Route path={routePaths.restaurantView} element={<RestaurantView />} />
         <Route path={routePaths.order} element={<OrderPage />} />
+        <Route path={routePaths.checkout} element={<CheckoutPageComponent />} />
         <Route
-          path={routePaths.checkout}
-          element={<CheckoutPageComponent />}
-        />
-        <Route
-          path={routePaths.restaurantAdmin} 
+          path={routePaths.restaurantAdmin}
           element={
             <PrivateRoute role="restaurantAdmin">
               <RestaurantAdminView />
             </PrivateRoute>
-            }
-          />
+          }
+        />
         <Route
           path={routePaths.generalAdmin}
           element={
             <PrivateRoute role="appAdmin">
               <GeneralAdminView />
             </PrivateRoute>
-            }
-          />        
+          }
+        />
         <Route path={routePaths.user} element={<UserPage />} />
         <Route path={routePaths.notFound} element={<NotFoundPageComponent />} />
+        <Route
+          path={routePaths.somethingWentWrong}
+          element={<SomethingWentWrongPage />}
+        />
       </Routes>
     </div>
   );

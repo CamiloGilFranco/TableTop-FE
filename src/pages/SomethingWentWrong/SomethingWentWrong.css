@@ -1,0 +1,10 @@
+.something-went-wrong-page-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.something-went-wrong-page-img {
+  margin: 15px;
+  max-width: 90%;
+}/*# sourceMappingURL=SomethingWentWrong.css.map */
