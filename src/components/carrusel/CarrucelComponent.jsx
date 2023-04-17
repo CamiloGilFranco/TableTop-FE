@@ -18,11 +18,7 @@ const CarrucelComponent = () => {
     axios
       .get(`${URL}/cuisine-categories`)
       .then((res) => {
-        const data = res.data.data;
-
-        if (data) {
-          setCuisinesList(res.data.data);
-        }
+        setCuisinesList(res.data.data);
       })
       .catch((err) => {
         navigate("/something-went-wrong");
@@ -62,7 +58,8 @@ const CarrucelComponent = () => {
     <main className="home-carousel-component">
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
-          {cuisinesList &&
+          {!!cuisinesList &&
+            cuisinesList.length > 0 &&
             cuisinesList.map((element, index) => {
               return (
                 <div
