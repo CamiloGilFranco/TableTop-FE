@@ -7,6 +7,7 @@ import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector, useDispatch } from 'react-redux';
 import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
 import Cookies from 'universal-cookie';
+import { useJwt } from "react-jwt";
 import axios from 'axios';
 import {
   fetchUserRequest,
@@ -18,6 +19,8 @@ import {
 } from '../../store/actions/user.action';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
+import { inputNameRegex } from '../../constants/regexConstants';
 
 const UserPage = () => {
   const cookies = new Cookies();
@@ -29,7 +32,7 @@ const UserPage = () => {
   const dispatch = useDispatch();
   const apiUrl = process.env.REACT_APP_API_URL;
   const jwtToken = cookies.get('token');
-
+  const { isExpired } = useJwt(cookies.get("token"));
   const config = {
     headers: {
       Authorization: `Bearer ${jwtToken}`,
@@ -84,10 +87,10 @@ const UserPage = () => {
     setIsEditable(!isEditable);
   }
 
-  // hangles the changes of the inputs
+  // handles the changes of the inputs
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    const matches = name.match(/^(\w+)\[(\d+)\](\[\w+\])?$/);
+    const matches = name.match(inputNameRegex);
     if (matches) {
       const fieldNameIndex = 1;
       const fieldIndexIndex = 2;
@@ -232,6 +235,10 @@ const UserPage = () => {
       showErrorToast(errorMessage);
     }
   };
+
+  if (!user || isExpired) {
+    return <NotFoundPageComponent />;
+  }
    
   if (loading) {
     return (

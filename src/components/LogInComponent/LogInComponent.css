@@ -165,4 +165,22 @@
   font-weight: 700;
   color: white;
   cursor: pointer;
+}
+
+.log-in-main-form-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-in-main-form-buttons {
+  background-color: #f75c5c;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 165px;
 }/*# sourceMappingURL=LogInComponent.css.map */

@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
 import { setUser } from "../../store/actions/user.action";
 
 const LoginFormComponent = ({ setWhichForm, closeModal }) => {
