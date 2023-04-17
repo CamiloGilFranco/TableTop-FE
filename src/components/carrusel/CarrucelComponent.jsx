@@ -21,6 +21,7 @@ const CarrucelComponent = () => {
         setCuisinesList(res.data.data);
       })
       .catch((err) => {
+        navigate("/something-went-wrong");
         setCuisinesList([]);
       });
   }, []);

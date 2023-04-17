@@ -6,15 +6,19 @@ import { useSearchParams } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RestaurantList = () => {
-  const data = DB;
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/restaurants/withcuisines/all`)
       .then((res) => {
         setSortList(res.data.data);
+      })
+      .catch(() => {
+        navigate("/something-went-wrong");
       });
   }, []);
 
