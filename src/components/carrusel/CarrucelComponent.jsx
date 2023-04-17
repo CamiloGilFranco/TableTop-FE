@@ -18,11 +18,14 @@ const CarrucelComponent = () => {
     axios
       .get(`${URL}/cuisine-categories`)
       .then((res) => {
-        setCuisinesList(res.data.data);
+        const data = res.data.data;
+
+        if (data) {
+          setCuisinesList(res.data.data);
+        }
       })
       .catch((err) => {
         navigate("/something-went-wrong");
-        setCuisinesList([]);
       });
   }, []);
 
