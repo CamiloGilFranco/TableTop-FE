@@ -23,6 +23,7 @@ import {
   updateUserFailure
 } from '../../store/actions/user.action';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
+import GeneralAdminUserChange from './GeneralAdminUserChange/GeneralAdminUserChange';
 
 const GeneralAdminView = () => {
   const user = useSelector(state => state.userReducer.user);
@@ -223,6 +224,7 @@ const GeneralAdminView = () => {
   return (
     <>
       <HeaderComponent />
+      <ToastContainer/>
       <div className='generalAdminView__container'>
         <h1 className='generalAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</h1>
         <article className='generalAdminView__flex'>
@@ -232,7 +234,8 @@ const GeneralAdminView = () => {
               {languageSelector(language, 'generalAdminList')} #{restaurants.length} restaurant{restaurants.length? 's' : ''} {language === 'en' ? 'and': 'y'} #{users.length} {language === 'en'? 'users': 'usuarios'}
             </span>
             <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
-            <form className='generalAdminView__form' onSubmit={newUserSumbit}>
+            <GeneralAdminUserChange />
+            {/* <form className='generalAdminView__form' onSubmit={newUserSumbit}>
               <h3>{languageSelector(language, 'generalAdminAddUserTitle')}:</h3>
               <label htmlFor='newUserFirstName'>{languageSelector(language, 'signInFirstName')}</label>
               <input 
@@ -265,7 +268,7 @@ const GeneralAdminView = () => {
                 <option value={'regularUser'}>{languageSelector(language, 'generalAdminAddUserRegUser')}</option>
               </select>
               <button type='sumbit'>{languageSelector(language, 'generalAdminAddUserButton')}</button>
-            </form>
+            </form> */}
               {users && users.map((item, index)=> {
                 return(
                   <ul key={index}>
