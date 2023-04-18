@@ -1,16 +1,34 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
+import { useJwt } from "react-jwt";
+import { ToastContainer, toast } from 'react-toastify';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
-import './GeneralAdminView.css';
 import GeneralAdminModal from '../../components/GeneralAdminModal/GeneralAdminModal';
 import languageSelector from '../../assets/languages/languageSelector';
+import './GeneralAdminView.css';
+import 'react-toastify/dist/ReactToastify.css';
+import {
+  fetchUserRequest,
+  fetchUserSuccess,
+  fetchUserFailure,
+  updateUserRequest,
+  updateUserSuccess,
+  updateUserFailure
+} from '../../store/actions/user.action';
+import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 
 const GeneralAdminView = () => {
-  const usersData = userDB;
+  const user = useSelector(state => state.userReducer.user);
+  const loading = useSelector((state) => state.userReducer.loading);
+  const language = useSelector(state=> state.languageReducer);  
+  const cookies = new Cookies();
   const resDB = restaurantDB;
   const [errors, setErrors] = useState({});
   const [restaurants, setRestaurants] = useState(resDB);
@@ -26,10 +44,18 @@ const GeneralAdminView = () => {
     vegetarian: false,
     bar: false,
     coffee: false,
-  })
+  });
   const [modalVisible, setModalVisible] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const language = useSelector(state=> state.languageReducer);
+  const dispatch = useDispatch();
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const jwtToken = cookies.get('token');
+  const { isExpired } = useJwt(cookies.get("token"));
+  const config = {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  };
 
   const categoriesArr = [
     {name: 'asian', label: 'asian'},
@@ -43,6 +69,19 @@ const GeneralAdminView = () => {
     {name: 'bar', label: 'bar'},
     {name: 'coffee', label: 'coffee'},
   ];
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      dispatch(fetchUserRequest());
+      try {
+        const response = await axios.get(`${apiUrl}/users/profile`, config);
+        dispatch(fetchUserSuccess(response.data.data));
+      } catch (error) {
+        dispatch(fetchUserFailure(error));
+      }
+    };
+    fetchUser();
+  }, [dispatch, apiUrl, jwtToken]);
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -168,11 +207,24 @@ const GeneralAdminView = () => {
     setModalVisible(false);
   };  
   
+
+  if (!user || isExpired) {
+    return <NotFoundPageComponent />;
+  }
+   
+  if (loading) {
+    return (
+      <div>
+        <img src={`${loadingGif}`} alt='loading'/>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <>
       <HeaderComponent />
       <div className='generalAdminView__container'>
-        <h1 className='generalAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {usersData[3].name}!</h1>
+        <h1 className='generalAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</h1>
         <article className='generalAdminView__flex'>
           <span>
             <h3>{languageSelector(language, 'generalAdminSubtitle')}</h3>

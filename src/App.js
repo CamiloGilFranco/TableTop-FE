@@ -1,4 +1,9 @@
 import "./App.css";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Cookies from 'universal-cookie';
+import { getUserDataFromCookies } from "./utils/auth";
+import { setUser } from "./store/actions/user.action";
 import RestaurantView from "./pages/RestaurantView/RestaurantView";
 import HomePageComponent from "./pages/HomePageComponent/HomePageComponent";
 import OrderPage from "./pages/OrderPage/OrderPage";
@@ -15,6 +20,17 @@ import routePaths from "./constants/routePaths";
 import SomethingWentWrongPage from "./pages/SomethingWentWrong/SomethingWentWrongPage";
 
 function App() {
+
+  const dispatch = useDispatch();
+  const cookies = new Cookies();
+
+  useEffect(() => {
+    const userData = getUserDataFromCookies(cookies);
+    if (userData) {
+      dispatch(setUser(userData));
+    }
+  }, [dispatch, cookies]);
+
   return (
     <div className="App">
       <Routes>
