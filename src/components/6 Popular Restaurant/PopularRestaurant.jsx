@@ -64,10 +64,10 @@ const PopularRestaurant = ({ inputValue }) => {
     }
 
     if (!filteredData.length) {
-      return shortList.map((element) => {
+      return shortList.map((element, index) => {
         return (
           <RestaurantCardComponent
-            key={element.id_restaurant}
+            key={index}
             picture={element.main_photo}
             restaurantName={element.restaurant_name}
             rating={element.rating}
@@ -77,10 +77,10 @@ const PopularRestaurant = ({ inputValue }) => {
         );
       });
     } else {
-      return filteredData.map((element) => {
+      return filteredData.map((element, index) => {
         return (
           <RestaurantCardComponent
-            key={element.id_restaurant}
+            key={index}
             picture={element.main_photo}
             restaurantName={element.restaurant_name}
             rating={element.rating}
@@ -99,7 +99,7 @@ const PopularRestaurant = ({ inputValue }) => {
           {languageSelector(language, "popularRestaurantTitle")}
         </span>
         <div className="popular-restaurants-buttons">
-          {sortButton.map((item) => {
+          {sortButton.map((item, index) => {
             return (
               <p
                 key={item.id}

@@ -5,7 +5,6 @@ import RestauranOptions from "../../components/RestaurantOptions/RestauranOption
 import OrderOnline from "../../components/OrderOnline/OrderOnline";
 import Overview from "../../components/Overview/Overview";
 import GalleryComponent from "../../components/GalleryComponent/GalleryComponent";
-import LocationComponent from "../../components/LocationComponent/LocationComponent";
 import ReserveForm from "../../components/ReserveForm/ReserveForm";
 import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent";
 import Footer from "../../components/Footer/Footer";
@@ -44,12 +43,10 @@ const RestaurantView = () => {
 
   const classOrderOnline =
     selected === "ORDER ONLINE" ? "restaurant-options-option-selected" : "";
-  const classOverview =
-    selected === "OVERVIEW" ? "restaurant-options-option-selected" : "";
+  const classVenues =
+    selected === "VENUES" ? "restaurant-options-option-selected" : "";
   const classGallery =
     selected === "GALLERY" ? "restaurant-options-option-selected" : "";
-  const classLocation =
-    selected === "LOCATION" ? "restaurant-options-option-selected" : "";
   const classBookATable =
     selected === "BOOK A TABLE" ? "restaurant-options-option-selected" : "";
   const classReviews =
@@ -73,7 +70,7 @@ const RestaurantView = () => {
     switch (selected) {
       case "ORDER ONLINE":
         return <OrderOnline menu={restaurantData.dishes_categories} />;
-      case "OVERVIEW":
+      case "VENUES":
         return <Overview venues={restaurantData.venues} />;
       case "GALLERY":
         return (
@@ -82,10 +79,6 @@ const RestaurantView = () => {
             setCarousel={setCarousel}
             setPictureNumber={setPictureNumber}
           />
-        );
-      case "LOCATION":
-        return (
-          <LocationComponent restaurantName={restaurantData.restaurant_name} />
         );
       case "BOOK A TABLE":
         return <ReserveForm />;
@@ -121,9 +114,8 @@ const RestaurantView = () => {
               setSelected={setSelected}
               selected={selected}
               classOrderOnline={classOrderOnline}
-              classOverview={classOverview}
+              classVenues={classVenues}
               classGallery={classGallery}
-              classLocation={classLocation}
               classBookATable={classBookATable}
               classReviews={classReviews}
             />
