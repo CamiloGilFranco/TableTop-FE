@@ -18,12 +18,10 @@ import {
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserFailure,
-  updateUserRequest,
-  updateUserSuccess,
-  updateUserFailure
 } from '../../store/actions/user.action';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 import GeneralAdminUserChange from './GeneralAdminUserChange/GeneralAdminUserChange';
+import NewRestaurantForm from './NewRestaurantForm/NewRestaurantForm';
 
 const GeneralAdminView = () => {
   const user = useSelector(state => state.userReducer.user);
@@ -33,7 +31,6 @@ const GeneralAdminView = () => {
   const resDB = restaurantDB;
   const [errors, setErrors] = useState({});
   const [restaurants, setRestaurants] = useState(resDB);
-  const [users, setUsers] = useState(userDB);
   const [checkboxValues, setCheckboxValues] = useState({
     asian: false,
     fastfood: false,
@@ -149,45 +146,8 @@ const GeneralAdminView = () => {
     const updatedRestaurant = restaurants.filter((item)=> item.id !== id);
     setRestaurants(updatedRestaurant);
   }
-  const newUserSumbit = (e) =>{
-    const validationErrors = {};
-    e.preventDefault();
-    const form = e.target;
-    const firstName = form.newUserFirstName.value;
-    const lastName = form.newUserLastName.value;
-    const email = form.newUserEmail.value;
-    const role = form.newUserRole.value;
-
-    const newUser = {
-      id: users.length + 1,
-      name : `${firstName} ${lastName}`,
-      role,
-      email
-    }
-    
-    const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    if (!emailRegEx.test(email)) {
-      validationErrors.email = languageSelector(language, 'signInEmailError');
-    }
-    if (firstName.length < 2) {
-      validationErrors.firstName = languageSelector(language, 'signInFirstNameError');
-    }
-    if (lastName.length < 2 ) {
-      validationErrors.lastName = languageSelector(language, 'signInLastNameError');
-    }
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setUsers([...users, newUser])
-    setErrors({});
-    form.reset();
-  }
   
-  const hanldeUserDelete = (id) =>{
-    setUsers(users.filter((item) => item.id !== id));
-  }
+ 
   const handleEditClick = (value)=> {
     setModalVisible(true);
     setEditingItem(value);
@@ -231,53 +191,13 @@ const GeneralAdminView = () => {
           <span>
             <h3>{languageSelector(language, 'generalAdminSubtitle')}</h3>
             <span className='generalAdmin__span'>
-              {languageSelector(language, 'generalAdminList')} #{restaurants.length} restaurant{restaurants.length? 's' : ''} {language === 'en' ? 'and': 'y'} #{users.length} {language === 'en'? 'users': 'usuarios'}
+              PLACE HOLDER TEXT            
             </span>
             <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
             <GeneralAdminUserChange />
-            {/* <form className='generalAdminView__form' onSubmit={newUserSumbit}>
-              <h3>{languageSelector(language, 'generalAdminAddUserTitle')}:</h3>
-              <label htmlFor='newUserFirstName'>{languageSelector(language, 'signInFirstName')}</label>
-              <input 
-                type='text' 
-                name='newUserFirstName' 
-                id='newUserFirstName' 
-                placeholder={languageSelector(language, 'signInFirstName')}
-              />
-              {errors.firstName && <p className='restaurantAdminView__error'>{errors.firstName}</p>}
-              <label htmlFor='newUserLastName'>{languageSelector(language, 'signInLastName')}</label>
-              <input 
-                type='text' 
-                name='newUserLastName' 
-                id='newUserLastName' 
-                placeholder={languageSelector(language, 'signInLastName')}
-              />
-              {errors.lastName && <p className='restaurantAdminView__error'>{errors.lastName}</p>}
-              <label htmlFor='newUserEmail'>{languageSelector(language, 'signInEmail')}</label>
-              <input 
-                type='text' 
-                name='newUserEmail' 
-                id='newUserEmail' 
-                placeholder={languageSelector(language, 'signInEmail')}
-              />
-              {errors.email && <p className='restaurantAdminView__error'>{errors.email}</p>}
-              <label htmlFor='newUserRole'>{languageSelector(language, 'generalAdminAddUserRole')}</label>
-              <select id='newUserRole' name='newUserRole'>
-                <option value={'restaurantAdmin'}>{languageSelector(language, 'generalAdminAddUserResAdmin')}</option>
-                <option value={'generalAdmin'}>{languageSelector(language, 'generalAdminAddUserGenAdmin')}</option>
-                <option value={'regularUser'}>{languageSelector(language, 'generalAdminAddUserRegUser')}</option>
-              </select>
-              <button type='sumbit'>{languageSelector(language, 'generalAdminAddUserButton')}</button>
-            </form> */}
-              {users && users.map((item, index)=> {
-                return(
-                  <ul key={index}>
-                    <li className='newUser__list'>#{item.id} {item.name} {<AiFillDelete className='generalAdminView__icon' onClick={()=>hanldeUserDelete(item.id)}/>}</li>
-                  </ul>
-                )
-              })}
           </span>
-          <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
+          <NewRestaurantForm/>
+          {/* <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
           <span>{languageSelector(language, 'newRestaurantFormTitle')}</span>
           <label htmlFor='newRestaurantTitle'>{languageSelector(language, 'newRestaurantFormName')}</label>
               <input 
@@ -312,7 +232,7 @@ const GeneralAdminView = () => {
                 {errors.categories && <p className='generalAdminView__error'>{errors.categories}</p>}
               </div>
               <button type='sumbit'>{languageSelector(language, 'newRestaurantFormButton')}</button>
-          </form>
+          </form> */}
           <article className='generalAdminView__article'>
             <span>{languageSelector(language, 'generalAdminFullList')}</span>
             <p>{languageSelector(language, 'generalAdminDelete')}</p>

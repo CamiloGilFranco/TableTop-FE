@@ -1,0 +1,27 @@
+.newRestaurantForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(238, 237, 236);
+}
+.newRestaurantForm label {
+  font-size: 18px;
+}
+.newRestaurantForm input[type=text],
+.newRestaurantForm input[type=email] {
+  font-size: 16px;
+  padding: 5px;
+}
+.newRestaurantForm input[type=file] {
+  margin-bottom: 5px;
+}
+.newRestaurantForm button[type=submit] {
+  font-size: 18px;
+  padding: 5px;
+  border: none;
+  background-color: #ef3f3f;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}/*# sourceMappingURL=NewRestaurantForm.css.map */
