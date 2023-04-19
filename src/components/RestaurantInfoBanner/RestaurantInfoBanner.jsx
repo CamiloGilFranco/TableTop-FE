@@ -23,7 +23,7 @@ const RestaurantInfoBanner = ({ logo, restaurantName, rating, categories }) => {
         <h3>{restaurantName}</h3>
         <span>
           {categoriesList.map((element) => ` ${element.cuisine_category} |`)}{" "}
-          Rating: {rating}
+          Rating: {rating && rating.toFixed(1)}
         </span>
       </section>
     </article>

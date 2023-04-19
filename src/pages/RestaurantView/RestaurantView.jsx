@@ -2,7 +2,6 @@ import "./RestaurantView.css";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent.jsx";
 import RestaurantInfoBanner from "../../components/RestaurantInfoBanner/RestaurantInfoBanner";
 import RestauranOptions from "../../components/RestaurantOptions/RestauranOptions";
-import Recommended from "../../components/Recommended/Recommended";
 import OrderOnline from "../../components/OrderOnline/OrderOnline";
 import Overview from "../../components/Overview/Overview";
 import GalleryComponent from "../../components/GalleryComponent/GalleryComponent";
@@ -14,8 +13,8 @@ import CartItem from "../../components/CartItem/CartItem";
 import ControlledCarousel from "../../components/GalleryComponent/GalleryCarouselComponent";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import db from "../../assets/dat.json";
 import axios from "axios";
+import PopularRestaurant from "../../components/6 Popular Restaurant/PopularRestaurant";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
@@ -138,7 +137,7 @@ const RestaurantView = () => {
         </div>
       </div>
       <div className="restaurant-view-body-recommended-places">
-        <Recommended />
+        <PopularRestaurant />
       </div>
       <div className="restaurant-view-footer">
         <Footer />
