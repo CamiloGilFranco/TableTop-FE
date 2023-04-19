@@ -29,7 +29,6 @@ const GeneralAdminView = () => {
   const language = useSelector(state=> state.languageReducer);  
   const cookies = new Cookies();
   const resDB = restaurantDB;
-  const [errors, setErrors] = useState({});
   const [restaurants, setRestaurants] = useState(resDB);
   const [checkboxValues, setCheckboxValues] = useState({
     asian: false,
@@ -55,18 +54,6 @@ const GeneralAdminView = () => {
     },
   };
 
-  const categoriesArr = [
-    {name: 'asian', label: 'asian'},
-    {name: 'fastfood', label: 'fastfood'},
-    {name: 'italian', label: 'italian'},
-    {name: 'mexican', label: 'mexican'},
-    {name: 'breakfast', label: 'breakfast'},
-    {name: 'tipical', label: 'tipical'},
-    {name: 'dessert', label: 'dessert'},
-    {name: 'vegetarian', label: 'vegetarian'},
-    {name: 'bar', label: 'bar'},
-    {name: 'coffee', label: 'coffee'},
-  ];
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -81,65 +68,6 @@ const GeneralAdminView = () => {
     fetchUser();
   }, [dispatch, apiUrl, jwtToken]);
 
-  const handleCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    setCheckboxValues((prevValues)=> ({
-      ...prevValues,
-      [name]: checked,
-    }));
-  };
-
-
-  // logic for the sumbit of the form 
-  const handleNewRestaurantSumbit = (e) => {
-    const validationErrors = {};
-    const form = e.target;
-    const name = form.name.value;
-    const location = form.location.value;
-    e.preventDefault();
-    
-  
-    const checkedValues = Object.values(checkboxValues);
-    const categories = Object.entries(checkboxValues)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key);
-
-    const newRestaurant = {
-      id: restaurants.length + 1,
-      restautantPathName: name.replaceAll(' ', '').toLowerCase(),
-      restaurantName: name, 
-      location,
-      categories,
-      createdAt: [new Date().getFullYear(), new Date().getDate(), new Date().getMonth()+1].join('-'),
-    }
-
-    if (name.length < 2) {
-      validationErrors.name = languageSelector(language, 'newRestaurantFormNameError');
-    }
-    if (checkedValues.every((value)=> !value)) {
-      validationErrors.categories = languageSelector(language, 'newRestaurantFormCategoriesError');
-    }
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    setCheckboxValues({
-      asian: false,
-      fastfood: false,
-      italian: false,
-      mexican: false,
-      breakfast: false,
-      tipical: false,
-      dessert: false,
-      vegetarian: false,
-      bar: false,
-      coffee: false,
-    })
-    setRestaurants(((prevRestaurant)=> [...prevRestaurant, newRestaurant]));
-    setErrors({});
-    form.reset();
-  }
 
   // does the logic for the deletion of a restaurant
   const handleDelete = (id) => {

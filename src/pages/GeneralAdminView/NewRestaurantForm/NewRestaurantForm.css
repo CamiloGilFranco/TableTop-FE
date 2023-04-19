@@ -7,14 +7,20 @@
 }
 .newRestaurantForm label {
   font-size: 18px;
+  font-weight: 600;
 }
 .newRestaurantForm input[type=text],
 .newRestaurantForm input[type=email] {
   font-size: 16px;
   padding: 5px;
+  line-height: 20px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
 }
 .newRestaurantForm input[type=file] {
   margin-bottom: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 .newRestaurantForm button[type=submit] {
   font-size: 18px;
@@ -24,4 +30,11 @@
   color: #fff;
   cursor: pointer;
   font-weight: 700;
+  border-radius: 3px;
+}
+
+.newRestaurantForm__error {
+  color: #ef3f3f;
+  font-weight: 700;
+  font-size: 16px;
 }/*# sourceMappingURL=NewRestaurantForm.css.map */

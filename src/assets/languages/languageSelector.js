@@ -244,7 +244,24 @@ const languageSelector = (lang, str) => {
     reviewFormComments: 'Coments',
     commentsError: "* You must write your comments and they cannot have more than 255 characters",
     reviewsTitleError: "* You must write a title and it cannot have more than 40 characters",
-    reviewStarsError: "* You must give a rating"
+    reviewStarsError: "* You must give a rating",
+    newRestaurantLogoError: '* Logo is required',
+    newRestaurantMainPhotoError: '* Main photo is required',
+    mainPhoto: 'Main Photo',
+    adminEmail: 'Restaurant Admin Email',
+    adminEmailError: '* Valid admin email is required',
+    usersFetchError: '* Error fetching users',
+    updateUserError: 'Error updating user role',
+    deavtivateUserWarning: 'Are you sure you want to deactivate this user? This action cannot be undone.',
+    deactivatedUserSuccess: 'User deactivated successfully',
+    deactivatedUserFailure: 'Error deactivating user',
+    appAdminUserTitle: 'Here you can change a user role to an App admin,',
+    appAdminUserWarning: 'Be careful, this person will have the ability to do major changes to the platform.',
+    appAdminUserEmail: 'New App admin email',
+    appAdminUserButton: 'Update User Role',
+    role: 'Role',
+    showUsers: 'Show Users',
+    hideUsers: 'Hide Users'
   };
 
   const es = {
@@ -495,9 +512,25 @@ const languageSelector = (lang, str) => {
     reviewFormComments: 'Comentarios',
     commentsError: "* Debes escribir tus comentarios y estos no pueden tener mas de 255 caracteres",
     reviewsTitleError: "* Debes escribir un titulo y este no puede tener mas de 40 caracteres",
-    reviewStarsError: "* Debes dar una calificación"
-  };
-
+    reviewStarsError: "* Debes dar una calificación",
+    newRestaurantLogoError: '* Se requiere un logo',
+    newRestaurantMainPhotoError: '* Se requiere foto principal',
+    mainPhoto: 'Foto principal',
+    adminEmail: 'Correo del administrador del restaurante',
+    adminEmailError: '* Se requiere un correo electrónico de administrador válido',
+    usersFetchError: '* Error al obtener usuarios',
+    updateUserError: '* Error al actualizar el rol de usuario',
+    deavtivateUserWarning: '¿Está seguro de que desea desactivar este usuario? Esta acción no se puede deshacer.',
+    deactivatedUserSuccess: 'Usuario desactivado con éxito',
+    deactivatedUserFailure: 'Error al desactivar usuario',
+    appAdminUserTitle: 'Aquí puede cambiar un rol de usuario a administrador de la aplicación,',
+    appAdminUserWarning: 'Tenga cuidado, esta persona tendrá la capacidad de realizar cambios importantes en la plataforma.',
+    appAdminUserEmail: 'Correo del nuevo administrador de plataforma',
+    appAdminUserButton: 'Actualizar rol de usuario',
+    role: 'Rol',
+    showUsers: 'Mostrar Usuarios',
+    hideUsers: 'Ocultar Usuarios'
+  }
   if (lang === "en") {
     return en[str] || str;
   } else if (lang === "es") {

@@ -1,15 +1,19 @@
 import React, { useState }from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 import './NewRestaurantForm.css';
+import languageSelector from '../../../assets/languages/languageSelector';
 
 const NewRestaurantForm = () => {
   const cookies = new Cookies();
-  const [restaurant_name, setName] = useState('');
+  const [restaurant_name, setRestautant_name] = useState('');
+  const [errors, setErrors] = useState({});
   const [logo, setLogo] = useState(null);
   const [mainPhoto, setMainPhoto] = useState(null);
   const [adminEmail, setAdminEmail] = useState('');
+  const language = useSelector(state=> state.languageReducer);
   const apiUrl = process.env.REACT_APP_API_URL;
   const jwtToken = cookies.get('token');
   const config = {
@@ -18,27 +22,43 @@ const NewRestaurantForm = () => {
     },
   };
 
+  const validateFields = () => {
+    const validationErrors = {};
+
+    if (!restaurant_name.trim()) {
+      validationErrors.restaurant_name = languageSelector(language, 'newRestaurantFormNameError');
+    }
+    if (!logo) {
+      validationErrors.logo = languageSelector(language, 'newRestaurantLogoError');
+    }
+    if (!mainPhoto) {
+      validationErrors.mainPhoto = languageSelector(language, 'newRestaurantMainPhotoError');;
+    }
+    if (!adminEmail.trim() || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(adminEmail)) {
+      validationErrors.adminEmail = languageSelector(language, 'adminEmailError');
+    }
+
+    return validationErrors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const form = event.target;
-    const restaurant_name = form.restaurant_name.value;
-    const logo = form.logo.value;
-    const mainPhoto = form.mainPhoto.value;
-    const adminEmail = form.adminEmail.value;
+    const data = new FormData();
     const restaurantPath = restaurant_name.replaceAll(" ", "").toLowerCase();
+    data.append('restaurant_name',restaurant_name);
+    data.append('restaurantPath', restaurantPath);
+    data.append('logo', logo);
+    data.append('mainPhoto', mainPhoto);
+    data.append('adminEmail', adminEmail);
 
-    // pending validations
-
-    const newRestaurant = {
-      restaurant_name,
-      restaurantPath,
-      logo,
-      mainPhoto,
-      adminEmail
+    const validationErrors = validateFields();
+    if (Object.keys(validationErrors).length) {
+      setErrors(validationErrors);
+      return;
     }
     
     try {
-      const response = await axios.post(`${apiUrl}/restaurants`, newRestaurant, config);
+      const response = await axios.post(`${apiUrl}/restaurants`, data, config);
 
       if (response.status === 200) {
         toast.success("Restaurant created successfully!");
@@ -55,13 +75,16 @@ const NewRestaurantForm = () => {
 
   return (
     <form className="newRestaurantForm" onSubmit={handleSubmit}>
-      <label htmlFor="restaurant_name">Name</label>
+      <label htmlFor="restaurant_name">{languageSelector(language, 'newRestaurantFormName')}</label>
       <input
         type="text"
         id="restaurant_name"
         value={restaurant_name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => setRestautant_name(e.target.value)}
       />
+      {errors.restaurant_name && (
+        <p className="newRestaurantForm__error">{errors.restaurant_name}</p>
+      )}
       <label htmlFor="logo">Logo</label>
       <input
         type="file"
@@ -69,21 +92,30 @@ const NewRestaurantForm = () => {
         accept="image/*"
         onChange={(e) => handleFileInput(e, setLogo)}
       />
-      <label htmlFor="mainPhoto">Main Photo</label>
+       {errors.logo && (
+        <p className="newRestaurantForm__error">{errors.logo}</p>
+      )}
+      <label htmlFor="mainPhoto">{languageSelector(language, 'mainPhoto')}</label>
       <input
         type="file"
         id="mainPhoto"
         accept="image/*"
         onChange={(e) => handleFileInput(e, setMainPhoto)}
       />
-      <label htmlFor="adminEmail">Admin Email</label>
+      {errors.mainPhoto && (
+        <p className="newRestaurantForm__error">{errors.mainPhoto}</p>
+      )}
+      <label htmlFor="adminEmail">{languageSelector(language, 'adminEmail')}</label>
       <input
         type="email"
         id="adminEmail"
         value={adminEmail}
         onChange={(e) => setAdminEmail(e.target.value)}
       />
-      <button type="submit">Submit</button>
+       {errors.adminEmail && (
+        <p className="newRestaurantForm__error">{errors.adminEmail}</p>
+      )}
+      <button type="submit">{languageSelector(language, 'newRestaurantFormButton')}</button>
     </form>
   );
 }

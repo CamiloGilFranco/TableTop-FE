@@ -29,7 +29,7 @@ const GeneralAdminUserChange = () => {
       });
       setUsers(response.data.data);
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Error fetching users');
+      toast.error(error.response?.data?.message || languageSelector(language, 'usersFetchError'));
     }
   };
   
@@ -51,18 +51,18 @@ const GeneralAdminUserChange = () => {
       setEmail('');
       toast.success(response.data.message);
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Error updating user role');
+      toast.error(error.response?.data?.message || languageSelector(language, 'updateUserError'));
     }
   }
   
   const hanldeUserDelete = async (id) => {
-    if (window.confirm('Are you sure you want to deactivate this user? This action cannot be undone.')) {
+    if (window.confirm(languageSelector(language, 'deavtivateUserWarning'))) {
       try {
         const response = await axios.put(`${process.env.REACT_APP_API_URL}/users/${id}`, {}, config);
-        toast.success(response.data.message || 'User deactivated successfully');
+        toast.success(response.data.message || languageSelector(language, 'deactivatedUserSuccess'));
         fetchUsers();
       } catch (error) {
-        toast.error(error.response?.data?.message || 'Error deactivating user');
+        toast.error(error.response?.data?.message || languageSelector(language, 'deactivatedUserFailure'));
       }
     }
   };
@@ -70,11 +70,11 @@ const GeneralAdminUserChange = () => {
   return (
     <>
       <div className="generalAdminView__warning">
-        Here you can change a user role to be a App admnn, <b>Be careful, this person will have the ability to do major changes in the plataform.</b>
+        {languageSelector(language, 'appAdminUserTitle')} <b>{languageSelector(language, 'appAdminUserWarning')}</b>
       </div>
       <form className="generalAdminView__form" onSubmit={handleSubmit}>
         <label htmlFor="email">
-          Write the user email
+          {languageSelector(language, "appAdminUserEmail")}
         </label>
         <input
           type="email"
@@ -85,17 +85,17 @@ const GeneralAdminUserChange = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="submit">Update User Role</button>
+        <button type="submit">{languageSelector(language, 'appAdminUserButton')}</button>
       </form>
       <div className='generalAdmin_userList'>
         <button onClick={toggleExpanded}>
-          {isExpanded ? 'Hide Users' : 'Show Users'}
+          {isExpanded ? languageSelector(language, 'hideUsers') : languageSelector(language, 'showUsers')}
         </button>
         {isExpanded && users.map((item, index) => {
           return (
             <ul key={index}>
               <li className='user__list'>
-                Name: {item.name} {item.last_name} Role: {item.user_role}{<AiFillDelete className='generalAdminView__icon' onClick={() => hanldeUserDelete(item.user_id)} />}
+                {languageSelector(language, 'name')}: {item.name} {item.last_name} {languageSelector(language, 'role')} {item.user_role}{<AiFillDelete className='generalAdminView__icon' onClick={() => hanldeUserDelete(item.user_id)} />}
               </li>
             </ul>
           )
