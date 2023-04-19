@@ -237,7 +237,14 @@ const languageSelector = (lang, str) => {
     userPage: 'Go to the user page',
     logOutSuccess: "You've logged out successfully",
     restaurantAdminPage: 'Administrate your restaurant',
-    appAdminPage: 'Administrate the plataform'
+    appAdminPage: 'Administrate the plataform',
+    reviewsTitle: 'Leave your opinion',
+    rating: 'Rating',
+    reviewFormTitle: 'Title',
+    reviewFormComments: 'Coments',
+    commentsError: "* You must write your comments and they cannot have more than 255 characters",
+    reviewsTitleError: "* You must write a title and it cannot have more than 40 characters",
+    reviewStarsError: "* You must give a rating"
   };
 
   const es = {
@@ -481,7 +488,14 @@ const languageSelector = (lang, str) => {
     userPage: 'Ve a la pagina de usuario',
     logOutSuccess: "Sesión terminada correctamente",
     restaurantAdminPage: 'Administra tu restaurante',
-    appAdminPage: 'Administra la plataforma'
+    appAdminPage: 'Administra la plataforma',
+    reviewsTitle: 'Déjanos tu opinion',
+    rating: 'Calificación',
+    reviewFormTitle: 'Título',
+    reviewFormComments: 'Comentarios',
+    commentsError: "* Debes escribir tus comentarios y estos no pueden tener mas de 255 caracteres",
+    reviewsTitleError: "* Debes escribir un titulo y este no puede tener mas de 40 caracteres",
+    reviewStarsError: "* Debes dar una calificación"
   };
 
   if (lang === "en") {
