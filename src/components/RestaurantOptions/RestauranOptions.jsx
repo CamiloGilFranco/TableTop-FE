@@ -1,20 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import "./RestaurantOptions.css";
-import languageSelector from '../../assets/languages/languageSelector';
+import languageSelector from "../../assets/languages/languageSelector";
 
 const RestauranOptions = ({
   setSelected,
   selected = "nada",
   classOrderOnline,
-  classOverview,
+  classVenues,
   classGallery,
-  classLocation,
   classBookATable,
   classReviews,
 }) => {
-
-  const language = useSelector(state=> state.languageReducer);
-
+  const language = useSelector((state) => state.languageReducer);
 
   return (
     <div className="restaurant-options">
@@ -32,21 +29,21 @@ const RestauranOptions = ({
           htmlFor="ORDER-ONLINE"
           className="restaurant-options-option-text"
         >
-          {languageSelector(language, 'restaurantOptionsOnline')}
+          {languageSelector(language, "restaurantOptionsOnline")}
         </label>
       </div>
-      <div className={`restaurant-options-option ${classOverview}`}>
+      <div className={`restaurant-options-option ${classVenues}`}>
         <input
           type="radio"
-          id="OVERVIEW"
+          id="VENUES"
           name="restaurant-options-option"
-          value="OVERVIEW"
+          value="VENUES"
           className="restaurant-options-option-radio"
-          checked={selected === "OVERVIEW"}
+          checked={selected === "VENUES"}
           onChange={(e) => setSelected(e.target.value)}
         />
-        <label htmlFor="OVERVIEW" className="restaurant-options-option-text">
-          {languageSelector(language, 'restaurantOptionsOverview')}
+        <label htmlFor="VENUES" className="restaurant-options-option-text">
+          {languageSelector(language, "restaurantOptionsOverview")}
         </label>
       </div>
       <div className={`restaurant-options-option ${classGallery}`}>
@@ -60,21 +57,7 @@ const RestauranOptions = ({
           onChange={(e) => setSelected(e.target.value)}
         />
         <label htmlFor="GALLERY" className="restaurant-options-option-text">
-         {languageSelector(language, 'restaurantOptionsGallery')}
-        </label>
-      </div>
-      <div className={`restaurant-options-option ${classLocation}`}>
-        <input
-          type="radio"
-          id="LOCATION"
-          name="restaurant-options-option"
-          value="LOCATION"
-          className="restaurant-options-option-radio"
-          checked={selected === "LOCATION"}
-          onChange={(e) => setSelected(e.target.value)}
-        />
-        <label htmlFor="LOCATION" className="restaurant-options-option-text">
-          {languageSelector(language, 'restaurantOptionsLocation')}
+          {languageSelector(language, "restaurantOptionsGallery")}
         </label>
       </div>
       <div className={`restaurant-options-option ${classBookATable}`}>
@@ -91,7 +74,7 @@ const RestauranOptions = ({
           htmlFor="BOOK A TABLE"
           className="restaurant-options-option-text"
         >
-          {languageSelector(language, 'restaurantOptionsBooking')}
+          {languageSelector(language, "restaurantOptionsBooking")}
         </label>
       </div>
       <div className={`restaurant-options-option ${classReviews}`}>
@@ -105,7 +88,7 @@ const RestauranOptions = ({
           onChange={(e) => setSelected(e.target.value)}
         />
         <label htmlFor="REVIEWS" className="restaurant-options-option-text">
-          {languageSelector(language, 'restaurantOptionsReview')}
+          {languageSelector(language, "restaurantOptionsReview")}
         </label>
       </div>
     </div>

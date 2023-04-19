@@ -1,27 +1,133 @@
-.restaurant-view-overview {
-  width: 100%;
+.venues-component {
   display: flex;
-  flex-direction: column;
-  padding: 25px 40px;
+  gap: 25px;
+  padding: 20px;
   flex-wrap: wrap;
-  height: 400px;
+  justify-content: center;
   box-shadow: 0 2px 5px 1px lightgrey;
 }
-@media (max-width: 769px) {
-  .restaurant-view-overview {
-    height: auto;
-  }
+
+.venues-component-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 15px;
+  border: solid grey 2px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.venues-component-card:hover {
+  transform: scale(1.1);
 }
 
-.restaurant-view-overview-category {
-  margin-bottom: 25px;
+.venues-component-card-image-container {
+  height: 130px;
+  width: 120px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.restaurant-view-overview-category-title {
-  display: block;
+.venues-component-card-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.venues-component-card-title {
   font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
 }
 
-.restaurant-view-overview-category-items {
-  list-style: square inside;
+.venues-component-card-city {
+  font-size: 18px;
+  text-align: 0;
+  margin: 0;
+}
+
+.venues-component-modal-container {
+  width: 100vw;
+  height: calc(100vh - 70px);
+  position: fixed;
+  top: 70px;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.venues-component-modal-background {
+  background-color: rgba(0, 0, 0, 0.5333333333);
+  width: 100%;
+  height: 100%;
+}
+
+.venues-component-modal {
+  background-color: white;
+  width: 50%;
+  max-width: 500px;
+  min-width: 350px;
+  position: absolute;
+  border-radius: 30px;
+  border: solid 5px #df463d;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.venues-component-modal-img-container {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.venues-component-modal-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.venues-component-modal-title {
+  align-self: center;
+  font-weight: 700;
+  font-size: 25px;
+  margin: 0;
+}
+
+.venues-component-modal-value {
+  font-size: 16px;
+  margin: 0;
+}
+
+.venues-component-modal-subtitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.venues-component-modal-facilities-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 5px;
+  box-shadow: 0 2px 5px 1px lightgrey;
+  border-radius: 10px;
+}
+
+.venues-component-modal-facility {
+  width: 50%;
+  padding-left: 10px;
 }/*# sourceMappingURL=Overview.css.map */
