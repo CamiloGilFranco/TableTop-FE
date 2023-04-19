@@ -23,7 +23,7 @@ const GeneralAdminUserChange = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/by-role`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/users`, {
         params: { role: 'user' },
         ...config,
       });
@@ -56,13 +56,13 @@ const GeneralAdminUserChange = () => {
   }
   
   const hanldeUserDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+    if (window.confirm('Are you sure you want to deactivate this user? This action cannot be undone.')) {
       try {
-        const response = await axios.delete(`${process.env.REACT_APP_API_URL}/users/${id}`, config);
-        toast.success(response.data.message || 'User deleted successfully');
+        const response = await axios.put(`${process.env.REACT_APP_API_URL}/users/${id}`, {}, config);
+        toast.success(response.data.message || 'User deactivated successfully');
         fetchUsers();
       } catch (error) {
-        toast.error(error.response?.data?.message || 'Error deleting user');
+        toast.error(error.response?.data?.message || 'Error deactivating user');
       }
     }
   };
