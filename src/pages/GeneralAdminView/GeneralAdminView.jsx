@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import userDB from '../../assets/admins.json';
 import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
@@ -121,46 +120,9 @@ const GeneralAdminView = () => {
             <span className='generalAdmin__span'>
               PLACE HOLDER TEXT            
             </span>
-            <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
             <GeneralAdminUserChange />
           </span>
           <NewRestaurantForm/>
-          {/* <form className='generalAdminView__form' onSubmit={handleNewRestaurantSumbit}>
-          <span>{languageSelector(language, 'newRestaurantFormTitle')}</span>
-          <label htmlFor='newRestaurantTitle'>{languageSelector(language, 'newRestaurantFormName')}</label>
-              <input 
-                type='text' 
-                name='name' 
-                id='newRestaurantTitle' 
-                placeholder={languageSelector(language, 'newRestaurantFormName')}
-              />
-            {errors.name && <p className='generalAdminView__error'>{errors.name}</p>}
-            <label htmlFor='newRestaurantLocation'>{languageSelector(language, 'newRestaurantFormLocation')}</label>
-            <select id='newRestaurantLocation' name='location'>
-                <option value={'bogota'}>Bogotá</option>
-                <option value={'medellin'}>Medellín</option>
-                <option value={'cali'}>Calí</option>
-                <option value={'cartagena'}>Cartagena</option>
-                <option value={'bucaramanga'}>Bucaramanga</option>
-              </select>
-              <div>
-                <label className='generalAdminView__checkboxTitle'>{languageSelector(language, 'newRestaurantFormLocation')}</label>
-                {categoriesArr && categoriesArr.map((checkbox)=> (
-                  <div key={checkbox.name} className='generalAdminView__checkbox'>
-                    <input
-                      type='checkbox'
-                      id={checkbox.name}
-                      name={checkbox.name}
-                      checked={checkboxValues[checkbox.name]}
-                      onChange={handleCheckboxChange}
-                    />
-                    <label htmlFor={checkbox.name}>{checkbox.name}</label>
-                  </div>
-                ))}
-                {errors.categories && <p className='generalAdminView__error'>{errors.categories}</p>}
-              </div>
-              <button type='sumbit'>{languageSelector(language, 'newRestaurantFormButton')}</button>
-          </form> */}
           <article className='generalAdminView__article'>
             <span>{languageSelector(language, 'generalAdminFullList')}</span>
             <p>{languageSelector(language, 'generalAdminDelete')}</p>

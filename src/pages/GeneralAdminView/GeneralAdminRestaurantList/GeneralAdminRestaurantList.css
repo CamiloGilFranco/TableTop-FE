@@ -1,0 +1,36 @@
+.restaurantList {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 5px;
+  border: 2px solid lightgray;
+  background-color: rgb(206, 204, 201);
+  border-radius: 5px;
+  padding: 10px;
+}
+.restaurantList span {
+  font-weight: 700;
+  font-size: 20px;
+}
+.restaurantList ul {
+  padding: 0;
+}
+
+.restaurantList__details {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  height: 75px;
+}
+@media (min-width: 765px) {
+  .restaurantList__details {
+    font-size: 20px;
+  }
+}
+
+.restaurantList__icon {
+  cursor: pointer;
+}/*# sourceMappingURL=GeneralAdminRestaurantList.css.map */

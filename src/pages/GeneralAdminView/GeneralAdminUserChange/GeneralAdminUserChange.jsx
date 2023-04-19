@@ -88,6 +88,7 @@ const GeneralAdminUserChange = () => {
         <button type="submit">{languageSelector(language, 'appAdminUserButton')}</button>
       </form>
       <div className='generalAdmin_userList'>
+        <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
         <button onClick={toggleExpanded}>
           {isExpanded ? languageSelector(language, 'hideUsers') : languageSelector(language, 'showUsers')}
         </button>
