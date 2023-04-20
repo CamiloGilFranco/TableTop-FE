@@ -20,11 +20,12 @@ const LogInComponent = ({ setShowLogIn }) => {
   const cookies = new Cookies();
 
   const handleLogout = () => {
-    dispatch(setUser({}));
     cookies.remove("token");
     cookies.remove("name");
     cookies.remove("last_name");
     cookies.remove("email");
+    cookies.remove("user_role");
+    dispatch(setUser({}));
     toast.success(languageSelector(language, "logOutSuccess"));
   };
   const isUserLoggedIn = Object.keys(user).length;
