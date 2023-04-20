@@ -33,7 +33,7 @@ const HeaderComponent = () => {
 
   return (
     <header className="headerNavBar">
-      {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : ""}
+      {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : <></>}
 
       <NavLink to={routePaths.home} className="navbar-logo">
         <picture className="logo-container">

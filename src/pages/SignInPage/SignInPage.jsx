@@ -11,6 +11,8 @@ import languageSelector from "../../assets/languages/languageSelector";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { inputEmailRegEx, inputNameRegex, inputPasswordRegEx } from "../../constants/regexConstants";
+import { AUTH_URL } from "../../constants/apiUrl";
 
 
 
@@ -50,7 +52,6 @@ const SignInPage = () => {
   const [phoneNumberError, setPhoneNumberError] = useState(false);
   const [TACError, setTACError] = useState(false);
   const [DPError, setDPError] = useState(false);
-  const authUrl = process.env.REACT_APP_AUTH_URL;
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -61,7 +62,7 @@ const SignInPage = () => {
 
   const sendUserData = async (input) => {
     try {
-      const response = await axios.post(`${authUrl}/local/signup`, input);
+      const response = await axios.post(`${AUTH_URL}/local/signup`, input);
       return response.data;
     } catch (error) {
       return { error: error.response ? error.response.data.message : languageSelector(language,"generalError") };
@@ -90,12 +91,9 @@ const SignInPage = () => {
       ];
       return monthNames.indexOf(monthName) + 1;
     };
-    const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    const passwordRegEx =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
-    const namesRegExp = /[^a-zA-ZñÑáéíóúAÉÍÓÚ\s]/g;
 
-    if (!emailRegEx.test(formContent.email)) {
+
+    if (!inputEmailRegEx.test(formContent.email)) {
       setEmailError(true);
       isValid = false;
     } else {
@@ -112,7 +110,7 @@ const SignInPage = () => {
         setConfirmEmailError(false);
       }
 
-      if (!passwordRegEx.test(formContent.password)) {
+      if (!inputPasswordRegEx.test(formContent.password)) {
         setPasswordError(true);
         isValid = false;
       } else {
@@ -130,7 +128,7 @@ const SignInPage = () => {
       }
 
       if (
-        namesRegExp.test(formContent.firstName) ||
+        inputNameRegex.test(formContent.firstName) ||
         !formContent.firstName.length
       ) {
         setFirstNameError(true);
@@ -141,7 +139,7 @@ const SignInPage = () => {
       
 
       if (
-        namesRegExp.test(formContent.lastName) ||
+        inputEmailRegEx.test(formContent.lastName) ||
         formContent.lastName.length === 0
         ) {
           setLastNameError(true);

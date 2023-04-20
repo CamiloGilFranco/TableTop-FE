@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { toast } from "react-toastify";
 import './NewRestaurantForm.css';
 import languageSelector from '../../../assets/languages/languageSelector';
+import { inputEmailRegEx } from '../../../constants/regexConstants';
+import { API_URL } from '../../../constants/apiUrl';
 
 const NewRestaurantForm = () => {
   const cookies = new Cookies();
@@ -14,7 +16,6 @@ const NewRestaurantForm = () => {
   const [mainPhoto, setMainPhoto] = useState(null);
   const [adminEmail, setAdminEmail] = useState('');
   const language = useSelector(state=> state.languageReducer);
-  const apiUrl = process.env.REACT_APP_API_URL;
   const jwtToken = cookies.get('token');
   const config = {
     headers: {
@@ -34,7 +35,7 @@ const NewRestaurantForm = () => {
     if (!mainPhoto) {
       validationErrors.mainPhoto = languageSelector(language, 'newRestaurantMainPhotoError');;
     }
-    if (!adminEmail.trim() || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(adminEmail)) {
+    if (!adminEmail.trim() || !inputEmailRegEx.test(adminEmail)) {
       validationErrors.adminEmail = languageSelector(language, 'adminEmailError');
     }
 
@@ -58,7 +59,7 @@ const NewRestaurantForm = () => {
     }
     
     try {
-      const response = await axios.post(`${apiUrl}/restaurants`, data, config);
+      const response = await axios.post(`${API_URL}/restaurants`, data, config);
 
       if (response.status === 200) {
         toast.success("Restaurant created successfully!");

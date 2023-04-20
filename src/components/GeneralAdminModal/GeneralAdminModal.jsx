@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './GeneralAdminModal.css'
+import './GeneralAdminModal.css';
 import { useSelector } from 'react-redux';
 import languageSelector from '../../assets/languages/languageSelector';
 
@@ -26,7 +26,7 @@ const GeneralAdminModal = ({ isOpen, onClose, restaurant, onSave }) => {
     e.preventDefault();
     const validationErrors = {};
     const form = e.target;
-    const title = form.title.value
+    const title = form.title.value;
 
     const isTitle = !title.length || typeof title !== 'string';
 

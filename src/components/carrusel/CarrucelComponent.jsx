@@ -6,17 +6,17 @@ import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { API_URL } from "../../constants/apiUrl";
 
 const CarrucelComponent = () => {
   const [numVisibleSlides, setNumVisibleSlides] = useState(6);
   const [cuisinesList, setCuisinesList] = useState([]);
 
   const navigate = useNavigate();
-  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios
-      .get(`${URL}/cuisine-categories`)
+      .get(`${API_URL}/cuisine-categories`)
       .then((res) => {
         setCuisinesList(res.data.data);
       })
