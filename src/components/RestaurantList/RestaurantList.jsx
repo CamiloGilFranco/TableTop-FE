@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const RestaurantList = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const RestaurantList = () => {
         setSortList(res.data.data);
       })
       .catch(() => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
       });
   }, []);
 

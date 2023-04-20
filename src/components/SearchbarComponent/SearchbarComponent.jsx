@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import languageSelector from '../../assets/languages/languageSelector';
+import routePaths from '../../constants/routePaths';
 
 
 const SearchbarComponent = ({ inputValue, setInputValue })=>{
@@ -24,7 +25,7 @@ const SearchbarComponent = ({ inputValue, setInputValue })=>{
     if (searchTerm.length <= 1) {
       alert('The search must be at least 2 characters long');
     } else if (location.pathname === '/'){
-        navigate(`/restaurants?searchTerm=${searchTerm}`);
+        navigate(`${routePaths.restaurants}?searchTerm=${searchTerm}`);
     } else {
         setSearchParams({
           searchTerm,

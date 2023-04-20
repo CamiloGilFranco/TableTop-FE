@@ -8,6 +8,7 @@ import {
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
 import languageSelector from "../../assets/languages/languageSelector";
+import routePaths from "../../constants/routePaths";
 
 const CartItem = () => {
   const language = useSelector((state) => state.languageReducer);
@@ -43,7 +44,7 @@ const CartItem = () => {
         ) : (
           <button
             className="cart-item-finish-button"
-            onClick={() => navigate("/restaurant/checkout")}
+            onClick={() => navigate(routePaths.checkout)}
           >
             {languageSelector(language, 'cartPlaceOrder')}
           </button>

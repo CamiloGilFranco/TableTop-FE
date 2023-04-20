@@ -48,7 +48,7 @@ const LogInComponent = ({ setShowLogIn }) => {
           <div className="log-in-form-main-form">
             {isUserLoggedIn ? (
                 <div className='log-in-main-form-buttons-container'>
-                  <button className='log-in-main-form-buttons' onClick={() => navigate('/user')}>
+                  <button className='log-in-main-form-buttons' onClick={() => navigate(routePaths.user)}>
                     {languageSelector(language, 'userPage')}
                   </button>
                   {isAdmin && (
@@ -85,7 +85,7 @@ const LogInComponent = ({ setShowLogIn }) => {
           <div className="log-in-sign-up">
             <span
               className="log-in-sign-up-text"
-              onClick={() => navigate("/register")}
+              onClick={() => navigate(routePaths.register)}
             >
               {languageSelector(language, 'logInRegister')}
             </span>

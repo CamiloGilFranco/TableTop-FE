@@ -2,6 +2,7 @@ import { Navigate } from "react-router";
 import { useJwt } from "react-jwt";
 import Cookies from "universal-cookie";
 import { getUserDataFromCookies } from "../../utils/auth";
+import routePaths from "../../constants/routePaths";
 
 const PrivateRoute = ({ children, role }) => {
   const cookies = new Cookies();
@@ -12,7 +13,7 @@ const PrivateRoute = ({ children, role }) => {
   return !isExpired && userRole === role ? (
     children
   ) : (
-    <Navigate to={"/"} />
+    <Navigate to={routePaths.home} />
   );
 };
 
