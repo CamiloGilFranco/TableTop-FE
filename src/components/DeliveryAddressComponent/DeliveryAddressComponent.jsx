@@ -2,7 +2,7 @@ import "./DeliveryAddressComponent.css";
 import DeliveryAddressBox from "./DeliveryAddressBox";
 import FormComponent from "./FormComponent";
 import { useModal } from "./hooks/UseModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./modal/Modal";
 import addresses from "../../assets/dataAddress.json";
 import { useSelector } from "react-redux";
@@ -14,6 +14,8 @@ const DeliveryAddressComponent = () => {
   const [addressSelected, setAddressSelected] = useState("");
   const language = useSelector((state) => state.languageReducer);
 
+  useEffect(() => {}, []);
+
   const handleDelete = (index) => {
     const newAddressList = [...addressList];
     newAddressList.splice(index, 1);
@@ -23,6 +25,8 @@ const DeliveryAddressComponent = () => {
   const handleNewAddress = (newAddress) => {
     setAddressList([...addressList, newAddress]);
   };
+
+  console.log();
 
   return (
     <>
@@ -44,7 +48,6 @@ const DeliveryAddressComponent = () => {
               key={index}
               index={index}
               name={element.name}
-              mobileNumber={element.mobileNumber}
               address={element.address}
               city={element.city}
               setAddressSelected={setAddressSelected}

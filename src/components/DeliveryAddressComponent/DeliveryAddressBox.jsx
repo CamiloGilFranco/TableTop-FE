@@ -5,7 +5,6 @@ import languageSelector from "../../assets/languages/languageSelector";
 const DeliveryAddressBox = ({
   index,
   name,
-  mobileNumber,
   address,
   city,
   setAddressSelected,
@@ -20,7 +19,7 @@ const DeliveryAddressBox = ({
     }
   };
 
-  const language = useSelector(state => state.languageReducer)
+  const language = useSelector((state) => state.languageReducer);
 
   return (
     <div>
@@ -42,9 +41,8 @@ const DeliveryAddressBox = ({
         <h3 className="delivery-content__name">{name}</h3>
 
         <p className="delivery-personal-info-data">{address}</p>
-        <p className="delivery-personal-info-data">{city}</p>
         <p className="delivery-personal-info-data delivery-personal-info-data-last">
-          {mobileNumber}
+          {city}
         </p>
 
         <button
@@ -54,7 +52,7 @@ const DeliveryAddressBox = ({
             handleDelete(index);
           }}
         >
-          {languageSelector(language, 'remove')}
+          {languageSelector(language, "remove")}
         </button>
       </label>
     </div>

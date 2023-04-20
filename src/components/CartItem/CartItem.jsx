@@ -15,20 +15,17 @@ import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
 
 const CartItem = () => {
-  const cookies = new Cookies();
   const language = useSelector((state) => state.languageReducer);
   const itemsStore = useSelector((state) => state.cartReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
   const navigate = useNavigate();
   const location = useLocation().pathname;
   const pathRegExp = /checkout/;
-  const { isExpired } = useJwt(cookies.get("token"));
   const login = useSelector((state) => state.userReducer);
-  console.log(login);
+  const { isExpired } = useJwt(login.user.token);
 
   const handlePlaceOrder = () => {
-    console.log(isExpired);
-    if (!cookies.get("token") || isExpired) {
+    if (!login.user.token || !isExpired) {
       toast.error("You must log in to continue", {
         position: "bottom-right",
       });
