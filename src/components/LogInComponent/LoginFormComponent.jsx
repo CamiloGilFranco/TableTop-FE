@@ -30,11 +30,12 @@ const LoginFormComponent = ({ setWhichForm, closeModal }) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(`${authUrl}/local/login`, dataUser);
-      const { token, data: { name, last_name, email } } = data;
+      const { token, data: { name, last_name, email, user_role } } = data;
       cookies.set("token", token);
       cookies.set("name", name);
       cookies.set("last_name", last_name);
       cookies.set("email", email);
+      cookies.set("user_role", user_role);
       dispatch(setUser(data.data));
       toast.success(languageSelector(language, "logInSuccessfull"));
 
