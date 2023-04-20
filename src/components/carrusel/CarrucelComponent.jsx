@@ -22,12 +22,8 @@ const CarrucelComponent = () => {
         setCuisinesList(res.data.data);
       })
       .catch((err) => {
-<<<<<<< HEAD
-        navigate("/something-went-wrong");
-=======
         navigate(routePaths.somethingWentWrong);
         setCuisinesList([]);
->>>>>>> 247bd9f1c9d734fdeaf4a9efdf231b7ea29dac35
       });
   }, []);
 
@@ -64,7 +60,6 @@ const CarrucelComponent = () => {
     <main className="home-carousel-component">
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
-<<<<<<< HEAD
           {!!cuisinesList &&
             cuisinesList.length > 0 &&
             cuisinesList.map((element, index) => {
@@ -89,23 +84,6 @@ const CarrucelComponent = () => {
                   <p className="home-carousel-single-item-quantity">
                     23 Restaurants
                   </p>
-=======
-          {cuisinesList.map((element, index) => {
-            return (
-              <div
-                key={index}
-                className="home-carousel-single-item"
-                onClick={() =>
-                  navigate(`${routePaths.restaurants}?${element.cuisine_category}=true`)
-                }
-              >
-                <div className="home-carousel-single-item-image-container">
-                  <img
-                    src={element.cuisine_photo}
-                    alt=""
-                    className="home-carousel-single-item-image"
-                  ></img>
->>>>>>> 247bd9f1c9d734fdeaf4a9efdf231b7ea29dac35
                 </div>
               );
             })}
