@@ -33,4 +33,6 @@
 
 .restaurantList__icon {
   cursor: pointer;
+  height: 35px;
+  width: 35px;
 }/*# sourceMappingURL=GeneralAdminRestaurantList.css.map */

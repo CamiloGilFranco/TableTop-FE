@@ -30,11 +30,6 @@
     flex-direction: row;
   }
 }
-@media (min-width: 100px) {
-  .generalAdminView__flex {
-    justify-content: space-evenly;
-  }
-}
 
 .generalAdminView__list {
   padding: 5px 15px;
@@ -46,27 +41,28 @@
     font-size: 20px;
   }
 }
-
-.generalAdminView__checkboxTitle {
-  font-size: 18px;
-  font-size: 600;
-  margin: 15px 0px;
+.generalAdminView__list li {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.generalAdminView__list li:hover {
+  color: #ef3f3f;
 }
 
-.generalAdminView__checkbox {
+.generalAdminView__main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
-  cursor: pointer;
-}
-.generalAdminView__checkbox label {
-  font-size: 18px;
-  cursor: pointer;
 }
 
 .generalAdminView__error {
   color: #ef3f3f;
   font-weight: 700;
+}
+
+.generalAdminView__list li.active {
+  color: #ef3f3f;
+  cursor: default;
 }
 
 .generalAdminView__article {
@@ -106,4 +102,10 @@
   font-size: 18px;
   padding: 10px;
   text-align: center;
+}
+
+.generalAdminView__intro {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
 }/*# sourceMappingURL=GeneralAdminView.css.map */

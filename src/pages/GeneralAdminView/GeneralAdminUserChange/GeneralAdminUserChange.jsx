@@ -89,6 +89,7 @@ const GeneralAdminUserChange = () => {
       </form>
       <div className='generalAdmin_userList'>
         <h3>{languageSelector(language, 'generalAdminUserList')}</h3>
+        <span>{languageSelector(language, 'generalAdminUserListDeactivate')}</span>
         <button onClick={toggleExpanded}>
           {isExpanded ? languageSelector(language, 'hideUsers') : languageSelector(language, 'showUsers')}
         </button>

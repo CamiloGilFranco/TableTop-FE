@@ -134,7 +134,7 @@ const languageSelector = (lang, str) => {
     forgotPassBack: "Back to log in",
     logInTitle: "Log In",
     logInSubtitle: "Log In with your registred user",
-    logInRegister: "Not registerd? Sign up here.",
+    logInRegister: "Not registered? Sign up here.",
     logInPass: "Password",
     logInFooter: "Forgot your password? Recover it it here.",
     restaurantAdminTitle: "Hi",
@@ -179,8 +179,7 @@ const languageSelector = (lang, str) => {
     generalAdminSubtitle: "On this page you can remove or add restaurants",
     generalAdminList: "There currently are",
     generalAdminUserList: "Here you can see all the users",
-    generalAdminAddUserTitle: "Here you can add a new user",
-    generalAdminAddUserRole: "What kind of user will this be?",
+    generalAdminIntro: 'Here you can change an existing user to an app admin, deactivate any user, create a new restaurant, and edit an existing restaurant.',
     generalAdminAddUserResAdmin: "Restaurant Admin",
     generalAdminAddUserGenAdmin: "General Admin",
     generalAdminAddUserRegUser: "Regular User",
@@ -261,7 +260,14 @@ const languageSelector = (lang, str) => {
     appAdminUserButton: 'Update User Role',
     role: 'Role',
     showUsers: 'Show Users',
-    hideUsers: 'Hide Users'
+    hideUsers: 'Hide Users',
+    users: 'Users',
+    restaurants: 'Restaurants',
+    newRestaurantForm: 'Create new Restaurant',
+    deavtivateRestaurantWarning: 'Are you sure you want to deactivate this restaurant? This action cannot be reversed.',
+    deactivatedRestaurantSuccess: 'Restaurant deactivated successfully',
+    deactivatedRestaurantFailure: 'Error deactivating Restaurant',
+    generalAdminUserListDeactivate: 'If you want to deactivate any user, press the icon next to their name.'
   };
 
   const es = {
@@ -445,8 +451,7 @@ const languageSelector = (lang, str) => {
       "En esta página puede eliminar o agregar restaurantes",
     generalAdminList: "Actualmente hay",
     generalAdminUserList: "Aquí puedes ver todos los usuarios",
-    generalAdminAddUserTitle: "Aquí puedes añadir un nuevo usuario",
-    generalAdminAddUserRole: "¿Qué tipo de usuario será este?",
+    generalAdminIntro: 'Aquí puede cambiar un usuario existente a administrador de la aplicación, desactivar cualquier usuario, crear un nuevo restaurante y editar un restaurante existente.',
     generalAdminAddUserResAdmin: "Administrador de restaurante",
     generalAdminAddUserGenAdmin: "Administrador general",
     generalAdminAddUserRegUser: "Usuario regular",
@@ -529,7 +534,14 @@ const languageSelector = (lang, str) => {
     appAdminUserButton: 'Actualizar rol de usuario',
     role: 'Rol',
     showUsers: 'Mostrar Usuarios',
-    hideUsers: 'Ocultar Usuarios'
+    hideUsers: 'Ocultar Usuarios',
+    users: 'Usuarios',
+    restaurants: 'Restaurantes',
+    newRestaurantForm: 'Crea un nuevo restaurante',
+    deavtivateRestaurantWarning: '¿Seguro que quieres desactivar este restaurante? Esta acción no se puede revertir.',
+    deactivatedRestaurantSuccess: 'Restaurante desactivado con éxito',
+    deactivatedRestaurantFailure: 'Error al desactivar el restaurante',
+    generalAdminUserListDeactivate: 'Si desea desactivar algún usuario, presione el icono junto a su nombre.'
   }
   if (lang === "en") {
     return en[str] || str;

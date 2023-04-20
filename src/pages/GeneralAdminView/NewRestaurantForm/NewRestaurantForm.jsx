@@ -80,6 +80,7 @@ const NewRestaurantForm = () => {
         type="text"
         id="restaurant_name"
         value={restaurant_name}
+        placeholder={languageSelector(language, 'newRestaurantFormName')}
         onChange={(e) => setRestautant_name(e.target.value)}
       />
       {errors.restaurant_name && (
@@ -110,6 +111,7 @@ const NewRestaurantForm = () => {
         type="email"
         id="adminEmail"
         value={adminEmail}
+        placeholder={languageSelector(language, 'signInEmail')}
         onChange={(e) => setAdminEmail(e.target.value)}
       />
        {errors.adminEmail && (

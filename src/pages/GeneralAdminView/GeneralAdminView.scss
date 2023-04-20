@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  background-color:rgb(238, 237, 236);
+  background-color: rgb(238, 237, 236);
   h1 {
     text-align: center;
   }
@@ -16,46 +16,52 @@
     }
   }
 }
-.generalAdminView__flex{
+
+.generalAdminView__flex {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   @media (min-width: 765px) {
     margin-top: 15px;
     flex-direction: row;
   }
-  @media (min-width:100px) {
-    justify-content: space-evenly;
-  }
 }
-.generalAdminView__list{
+
+.generalAdminView__list {
   padding: 5px 15px;
   font-size: 16px;
   line-height: 20px;
+
   @media (min-width: 765px) {
     font-size: 20px;
   }
-}
 
-.generalAdminView__checkboxTitle{
-  font-size: 18px;
-  font-size: 600;
-  margin: 15px 0px;
-}
-.generalAdminView__checkbox{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  cursor: pointer;
-  label {
-    font-size: 18px;
+  li {
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: #ef3f3f;
+    }
   }
 }
+
+.generalAdminView__main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .generalAdminView__error {
   color: #ef3f3f;
   font-weight: 700;
 }
+.generalAdminView__list li.active {
+  color: #ef3f3f;
+  cursor: default;
+}
+
 
 .generalAdminView__article {
   display: flex;
@@ -63,19 +69,21 @@
   font-size: 18px;
   gap: 5px;
   border: 2px solid lightgray;
-  background-color:rgb(206, 204, 201);
+  background-color: rgb(206, 204, 201);
   border-radius: 5px;
   padding: 10px;
+
   span {
     font-weight: 700;
     font-size: 20px;
   }
+
   ul {
     padding: 0;
   }
 }
 
-.generalAdminView__details{
+.generalAdminView__details {
   display: flex;
   flex-direction: row;
   font-size: 16px;
@@ -83,14 +91,20 @@
   align-items: center;
   gap: 10px;
   height: 75px;
+
   @media (min-width: 765px) {
     font-size: 20px;
   }
-  
 }
 
-.generalAdmin__span{
+.generalAdmin__span {
   font-size: 18px;
   padding: 10px;
   text-align: center;
+}
+
+.generalAdminView__intro {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
 }

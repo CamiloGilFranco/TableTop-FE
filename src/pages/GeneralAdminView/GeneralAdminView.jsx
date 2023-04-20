@@ -2,11 +2,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
 import { useJwt } from "react-jwt";
-import { ToastContainer, toast } from 'react-toastify';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
+import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import GeneralAdminModal from '../../components/GeneralAdminModal/GeneralAdminModal';
@@ -21,26 +19,14 @@ import {
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 import GeneralAdminUserChange from './GeneralAdminUserChange/GeneralAdminUserChange';
 import NewRestaurantForm from './NewRestaurantForm/NewRestaurantForm';
+import GeneralAdminRestaurantList from './GeneralAdminRestaurantList/GeneralAdminRestaurantList';
 
 const GeneralAdminView = () => {
   const user = useSelector(state => state.userReducer.user);
   const loading = useSelector((state) => state.userReducer.loading);
-  const language = useSelector(state=> state.languageReducer);  
+  const language = useSelector(state=> state.languageReducer);
+  const [selectedComponent, setSelectedComponent] = useState(null);
   const cookies = new Cookies();
-  const resDB = restaurantDB;
-  const [restaurants, setRestaurants] = useState(resDB);
-  const [checkboxValues, setCheckboxValues] = useState({
-    asian: false,
-    fastfood: false,
-    italian: false,
-    mexican: false,
-    breakfast: false,
-    tipical: false,
-    dessert: false,
-    vegetarian: false,
-    bar: false,
-    coffee: false,
-  });
   const [modalVisible, setModalVisible] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const dispatch = useDispatch();
@@ -52,7 +38,6 @@ const GeneralAdminView = () => {
       Authorization: `Bearer ${jwtToken}`,
     },
   };
-
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -67,35 +52,23 @@ const GeneralAdminView = () => {
     fetchUser();
   }, [dispatch, apiUrl, jwtToken]);
 
-
-  // does the logic for the deletion of a restaurant
-  const handleDelete = (id) => {
-    const updatedRestaurant = restaurants.filter((item)=> item.id !== id);
-    setRestaurants(updatedRestaurant);
+  const handleClick = (component) => {
+    if (selectedComponent === component) {
+      setSelectedComponent(null);
+    } else {
+      setSelectedComponent(component);
+    }
   }
-  
- 
+
   const handleEditClick = (value)=> {
     setModalVisible(true);
     setEditingItem(value);
   }
 
-  const handleRestaurantUpdate = (updatedRestaurant)=> {
-    setRestaurants((prevRestaurants)=> {
-      return prevRestaurants.map((restaurant)=> {
-        if (restaurant.id === updatedRestaurant.id) {
-          return updatedRestaurant;
-        } else {
-          return restaurant;
-        }
-      });
-    });
-  };
   const handleCloseModal = () => {
     setModalVisible(false);
-  };  
+  };
   
-
   if (!user || isExpired) {
     return <NotFoundPageComponent />;
   }
@@ -114,45 +87,24 @@ const GeneralAdminView = () => {
       <ToastContainer/>
       <div className='generalAdminView__container'>
         <h1 className='generalAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</h1>
-        <article className='generalAdminView__flex'>
-          <span>
-            <h3>{languageSelector(language, 'generalAdminSubtitle')}</h3>
-            <span className='generalAdmin__span'>
-              PLACE HOLDER TEXT            
-            </span>
-            <GeneralAdminUserChange />
-          </span>
-          <NewRestaurantForm/>
-          <article className='generalAdminView__article'>
-            <span>{languageSelector(language, 'generalAdminFullList')}</span>
-            <p>{languageSelector(language, 'generalAdminDelete')}</p>
-            <ul>
-              {Object.entries(restaurants).map(([key, value])=> (
-                <li key={key} className='generalAdminView__details'>
-                  {value.restaurantName} - {value.location}
-                  <AiFillEdit className='generalAdminView__icon restaurantAdminView__edit' onClick={()=>handleEditClick(value)}/>
-                  <AiFillDelete className='generalAdminView__icon' onClick={()=> handleDelete(parseInt(key)+1)}/>
-                </li>
-              ))}
-            </ul>
-            {modalVisible && (<GeneralAdminModal 
-                onClose={handleCloseModal} 
-                setModalVisible={setModalVisible}
-                editingItem={editingItem}
-                checkboxValues={checkboxValues}
-                handleRestaurantUpdate={handleRestaurantUpdate}
-              /> )}
-          </article>
-        </article>
-        <section className='userPAge__logOut'>
-            <span>{languageSelector(language, 'logOutText')}</span>
-            <button className='userPage__form-button'>
-              {languageSelector(language, 'logOutButton')}
-            </button>
-          </section>
+        <div className="generalAdminView__intro">
+          <p>{languageSelector(language, 'generalAdminIntro')}</p>
+        </div>
+        <div className="generalAdminView__flex">
+          <ul className="generalAdminView__list">
+            <li className={selectedComponent === 'users' ? 'active' : ''} onClick={() => setSelectedComponent('users')}>{languageSelector(language, 'users')}</li>
+            <li className={selectedComponent === 'restaurants' ? 'active' : ''} onClick={() => setSelectedComponent('restaurants')}>{languageSelector(language, 'restaurants')}</li>
+            <li className={selectedComponent === 'newRestaurantForm' ? 'active' : ''} onClick={() => setSelectedComponent('newRestaurantForm')}>{languageSelector(language, 'newRestaurantForm')}</li>
+          </ul>
+          <div className="generalAdminView__main">
+            {selectedComponent === 'users' && <GeneralAdminUserChange />}
+            {selectedComponent === 'restaurants' && <GeneralAdminRestaurantList handleEditClick={handleEditClick} />}
+            {selectedComponent === 'newRestaurantForm' && <NewRestaurantForm />}
+          </div>
+        </div>
       </div>
-      <Footer/>    
+      <Footer/>
     </>
-  )
+  );
 }
 export default GeneralAdminView;
