@@ -3,6 +3,7 @@ import { FaGreaterThan } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./MobileNavBar.css";
 import languageSelector from "../../assets/languages/languageSelector";
+import routePaths from "../../constants/routePaths";
 
 const MobileNavBar = ({
   mobileShow,
@@ -25,7 +26,7 @@ const MobileNavBar = ({
         </span>
         <article className="mobile-navbar-section">
           <section className="mobile-navbar-title">
-            <Link to={"/"}>
+            <Link to={routePaths.home}>
               <p>{languageSelector(language, "footerHome")}</p>
             </Link>
           </section>
@@ -33,7 +34,7 @@ const MobileNavBar = ({
         </article>
         <article className="mobile-navbar-section">
           <section className="mobile-navbar-title">
-            <Link to={"/restaurants"}>
+            <Link to={routePaths.restaurants}>
               <p>{languageSelector(language, "headerRestaurant")}</p>
             </Link>
           </section>

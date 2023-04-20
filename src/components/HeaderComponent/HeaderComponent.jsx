@@ -10,6 +10,7 @@ import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";
 import languageSelector from "../../assets/languages/languageSelector";
 import cities from "../../assets/cities.json";
+import routePaths from "../../constants/routePaths";
 
 const HeaderComponent = () => {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -32,9 +33,9 @@ const HeaderComponent = () => {
 
   return (
     <header className="headerNavBar">
-      {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : ""}
+      {showLogIn ? <LogInComponent setShowLogIn={setShowLogIn} /> : <></>}
 
-      <NavLink to={"/"} className="navbar-logo">
+      <NavLink to={routePaths.home} className="navbar-logo">
         <picture className="logo-container">
           <img src={logo} alt="" className="logotipo" />
           <span className="header-title">
@@ -44,7 +45,7 @@ const HeaderComponent = () => {
       </NavLink>
       <section className="header-textButtons">
         <span className="header-restaurant-button">
-          <NavLink to={"/restaurants"}>
+          <NavLink to={routePaths.restaurants}>
             <b className="header-text">
               {languageSelector(language, "headerRestaurant")}
             </b>

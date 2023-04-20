@@ -1,0 +1,44 @@
+.newRestaurantForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(238, 237, 236);
+
+  label {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  input[type='text'],
+  input[type='email'] {
+    font-size: 16px;
+    padding: 5px;
+    line-height: 20px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+  }
+
+  input[type='file'] {
+    margin-bottom: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button[type='submit'] {
+    font-size: 18px;
+    padding: 5px;
+    border: none;
+    background-color: #ef3f3f;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 3px;
+  }
+}
+
+.newRestaurantForm__error {
+  color: #ef3f3f;
+  font-weight: 700;
+  font-size: 16px;
+}

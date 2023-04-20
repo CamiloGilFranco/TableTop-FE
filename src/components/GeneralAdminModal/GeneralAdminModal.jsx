@@ -1,59 +1,54 @@
-import React, { useState } from 'react';
-import './GeneralAdminModal.css'
+import React, { useState, useEffect } from 'react';
+import './GeneralAdminModal.css';
 import { useSelector } from 'react-redux';
 import languageSelector from '../../assets/languages/languageSelector';
 
-const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaurantUpdate }) => {
-  const [title, setTitle] = useState(editingItem.restaurantName);
-  const [location, setLocation] = useState(editingItem.location);
-  const [categories, setCategories] = useState(editingItem.categories);
-  const [errors, setErrors] = useState({});
+const GeneralAdminModal = ({ isOpen, onClose, restaurant, onSave }) => {
+  const [restaurantName, setRestaurantName] = useState('');
+  const [logo, setLogo] = useState(null);
+  const [mainPhoto, setMainPhoto] = useState(null);
+  const [adminEmail, setAdminEmail] = useState('');
+  const [errors, setErrors] = useState('');
+
   const language = useSelector(state => state.languageReducer);
   
-  const getCheckboxState = (category) => {
-    return categories.includes(category) || checkboxValues[category] || false;
-  }
-  const handleCategoryChange = (e) =>{
-    const category = e.target.name;
-    const isChecked = e.target.checked;
-    setCategories((prevCategories) => {
-      if (isChecked) {
-        return [...prevCategories, category];
-      } else {
-        return prevCategories.filter((cat) => cat !== category);
-      }
-    })
-  };
+  useEffect(() => {
+    if (restaurant) {
+      setRestaurantName(restaurant.restaurant_name);
+      setLogo(restaurant.logo);
+      setMainPhoto(restaurant.main_photo);
+      setAdminEmail(restaurant.admin_email);
+    }
+  }, [restaurant]);
+  
 
   const handleSumbit = (e) => {
     e.preventDefault();
     const validationErrors = {};
     const form = e.target;
-    const title = form.title.value
-    const newCategories = Object.keys(checkboxValues).filter((cat) => categories.includes(cat));
+    const title = form.title.value;
 
     const isTitle = !title.length || typeof title !== 'string';
 
     if(isTitle) {
       validationErrors.title = languageSelector(language, 'newRestaurantFormNameError');
     }
-    if (!newCategories.length) {
-      validationErrors.categories = languageSelector(language, 'newRestaurantFormCategoriesError');
-    }
+
     if (Object.keys(validationErrors).length) {
       setErrors(validationErrors);
       return;
     }
 
     const updatedRestaurant = {
-      id: editingItem.id,
-      restaurantPathName: title.replaceAll(' ', '').toLowerCase(),
-      restaurantName: title,
-      location,
-      categories: newCategories,
-      createdAt: editingItem.createdAt
-    }
-    handleRestaurantUpdate(updatedRestaurant)
+      ...restaurant,
+      restaurant_name: restaurantName,
+      logo,
+      main_photo: mainPhoto,
+      admin_email: adminEmail,
+    };
+  
+    onSave(updatedRestaurant);
+
     onClose();
   }
   
@@ -64,41 +59,39 @@ const GeneralAdminModal = ({ onClose, editingItem, checkboxValues, handleRestaur
        {languageSelector(language, 'restaurantEditTitle')}
       </span>
       <form className='generalAdminModal__form' onSubmit={handleSumbit}>
+        <label htmlFor='title'>{languageSelector(language, 'restaurantAdminResTitle')}</label>
         <input
-          type='text'
+          type="text"
+          value={restaurantName}
           name='title'
-          id='title'
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          id ='title'
+          onChange={(e) => setRestaurantName(e.target.value)}
+          placeholder="Restaurant Name"
+          />
+        {errors.title && <div className="generalAdminModal__error">{errors.title}</div>}
+        <label htmlFor='logo'>Logo</label>
+        <input
+          type="file"
+          name='logo'
+          id ='logo'
+          accept="image/*"
+          onChange={(e) => setLogo(e.target.files[0])}
         />
-        {errors.title && <p className='restaurantAdminView__error'>{errors.title}</p>}
-        <div className='generalAdminModal__checkbox'>
-          {Object.keys(checkboxValues).map((key) => (
-            <label key={key}>
-              <input
-                type='checkbox'
-                name={key}
-                checked={getCheckboxState(key)}
-                onChange={handleCategoryChange}
-              />
-              {key}
-            </label>
-          ))}
-        </div>
-        {errors.categories && <p className='restaurantAdminView__error'>{errors.categories}</p>}
-        <select
-          name='location'
-          id='location'
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        >
-          <option value='bogota'>Bogotá</option>
-          <option value='medellin'>Medellín</option>
-          <option value='cali'>Calí</option>
-          <option value='cartagena'>Cartagena</option>
-          <option value='bucaramanga'>Bucaramanga</option>
-        </select>
-        {/* {errors.description && <p className='restaurantAdminView__error'>{errors.description}</p>} */}
+        <label htmlFor='title'>{languageSelector(language, 'mainPhoto')}</label>
+        <input
+          type="file"
+          accept="image/*"
+          name='mainPhoto'
+          id ='mainPhoto'
+          onChange={(e) => setMainPhoto(e.target.files[0])}
+        />
+        <label htmlFor='title'>{languageSelector(language, 'newResstaurantAdminEmail')}</label>
+        <input
+          type="email"
+          value={adminEmail}
+          onChange={(e) => setAdminEmail(e.target.value)}
+          placeholder="Admin Email"
+        />
         <span className='generalAdminModal__buttons'>
           <button className='generalAdminModal__button-save' type="submit">{languageSelector(language, 'save')}</button>
           <button className='generalAdminModal__button-cancel' type="button" onClick={onClose}>{languageSelector(language, 'cancel')}</button>

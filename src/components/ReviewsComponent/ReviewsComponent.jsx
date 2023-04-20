@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./ReviewsComponent.css";
 import SingleReviewComponent from "./SingleReviewComponent.jsx";
 import star1 from "./assets/star1.png";
@@ -6,8 +7,10 @@ import star2 from "./assets/star2.png";
 import star3 from "./assets/star3.png";
 import star4 from "./assets/star4.png";
 import star5 from "./assets/star5.png";
+import languageSelector from "../../assets/languages/languageSelector";
 
 const ReviewsComponent = ({ reviews, handleNewReview }) => {
+  const language = useSelector(state => state.languageReducer);
   const [reviewsList, setReviewsList] = useState([]);
 
   useEffect(() => {
@@ -77,12 +80,12 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
         );
       })}
       <span className="reviews-component-new-review-title">
-        Déjanos tus opinion
+        {languageSelector(language, 'reviewsTitle')}
       </span>
       <form className="reviews-component-new-review">
         <div className="reviews-component-new-review-stars-container">
           <span className="reviews-component-new-review-label reviews-component-new-review-label-rating">
-            Calificación:
+          {languageSelector(language, 'rating')}:
           </span>
           <label
             htmlFor="radio-star-1"
@@ -211,15 +214,15 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
           />
         </div>
         <span className="reviews-component-new-review-error-message">
-          {starsError ? "* Debes dar una calificación" : ""}
+          {starsError ? languageSelector(language, 'reviewStarsError') : ""}
         </span>
         <label htmlFor="" className="reviews-component-new-review-label">
-          Titulo:
+          {languageSelector(language, 'reviewFormTitle')}:
         </label>
         <input
           type="text"
           value={newReview.title}
-          placeholder="Titulo"
+          placeholder={languageSelector(language, 'reviewFormTitle')}
           className="reviews-component-new-review-title-input"
           onChange={(event) =>
             setNewReview({ ...newReview, title: event.target.value })
@@ -227,15 +230,15 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
         />
         <span className="reviews-component-new-review-error-message">
           {titleError
-            ? "* Debes escribir un titulo y este no puede tener mas de 40 caracteres"
+            ? languageSelector(language, 'reviewsTitleError')
             : ""}
         </span>
         <label htmlFor="" className="reviews-component-new-review-label">
-          Comentarios:
+          {languageSelector(language, 'reviewFormComments')}:
         </label>
         <textarea
           value={newReview.comments}
-          placeholder="Comentarios..."
+          placeholder={`${languageSelector(language, 'reviewFormComments')}...`}
           className="reviews-component-new-review-comments-textarea"
           rows={5}
           resize="none"
@@ -245,7 +248,7 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
         />
         <span className="reviews-component-new-review-error-message">
           {commentsError
-            ? "* Debes escribir tus comentarios y estos no pueden tener mas de 255 caracteres"
+            ? languageSelector(language, 'commentsError')
             : ""}
         </span>
         <input

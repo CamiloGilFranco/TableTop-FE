@@ -8,6 +8,7 @@ import burger from "../../assets/hamburger.svg";
 import CheckboxFilter from "./CheckboxFilter";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../../constants/apiUrl";
 
 const RestaurantFilterComponent = () => {
   const [cuisines, setCuisines] = useState([]);
@@ -20,11 +21,9 @@ const RestaurantFilterComponent = () => {
 
   const navigate = useNavigate();
 
-  const URL = process.env.REACT_APP_API_URL;
-
   useEffect(() => {
     axios
-      .get(`${URL}/cuisine-categories`)
+      .get(`${API_URL}/cuisine-categories`)
       .then((res) => {
         setCuisines(res.data.data);
       })
