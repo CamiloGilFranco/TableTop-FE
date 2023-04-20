@@ -7,6 +7,7 @@ import axios from 'axios';
 import './GeneralAdminRestaurantList.css';
 import languageSelector from '../../../assets/languages/languageSelector';
 import GeneralAdminModal from '../../../components/GeneralAdminModal/GeneralAdminModal';
+import { API_URL } from '../../../constants/apiUrl';
 
 const GeneralAdminRestaurantList = () => {
   const cookie = new Cookies();
@@ -24,7 +25,7 @@ const GeneralAdminRestaurantList = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/restaurants`)
+      .get(`${API_URL}/restaurants`)
       .then((response) => setRestaurants(response.data.data))
       .catch((error) => console.error(error));
   }, []);
@@ -35,9 +36,9 @@ const GeneralAdminRestaurantList = () => {
     if (window.confirm(confirmationMessage)) {
   
       try {
-        const response = await axios.put(`${process.env.REACT_APP_API_URL}/restaurants/deactivate/${id}`, {}, config);
+        const response = await axios.put(`${API_URL}/restaurants/deactivate/${id}`, {}, config);
         toast.success(response.data.message || languageSelector(language, 'deactivatedRestaurantSuccess'));
-        const updatedRestaurants = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants`, config);
+        const updatedRestaurants = await axios.get(`${API_URL}/restaurants`, config);
         setRestaurants(updatedRestaurants.data.data);
       } catch (error) {
         toast.error(error.response?.data?.message ||languageSelector(language, 'deactivatedRestaurantFailure'));
@@ -53,12 +54,12 @@ const GeneralAdminRestaurantList = () => {
   const handleRestaurantUpdate = async (updatedRestaurant) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API_URL}/restaurants/update/${updatedRestaurant.id_restaurant}`,
+        `${API_URL}/restaurants/update/${updatedRestaurant.id_restaurant}`,
         updatedRestaurant,
         config
       );
       toast.success(response.data.message || languageSelector(language, 'updatedRestaurantSuccess'));
-      const updatedRestaurants = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants`, config);
+      const updatedRestaurants = await axios.get(`${API_URL}/restaurants`, config);
       setRestaurants(updatedRestaurants.data.data);
     } catch (error) {
       toast.error(error.response?.data?.message || languageSelector(language, 'updatedRestaurantFailure'));

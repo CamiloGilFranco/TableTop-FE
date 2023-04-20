@@ -4,24 +4,24 @@ import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardCo
 import { useSelector } from "react-redux";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import db from "../../assets/dat.json";
 import languageSelector from "../../assets/languages/languageSelector";
+import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const PopularRestaurant = ({ inputValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios
-      .get(`${URL}/restaurants/withcuisines/all`)
+      .get(`${API_URL}/restaurants/withcuisines/all`)
       .then((res) => {
         setSortList(res.data.data);
       })
       .catch(() => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
       });
   }, []);
 

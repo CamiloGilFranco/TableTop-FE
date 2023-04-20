@@ -8,11 +8,14 @@ import {
 import "./CartItem.css";
 import SingleDishItem from "./SingleDishItem";
 import languageSelector from "../../assets/languages/languageSelector";
+
 import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import { useJwt } from "react-jwt";
+
+import routePaths from "../../constants/routePaths";
 
 const CartItem = () => {
   const language = useSelector((state) => state.languageReducer);

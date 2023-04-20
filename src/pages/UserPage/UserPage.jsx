@@ -20,7 +20,8 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
-import { inputNameRegex } from '../../constants/regexConstants';
+import { inputEmailRegEx, inputNameRegex, inputPasswordRegEx } from '../../constants/regexConstants';
+import { API_URL } from '../../constants/apiUrl';
 
 const UserPage = () => {
   const cookies = new Cookies();
@@ -30,7 +31,6 @@ const UserPage = () => {
   const [isEditable, setIsEditable] = useState(false);
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
-  const apiUrl = process.env.REACT_APP_API_URL;
   const jwtToken = cookies.get('token');
   const { isExpired } = useJwt(cookies.get("token"));
   const config = {
@@ -55,7 +55,7 @@ const UserPage = () => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
       try {
-        const response = await axios.get(`${apiUrl}/users/profile`, config);
+        const response = await axios.get(`${API_URL}/users/profile`, config);
         dispatch(fetchUserSuccess(response.data.data));
         const {
           name, 
@@ -80,7 +80,7 @@ const UserPage = () => {
       }
     };
     fetchUser();
-  }, [dispatch, apiUrl, jwtToken]);
+  }, [dispatch, jwtToken]);
 
   // enables the editing of the inputs
   const handleEditClick = () => {
@@ -175,17 +175,15 @@ const UserPage = () => {
       city,
     };
     
-    const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    const passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
   
     // validates the fields
     if (!name.length) {
       validationErrors.name = languageSelector(language, 'signInFirstNameError');
     }
-    if (!emailRegEx.test(email)) {
+    if (!inputEmailRegEx.test(email)) {
       validationErrors.email = languageSelector(language, 'signInEmailError');
     }
-    if (!passwordRegEx.test(password)) {
+    if (!inputPasswordRegEx.test(password)) {
       validationErrors.password = languageSelector(language, 'signInPasswordError');
     }
     if (phone_numbers.some((phoneNumber) => phoneNumber.phone_number.length < 10)) {
@@ -202,11 +200,11 @@ const UserPage = () => {
   
     // sends the information to the back end and does a new petition
     try {
-      await axios.put(`${apiUrl}/users/`, updatedUser, config);
+      await axios.put(`${API_URL}/users/`, updatedUser, config);
       dispatch(updateUserSuccess(updatedUser));
       setIsEditable(false);
       setErrors({});
-      const response = await axios.get(`${apiUrl}/users/profile`, config);
+      const response = await axios.get(`${API_URL}/users/profile`, config);
       dispatch(fetchUserSuccess(response.data.data));
       showToast();
       const { 

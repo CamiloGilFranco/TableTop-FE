@@ -6,11 +6,11 @@ import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setUser } from "../../store/actions/user.action";
+import { AUTH_URL } from "../../constants/apiUrl";
 
 const LoginFormComponent = ({ setWhichForm, closeModal }) => {
   const cookies = new Cookies();
   const dispatch = useDispatch();
-  const authUrl = process.env.REACT_APP_AUTH_URL;
   const language = useSelector(state=> state.languageReducer);
   const [timerModal, setTimerModal] = useState(null);
   const [dataUser, setDataUser] = useState({
@@ -29,7 +29,7 @@ const LoginFormComponent = ({ setWhichForm, closeModal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${authUrl}/local/login`, dataUser);
+      const { data } = await axios.post(`${AUTH_URL}/local/login`, dataUser);
       const { token, data: { name, last_name, email, user_role } } = data;
       cookies.set("token", token);
       cookies.set("name", name);

@@ -14,6 +14,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PopularRestaurant from "../../components/6 Popular Restaurant/PopularRestaurant";
+import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
@@ -21,17 +23,16 @@ const RestaurantView = () => {
   const [pictureNumber, setPictureNumber] = useState(null);
   const [restaurantData, setRestaurantData] = useState({});
   const params = useParams();
-  const URL = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`${URL}/restaurants/path/${params.restaurantPath}`)
+      .get(`${API_URL}/restaurants/path/${params.restaurantPath}`)
       .then((res) => {
         setRestaurantData(res.data.data);
       })
       .catch(() => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
       });
   }, []);
 

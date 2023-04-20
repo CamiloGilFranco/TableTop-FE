@@ -1,6 +1,17 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import userDB from '../../assets/admins.json';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import loadingGif from '../../assets/fotos/loading/loading-gif.gif';
+import { useJwt } from "react-jwt";
+import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+import {
+  fetchUserRequest,
+  fetchUserSuccess,
+  fetchUserFailure,
+} from '../../store/actions/user.action';
+import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
+import { API_URL } from '../../constants/apiUrl';
 import restaurantDB from '../../assets/dat.json';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
@@ -11,7 +22,37 @@ import EditDetailsModal from '../../components/EditDetailsModal/EditDetailsModal
 import languageSelector from '../../assets/languages/languageSelector';
 
 const RestaurantAdminView = () => {
-  const usersData = userDB;
+  const user = useSelector(state => state.userReducer.user);
+  const loading = useSelector((state) => state.userReducer.loading);
+  const language = useSelector(state=> state.languageReducer);
+  const [restaurant, setRestaurant] = useState(null);
+  const cookies = new Cookies();
+  const dispatch = useDispatch();
+  const jwtToken = cookies.get('token');
+  const { isExpired } = useJwt(cookies.get("token"));
+  const config = {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  };
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch(fetchUserRequest());
+      try {
+        const userResponse = axios.get(`${API_URL}/users/profile`, config);
+        const restaurantResponse = axios.get(`${API_URL}/restaurants/byuser/${user.id}`, config);
+        const [userResult, restaurantResult] = await Promise.all([userResponse, restaurantResponse]);
+        dispatch(fetchUserSuccess(userResult.data.data));
+        setRestaurant(restaurantResult.data.data);
+      } catch (error) {
+        dispatch(fetchUserFailure(error));
+      }
+    };
+    fetchData();
+  }, [dispatch, jwtToken]);
+
+  
   const resDB = restaurantDB;
   const restaurantExpample = resDB[0]
   const [menu, setMenu] = useState(restaurantExpample.menu);
@@ -23,7 +64,7 @@ const RestaurantAdminView = () => {
     {name: 'name 4', time: '7:30 PM', date: '08-03-2023', numberOfComensals: 5},
     {name: 'name 5', time: '7:30 PM', date: '09-03-2023', numberOfComensals: 5}
   ];
-
+  
   const [reservations, setReservations] = useState(mockReservations);
   const [editingItem, setEditingItem] = useState(null);
   const [editingCategory, setEditingCategory] = useState(null);
@@ -32,10 +73,6 @@ const RestaurantAdminView = () => {
   const [address, setAddress] = useState(restaurantExpample.address);
   const [phoneNumber, setPhoneNumber] = useState(restaurantExpample.phoneNumber);
   const [detailsModal, setDetailsModal] = useState(false);
-  
-
-  const language = useSelector(state=> state.languageReducer);
- 
   // logic for the sumbit of the new dish form
   const handleNewDishSumbit = (e) => {
     e.preventDefault();
@@ -150,18 +187,32 @@ const RestaurantAdminView = () => {
   const handleReservationDelete = (index) => {
     setReservations(reservations.filter((item, i) => i !== index)) ;
   }
+
+  if (!user || isExpired) {
+    return <NotFoundPageComponent />;
+  }
+   
+  if (loading) {
+    return (
+      <div>
+        <img src={`${loadingGif}`} alt='loading'/>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
   return(
     <>
       <HeaderComponent/>
       <div className='restaurantAdminView__container'>
-        <h1 className='restaurantAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {usersData[0].name}!</h1>
+        <h1 className='restaurantAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</h1>
           <article className='restauranAdminView__flex'>
             <span>
               <h3>{languageSelector(language, 'restaurantAdminSubtitle')}</h3>
               <ul className='restaurantAdminView__list'>
-                <li>{languageSelector(language, 'restaurantAdminResTitle')}: {restaurantExpample.restaurantName}</li>
-                <li>{languageSelector(language, 'restaurantAdminResSales')}: {restaurantExpample.numberOfSales}</li>
-                <li>{languageSelector(language, 'restaurantAdminResRating')}: {restaurantExpample.rating}</li>
+                <li>{languageSelector(language, 'restaurantAdminResTitle')}: {restaurant.restaurant_name}</li>
+                <li>{languageSelector(language, 'restaurantAdminResSales')}: {restaurant.number_of_sales}</li>
+                <li>{languageSelector(language, 'restaurantAdminResRating')}: {restaurant.rating}</li>
               </ul>
               <h3>{languageSelector(language, 'restaurantEditDetails')}</h3>
               <span>{languageSelector(language, 'restaurantEditAddress')}</span>
@@ -268,12 +319,6 @@ const RestaurantAdminView = () => {
               /> )}
             </article>
           </article>
-          <section className='userPAge__logOut'>
-            <span>{languageSelector(language, 'logOutText')}</span>
-            <button className='userPage__form-button'>
-            {languageSelector(language, 'logOutButton')}
-            </button>
-          </section>
       </div>
       <Footer/>
     </>

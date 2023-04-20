@@ -15,6 +15,7 @@ import google from "./assets/google.svg";
 import "./Footer.css";
 import { NavLink } from 'react-router-dom';
 import languageSelector from '../../assets/languages/languageSelector';
+import routePaths from '../../constants/routePaths';
 
 const Footer = () => {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -65,7 +66,7 @@ const Footer = () => {
             <a onClick={()=> setShowLogIn(true)} href='#top' className="footer-about-list-item">
               {languageSelector(language, 'footerLogin')}
             </a>
-            <NavLink to={'/register'} className="footer-about-list-item">
+            <NavLink to={routePaths.register} className="footer-about-list-item">
               {languageSelector(language, 'footerRegister')}
             </NavLink>
             <a href="_blank" className="footer-about-list-item">
@@ -96,7 +97,7 @@ const Footer = () => {
         <div className="footer-links footer-card">
           <span className="footer-card-title">{languageSelector(language, 'footerLinks')}</span>
           <div className="footer-links-list">
-            <NavLink to={'/'} href='#top' className="footer-links-list-item">
+            <NavLink to={routePaths.home} href='#top' className="footer-links-list-item">
               {languageSelector(language, 'footerHome')}
             </NavLink>
             <a href="_blank" className="footer-links-list-item">

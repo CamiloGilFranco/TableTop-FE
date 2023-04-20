@@ -6,6 +6,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import './GeneralAdminUserChange.css'
+import { API_URL } from '../../../constants/apiUrl';
 
 const GeneralAdminUserChange = () => {
   const language = useSelector(state => state.languageReducer);
@@ -23,7 +24,7 @@ const GeneralAdminUserChange = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+      const response = await axios.get(`${API_URL}/users`, {
         params: { role: 'user' },
         ...config,
       });
@@ -44,7 +45,7 @@ const GeneralAdminUserChange = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}/users/change-role`, {
+      const response = await axios.put(`${API_URL}/users/change-role`, {
         email,
         user_role: 'appAdmin',
       }, config);
@@ -56,9 +57,9 @@ const GeneralAdminUserChange = () => {
   }
   
   const hanldeUserDelete = async (id) => {
-    if (window.confirm(languageSelector(language, 'deavtivateUserWarning'))) {
+    if (window.confirm(languageSelector(language, 'deactivateUserWarning'))) {
       try {
-        const response = await axios.put(`${process.env.REACT_APP_API_URL}/users/${id}`, {}, config);
+        const response = await axios.put(`${API_URL}/users/${id}`, {}, config);
         toast.success(response.data.message || languageSelector(language, 'deactivatedUserSuccess'));
         fetchUsers();
       } catch (error) {

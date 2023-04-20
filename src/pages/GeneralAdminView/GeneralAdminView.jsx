@@ -19,6 +19,7 @@ import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponen
 import GeneralAdminUserChange from './GeneralAdminUserChange/GeneralAdminUserChange';
 import NewRestaurantForm from './NewRestaurantForm/NewRestaurantForm';
 import GeneralAdminRestaurantList from './GeneralAdminRestaurantList/GeneralAdminRestaurantList';
+import { API_URL } from '../../constants/apiUrl';
 
 const GeneralAdminView = () => {
   const user = useSelector(state => state.userReducer.user);
@@ -29,7 +30,6 @@ const GeneralAdminView = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const dispatch = useDispatch();
-  const apiUrl = process.env.REACT_APP_API_URL;
   const jwtToken = cookies.get('token');
   const { isExpired } = useJwt(cookies.get("token"));
   const config = {
@@ -42,14 +42,14 @@ const GeneralAdminView = () => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
       try {
-        const response = await axios.get(`${apiUrl}/users/profile`, config);
+        const response = await axios.get(`${API_URL}/users/profile`, config);
         dispatch(fetchUserSuccess(response.data.data));
       } catch (error) {
         dispatch(fetchUserFailure(error));
       }
     };
     fetchUser();
-  }, [dispatch, apiUrl, jwtToken]);
+  }, [dispatch, jwtToken]);
 
   const handleClick = (component) => {
     if (selectedComponent === component) {
