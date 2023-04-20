@@ -2,11 +2,9 @@ import "./RestaurantView.css";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent.jsx";
 import RestaurantInfoBanner from "../../components/RestaurantInfoBanner/RestaurantInfoBanner";
 import RestauranOptions from "../../components/RestaurantOptions/RestauranOptions";
-import Recommended from "../../components/Recommended/Recommended";
 import OrderOnline from "../../components/OrderOnline/OrderOnline";
 import Overview from "../../components/Overview/Overview";
 import GalleryComponent from "../../components/GalleryComponent/GalleryComponent";
-import LocationComponent from "../../components/LocationComponent/LocationComponent";
 import ReserveForm from "../../components/ReserveForm/ReserveForm";
 import ReviewsComponent from "../../components/ReviewsComponent/ReviewsComponent";
 import Footer from "../../components/Footer/Footer";
@@ -14,8 +12,8 @@ import CartItem from "../../components/CartItem/CartItem";
 import ControlledCarousel from "../../components/GalleryComponent/GalleryCarouselComponent";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import db from "../../assets/dat.json";
 import axios from "axios";
+import PopularRestaurant from "../../components/6 Popular Restaurant/PopularRestaurant";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
@@ -45,12 +43,10 @@ const RestaurantView = () => {
 
   const classOrderOnline =
     selected === "ORDER ONLINE" ? "restaurant-options-option-selected" : "";
-  const classOverview =
-    selected === "OVERVIEW" ? "restaurant-options-option-selected" : "";
+  const classVenues =
+    selected === "VENUES" ? "restaurant-options-option-selected" : "";
   const classGallery =
     selected === "GALLERY" ? "restaurant-options-option-selected" : "";
-  const classLocation =
-    selected === "LOCATION" ? "restaurant-options-option-selected" : "";
   const classBookATable =
     selected === "BOOK A TABLE" ? "restaurant-options-option-selected" : "";
   const classReviews =
@@ -74,7 +70,7 @@ const RestaurantView = () => {
     switch (selected) {
       case "ORDER ONLINE":
         return <OrderOnline menu={restaurantData.dishes_categories} />;
-      case "OVERVIEW":
+      case "VENUES":
         return <Overview venues={restaurantData.venues} />;
       case "GALLERY":
         return (
@@ -83,10 +79,6 @@ const RestaurantView = () => {
             setCarousel={setCarousel}
             setPictureNumber={setPictureNumber}
           />
-        );
-      case "LOCATION":
-        return (
-          <LocationComponent restaurantName={restaurantData.restaurant_name} />
         );
       case "BOOK A TABLE":
         return <ReserveForm />;
@@ -122,9 +114,8 @@ const RestaurantView = () => {
               setSelected={setSelected}
               selected={selected}
               classOrderOnline={classOrderOnline}
-              classOverview={classOverview}
+              classVenues={classVenues}
               classGallery={classGallery}
-              classLocation={classLocation}
               classBookATable={classBookATable}
               classReviews={classReviews}
             />
@@ -138,7 +129,7 @@ const RestaurantView = () => {
         </div>
       </div>
       <div className="restaurant-view-body-recommended-places">
-        <Recommended />
+        <PopularRestaurant />
       </div>
       <div className="restaurant-view-footer">
         <Footer />

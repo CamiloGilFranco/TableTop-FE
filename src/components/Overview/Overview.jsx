@@ -1,63 +1,43 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import "./Overview.css";
-import languageSelector from "../../assets/languages/languageSelector";
+import VenuesModal from "./VenuesModal";
 
-const Overview = ({
-  phoneNumber,
-  categories,
-  schedule,
-  address,
-  facilities,
-}) => {
-  const language = useSelector((state) => state.languageReducer);
+const Overview = ({ venues }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [infoModal, setInfoModal] = useState({});
+
+  const handleClick = (info) => {
+    setShowModal(true);
+    setInfoModal(info);
+  };
 
   return (
-    <div className="restaurant-view-overview">
-      <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">
-          {languageSelector(language, "signInPhone")}:
-        </span>
-        <ul className="restaurant-view-overview-category-items">
-          {phoneNumber &&
-            phoneNumber.map((element, index) => <li key={index}>{element}</li>)}
-        </ul>
-      </div>
-      <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">
-          {languageSelector(language, "filterCuisine")}
-        </span>
-        <ul className="restaurant-view-overview-category-items">
-          {categories &&
-            categories.map((element, index) => <li key={index}>{element}</li>)}
-        </ul>
-      </div>
-      <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">
-          {languageSelector(language, "overViewSchedule")}
-        </span>
-        <ul className="restaurant-view-overview-category-items">
-          {schedule &&
-            schedule.map((element, index) => <li key={index}>{element}</li>)}
-        </ul>
-      </div>
-      <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">
-          {languageSelector(language, "signInAddress")}
-        </span>
-        <ul className="restaurant-view-overview-category-items">
-          {address &&
-            address.map((element, index) => <li key={index}>{element}</li>)}
-        </ul>
-      </div>
-      <div className="restaurant-view-overview-category">
-        <span className="restaurant-view-overview-category-title">
-          {languageSelector(language, "overviewFacilities")}
-        </span>
-        <ul className="restaurant-view-overview-category-items">
-          {facilities &&
-            facilities.map((element, index) => <li key={index}>{element}</li>)}
-        </ul>
-      </div>
+    <div className="venues-component">
+      {venues &&
+        venues.map((venue) => {
+          return (
+            <div
+              className="venues-component-card"
+              key={venue.id_restaurant_venue}
+              onClick={() => handleClick(venue)}
+            >
+              <div className="venues-component-card-image-container">
+                <img
+                  src={venue.venue_photo}
+                  alt=""
+                  className="venues-component-card-image"
+                />
+              </div>
+              <p className="venues-component-card-title">{venue.name_venue}</p>
+              <p className="venues-component-card-city">{venue.city}</p>
+            </div>
+          );
+        })}
+      {showModal ? (
+        <VenuesModal setShowModal={setShowModal} infoModal={infoModal} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

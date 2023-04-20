@@ -2,13 +2,28 @@ import "./PopularRestaurant.css";
 import { useEffect, useState } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import db from "../../assets/dat.json";
 import languageSelector from "../../assets/languages/languageSelector";
 
 const PopularRestaurant = ({ inputValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const URL = process.env.REACT_APP_API_URL;
+
+  useEffect(() => {
+    axios
+      .get(`${URL}/restaurants/withcuisines/all`)
+      .then((res) => {
+        setSortList(res.data.data);
+      })
+      .catch(() => {
+        navigate("/something-went-wrong");
+      });
+  }, []);
 
   const data = db;
   const language = useSelector((state) => state.languageReducer);
@@ -49,30 +64,28 @@ const PopularRestaurant = ({ inputValue }) => {
     }
 
     if (!filteredData.length) {
-      return shortList.map((element) => {
+      return shortList.map((element, index) => {
         return (
           <RestaurantCardComponent
-            key={element.id}
-            picture={element.picture}
-            restaurantName={element.restaurantName}
+            key={index}
+            picture={element.main_photo}
+            restaurantName={element.restaurant_name}
             rating={element.rating}
-            categories={element.categories}
-            schedule={element.schedule}
-            dishesFrom={element.dishesFrom}
+            categories={element.cuisines}
+            path={element.restaurant_path}
           />
         );
       });
     } else {
-      return filteredData.map((element) => {
+      return filteredData.map((element, index) => {
         return (
           <RestaurantCardComponent
-            key={element.id}
-            picture={element.picture}
-            restaurantName={element.restaurantName}
+            key={index}
+            picture={element.main_photo}
+            restaurantName={element.restaurant_name}
             rating={element.rating}
-            categories={element.categories}
-            schedule={element.schedule}
-            dishesFrom={element.dishesFrom}
+            categories={element.cuisines}
+            path={element.restaurant_path}
           />
         );
       });
@@ -86,7 +99,7 @@ const PopularRestaurant = ({ inputValue }) => {
           {languageSelector(language, "popularRestaurantTitle")}
         </span>
         <div className="popular-restaurants-buttons">
-          {sortButton.map((item) => {
+          {sortButton.map((item, index) => {
             return (
               <p
                 key={item.id}

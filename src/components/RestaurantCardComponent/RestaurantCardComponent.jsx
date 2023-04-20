@@ -31,17 +31,20 @@ const RestaurantCardComponent = ({
           <span className="restaurant-card-component-title">
             {restaurantName}
           </span>
-          <span className="restaurant-card-component-rating">{rating} ⭐</span>
+          <span className="restaurant-card-component-rating">
+            {rating && rating.toFixed(1)} ⭐
+          </span>
         </div>
         <div className="restaurant-card-component-info-list">
-          {categories.map((element, index) => (
-            <span
-              key={index}
-              className="restaurant-card-component-info-list-cuisine"
-            >
-              - {element.cuisine_category}
-            </span>
-          ))}
+          {categories &&
+            categories.map((element, index) => (
+              <span
+                key={index}
+                className="restaurant-card-component-info-list-cuisine"
+              >
+                - {element.cuisine_category}
+              </span>
+            ))}
         </div>
       </figcaption>
     </figure>
