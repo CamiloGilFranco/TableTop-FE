@@ -267,7 +267,8 @@ const languageSelector = (lang, str) => {
     deavtivateRestaurantWarning: 'Are you sure you want to deactivate this restaurant? This action cannot be reversed.',
     deactivatedRestaurantSuccess: 'Restaurant deactivated successfully',
     deactivatedRestaurantFailure: 'Error deactivating Restaurant',
-    generalAdminUserListDeactivate: 'If you want to deactivate any user, press the icon next to their name.'
+    generalAdminUserListDeactivate: 'If you want to deactivate any user, press the icon next to their name.',
+    newResstaurantAdminEmail: 'New Restaurant Admin Email'
   };
 
   const es = {
@@ -541,7 +542,9 @@ const languageSelector = (lang, str) => {
     deavtivateRestaurantWarning: '¿Seguro que quieres desactivar este restaurante? Esta acción no se puede revertir.',
     deactivatedRestaurantSuccess: 'Restaurante desactivado con éxito',
     deactivatedRestaurantFailure: 'Error al desactivar el restaurante',
-    generalAdminUserListDeactivate: 'Si desea desactivar algún usuario, presione el icono junto a su nombre.'
+    generalAdminUserListDeactivate: 'Si desea desactivar algún usuario, presione el icono junto a su nombre.',
+    newResstaurantAdminEmail: 'Nuevo correo electrónico del administrador del restaurante'
+
   }
   if (lang === "en") {
     return en[str] || str;

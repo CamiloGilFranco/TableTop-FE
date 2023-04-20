@@ -7,7 +7,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
-import GeneralAdminModal from '../../components/GeneralAdminModal/GeneralAdminModal';
 import languageSelector from '../../assets/languages/languageSelector';
 import './GeneralAdminView.css';
 import 'react-toastify/dist/ReactToastify.css';

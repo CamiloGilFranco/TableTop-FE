@@ -59,6 +59,7 @@ const GeneralAdminModal = ({ isOpen, onClose, restaurant, onSave }) => {
        {languageSelector(language, 'restaurantEditTitle')}
       </span>
       <form className='generalAdminModal__form' onSubmit={handleSumbit}>
+        <label htmlFor='title'>{languageSelector(language, 'restaurantAdminResTitle')}</label>
         <input
           type="text"
           value={restaurantName}
@@ -68,16 +69,23 @@ const GeneralAdminModal = ({ isOpen, onClose, restaurant, onSave }) => {
           placeholder="Restaurant Name"
           />
         {errors.title && <div className="generalAdminModal__error">{errors.title}</div>}
+        <label htmlFor='logo'>Logo</label>
         <input
           type="file"
+          name='logo'
+          id ='logo'
           accept="image/*"
           onChange={(e) => setLogo(e.target.files[0])}
         />
+        <label htmlFor='title'>{languageSelector(language, 'mainPhoto')}</label>
         <input
           type="file"
           accept="image/*"
+          name='mainPhoto'
+          id ='mainPhoto'
           onChange={(e) => setMainPhoto(e.target.files[0])}
         />
+        <label htmlFor='title'>{languageSelector(language, 'newResstaurantAdminEmail')}</label>
         <input
           type="email"
           value={adminEmail}
