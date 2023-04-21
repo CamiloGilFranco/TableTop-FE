@@ -3,9 +3,9 @@ import languageSelector from '../../assets/languages/languageSelector';
 import { useSelector } from 'react-redux';
 
 
-const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, address, index }) => {
+const EditDetailsModal = ({ field, index, onClose, editItem }) => {
   const language = useSelector(state => state.languageReducer);
-  const [editingItem, setEditingItem] = useState(item);
+  const [editingItem, setEditingItem] = useState('');
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
@@ -13,6 +13,7 @@ const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, add
 
     const form = e.target;
     const input = form.editedItem.value;
+
     if (input.length === 0) {
       validationErrors.error = languageSelector(language, 'editDetailsError');
     }
@@ -22,12 +23,6 @@ const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, add
       return;
     }
 
-    if (phoneNumber.includes(item)) {
-      handleDetailsUpdate(phoneNumber, index, input);
-    } else if (address.includes(item)) {
-      handleDetailsUpdate(address, index, input);
-    }
-    
     setErrors({});
     onClose();
   };

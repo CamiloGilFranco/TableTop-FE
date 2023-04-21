@@ -17,7 +17,6 @@ import Footer from '../../components/Footer/Footer';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './RestaurantAdminView.css';
-import EditModal from '../../components/EditModal/EditModal';
 import languageSelector from '../../assets/languages/languageSelector';
 import RestaurantDetails from './RestaurantDetails/RestaurantDetails';
 
@@ -40,18 +39,18 @@ const RestaurantAdminView = () => {
     const fetchData = async () => {
       dispatch(fetchUserRequest());
       try {
-        const userResponse = axios.get(`${API_URL}/users/profile`, config);
-        const restaurantResponse = axios.get(`${API_URL}/restaurants/byuser/${user.id}`, config);
-        const [userResult, restaurantResult] = await Promise.all([userResponse, restaurantResponse]);
-        dispatch(fetchUserSuccess(userResult.data.data));
-        setRestaurant(restaurantResult.data.data);
+        const userResponse = await axios.get(`${API_URL}/users/profile`, config);
+        dispatch(fetchUserSuccess(userResponse.data.data));
+  
+        const userId = userResponse.data.data.user_id;
+        const restaurantResponse = await axios.get(`${API_URL}/restaurants/byuser/${userId}`, config);
+        setRestaurant(restaurantResponse.data.data);
       } catch (error) {
         dispatch(fetchUserFailure(error));
       }
     };
     fetchData();
   }, [dispatch, jwtToken]);
-
   
   const resDB = restaurantDB;
   const restaurantExpample = resDB[0]
@@ -61,10 +60,10 @@ const RestaurantAdminView = () => {
   const [editingItem, setEditingItem] = useState(null);
   const [editingCategory, setEditingCategory] = useState(null);
   const [editIndex, setEditIndex] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
   const [address, setAddress] = useState(restaurantExpample.address);
   const [phoneNumber, setPhoneNumber] = useState(restaurantExpample.phoneNumber);
   const [detailsModal, setDetailsModal] = useState(false);
+
   // logic for the sumbit of the new dish form
   const handleNewDishSumbit = (e) => {
     e.preventDefault();
@@ -121,13 +120,12 @@ const RestaurantAdminView = () => {
     setEditingCategory(category)
     setEditIndex(index)
     setEditingItem(item);
-    setModalVisible(true);
+
   }
 
   //call back function that closes the modal
   const handleCloseModal = () => {
     setEditingItem(null);
-    setModalVisible(false);
   };  
 
   // updates the dish with the information from the modal
@@ -268,11 +266,6 @@ const RestaurantAdminView = () => {
                   </ul>
                 </div>
               ))}
-              {modalVisible && (<EditModal 
-                item={editingItem} 
-                onClose={handleCloseModal} 
-                handleUpdate={handleUpdate}
-              /> )}
             </article>
           </article>
       </div>
