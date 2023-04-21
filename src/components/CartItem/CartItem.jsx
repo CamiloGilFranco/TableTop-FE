@@ -18,6 +18,7 @@ import { useJwt } from "react-jwt";
 import routePaths from "../../constants/routePaths";
 
 const CartItem = () => {
+  const cookies = new Cookies();
   const language = useSelector((state) => state.languageReducer);
   const itemsStore = useSelector((state) => state.cartReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
@@ -29,7 +30,7 @@ const CartItem = () => {
 
   const handlePlaceOrder = () => {
     console.log(login);
-    if (!login.user.token || !isExpired) {
+    if (!cookies.get("token") || !isExpired) {
       toast.error("You must log in to continue", {
         position: "bottom-right",
       });
