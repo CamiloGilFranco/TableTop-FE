@@ -18,14 +18,14 @@ import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './RestaurantAdminView.css';
 import EditModal from '../../components/EditModal/EditModal';
-import EditDetailsModal from '../../components/EditDetailsModal/EditDetailsModal';
 import languageSelector from '../../assets/languages/languageSelector';
+import RestaurantDetails from './RestaurantDetails/RestaurantDetails';
 
 const RestaurantAdminView = () => {
   const user = useSelector(state => state.userReducer.user);
   const loading = useSelector((state) => state.userReducer.loading);
   const language = useSelector(state=> state.languageReducer);
-  const [restaurant, setRestaurant] = useState(null);
+  const [restaurant, setRestaurant] = useState({});
   const cookies = new Cookies();
   const dispatch = useDispatch();
   const jwtToken = cookies.get('token');
@@ -57,15 +57,7 @@ const RestaurantAdminView = () => {
   const restaurantExpample = resDB[0]
   const [menu, setMenu] = useState(restaurantExpample.menu);
   const [errors, setErrors] = useState({});
-  let mockReservations = [
-    {name: 'name 1', time: '7:30 PM', date: '05-03-2023', numberOfComensals: 5},
-    {name: 'name 2', time: '7:30 PM', date: '06-03-2023', numberOfComensals: 5},
-    {name: 'name 3', time: '7:30 PM', date: '07-03-2023', numberOfComensals: 5},
-    {name: 'name 4', time: '7:30 PM', date: '08-03-2023', numberOfComensals: 5},
-    {name: 'name 5', time: '7:30 PM', date: '09-03-2023', numberOfComensals: 5}
-  ];
-  
-  const [reservations, setReservations] = useState(mockReservations);
+
   const [editingItem, setEditingItem] = useState(null);
   const [editingCategory, setEditingCategory] = useState(null);
   const [editIndex, setEditIndex] = useState(null);
@@ -183,10 +175,7 @@ const RestaurantAdminView = () => {
     setEditingItem(null)
   }
 
-  // eliminates one element of the reservations
-  const handleReservationDelete = (index) => {
-    setReservations(reservations.filter((item, i) => i !== index)) ;
-  }
+  console.log(restaurant);
 
   if (!user || isExpired) {
     return <NotFoundPageComponent />;
@@ -204,6 +193,7 @@ const RestaurantAdminView = () => {
   return(
     <>
       <HeaderComponent/>
+      <ToastContainer />
       <div className='restaurantAdminView__container'>
         <h1 className='restaurantAdminView__title'>{languageSelector(language, 'restaurantAdminTitle')} {user.name} {user.last_name}!</h1>
           <article className='restauranAdminView__flex'>
@@ -214,52 +204,18 @@ const RestaurantAdminView = () => {
                 <li>{languageSelector(language, 'restaurantAdminResSales')}: {restaurant.number_of_sales}</li>
                 <li>{languageSelector(language, 'restaurantAdminResRating')}: {restaurant.rating}</li>
               </ul>
-              <h3>{languageSelector(language, 'restaurantEditDetails')}</h3>
-              <span>{languageSelector(language, 'restaurantEditAddress')}</span>
-              <ul>
-                {address.map((address, index)=>{
-                  return(
-                  <li key={index}>
-                    {address}
-                    <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={(e)=>handleDetailsClick(address, index)}/>
-                    <AiFillDelete className='restaurantAdminView__icon'onClick={()=>handleDetailsDelete(restaurantExpample.address , index)}/>
-                  </li>
-                  )
-                })}
-              </ul>
-              <span>{languageSelector(language, 'restaurantEditPhoneNumber')}</span>
-              <ul>
-                {phoneNumber.map(((phoneNumber, index)=> {
-                  return(
-                  <li key={index}>
-                    {phoneNumber}
-                    <AiFillEdit className='restaurantAdminView__icon restaurantAdminView__edit' onClick={(e)=>handleDetailsClick(phoneNumber, index)}/>
-                    <AiFillDelete className='restaurantAdminView__icon'onClick={()=>handleDetailsDelete(restaurantExpample.phoneNumber, index)}/>
-                  </li>
-                  )
-                }))}
-              </ul>
-              {detailsModal && (<EditDetailsModal 
-                item={editingItem} 
-                onClose={handleDetailsClose}
-                handleDetailsUpdate={handleDetailsUpdate}
-                address={address}
-                phoneNumber={phoneNumber}
-                index={editIndex}
+              <RestaurantDetails
+                  language={language}
+                  languageSelector={languageSelector}
+                  handleDetailsClick={handleDetailsClick}
+                  handleDetailsDelete={handleDetailsDelete}
+                  handleDetailsClose={handleDetailsClose}
+                  handleDetailsUpdate={handleDetailsUpdate}
+                  editIndex={editIndex}
+                  detailsModal={detailsModal}
+                  editingItem={editingItem}
+                  restaurant={restaurant}
               />
-              )}
-              <h3>{languageSelector(language, 'restaurantReservationsTitle')}:</h3>
-              <p className='restaurantAdmin__view-p'>{languageSelector(language, 'restaurantReservationsEdit')}</p>
-              <section>
-                {reservations.map((item, index) => {
-                  return (
-                    <span key={index} className='restaurantAdminView__reservation'>
-                      <p>{languageSelector(language, 'signInFirstName')}: {item.name} - {languageSelector(language, 'restaurantReservationsTime')}: {item.time} - {languageSelector(language, 'restaurantReservationsDate')}: {item.date} {language === 'en'? 'for' : 'para'} {item.numberOfComensals} {language === 'en'? 'people' : 'personas'}</p>
-                      <AiFillDelete className='restaurantAdminView__icon' onClick={()=>handleReservationDelete(index)}/>
-                    </span>                    
-                  )
-                })}
-              </section>
             </span>
             <form onSubmit={handleNewDishSumbit} className='restaurantAdminView__form'>
               <span>{languageSelector(language, 'newDishFormTitle')}</span>
