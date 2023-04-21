@@ -126,7 +126,7 @@ const RestaurantDetails = ({
               <h4>Reservations:</h4>
               {visibleVenueIndex !== null && (
                 <>
-                  <ReservationList reservations={reservations} />
+                  <ReservationList reservations={reservations} setReservations={setReservations} />
                 </>
               )}
             </>

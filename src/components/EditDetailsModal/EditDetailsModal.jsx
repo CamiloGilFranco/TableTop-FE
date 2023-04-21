@@ -8,25 +8,12 @@ const EditVenueDetailsModal = ({ field, index, onClose, editItem }) => {
   const [editingItem, setEditingItem] = useState('');
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    const validationErrors = {};
-
+  const handleSubmit = () => {
     editItem(field, index, editingItem);
     setEditingItem('');
     setErrors({});
     onClose();
 
-    // if (input.length === 0) {
-    //   validationErrors.error = languageSelector(language, 'editDetailsError');
-    // }
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setErrors({});
-    onClose();
   };
 
   return (
