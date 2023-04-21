@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
+import axios from "axios";
+import { API_URL } from "../../constants/apiUrl";
 
 const DeliveryAddressBox = ({
   index,
+  id,
   name,
   address,
   city,
   setAddressSelected,
   addressSelected,
   handleDelete,
+  setNewRenderList,
+  newRenderList,
 }) => {
   const styleChange = () => {
     if (addressSelected === `option${index}`) {
@@ -20,6 +25,15 @@ const DeliveryAddressBox = ({
   };
 
   const language = useSelector((state) => state.languageReducer);
+
+  const handleRemove = (event) => {
+    event.preventDefault();
+    handleDelete(index);
+
+    axios.delete(`${API_URL}/user-address/${id}`).then(() => {
+      setNewRenderList(!newRenderList);
+    });
+  };
 
   return (
     <div>
@@ -45,13 +59,7 @@ const DeliveryAddressBox = ({
           {city}
         </p>
 
-        <button
-          className="delivery-button--red"
-          onClick={(event) => {
-            event.preventDefault();
-            handleDelete(index);
-          }}
-        >
+        <button className="delivery-button--red" onClick={handleRemove}>
           {languageSelector(language, "remove")}
         </button>
       </label>

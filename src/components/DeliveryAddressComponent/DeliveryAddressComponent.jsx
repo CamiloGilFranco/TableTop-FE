@@ -18,8 +18,9 @@ const DeliveryAddressComponent = () => {
   const language = useSelector((state) => state.languageReducer);
   const cookies = new Cookies();
   const [addressesList, setAddressesList] = useState(null);
+  const [newRenderList, setNewRenderList] = useState(false);
 
-  useEffect(() => {
+  const renderList = () => {
     axios
       .get(`${API_URL}/users/payment`, {
         headers: {
@@ -29,7 +30,10 @@ const DeliveryAddressComponent = () => {
       .then((res) => {
         setAddressesList(res.data.data.addresses);
       });
-  }, []);
+  };
+
+  useEffect(renderList, []);
+  useEffect(renderList, [newRenderList]);
 
   const handleDelete = (index) => {
     const newAddressList = [...addressList];
@@ -70,6 +74,8 @@ const DeliveryAddressComponent = () => {
                 setAddressSelected={setAddressSelected}
                 addressSelected={addressSelected}
                 handleDelete={handleDelete}
+                setNewRenderList={setNewRenderList}
+                newRenderList={newRenderList}
               />
             ))}
         </form>
