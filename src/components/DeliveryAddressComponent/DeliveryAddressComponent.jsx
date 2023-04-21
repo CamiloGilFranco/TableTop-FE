@@ -84,6 +84,8 @@ const DeliveryAddressComponent = () => {
         <FormComponent
           handleNewAddress={handleNewAddress}
           closeModal={closeModal1}
+          newRenderList={newRenderList}
+          setNewRenderList={setNewRenderList}
         />
       </Modal>
     </>
