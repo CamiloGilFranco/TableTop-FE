@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import "./RestaurantDetails.css";
 import { AiFillEdit } from "react-icons/ai";
-import EditDetailsModal from "../../../components/EditDetailsModal/EditDetailsModal";
+import EditVenueDetailsModal from "../../../components/EditDetailsModal/EditDetailsModal";
 import ReservationList from "./ReservationList/ReservationList";
 import { API_URL } from "../../../constants/apiUrl";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useJwt } from "react-jwt";
+import Cookies from 'universal-cookie';
+import { useSelector } from 'react-redux';
 
-const RestaurantDetails = ({ language, languageSelector, restaurant = {} }) => {
+
+const RestaurantDetails = ({
+  language,
+  languageSelector,
+  restaurant = {},
+  setRestaurant,
+}) => {
   const { venues = [] } = restaurant;
   const [visibleVenueIndex, setVisibleVenueIndex] = useState(null);
   const [reservations, setReservations] = useState([]);
@@ -15,7 +26,15 @@ const RestaurantDetails = ({ language, languageSelector, restaurant = {} }) => {
     field: null,
     index: null,
   });
-  console.log("🚀 ~ file: RestaurantDetails.jsx:18 ~ RestaurantDetails ~ modalVisible:", modalVisible)
+  const cookies = new Cookies();
+  const jwtToken = cookies.get('token');
+  const { isExpired } = useJwt(cookies.get("token"));
+  const config = {
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
+    },
+  };
+
 
   const toggleDetails = async (index) => {
     if (visibleVenueIndex === index) {
@@ -23,7 +42,8 @@ const RestaurantDetails = ({ language, languageSelector, restaurant = {} }) => {
     } else {
       const venue = venues[index];
       const res = await axios.get(
-        `${API_URL}/reservations/venue/${venue.id_restaurant_venue}`
+        `${API_URL}/reservations/venue/${venue.id_restaurant_venue}`,
+        config
       );
       setReservations(res.data.data);
       setVisibleVenueIndex(index);
@@ -32,9 +52,20 @@ const RestaurantDetails = ({ language, languageSelector, restaurant = {} }) => {
 
   const editItem = async (field, index, newValue) => {
     const venueId = venues[index].id_restaurant_venue;
-    const url = `${API_URL}/api/venues/update/${venueId}`;
-    const response = await axios.put(url, { field, newValue });
-    // Handle response
+    const url = `${API_URL}/restaurant-venues/${venueId}`;
+    try {
+      const response = await axios.put(url, { field, newValue }, config);
+      if (response.status === 200) {
+        const updatedVenues = [...venues];
+        updatedVenues[index][field] = newValue;
+        setRestaurant({ ...restaurant, venues: updatedVenues });
+        toast.success(languageSelector(language, "updateSuccess"));
+      } else {
+        toast.error(languageSelector(language, "updateError"));
+      }
+    } catch (error) {
+      toast.error(languageSelector(language, "updateError"));
+    }
   };
 
   const handleDetailsClick = (field, index) => {
@@ -103,15 +134,13 @@ const RestaurantDetails = ({ language, languageSelector, restaurant = {} }) => {
         </div>
       ))}
       {modalVisible.show && (
-      <EditDetailsModal
-        editItem={editItem}
-        onClose={() =>
-          setModalVisible({ ...modalVisible, show: false })
-        }
-        field={modalVisible.field}
-        index={modalVisible.index}
-      />
-    )}
+        <EditVenueDetailsModal
+          editItem={editItem}
+          onClose={() => setModalVisible({ ...modalVisible, show: false })}
+          field={modalVisible.field}
+          index={modalVisible.index}
+        />
+      )}
     </>
   );
 };

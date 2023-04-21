@@ -1,0 +1,59 @@
+.editVenueDetailsModal__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .editVenueDetailsModal__box {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: lightgray;
+    font-size: 18px;
+    max-width: 600px;
+
+    .editVenueDetailsModal__form {
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
+      gap: 10px;
+
+      input, textarea {
+        padding: 5px;
+        border-radius: 15px;
+        border: none;
+        background-color: darkgray;
+      }
+
+      .editVenueDetailsModal__buttons {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        gap: 25px;
+
+        button {
+          cursor: pointer;
+          padding: 15px;
+          border: none;
+          border-radius: 15px;
+          color: white;
+          font-weight: 700;
+        }
+
+        .editVenueDetailsModal__button-save {
+          background-color: green;
+        }
+
+        .editVenueDetailsModal__button-cancel {
+          background-color: #ef3f3f;
+        }
+      }
+    }
+  }
+}

@@ -62,7 +62,6 @@ const RestaurantAdminView = () => {
   const [editIndex, setEditIndex] = useState(null);
   const [address, setAddress] = useState(restaurantExpample.address);
   const [phoneNumber, setPhoneNumber] = useState(restaurantExpample.phoneNumber);
-  const [detailsModal, setDetailsModal] = useState(false);
 
   // logic for the sumbit of the new dish form
   const handleNewDishSumbit = (e) => {
@@ -146,33 +145,6 @@ const RestaurantAdminView = () => {
     }
   }
 
-  // renders the modal to edit addresses or phone number
-
-  const handleDetailsClick = (item, index) => {
-    setEditingItem(item);
-    setEditIndex(index);
-    setDetailsModal(true);
-  }
-
-  // updates the value from address or phone number with the value incoming from the modal
-  const handleDetailsUpdate = (arr, index, value) => {
-    if (arr === phoneNumber) {
-      const newPhoneNumber = [...phoneNumber];
-      newPhoneNumber[index] = value;
-      setPhoneNumber(newPhoneNumber);
-    } else if (arr === address) {
-      const newAddress = [...address];
-      newAddress[index] = value;
-      setAddress(newAddress);
-    }
-  };
-
-  // closes the edit modal
-  const handleDetailsClose = () => {
-    setDetailsModal(false);
-    setEditingItem(null)
-  }
-
   console.log(restaurant);
 
   if (!user || isExpired) {
@@ -205,14 +177,8 @@ const RestaurantAdminView = () => {
               <RestaurantDetails
                   language={language}
                   languageSelector={languageSelector}
-                  handleDetailsClick={handleDetailsClick}
-                  handleDetailsDelete={handleDetailsDelete}
-                  handleDetailsClose={handleDetailsClose}
-                  handleDetailsUpdate={handleDetailsUpdate}
-                  editIndex={editIndex}
-                  detailsModal={detailsModal}
-                  editingItem={editingItem}
                   restaurant={restaurant}
+                  setRestaurant={setRestaurant}
               />
             </span>
             <form onSubmit={handleNewDishSumbit} className='restaurantAdminView__form'>
