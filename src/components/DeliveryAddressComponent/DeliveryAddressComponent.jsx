@@ -7,14 +7,29 @@ import Modal from "./modal/Modal";
 import addresses from "../../assets/dataAddress.json";
 import { useSelector } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
+import axios from "axios";
+import { API_URL } from "../../constants/apiUrl";
+import Cookies from "universal-cookie";
 
 const DeliveryAddressComponent = () => {
   const [isOpenModal1, openModal1, closeModal1] = useModal(false);
   const [addressList, setAddressList] = useState(addresses);
   const [addressSelected, setAddressSelected] = useState("");
   const language = useSelector((state) => state.languageReducer);
+  const cookies = new Cookies();
+  const [addressesList, setAddressesList] = useState(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/users/payment`, {
+        headers: {
+          Authorization: `Bearer ${cookies.get("token")}`,
+        },
+      })
+      .then((res) => {
+        setAddressesList(res.data.data.addresses);
+      });
+  }, []);
 
   const handleDelete = (index) => {
     const newAddressList = [...addressList];
@@ -43,18 +58,20 @@ const DeliveryAddressComponent = () => {
           </button>
         </div>
         <form className="delivery-main-box">
-          {addressList.map((element, index) => (
-            <DeliveryAddressBox
-              key={index}
-              index={index}
-              name={element.name}
-              address={element.address}
-              city={element.city}
-              setAddressSelected={setAddressSelected}
-              addressSelected={addressSelected}
-              handleDelete={handleDelete}
-            />
-          ))}
+          {addressesList &&
+            addressesList.map((element, index) => (
+              <DeliveryAddressBox
+                key={index}
+                index={index}
+                id={element.id_address}
+                name={element.address_name}
+                address={element.address}
+                city={element.city}
+                setAddressSelected={setAddressSelected}
+                addressSelected={addressSelected}
+                handleDelete={handleDelete}
+              />
+            ))}
         </form>
       </section>
       <Modal isOpen={isOpenModal1} closeModal={closeModal1}>
