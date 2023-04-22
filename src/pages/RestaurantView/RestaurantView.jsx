@@ -24,8 +24,9 @@ const RestaurantView = () => {
   const [restaurantData, setRestaurantData] = useState({});
   const params = useParams();
   const navigate = useNavigate();
+  const [newRender, setNewRender] = useState(true);
 
-  useEffect(() => {
+  const render = () => {
     axios
       .get(`${API_URL}/restaurants/path/${params.restaurantPath}`)
       .then((res) => {
@@ -34,7 +35,10 @@ const RestaurantView = () => {
       .catch(() => {
         navigate(routePaths.somethingWentWrong);
       });
-  }, []);
+  };
+
+  useEffect(render, []);
+  useEffect(render, [newRender]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -88,6 +92,10 @@ const RestaurantView = () => {
           <ReviewsComponent
             reviews={restaurantData.reviews}
             handleNewReview={handleNewReview}
+            id_restaurant={restaurantData.id_restaurant}
+            rating={restaurantData.rating}
+            newRender={newRender}
+            setNewRender={setNewRender}
           />
         );
       default:
