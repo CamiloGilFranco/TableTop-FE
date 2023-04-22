@@ -215,6 +215,7 @@ const RestaurantAdminView = () => {
             menu={menu}
             setMenu={setMenu}
             dishCategories={dishCategories}
+            setDishCategories={setDishCategories}
             language={language}
             languageSelector={languageSelector}
             restaurant={restaurant}

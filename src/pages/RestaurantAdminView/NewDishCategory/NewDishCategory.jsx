@@ -13,7 +13,6 @@ const NewDishCategoryForm = ({
   languageSelector,
   restaurant = {},
 }) => {
-  console.log("🚀 ~ file: NewDishCategory.jsx:16 ~ restaurant.id_restaurant:", restaurant.id_restaurant)
   const [errors, setErrors] = useState({});
   const [category, setCategory] = useState("");
   const cookies = new Cookies();
