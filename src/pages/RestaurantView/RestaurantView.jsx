@@ -86,7 +86,12 @@ const RestaurantView = () => {
           />
         );
       case "BOOK A TABLE":
-        return <ReserveForm />;
+        return (
+          <ReserveForm
+            venues={restaurantData.venues}
+            id_restaurant={restaurantData.id_restaurant}
+          />
+        );
       case "REVIEWS":
         return (
           <ReviewsComponent

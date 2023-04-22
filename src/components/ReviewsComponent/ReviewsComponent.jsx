@@ -96,6 +96,8 @@ const ReviewsComponent = ({
             parseInt(newReview.stars)
           );
 
+          setNewReview({ stars: "", title: "", comments: "" });
+
           setNewRender(!newRender);
         }
       }
