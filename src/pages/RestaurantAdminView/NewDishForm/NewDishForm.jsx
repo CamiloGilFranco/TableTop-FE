@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./NewDishForm.css";
 import axios from "axios";
 import { API_URL } from "../../../constants/apiUrl";
+import { toast } from "react-toastify";
 
 const NewDishForm = ({
   setDishCategories,
@@ -25,29 +26,29 @@ const NewDishForm = ({
       [name]: value,
     }));
   };
-  // const validateInput = () => {
-  //   const errors = {};
-  //   if (!newDish.newDishTitle) {
-  //     errors.newDishTitle = "Title is required";
-  //   }
-  //   if (!newDish.newDishDescription) {
-  //     errors.newDishDescription = "Description is required";
-  //   }
-  //   if (!newDish.newDishPrice) {
-  //     errors.newDishPrice = "Price is required";
-  //   } else if (isNaN(newDish.newDishPrice)) {
-  //     errors.newDishPrice = "Price must be a number";
-  //   }
-  //   if (!newDish.dishCategorySelect) {
-  //     errors.dishCategorySelect = "Category is required";
-  //   }
-  //   setErrors(errors);
-  //   return Object.keys(errors).length === 0;
-  // };
+  const validateInput = () => {
+    const errors = {};
+    if (!newDish.newDishTitle) {
+      errors.newDishTitle = "Title is required";
+    }
+    if (!newDish.newDishDescription) {
+      errors.newDishDescription = "Description is required";
+    }
+    if (!newDish.newDishPrice) {
+      errors.newDishPrice = "Price is required";
+    } else if (isNaN(newDish.newDishPrice)) {
+      errors.newDishPrice = "Price must be a number";
+    }
+    if (!newDish.dishCategorySelect) {
+      errors.dishCategorySelect = "Category is required";
+    }
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleNewDishCategorySubmit = (e) => {
     e.preventDefault();
-    if (true) {
+    if (validateInput()) {
       const {
         newDishTitle: title,
         newDishDescription: description,
@@ -59,7 +60,7 @@ const NewDishForm = ({
       );
       if (selectedDishCategoryObj) {
         const selectedDishCategory = selectedDishCategoryObj.dishes_category;
-  
+
         axios
           .post(`${API_URL}/dishes`, {
             title,
@@ -80,16 +81,18 @@ const NewDishForm = ({
               ...prevCategories,
               response.data.data,
             ]);
+            toast.success("Dish added successfully!");
           })
           .catch((error) => {
             console.log(error);
+            toast.error("An error occurred while adding the dish.");
           });
       } else {
-        console.log("Category not found");
+        toast.error("Please fill in all the required fields.");
       }
     }
   };
-  
+
   return (
     <>
       <form
@@ -103,8 +106,12 @@ const NewDishForm = ({
           type="text"
           id="newDishTitle"
           name="newDishTitle"
+          value={newDish.newDishTitle}
           onChange={handleInputChange}
         />
+        {errors.newDishTitle && (
+          <div className="error">{errors.newDishTitle}</div>
+        )}
         <label htmlFor="newDishDescription">
           {languageSelector(language, "newDishDescription")}
         </label>
@@ -112,8 +119,12 @@ const NewDishForm = ({
           type="text"
           id="newDishDescription"
           name="newDishDescription"
+          value={newDish.newDishDescription}
           onChange={handleInputChange}
         />
+        {errors.newDishDescription && (
+          <div className="error">{errors.newDishDescription}</div>
+        )}
         <label htmlFor="newDishPrice">
           {languageSelector(language, "somethingElse")}
         </label>
@@ -121,11 +132,16 @@ const NewDishForm = ({
           type="number"
           id="newDishPrice"
           name="newDishPrice"
+          value={newDish.newDishPrice}
           onChange={handleInputChange}
         />
+        {errors.newDishPrice && (
+          <div className="error">{errors.newDishPrice}</div>
+        )}
         <select
           id="dishCategorySelect"
           name="dishCategorySelect"
+          value={newDish.dishCategorySelect}
           onChange={handleInputChange}
         >
           {dishCategories &&
@@ -138,6 +154,9 @@ const NewDishForm = ({
               </option>
             ))}
         </select>
+        {errors.dishCategorySelect && (
+          <div className="error">{errors.dishCategorySelect}</div>
+        )}
         <button type="submit">{languageSelector(language, "sumbit")}</button>
       </form>
     </>

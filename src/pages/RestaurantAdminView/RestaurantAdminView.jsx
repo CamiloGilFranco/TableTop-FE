@@ -54,7 +54,7 @@ const RestaurantAdminView = () => {
           config
         );
         setRestaurant(restaurantResponse.data.data);
-        setDishCategories(restaurant.dishes_categories);
+        setDishCategories(restaurantResponse.data.data.dishes_categories);
       } catch (error) {
         dispatch(fetchUserFailure(error));
       }
