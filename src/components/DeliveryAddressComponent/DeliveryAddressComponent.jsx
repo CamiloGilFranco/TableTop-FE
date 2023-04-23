@@ -11,14 +11,14 @@ import axios from "axios";
 import { API_URL } from "../../constants/apiUrl";
 import Cookies from "universal-cookie";
 
-const DeliveryAddressComponent = () => {
+const DeliveryAddressComponent = ({ setDeliveryAddress }) => {
   const [isOpenModal1, openModal1, closeModal1] = useModal(false);
   const [addressList, setAddressList] = useState(addresses);
-  const [addressSelected, setAddressSelected] = useState("");
   const language = useSelector((state) => state.languageReducer);
   const cookies = new Cookies();
   const [addressesList, setAddressesList] = useState(null);
   const [newRenderList, setNewRenderList] = useState(false);
+  const [addressSelected, setAddressSelected] = useState("");
 
   const renderList = () => {
     axios
@@ -76,6 +76,7 @@ const DeliveryAddressComponent = () => {
                 handleDelete={handleDelete}
                 setNewRenderList={setNewRenderList}
                 newRenderList={newRenderList}
+                setDeliveryAddress={setDeliveryAddress}
               />
             ))}
         </form>

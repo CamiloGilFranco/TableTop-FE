@@ -15,6 +15,7 @@ const DeliveryAddressBox = ({
   handleDelete,
   setNewRenderList,
   newRenderList,
+  setDeliveryAddress,
 }) => {
   const styleChange = () => {
     if (addressSelected === `option${index}`) {
@@ -36,7 +37,7 @@ const DeliveryAddressBox = ({
   };
 
   return (
-    <div>
+    <div className="delivery-address-single-box">
       <input
         type="radio"
         id={`addressN${index}`}
@@ -46,6 +47,7 @@ const DeliveryAddressBox = ({
         className="delivery-address-box-radio"
         onChange={(event) => {
           setAddressSelected(`option${index}`);
+          setDeliveryAddress({ address, city });
         }}
       />
       <label

@@ -44,11 +44,20 @@
 }
 
 .debit-card-text-input {
-  font-size: 20px;
+  font-size: 20px !important;
   border-radius: 10px;
-
+  height: 33px;
   border: lightgray solid 2px;
   padding: 0 10px;
+}
+
+.StripeElement {
+  font-size: 20px;
+  border: lightgray solid 2px;
+  border-radius: 5px;
+  padding-left: 10px;
+  height: 35px;
+  padding-top: 5px;
 }
 
 .debit-card-form-due-cvv {
@@ -101,4 +110,4 @@
   .debit-card-form-DocNum-container {
     width: 100%;
   }
-} ;
+}
