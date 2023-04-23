@@ -40,7 +40,7 @@ const EditModal = ({ item, onClose, handleUpdate }) => {
       return;
     }
 
-    handleUpdate(title, price, description);    
+    handleUpdate(title, parseInt(price), description);    
     onClose();
   }
   return (

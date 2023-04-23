@@ -73,7 +73,7 @@ const RestaurantDetails = ({
   };
 
   return (
-    <>
+    <div className="restaurantDetails">
       {venues.map((venue, index) => (
         <div key={index}>
           <h3 onClick={() => toggleDetails(index)}>
@@ -141,7 +141,7 @@ const RestaurantDetails = ({
           index={modalVisible.index}
         />
       )}
-    </>
+    </div>
   );
 };
 

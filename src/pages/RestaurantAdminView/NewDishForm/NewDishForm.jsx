@@ -3,6 +3,7 @@ import "./NewDishForm.css";
 import axios from "axios";
 import { API_URL } from "../../../constants/apiUrl";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewDishForm = ({
   setDishCategories,
@@ -11,7 +12,6 @@ const NewDishForm = ({
   languageSelector,
   restaurant = {},
 }) => {
-  console.log(dishCategories);
   const [errors, setErrors] = useState({});
   const [newDish, setNewDish] = useState({
     newDishTitle: "",

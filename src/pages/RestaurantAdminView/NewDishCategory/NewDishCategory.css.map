@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"NewDishCategory.css"}
+{"version":3,"sources":["NewDishCategory.scss","NewDishCategory.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,sBAAA;EACA,SAAA;EACA,aAAA;ACCF;ADCE;EACE,gBAAA;EACA,eAAA;ACCJ;ADEE;EACE,aAAA;EACA,eAAA;EACA,sBAAA;EACA,kBAAA;ACAJ;ADGE;EACE,cAAA;EACA,eAAA;EACA,SAAA;ACDJ;ADIE;EACE,kBAAA;EACA,kCAAA;EACA,WAAA;EACA,eAAA;EACA,YAAA;EACA,kBAAA;EACA,eAAA;ACFJ;ADII;EACE,mCAAA;ACFN","file":"NewDishCategory.css"}
