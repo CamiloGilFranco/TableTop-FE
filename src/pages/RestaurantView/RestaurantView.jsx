@@ -74,7 +74,12 @@ const RestaurantView = () => {
   const showComponent = () => {
     switch (selected) {
       case "ORDER ONLINE":
-        return <OrderOnline menu={restaurantData.dishes_categories} />;
+        return (
+          <OrderOnline
+            menu={restaurantData.dishes_categories}
+            id_restaurant={restaurantData.id_restaurant}
+          />
+        );
       case "VENUES":
         return <Overview venues={restaurantData.venues} />;
       case "GALLERY":

@@ -6,16 +6,23 @@ import {
   subtractSubtotalAction,
 } from "../../store/actions/cart.action";
 
-const SingleDishItem = ({ title, price, quantity, subtotal }) => {
+const SingleDishItem = ({
+  title,
+  price,
+  quantity,
+  subtotal,
+  id,
+  id_restaurant,
+}) => {
   const dispatch = useDispatch();
 
   const handleSubtract = () => {
-    dispatch(CartDecrementAction(title, price));
+    dispatch(CartDecrementAction(title, price, id, id_restaurant));
     dispatch(subtractSubtotalAction(price));
   };
 
   const handleAdd = () => {
-    dispatch(CartIncrementAction(title, price));
+    dispatch(CartIncrementAction(title, price, id, id_restaurant));
     dispatch(addSubtotalAction(price));
   };
 

@@ -1,6 +1,6 @@
 import "./payment.css";
 import { useSelector, useDispatch } from "react-redux";
-
+import { NEW_ORDER } from "../../store/reducers/Order.reducer";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
@@ -19,6 +19,14 @@ const Payment = ({ deliveryAddress }) => {
   const navigate = useNavigate();
   const language = useSelector((state) => state.languageReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
+  const [paymentData, setPaymentData] = useState(null);
+
+  useEffect(() => {
+    dispatch({ type: NEW_ORDER, payload: paymentData });
+    if (paymentData) {
+      navigate("/order");
+    }
+  }, [paymentData]);
 
   const elements = useElements();
   const stripe = useStripe();
@@ -30,6 +38,7 @@ const Payment = ({ deliveryAddress }) => {
       toast.error("Choose an address to delivery", {
         position: "bottom-right",
       });
+      return;
     }
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -49,14 +58,26 @@ const Payment = ({ deliveryAddress }) => {
       return;
     }
 
-    const response = await axios.post(`${API_URL}/checkout`, {
-      paymentMethod,
-      amount: Math.round((cartSubtotal / 4500) * 100),
-      address: deliveryAddress.address,
-      city: deliveryAddress.city,
-    });
-    console.log(response);
-    elements.getElement(CardElement).clear();
+    try {
+      const response = await axios.post(`${API_URL}/checkout`, {
+        paymentMethod,
+        amount: Math.round((cartSubtotal / 4500) * 100),
+      });
+
+      setPaymentData({
+        orderStatus: response.data.payment.status,
+        orderData: {
+          address: deliveryAddress.address,
+          city: deliveryAddress.city,
+          addressId: deliveryAddress.id_address,
+        },
+      });
+      elements.getElement(CardElement).clear();
+    } catch (error) {
+      toast.error(`Error ${error.response.data.decline_code}`, {
+        position: "bottom-right",
+      });
+    }
   };
 
   return (
