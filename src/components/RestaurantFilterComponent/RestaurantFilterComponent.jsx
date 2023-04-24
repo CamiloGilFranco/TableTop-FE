@@ -136,14 +136,16 @@ const RestaurantFilterComponent = () => {
             </button>
           </div>
           <div className="restaurantFilter-container-main-container-cuisines-checks">
-            {cuisines.map((element, index) => (
-              <CheckboxFilter
-                key={index}
-                element={element.cuisine_category}
-                handleCategoriesChange={handleCategoriesChange}
-                objectParams={Object.fromEntries(searchParams.entries())}
-              />
-            ))}
+            {cuisines &&
+              cuisines.length &&
+              cuisines.map((element, index) => (
+                <CheckboxFilter
+                  key={index}
+                  element={element.cuisine_category}
+                  handleCategoriesChange={handleCategoriesChange}
+                  objectParams={Object.fromEntries(searchParams.entries())}
+                />
+              ))}
           </div>
         </div>
 

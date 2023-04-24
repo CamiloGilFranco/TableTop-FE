@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
+import axios from "axios";
+import { API_URL } from "../../constants/apiUrl";
 
 const DeliveryAddressBox = ({
   index,
+  id,
   name,
-  mobileNumber,
   address,
   city,
   setAddressSelected,
   addressSelected,
   handleDelete,
+  setNewRenderList,
+  newRenderList,
+  setDeliveryAddress,
 }) => {
   const styleChange = () => {
     if (addressSelected === `option${index}`) {
@@ -20,10 +25,19 @@ const DeliveryAddressBox = ({
     }
   };
 
-  const language = useSelector(state => state.languageReducer)
+  const language = useSelector((state) => state.languageReducer);
+
+  const handleRemove = (event) => {
+    event.preventDefault();
+    handleDelete(index);
+
+    axios.delete(`${API_URL}/user-address/${id}`).then(() => {
+      setNewRenderList(!newRenderList);
+    });
+  };
 
   return (
-    <div>
+    <div className="delivery-address-single-box">
       <input
         type="radio"
         id={`addressN${index}`}
@@ -33,6 +47,7 @@ const DeliveryAddressBox = ({
         className="delivery-address-box-radio"
         onChange={(event) => {
           setAddressSelected(`option${index}`);
+          setDeliveryAddress({ address, city });
         }}
       />
       <label
@@ -42,19 +57,12 @@ const DeliveryAddressBox = ({
         <h3 className="delivery-content__name">{name}</h3>
 
         <p className="delivery-personal-info-data">{address}</p>
-        <p className="delivery-personal-info-data">{city}</p>
         <p className="delivery-personal-info-data delivery-personal-info-data-last">
-          {mobileNumber}
+          {city}
         </p>
 
-        <button
-          className="delivery-button--red"
-          onClick={(event) => {
-            event.preventDefault();
-            handleDelete(index);
-          }}
-        >
-          {languageSelector(language, 'remove')}
+        <button className="delivery-button--red" onClick={handleRemove}>
+          {languageSelector(language, "remove")}
         </button>
       </label>
     </div>

@@ -8,10 +8,28 @@ import star3 from "./assets/star3.png";
 import star4 from "./assets/star4.png";
 import star5 from "./assets/star5.png";
 import languageSelector from "../../assets/languages/languageSelector";
+import Cookies from "universal-cookie";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { API_URL } from "../../constants/apiUrl";
+import axios from "axios";
+import {
+  alreadyCommented,
+  addNewComment,
+  updateRestaurantRating,
+} from "./ReviewsQueries";
 
-const ReviewsComponent = ({ reviews, handleNewReview }) => {
-  const language = useSelector(state => state.languageReducer);
+const ReviewsComponent = ({
+  reviews,
+  handleNewReview,
+  id_restaurant,
+  rating,
+  newRender,
+  setNewRender,
+}) => {
+  const language = useSelector((state) => state.languageReducer);
   const [reviewsList, setReviewsList] = useState([]);
+  const cookies = new Cookies();
 
   useEffect(() => {
     if (reviews) {
@@ -29,7 +47,7 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
   const [titleError, setTitleError] = useState(false);
   const [commentsError, setCommentsError] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let isOk = true;
 
@@ -55,18 +73,40 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
     }
 
     if (isOk) {
-      handleNewReview(newReview);
+      if (!cookies.get("token")) {
+        toast.error("You must log in to continue", {
+          position: "bottom-right",
+        });
+      } else {
+        if (await alreadyCommented(id_restaurant)) {
+          toast.error("you have already made a comment", {
+            position: "bottom-right",
+          });
+        } else {
+          await addNewComment(
+            id_restaurant,
+            newReview.title,
+            newReview.stars,
+            newReview.comments
+          );
 
-      setNewReview({
-        stars: "",
-        title: "",
-        comments: "",
-      });
+          await updateRestaurantRating(
+            id_restaurant,
+            rating,
+            parseInt(newReview.stars)
+          );
+
+          setNewReview({ stars: "", title: "", comments: "" });
+
+          setNewRender(!newRender);
+        }
+      }
     }
   };
 
   return (
     <div className="reviews-component-container">
+      <ToastContainer />
       {reviewsList.map((element, index) => {
         const createdAtText = new Date(element.createdAt);
         return (
@@ -80,12 +120,12 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
         );
       })}
       <span className="reviews-component-new-review-title">
-        {languageSelector(language, 'reviewsTitle')}
+        {languageSelector(language, "reviewsTitle")}
       </span>
       <form className="reviews-component-new-review">
         <div className="reviews-component-new-review-stars-container">
           <span className="reviews-component-new-review-label reviews-component-new-review-label-rating">
-          {languageSelector(language, 'rating')}:
+            {languageSelector(language, "rating")}:
           </span>
           <label
             htmlFor="radio-star-1"
@@ -214,31 +254,29 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
           />
         </div>
         <span className="reviews-component-new-review-error-message">
-          {starsError ? languageSelector(language, 'reviewStarsError') : ""}
+          {starsError ? languageSelector(language, "reviewStarsError") : ""}
         </span>
         <label htmlFor="" className="reviews-component-new-review-label">
-          {languageSelector(language, 'reviewFormTitle')}:
+          {languageSelector(language, "reviewFormTitle")}:
         </label>
         <input
           type="text"
           value={newReview.title}
-          placeholder={languageSelector(language, 'reviewFormTitle')}
+          placeholder={languageSelector(language, "reviewFormTitle")}
           className="reviews-component-new-review-title-input"
           onChange={(event) =>
             setNewReview({ ...newReview, title: event.target.value })
           }
         />
         <span className="reviews-component-new-review-error-message">
-          {titleError
-            ? languageSelector(language, 'reviewsTitleError')
-            : ""}
+          {titleError ? languageSelector(language, "reviewsTitleError") : ""}
         </span>
         <label htmlFor="" className="reviews-component-new-review-label">
-          {languageSelector(language, 'reviewFormComments')}:
+          {languageSelector(language, "reviewFormComments")}:
         </label>
         <textarea
           value={newReview.comments}
-          placeholder={`${languageSelector(language, 'reviewFormComments')}...`}
+          placeholder={`${languageSelector(language, "reviewFormComments")}...`}
           className="reviews-component-new-review-comments-textarea"
           rows={5}
           resize="none"
@@ -247,9 +285,7 @@ const ReviewsComponent = ({ reviews, handleNewReview }) => {
           }
         />
         <span className="reviews-component-new-review-error-message">
-          {commentsError
-            ? languageSelector(language, 'commentsError')
-            : ""}
+          {commentsError ? languageSelector(language, "commentsError") : ""}
         </span>
         <input
           type="submit"

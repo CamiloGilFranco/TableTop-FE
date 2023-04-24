@@ -127,7 +127,7 @@ const RestaurantList = () => {
       );
     } else {
       const listToRender = displayArr.length > 0 ? displayArr : sortList;
-      return listToRender.map((element) => {
+      return !!listToRender.map((element) => {
         return (
           <RestaurantCardComponent
             key={element.id_restaurant}

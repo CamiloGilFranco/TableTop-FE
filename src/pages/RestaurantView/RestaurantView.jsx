@@ -24,8 +24,9 @@ const RestaurantView = () => {
   const [restaurantData, setRestaurantData] = useState({});
   const params = useParams();
   const navigate = useNavigate();
+  const [newRender, setNewRender] = useState(true);
 
-  useEffect(() => {
+  const render = () => {
     axios
       .get(`${API_URL}/restaurants/path/${params.restaurantPath}`)
       .then((res) => {
@@ -34,7 +35,10 @@ const RestaurantView = () => {
       .catch(() => {
         navigate(routePaths.somethingWentWrong);
       });
-  }, []);
+  };
+
+  useEffect(render, []);
+  useEffect(render, [newRender]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -70,7 +74,12 @@ const RestaurantView = () => {
   const showComponent = () => {
     switch (selected) {
       case "ORDER ONLINE":
-        return <OrderOnline menu={restaurantData.dishes_categories} />;
+        return (
+          <OrderOnline
+            menu={restaurantData.dishes_categories}
+            id_restaurant={restaurantData.id_restaurant}
+          />
+        );
       case "VENUES":
         return <Overview venues={restaurantData.venues} />;
       case "GALLERY":
@@ -82,12 +91,21 @@ const RestaurantView = () => {
           />
         );
       case "BOOK A TABLE":
-        return <ReserveForm />;
+        return (
+          <ReserveForm
+            venues={restaurantData.venues}
+            id_restaurant={restaurantData.id_restaurant}
+          />
+        );
       case "REVIEWS":
         return (
           <ReviewsComponent
             reviews={restaurantData.reviews}
             handleNewReview={handleNewReview}
+            id_restaurant={restaurantData.id_restaurant}
+            rating={restaurantData.rating}
+            newRender={newRender}
+            setNewRender={setNewRender}
           />
         );
       default:

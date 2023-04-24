@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import "./OrderOnline.css";
 import { Link } from "react-router-dom";
 
-const OrderOnline = ({ menu }) => {
+const OrderOnline = ({ menu, id_restaurant }) => {
   const [menuList, setMenuList] = useState([]);
 
   useEffect(() => {
@@ -39,6 +39,8 @@ const OrderOnline = ({ menu }) => {
                     title={dish.title}
                     description={dish.description}
                     price={dish.price}
+                    id={dish.id_dish}
+                    id_restaurant={id_restaurant}
                   />
                 );
               })}

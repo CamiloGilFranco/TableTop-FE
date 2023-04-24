@@ -3,10 +3,10 @@ import {
   CartIncrementAction,
   addSubtotalAction,
 } from "../../store/actions/cart.action.js";
-const IndividualDish = ({ title, description, price }) => {
+const IndividualDish = ({ title, description, price, id, id_restaurant }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(CartIncrementAction(title, price));
+    dispatch(CartIncrementAction(title, price, id, id_restaurant));
     dispatch(addSubtotalAction(price));
   };
   return (

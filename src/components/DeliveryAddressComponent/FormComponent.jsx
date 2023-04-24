@@ -2,19 +2,27 @@ import { useState } from "react";
 import "./FormComponent.css";
 import { useSelector } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
+import { API_URL } from "../../constants/apiUrl";
+import axios from "axios";
+import Cookies from "universal-cookie";
 
-const FormComponent = ({ handleNewAddress, closeModal }) => {
+const FormComponent = ({
+  handleNewAddress,
+  closeModal,
+  newRenderList,
+  setNewRenderList,
+}) => {
   const [addFormValues, setAddFormValues] = useState({
     name: "",
-    mobileNumber: "",
     address: "",
     city: "",
   });
 
+  const cookies = new Cookies();
+
   const language = useSelector((state) => state.languageReducer);
   const [nameError, setNameError] = useState(false);
   const [addressError, setAddressError] = useState(false);
-  const [numberError, setNumberError] = useState(false);
   const [cityError, setCityError] = useState(false);
 
   const addNewAddressSubmit = (event) => {
@@ -35,13 +43,6 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       isValid = true;
     }
 
-    if (addFormValues.mobileNumber.length !== 10) {
-      setNumberError(true);
-      isValid = false;
-    } else {
-      isValid = true;
-    }
-
     if (!addFormValues.city) {
       setCityError(true);
       isValid = false;
@@ -51,6 +52,22 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
 
     if (isValid) {
       handleNewAddress(addFormValues);
+
+      axios.post(
+        `${API_URL}/user-address`,
+        {
+          name: addFormValues.name,
+          address: addFormValues.address,
+          city: addFormValues.city,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.get("token")}`,
+          },
+        }
+      );
+
+      setNewRenderList(!newRenderList);
       closeModal();
     }
   };
@@ -100,30 +117,6 @@ const FormComponent = ({ handleNewAddress, closeModal }) => {
       {addressError ? (
         <p className="form-add-address-error">
           {languageSelector(language, "newAddressError")}
-        </p>
-      ) : (
-        ""
-      )}
-
-      <label htmlFor="mobile" className="form-add-address-label">
-        {languageSelector(language, "signInPhone")}
-      </label>
-      <input
-        type="number"
-        id="mobile"
-        name="name"
-        className="form-add-address-input"
-        value={addFormValues.mobileNumber}
-        onChange={(event) =>
-          setAddFormValues({
-            ...addFormValues,
-            mobileNumber: event.target.value,
-          })
-        }
-      />
-      {numberError ? (
-        <p className="form-add-address-error">
-          {languageSelector(language, "signInPhoneError")}
         </p>
       ) : (
         ""
