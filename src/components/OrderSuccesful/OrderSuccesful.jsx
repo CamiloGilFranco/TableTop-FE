@@ -72,7 +72,7 @@ const OrderSuccesful = () => {
               });
 
               navigate("/");
-            }, 7000);
+            }, 6000);
           });
       });
   }, []);
