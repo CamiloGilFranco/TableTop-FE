@@ -65,7 +65,7 @@ const CartItem = () => {
             ${cartSubtotal}
           </span>
         </div>
-        <p className="cart-item-finish-waring">
+        <p className="cart-item-finish-warning">
           {languageSelector(language, "cartFinishWarning")}
         </p>
         {pathRegExp.test(location) ? (

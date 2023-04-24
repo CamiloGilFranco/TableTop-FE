@@ -45,8 +45,6 @@ const DeliveryAddressComponent = ({ setDeliveryAddress }) => {
     setAddressList([...addressList, newAddress]);
   };
 
-  console.log();
-
   return (
     <>
       <section className="delivery-address-container">
@@ -62,8 +60,8 @@ const DeliveryAddressComponent = ({ setDeliveryAddress }) => {
           </button>
         </div>
         <form className="delivery-main-box">
-          {addressesList &&
-            addressesList.map((element, index) => (
+          {
+            !!addressesList.map((element, index) => (
               <DeliveryAddressBox
                 key={index}
                 index={index}
@@ -78,7 +76,8 @@ const DeliveryAddressComponent = ({ setDeliveryAddress }) => {
                 newRenderList={newRenderList}
                 setDeliveryAddress={setDeliveryAddress}
               />
-            ))}
+            ))
+          }
         </form>
       </section>
       <Modal isOpen={isOpenModal1} closeModal={closeModal1}>

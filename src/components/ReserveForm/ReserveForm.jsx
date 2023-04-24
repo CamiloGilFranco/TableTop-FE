@@ -68,14 +68,14 @@ const ReserveForm = ({ venues, id_restaurant }) => {
             }
           )
           .then(() => {
-            toast.success("your reservation was made successfully", {
+            toast.success("Your reservation was made successfully", {
               position: "bottom-right",
             });
             setReserveForm({ dateAndTime: "", venue: "CHOOSE ONE" });
           })
           .catch(() => {
             toast.error(
-              "your reservation was not completed, try again or select another date",
+              "Your reservation was not completed, try again or select another date",
               {
                 position: "bottom-right",
               }
@@ -113,7 +113,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
               * debes reservar una fecha menor a 30 días
             </p>
           ) : (
-            ""
+            <></>
           )}
         </div>
         <div className="reserve-form-input-date-container-main">
@@ -129,14 +129,15 @@ const ReserveForm = ({ venues, id_restaurant }) => {
             className="reserve-form-input"
           >
             <option value="CHOOSE ONE">CHOOSE A VENUE</option>
-            {venues &&
-              venues.map((venue, index) => {
+            {
+              !!venues.map((venue, index) => {
                 return (
                   <option key={index} value={venue.id_restaurant_venue}>
                     {venue.name_venue}
                   </option>
                 );
-              })}
+              })
+            }
           </select>
           {venueError ? (
             <p className="reserve-form-input-error-message">

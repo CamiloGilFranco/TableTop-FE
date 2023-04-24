@@ -8,10 +8,9 @@ import "./CheckoutPageComponent.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
+const publicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
-const stripePromise = loadStripe(
-  "pk_test_51MzwoXA4m6OMz50cQDWoJL27hwzyeiodGS1ivBKyHMNGu0d250XsB9IhkbB89Ig8kIoN0Lkq8PTos0bG9F5YY2gr00jbNcg0q0"
-);
+const stripePromise = loadStripe(publicKey);
 
 const CheckoutPageComponent = () => {
   const [deliveryAddress, setDeliveryAddress] = useState({

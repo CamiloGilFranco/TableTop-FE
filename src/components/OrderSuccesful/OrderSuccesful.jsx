@@ -25,6 +25,7 @@ const OrderSuccesful = () => {
   const [orderID, setOrderID] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const returnMessage = "Going back to the main page";
 
   useEffect(() => {
     const dishList = [];
@@ -56,7 +57,7 @@ const OrderSuccesful = () => {
             dishList,
           })
           .then(() => {
-            toast.success("Going back to the main page", {
+            toast.success(returnMessage, {
               position: "bottom-right",
             });
             setTimeout(() => {
