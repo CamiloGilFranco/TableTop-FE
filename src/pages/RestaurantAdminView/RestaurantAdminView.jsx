@@ -21,6 +21,7 @@ import NewDishCategoryForm from "./NewDishCategory/NewDishCategory";
 import NewDishForm from "./NewDishForm/NewDishForm";
 import DishList from "./DishList/DishList";
 import AdminList from "./AdminList/AdminList";
+import UpdatePhotos from "./UpdatePhotos/UpdatePhotos";
 
 const RestaurantAdminView = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -90,15 +91,15 @@ const RestaurantAdminView = () => {
           <h3>{languageSelector(language, "restaurantAdminSubtitle")}</h3>
           <div className="restaurantAdminView__list">
             <p>
-              {languageSelector(language, "restaurantAdminResTitle")}: {''}
+              {languageSelector(language, "restaurantAdminResTitle")}: {""}
               {restaurant.restaurant_name}
             </p>
             <p>
-              {languageSelector(language, "restaurantAdminResSales")}: {''}
+              {languageSelector(language, "restaurantAdminResSales")}: {""}
               {restaurant.number_of_sales}
             </p>
             <p>
-              {languageSelector(language, "restaurantAdminResRating")}: {''}
+              {languageSelector(language, "restaurantAdminResRating")}: {""}
               {restaurant.rating}
             </p>
           </div>
@@ -139,6 +140,18 @@ const RestaurantAdminView = () => {
             >
               {languageSelector(language, "adminList")}
             </li>
+            <li
+              className={selectedComponent === "updatePhotos" ? "active" : ""}
+              onClick={() => setSelectedComponent("updatePhotos")}
+            >
+              Update Photos
+            </li>
+            <li
+              className={selectedComponent === "newVenueForm" ? "active" : ""}
+              onClick={() => setSelectedComponent("newVenueForm")}
+            >
+              New Venue
+            </li>
           </ul>
           <div className="restaurantAdminView__main">
             {selectedComponent === "restaurantDetails" && (
@@ -178,6 +191,14 @@ const RestaurantAdminView = () => {
             {selectedComponent === "adminList" && (
               <AdminList restaurant={restaurant} />
             )}
+            {selectedComponent === "updatePhotos" && (
+              <UpdatePhotos
+                restaurant={restaurant}
+                languageSelector={languageSelector}
+                language={language}
+              />
+            )}
+            {/* {selectedComponent === 'newVenueForm' && <NewVenueForm restaurant={restaurant} />} */}
           </div>
         </div>
       </div>
