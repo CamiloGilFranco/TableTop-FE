@@ -60,13 +60,11 @@
       border-bottom: 1px solid #ef3f3f;
       transition: color 0.3s ease, border-bottom 0.3s ease;
     }
-    &.hover {
+    
+    &:hover {
       color: #ef3f3f;
       border-bottom: 1px solid #ef3f3f;
       transition: color 0.3s ease, border-bottom 0.3s ease;
-    }
-    &:hover {
-      color: #ef3f3f;
     }
   }
 }
@@ -81,4 +79,29 @@
 .restauranAdminView__itemTitle {
   font-weight: 700;
   font-size: 16px;
+}
+
+.restaurantAdminView__intro {
+  margin-bottom: 20px;
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+  }
+
+  .restaurantAdminView__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+
+    p {
+      margin-right: 30px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }

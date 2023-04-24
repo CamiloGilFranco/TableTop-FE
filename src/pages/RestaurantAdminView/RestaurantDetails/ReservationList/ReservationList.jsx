@@ -5,9 +5,9 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { API_URL } from "../../../../constants/apiUrl";
 import Cookies from "universal-cookie";
-import { useSelector } from "react-redux";
+import languageSelector from "../../../../assets/languages/languageSelector";
 
-const ReservationList = ({ reservations = [], setReservations }) => {
+const ReservationList = ({ reservations = [], setReservations, language }) => {
   const cookies = new Cookies();
   const jwtToken = cookies.get("token");
   const config = {
@@ -18,7 +18,7 @@ const ReservationList = ({ reservations = [], setReservations }) => {
   const handleDeleteReservation = async (reservationId) => {
     if (
       window.confirm(
-        "This action is irreversible. Are you sure you want to delete this reservation?"
+        languageSelector(language, 'reservationWarning')
       )
     ) {
       try {
@@ -28,17 +28,17 @@ const ReservationList = ({ reservations = [], setReservations }) => {
           config
         );
         if (response.status === 200) {
-          toast.success("Reservation successfully deleted");
+          toast.success(languageSelector(language, 'reservationDeleteSucess'));
           setReservations(
             reservations.filter(
               (reservation) => reservation.id_reservation !== reservationId
             )
           );
         } else {
-          toast.error("Failed to delete reservation");
+          toast.error(languageSelector(language, 'reservationDeleteFailure'));
         }
       } catch (error) {
-        toast.error("Failed to delete reservation");
+        toast.error(languageSelector(language, 'reservationDeleteFailure'));
       }
     }
   };
@@ -48,16 +48,16 @@ const ReservationList = ({ reservations = [], setReservations }) => {
       {reservations.map((reservation) => (
         <div className="reservationList__item" key={reservation.id_reservation}>
           <p className="reservationList__title">
-            Reservation ID: {reservation.id_reservation}
+           {languageSelector(language, 'reservationId')}: {reservation.id_reservation}
           </p>
           <div className="reservationList__detail">
-            <p className="reservationList__label">User Name:</p>
+            <p className="reservationList__label">{languageSelector(language, 'reservationName')}:</p>
             <p>
               {reservation.users.name} {reservation.users.last_name}
             </p>
           </div>
           <div className="reservationList__detail">
-            <p className="reservationList__label">Date & Time:</p>
+            <p className="reservationList__label">{languageSelector(language, 'dateAndTime')}:</p>
             <p>{reservation.date_hour}</p>
           </div>
           <AiFillDelete

@@ -39,8 +39,6 @@ const AdminList = ({ restaurant = {} }) => {
         const updatedAdmins = response.data.data.admins;
         if (updatedAdmins) {
           setAdmins(updatedAdmins);
-        } else {
-          console.warn("Admins list not received in the response");
         }
         setNewAdminEmail("");
         toast.success(languageSelector(language, 'addResAdminSuccess'));
@@ -64,12 +62,12 @@ const AdminList = ({ restaurant = {} }) => {
       <div className="adminList__addAdmin">
         <input
           type="email"
-          placeholder={languageSelector(language, "addAdminEmail")}
+          placeholder={languageSelector(language, "signInEmail")}
           value={newAdminEmail}
           onChange={(e) => setNewAdminEmail(e.target.value)}
         />
         <button onClick={handleAddAdmin}>
-          {languageSelector(language, "addAdmin")}
+          {languageSelector(language, "bookingButton")}
         </button>
       </div>
     </div>

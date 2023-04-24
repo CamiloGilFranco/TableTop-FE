@@ -7,9 +7,7 @@ import { API_URL } from "../../../constants/apiUrl";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { useJwt } from "react-jwt";
 import Cookies from 'universal-cookie';
-import { useSelector } from 'react-redux';
 
 
 const RestaurantDetails = ({
@@ -28,7 +26,6 @@ const RestaurantDetails = ({
   });
   const cookies = new Cookies();
   const jwtToken = cookies.get('token');
-  const { isExpired } = useJwt(cookies.get("token"));
   const config = {
     headers: {
       Authorization: `Bearer ${jwtToken}`,
@@ -123,10 +120,10 @@ const RestaurantDetails = ({
                   onClick={() => handleDetailsClick("close_hour", index)}
                 />
               </li>
-              <h4>Reservations:</h4>
+              <h4>{languageSelector(language, 'reservations')}</h4>
               {visibleVenueIndex !== null && (
                 <>
-                  <ReservationList reservations={reservations} setReservations={setReservations} />
+                  <ReservationList reservations={reservations} setReservations={setReservations} language={language}/>
                 </>
               )}
             </>

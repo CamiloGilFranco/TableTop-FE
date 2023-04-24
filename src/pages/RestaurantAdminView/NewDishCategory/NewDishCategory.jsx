@@ -4,7 +4,6 @@ import "./NewDishCategory.css";
 import axios from "axios";
 import { API_URL } from "../../../constants/apiUrl";
 import Cookies from "universal-cookie";
-import { useDispatch } from "react-redux";
 
 const NewDishCategoryForm = ({
   setDishCategories,
@@ -16,7 +15,6 @@ const NewDishCategoryForm = ({
   const [errors, setErrors] = useState({});
   const [category, setCategory] = useState("");
   const cookies = new Cookies();
-  const dispatch = useDispatch();
   const jwtToken = cookies.get("token");
   const config = {
     headers: {
@@ -27,7 +25,7 @@ const NewDishCategoryForm = ({
     let formErrors = {};
 
     if (!category.trim()) {
-      formErrors.category = "Dish category is required.";
+      formErrors.category = languageSelector(language, 'signInLastNameError');
     }
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
@@ -50,15 +48,15 @@ const NewDishCategoryForm = ({
         if (response.status === 201) {
         setDishCategories([...dishCategories, response.data.data]);
         setCategory("");
-        toast.success("Dish category created successfully!");
+        toast.success(languageSelector(language, 'newDishCategorySuccess'));
       } else {
-        setErrors({ apiError: "Failed to create new dish category." });
-        toast.error("Failed to create new dish category.");
+        setErrors({ apiError: languageSelector(language, 'newDishCategoryFailure') });
+        toast.error(languageSelector(language, 'newDishCategoryFailure'));
       }
     } catch (error) {
       console.error(error);
-      setErrors({ apiError: "Failed to create new dish category." });
-      toast.error("Failed to create new dish category.");
+      setErrors({ apiError: languageSelector(language, 'newDishCategoryFailure')});
+      toast.error(languageSelector(language, 'newDishCategoryFailure'));
     }
   };
 
@@ -68,7 +66,7 @@ const NewDishCategoryForm = ({
       className="newDishCategoryForm"
     >
       <label htmlFor="newDishCategory">
-        {languageSelector(language, "something")}
+        {languageSelector(language, "newDishCategoryTitle")}
       </label>
       <input
         type="text"
@@ -78,7 +76,7 @@ const NewDishCategoryForm = ({
         onChange={(e) => setCategory(e.target.value)}
       />
       {errors.category && <p className="error-message">{errors.category}</p>}
-      <button type="submit">{languageSelector(language, "submit")}</button>
+      <button type="submit">{languageSelector(language, "bookingButton")}</button>
     </form>
   );
 };

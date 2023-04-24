@@ -61,13 +61,10 @@
   border-bottom: 1px solid #ef3f3f;
   transition: color 0.3s ease, border-bottom 0.3s ease;
 }
-.restaurantAdminView__list li.hover {
+.restaurantAdminView__list li:hover {
   color: #ef3f3f;
   border-bottom: 1px solid #ef3f3f;
   transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-.restaurantAdminView__list li:hover {
-  color: #ef3f3f;
 }
 
 .restauranAdminView__itemList {
@@ -79,4 +76,25 @@
 .restauranAdminView__itemTitle {
   font-weight: 700;
   font-size: 16px;
+}
+
+.restaurantAdminView__intro {
+  margin-bottom: 20px;
+}
+.restaurantAdminView__intro p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+.restaurantAdminView__intro .restaurantAdminView__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.restaurantAdminView__intro .restaurantAdminView__list p {
+  margin-right: 30px;
+}
+.restaurantAdminView__intro .restaurantAdminView__list p:last-child {
+  margin-right: 0;
 }/*# sourceMappingURL=RestaurantAdminView.css.map */

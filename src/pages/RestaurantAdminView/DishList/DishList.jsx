@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { API_URL } from "../../../constants/apiUrl";
 import Cookies from "universal-cookie";
-import './DishList.css';
+import "./DishList.css";
 
 const DishList = ({
   dishes = [],
@@ -54,54 +54,46 @@ const DishList = ({
           dish.id_dish === dishToEdit.id_dish ? updatedDish : dish
         )
       );
-      toast.success("Dish updated successfully");
+      toast.success(languageSelector(language, "dishEditSuccess"));
     } catch (error) {
-      toast.error("There is a problem updating the dish, please try again.");
+      toast.error(languageSelector(language, "dishEditFailure"));
     }
   };
 
   const handleDelete = async (dishToDelete) => {
-    if (
-      window.confirm(
-        "Are you sure you want to delete this dish? This action cannot be undone."
-      )
-    ) {
+    if (window.confirm(languageSelector(language, "dishHideWarning"))) {
       try {
         await axios.patch(
           `${API_URL}/dishes/${dishToDelete.id_dish}`,
           { active: false },
           config
         );
-        toast.success("Dish deleted successfully");
+        toast.success(languageSelector(language, "dishHideSuccess"));
         setDishList(
           dishList.filter((dish) => dish.id_dish !== dishToDelete.id_dish)
         );
       } catch (error) {
-        toast.error("There was a problem, please try again");
+        toast.error(languageSelector(language, "dishEditSuccess"));
       }
     }
   };
 
   const handleHideCategory = async (categoryObj) => {
-    if (
-      window.confirm(
-        "Are you sure you want to hide this category? This action cannot be undone."
-      )
-    ) {
+    if (window.confirm(languageSelector(language, "categoryHideWarning"))) {
       try {
         await axios.patch(
           `${API_URL}/dishes-categories/${categoryObj.id_dishes_category}`,
           { active: false },
           config
         );
-        toast.success("Category hidden successfully");
+        toast.success(languageSelector(language, "categoryHideSuccess"));
         setHiddenCategories([
           ...hiddenCategories,
           categoryObj.id_dishes_category,
         ]);
       } catch (error) {
         toast.error(
-          "There was a problem hiding the category, please try again"
+          languageSelector(language, "categoryHideFailure")
         );
       }
     }
@@ -130,33 +122,34 @@ const DishList = ({
                 <p className="restauranAdminView__itemTitle">
                   {categoryObj.dishes_category}
                 </p>
-              <ul className="restauranAdminView__itemList">
-                {dishes.map((dish, index) => (
-                  <li key={index} className="restaurantAdminView__details">
-                    {languageSelector(language, "title")}: {dish.title} -{" "}
-                    {languageSelector(language, "price")}: {dish.price}
-                    <AiFillEdit
-                      className="restaurantAdminView__icon restaurantAdminView__edit"
-                      onClick={() => handleEditClick(dish, index, category)}
-                    />
-                    <AiFillDelete
-                      className="restaurantAdminView__icon"
-                      onClick={() => {
-                        handleDelete(dish);
-                      }}
-                    />
-                  </li>
-                ))}
-              </ul>
-              <div className="restaurantAdminView__hideCategory">
-                <AiFillDelete
-                  className="restaurantAdminView__icon"
-                  onClick={() => handleHideCategory(categoryObj)}
-                />
-                <span>Hide Category</span>
+                <ul className="restauranAdminView__itemList">
+                  {dishes.map((dish, index) => (
+                    <li key={index} className="restaurantAdminView__details">
+                      {languageSelector(language, "title")}: {dish.title} -{" "}
+                      {languageSelector(language, "price")}: {dish.price}
+                      <AiFillEdit
+                        className="restaurantAdminView__icon restaurantAdminView__edit"
+                        onClick={() => handleEditClick(dish, index, category)}
+                      />
+                      <AiFillDelete
+                        className="restaurantAdminView__icon"
+                        onClick={() => {
+                          handleDelete(dish);
+                        }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <div className="restaurantAdminView__hideCategory">
+                  <AiFillDelete
+                    className="restaurantAdminView__icon"
+                    onClick={() => handleHideCategory(categoryObj)}
+                  />
+                  <span>{languageSelector(language, "hideCategory")}</span>
+                </div>
               </div>
-            </div>
-          ));
+            )
+          );
         })}
       {showModal && (
         <EditModal

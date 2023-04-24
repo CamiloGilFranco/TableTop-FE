@@ -29,15 +29,15 @@ const NewDishForm = ({
   const validateInput = () => {
     const errors = {};
     if (!newDish.newDishTitle) {
-      errors.newDishTitle = "Title is required";
+      errors.newDishTitle = languageSelector(language, "newDishFormNameError");
     }
     if (!newDish.newDishDescription) {
-      errors.newDishDescription = "Description is required";
+      errors.newDishDescription = languageSelector(language, "newDishFormDescriptionError");
     }
     if (!newDish.newDishPrice) {
-      errors.newDishPrice = "Price is required";
+      errors.newDishPrice = languageSelector(language, "newDishFormPriceError");
     } else if (isNaN(newDish.newDishPrice)) {
-      errors.newDishPrice = "Price must be a number";
+      errors.newDishPrice = languageSelector(language, "newDishFormPriceErrorTwo");
     }
     if (!newDish.dishCategorySelect) {
       errors.dishCategorySelect = "Category is required";
@@ -81,14 +81,14 @@ const NewDishForm = ({
               ...prevCategories,
               response.data.data,
             ]);
-            toast.success("Dish added successfully!");
+            toast.success(languageSelector(language, "newDishSucess"));
           })
           .catch((error) => {
             console.log(error);
-            toast.error("An error occurred while adding the dish.");
+            toast.error(languageSelector(language, "newDishFailure"));
           });
       } else {
-        toast.error("Please fill in all the required fields.");
+        toast.error(languageSelector(language, "missingFields"));
       }
     }
   };
@@ -100,7 +100,7 @@ const NewDishForm = ({
         className="newDishCategoryForm"
       >
         <label htmlFor="newDishTitle">
-          {languageSelector(language, "newDishTitle")}
+          {languageSelector(language, "newDishFormName")}
         </label>
         <input
           type="text"
@@ -108,12 +108,13 @@ const NewDishForm = ({
           name="newDishTitle"
           value={newDish.newDishTitle}
           onChange={handleInputChange}
+          placeholder={languageSelector(language, "newDishFormName")}
         />
         {errors.newDishTitle && (
           <div className="error">{errors.newDishTitle}</div>
         )}
         <label htmlFor="newDishDescription">
-          {languageSelector(language, "newDishDescription")}
+          {languageSelector(language, "newDishFormDescription")}
         </label>
         <textarea
           type="text"
@@ -121,12 +122,13 @@ const NewDishForm = ({
           name="newDishDescription"
           value={newDish.newDishDescription}
           onChange={handleInputChange}
+          placeholder={languageSelector(language, "newDishFormDescription")}
         />
         {errors.newDishDescription && (
           <div className="error">{errors.newDishDescription}</div>
         )}
         <label htmlFor="newDishPrice">
-          {languageSelector(language, "somethingElse")}
+          {languageSelector(language, "newDishFormPrice")}
         </label>
         <input
           type="number"
@@ -157,7 +159,7 @@ const NewDishForm = ({
         {errors.dishCategorySelect && (
           <div className="error">{errors.dishCategorySelect}</div>
         )}
-        <button type="submit">{languageSelector(language, "sumbit")}</button>
+        <button type="submit">{languageSelector(language, "newDishFormButton")}</button>
       </form>
     </>
   );
