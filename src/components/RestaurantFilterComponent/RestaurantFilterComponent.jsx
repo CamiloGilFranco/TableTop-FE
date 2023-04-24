@@ -9,6 +9,7 @@ import CheckboxFilter from "./CheckboxFilter";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const RestaurantFilterComponent = () => {
   const [cuisines, setCuisines] = useState([]);
@@ -28,7 +29,7 @@ const RestaurantFilterComponent = () => {
         setCuisines(res.data.data);
       })
       .catch(() => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
       });
   }, []);
 

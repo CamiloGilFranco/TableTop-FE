@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./RestaurantCardComponent.css";
 import languageSelector from "../../assets/languages/languageSelector";
+import routePaths from "../../constants/routePaths";
 
 const RestaurantCardComponent = ({
   picture,
@@ -18,7 +19,7 @@ const RestaurantCardComponent = ({
       window.scrollTo(0, 0);
     }, 0);
 
-    navigate(`/restaurants/${path}`);
+    navigate(`${routePaths.restaurants}/${path}`);
   };
 
   return (

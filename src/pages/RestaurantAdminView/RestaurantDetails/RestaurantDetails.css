@@ -1,0 +1,59 @@
+.restaurantDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(238, 237, 236);
+}
+.restaurantDetails h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+}
+.restaurantDetails h3::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 1px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+.restaurantDetails h3:hover::after {
+  width: 80%;
+  left: 10%;
+}
+.restaurantDetails h3.active {
+  color: #ef3f3f;
+}
+.restaurantDetails ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.restaurantDetails ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 25px;
+}
+.restaurantDetails ul li .edit-icon {
+  cursor: pointer;
+  color: #ef3f3f;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+.restaurantDetails ul li .edit-icon:hover {
+  transform: scale(1.2);
+}
+.restaurantDetails h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}/*# sourceMappingURL=RestaurantDetails.css.map */

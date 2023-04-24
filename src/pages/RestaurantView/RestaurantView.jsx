@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import PopularRestaurant from "../../components/6 Popular Restaurant/PopularRestaurant";
 import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const RestaurantView = () => {
   const [selected, setSelected] = useState("ORDER ONLINE");
@@ -31,7 +32,7 @@ const RestaurantView = () => {
         setRestaurantData(res.data.data);
       })
       .catch(() => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
       });
   }, []);
 

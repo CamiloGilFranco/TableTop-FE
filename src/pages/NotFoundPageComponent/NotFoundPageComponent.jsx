@@ -5,6 +5,7 @@ import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import NotFoundImg from './assets/NotFoundImg.svg'
 import './NotFoundPageComponent.css'
 import languageSelector from '../../assets/languages/languageSelector';
+import routePaths from '../../constants/routePaths';
 
 const NotFoundPageComponent = () => {
   const language = useSelector(state=> state.languageReducer);
@@ -21,7 +22,7 @@ const NotFoundPageComponent = () => {
           {languageSelector(language, 'notFoundBody')}
         </span>
         <button className="notFound__button">
-          <Link to={'/'} >{languageSelector(language, 'notFoundFooter')}</Link>
+          <Link to={routePaths.home} >{languageSelector(language, 'notFoundFooter')}</Link>
         </button>
       </section>
       <Footer/>

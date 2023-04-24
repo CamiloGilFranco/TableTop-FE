@@ -13,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { inputEmailRegEx, inputNameRegex, inputPasswordRegEx } from "../../constants/regexConstants";
 import { AUTH_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 
 
@@ -226,7 +227,7 @@ const SignInPage = () => {
         } else {
           toast.success(languageSelector(language, 'signInSuccess'));
           setTimeout(() => {
-            navigate('/');
+            navigate(routePaths.home);
           }, 6000);
         }
       }

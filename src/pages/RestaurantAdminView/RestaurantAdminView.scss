@@ -1,110 +1,76 @@
-.restaurantAdminView__container{
+.restaurantAdminView__container {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  background-color:rgb(238, 237, 236);
+  background-color: rgb(238, 237, 236);
+  
   h1 {
     text-align: center;
   }
+  
   h3 {
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
+    
     @media (min-width: 765px) {
       text-align: left;
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 }
-.restauranAdminView__flex{
+
+.restaurantAdminView__flex {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
   @media (min-width: 765px) {
     margin-top: 15px;
     flex-direction: row;
   }
-  @media (min-width:100px) {
+  
+  @media (min-width: 100px) {
     justify-content: space-evenly;
   }
+  
   h3 {
-    font-size: 18px;
+    font-size: 20px;
+    
     @media (min-width: 765px) {
       font-size: 22px;
     }
   }
 }
 
-.restaurantAdmin__view-p{
-  font-size: 18px;
-  padding: 5px;
-}
-
-.restaurantAdminView__form {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  gap: 5px;
-  border: 2px solid lightgray;
-  background-color:rgb(206, 204, 201);
-  border-radius: 5px;
-  padding: 10px;
-  button{
-    background-color: #ef3f3f;
-    color: white;
-    font-weight: 700;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  span {
-    font-weight: 700;
-    font-size: 18px;
-  } 
-  label{
-    font-weight: 500;
-    font-size: 18px;
-  }
-  input{
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-  }
-  select{
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-  }
-}
-.restaurantAdminView__article {
-  display: flex;
-  flex-direction: column;
-  font-size: 13px;
-  gap: 5px;
-  border: 2px solid lightgray;
-  background-color:rgb(206, 204, 201);
-  border-radius: 5px;
-  padding: 10px;
-  span {
-    font-weight: 700;
-    font-size: 18px;
-  }
-  p {
-    font-size: 16px;
-  }
-}
-
-.restaurantAdminView__list{
+.restaurantAdminView__list {
+  margin: 0;
   padding: 5px 15px;
   font-size: 18px;
   line-height: 25px;
+  cursor: pointer;
+
   @media (min-width: 765px) {
     font-size: 20px;
   }
+
+  li {
+    &.active {
+      color: #ef3f3f;
+      border-bottom: 1px solid #ef3f3f;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+    
+    &:hover {
+      color: #ef3f3f;
+      border-bottom: 1px solid #ef3f3f;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+  }
 }
-.restauranAdminView__itemList{
+
+
+.restauranAdminView__itemList {
   padding: 0px 15px;
   font-size: 16px;
   line-height: 25px;
@@ -114,34 +80,28 @@
   font-weight: 700;
   font-size: 16px;
 }
-.restaurantAdminView__error {
-  color: #ef3f3f;
-  font-weight: 700;
-}
 
-.restaurantAdminView__details {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 10px;
-}
-.restaurantAdminView__icon{
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-}
-.restaurantAdminView__reservation{
-  display: flex;
-  padding: 10px;
-  justify-content: space-between;
-  p{
-    margin: 0;
-    padding: 0;
-    width: 75%;
-    font-size: 18px;
+.restaurantAdminView__intro {
+  margin-bottom: 20px;
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #4a4a4a;
+    margin-bottom: 10px;
   }
-}
 
-.restaurantAdminView__edit{
- justify-self: flex-end;
+  .restaurantAdminView__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+
+    p {
+      margin-right: 30px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }

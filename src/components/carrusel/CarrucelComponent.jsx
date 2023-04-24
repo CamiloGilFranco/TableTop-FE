@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const CarrucelComponent = () => {
   const [numVisibleSlides, setNumVisibleSlides] = useState(6);
@@ -21,7 +22,7 @@ const CarrucelComponent = () => {
         setCuisinesList(res.data.data);
       })
       .catch((err) => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
         setCuisinesList([]);
       });
   }, []);
@@ -65,7 +66,7 @@ const CarrucelComponent = () => {
                 key={index}
                 className="home-carousel-single-item"
                 onClick={() =>
-                  navigate(`/restaurants?${element.cuisine_category}=true`)
+                  navigate(`${routePaths.restaurants}?${element.cuisine_category}=true`)
                 }
               >
                 <div className="home-carousel-single-item-image-container">

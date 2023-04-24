@@ -15,6 +15,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
+import routePaths from "../../constants/routePaths";
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -135,7 +136,7 @@ const Payment = () => {
       dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful });
       dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders + 1 });
       dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders + 1 });
-      navigate("/order");
+      navigate(routePaths.order);
     }
   };
 
@@ -187,7 +188,7 @@ const Payment = () => {
       dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful });
       dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders + 1 });
       dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders + 1 });
-      navigate("/order");
+      navigate(routePaths.order);
     }
   };
 
@@ -197,7 +198,7 @@ const Payment = () => {
     dispatch({ type: ORDER_SWITCH, payload: !oderStatus.orderSuccessful });
     dispatch({ type: ORDER_ID, payload: oderStatus.numberOfOrders + 1 });
     dispatch({ type: ORDER_NUMBER, payload: oderStatus.numberOfOrders + 1 });
-    navigate("/order");
+    navigate(routePaths.order);
   };
 
   return (

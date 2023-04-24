@@ -1,44 +1,28 @@
 import React, { useState } from 'react';
 import languageSelector from '../../assets/languages/languageSelector';
+import './EditVenueDetailsModal.css'
 import { useSelector } from 'react-redux';
 
-
-const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, address, index }) => {
+const EditVenueDetailsModal = ({ field, index, onClose, editItem }) => {
   const language = useSelector(state => state.languageReducer);
-  const [editingItem, setEditingItem] = useState(item);
+  const [editingItem, setEditingItem] = useState('');
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    const validationErrors = {};
-
-    const form = e.target;
-    const input = form.editedItem.value;
-    if (input.length === 0) {
-      validationErrors.error = languageSelector(language, 'editDetailsError');
-    }
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    if (phoneNumber.includes(item)) {
-      handleDetailsUpdate(phoneNumber, index, input);
-    } else if (address.includes(item)) {
-      handleDetailsUpdate(address, index, input);
-    }
-    
+  const handleSubmit = () => {
+    editItem(field, index, editingItem);
+    setEditingItem('');
     setErrors({});
     onClose();
+
   };
 
   return (
-    <div className='modalComponent__container'>
-      <section className='modalComponent__box'>
+    <div className='editVenueDetailsModal__container'>
+      <section className='editVenueDetailsModal__box'>
         <span>
           {languageSelector(language, 'editDetailsModal')}
         </span>
-        <form className='modalComponent__form' onSubmit={handleSubmit}>
+        <form className='editVenueDetailsModal__form' onSubmit={handleSubmit}>
           <input
             type='text'
             name='editedItem'
@@ -46,10 +30,10 @@ const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, add
             value={editingItem}
             onChange={(event) => setEditingItem(event.target.value)}
           />
-          {errors.error && <p className='restaurantAdminView__error'>{errors.error}</p>}
-          <span className='modalComponent__buttons'>
-            <button className='modalComponent__button-save' type="submit">{languageSelector(language, 'save')}</button>
-            <button className='modalComponent__button-cancel' type="button" onClick={onClose}>{languageSelector(language, 'cancel')}</button>
+          {errors.error && <p className='editVenueDetailsModal__error'>{errors.error}</p>}
+          <span className='editVenueDetailsModal__buttons'>
+            <button className='editVenueDetailsModal__button-save' type="submit">{languageSelector(language, 'save')}</button>
+            <button className='editVenueDetailsModal__button-cancel' type="button" onClick={onClose}>{languageSelector(language, 'cancel')}</button>
           </span>
         </form>
       </section>
@@ -57,4 +41,4 @@ const EditDetailsModal = ({ item, onClose, handleDetailsUpdate, phoneNumber, add
   )
 }
 
-export default EditDetailsModal;
+export default  EditVenueDetailsModal;

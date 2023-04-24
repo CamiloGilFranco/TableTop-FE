@@ -1,0 +1,45 @@
+.newDishCategoryForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.newDishCategoryForm label {
+  margin-bottom: 10px;
+}
+.newDishCategoryForm input,
+.newDishCategoryForm select,
+.newDishCategoryForm textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 100%;
+}
+.newDishCategoryForm input:focus,
+.newDishCategoryForm select:focus,
+.newDishCategoryForm textarea:focus {
+  outline: none;
+  border-color: #ef3f3f;
+}
+.newDishCategoryForm button[type=submit] {
+  background-color: #ef3f3f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+.newDishCategoryForm button[type=submit]:hover {
+  background-color: #d83636;
+}
+@media screen and (min-width: 768px) {
+  .newDishCategoryForm {
+    max-width: 800px;
+  }
+}/*# sourceMappingURL=NewDishForm.css.map */

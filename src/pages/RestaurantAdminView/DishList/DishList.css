@@ -1,0 +1,63 @@
+.dishList .restauranAdminView__itemTitle {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.dishList .restauranAdminView__itemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.dishList .restaurantAdminView__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+.dishList .restaurantAdminView__details:last-child {
+  border-bottom: none;
+}
+.dishList .restaurantAdminView__details .restaurantAdminView__itemDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-right: auto;
+  flex-grow: 1;
+}
+.dishList .restaurantAdminView__details .restaurantAdminView__itemPrice {
+  margin-top: 5px;
+}
+.dishList .restaurantAdminView__details svg {
+  cursor: pointer;
+  margin-left: 10px;
+}
+.dishList .restaurantAdminView__hideCategory {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.dishList .restaurantAdminView__hideCategory svg {
+  color: #ef3f3f;
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .dishList .restaurantAdminView__details .restaurantAdminView__itemDetails {
+    flex-direction: row;
+    margin-right: 20px;
+    margin-left: 10px;
+    align-items: center;
+  }
+  .dishList .restaurantAdminView__details .restaurantAdminView__itemPrice {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+  .dishList .restaurantAdminView__details svg {
+    margin-left: 20px;
+  }
+}/*# sourceMappingURL=DishList.css.map */

@@ -7,6 +7,7 @@ import axios from "axios";
 import db from "../../assets/dat.json";
 import languageSelector from "../../assets/languages/languageSelector";
 import { API_URL } from "../../constants/apiUrl";
+import routePaths from "../../constants/routePaths";
 
 const PopularRestaurant = ({ inputValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,7 +21,7 @@ const PopularRestaurant = ({ inputValue }) => {
         setSortList(res.data.data);
       })
       .catch(() => {
-        navigate("/something-went-wrong");
+        navigate(routePaths.somethingWentWrong);
       });
   }, []);
 
