@@ -127,18 +127,21 @@ const RestaurantList = () => {
       );
     } else {
       const listToRender = displayArr.length > 0 ? displayArr : sortList;
-      return !!listToRender.map((element) => {
-        return (
-          <RestaurantCardComponent
-            key={element.id_restaurant}
-            picture={element.main_photo}
-            restaurantName={element.restaurant_name}
-            rating={element.rating}
-            categories={element.cuisines}
-            path={element.restaurant_path}
-          />
-        );
-      });
+      return (
+        listToRender &&
+        listToRender.map((element) => {
+          return (
+            <RestaurantCardComponent
+              key={element.id_restaurant}
+              picture={element.main_photo}
+              restaurantName={element.restaurant_name}
+              rating={element.rating}
+              categories={element.cuisines}
+              path={element.restaurant_path}
+            />
+          );
+        })
+      );
     }
   };
 

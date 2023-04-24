@@ -60,8 +60,8 @@ const CarrucelComponent = () => {
     <main className="home-carousel-component">
       <section className="home-carousel-container">
         <Slider {...settings} className="home-carousel-main">
-          {
-            !!cuisinesList.map((element, index) => {
+          {cuisinesList &&
+            cuisinesList.map((element, index) => {
               return (
                 <div
                   key={index}
@@ -85,8 +85,7 @@ const CarrucelComponent = () => {
                   </p>
                 </div>
               );
-            })
-          }
+            })}
         </Slider>
       </section>
     </main>
