@@ -13,7 +13,7 @@ const NewRestaurantForm = () => {
   const [restaurant_name, setRestautant_name] = useState('');
   const [errors, setErrors] = useState({});
   const [logo, setLogo] = useState(null);
-  const [mainPhoto, setMainPhoto] = useState(null);
+  const [main_photo, setMain_photo] = useState(null);
   const [adminEmail, setAdminEmail] = useState('');
   const language = useSelector(state=> state.languageReducer);
   const jwtToken = cookies.get('token');
@@ -32,8 +32,8 @@ const NewRestaurantForm = () => {
     if (!logo) {
       validationErrors.logo = languageSelector(language, 'newRestaurantLogoError');
     }
-    if (!mainPhoto) {
-      validationErrors.mainPhoto = languageSelector(language, 'newRestaurantMainPhotoError');;
+    if (!main_photo) {
+      validationErrors.main_photo = languageSelector(language, 'newRestaurantMainPhotoError');;
     }
     if (!adminEmail.trim() || !inputEmailRegEx.test(adminEmail)) {
       validationErrors.adminEmail = languageSelector(language, 'adminEmailError');
@@ -49,7 +49,7 @@ const NewRestaurantForm = () => {
     data.append('restaurant_name',restaurant_name);
     data.append('restaurantPath', restaurantPath);
     data.append('logo', logo);
-    data.append('mainPhoto', mainPhoto);
+    data.append('main_photo', main_photo);
     data.append('adminEmail', adminEmail);
 
     const validationErrors = validateFields();
@@ -97,12 +97,12 @@ const NewRestaurantForm = () => {
        {errors.logo && (
         <p className="newRestaurantForm__error">{errors.logo}</p>
       )}
-      <label htmlFor="mainPhoto">{languageSelector(language, 'mainPhoto')}</label>
+      <label htmlFor="main_photo">{languageSelector(language, 'mainPhoto')}</label>
       <input
         type="file"
-        id="mainPhoto"
+        id="main_photo"
         accept="image/*"
-        onChange={(e) => handleFileInput(e, setMainPhoto)}
+        onChange={(e) => handleFileInput(e, setMain_photo)}
       />
       {errors.mainPhoto && (
         <p className="newRestaurantForm__error">{errors.mainPhoto}</p>
