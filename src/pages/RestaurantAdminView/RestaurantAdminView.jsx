@@ -22,6 +22,7 @@ import NewDishForm from "./NewDishForm/NewDishForm";
 import DishList from "./DishList/DishList";
 import AdminList from "./AdminList/AdminList";
 import UpdatePhotos from "./UpdatePhotos/UpdatePhotos";
+import NewVenueForm from "./NewVenueForm/NewVenueForm";
 
 const RestaurantAdminView = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -194,11 +195,18 @@ const RestaurantAdminView = () => {
             {selectedComponent === "updatePhotos" && (
               <UpdatePhotos
                 restaurant={restaurant}
+                setRestaurant={setRestaurant}
                 languageSelector={languageSelector}
                 language={language}
               />
             )}
-            {/* {selectedComponent === 'newVenueForm' && <NewVenueForm restaurant={restaurant} />} */}
+            {selectedComponent === "newVenueForm" && (
+              <NewVenueForm
+                restaurant={restaurant}
+                languageSelector={languageSelector}
+                language={language}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -1,0 +1,80 @@
+.NewVenueForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+.NewVenueForm h3 {
+  text-align: center;
+  font-size: 18px;
+}
+.NewVenueForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+.NewVenueForm input[type=text],
+.NewVenueForm input[type=tel],
+.NewVenueForm input[type=time] {
+  font-size: 16px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(238, 237, 236);
+  width: 100%;
+}
+.NewVenueForm input[type=text]:focus,
+.NewVenueForm input[type=tel]:focus,
+.NewVenueForm input[type=time]:focus {
+  outline: none;
+}
+.NewVenueForm .error {
+  color: #ef3f3f;
+  font-weight: 700;
+}
+.NewVenueForm input[type=file] {
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(238, 237, 236);
+}
+.NewVenueForm input[type=file]:focus {
+  outline: none;
+}
+.NewVenueForm button[type=submit] {
+  background-color: #ef3f3f;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.NewVenueForm button[type=submit]:hover {
+  background-color: white;
+  color: #ef3f3f;
+  border: 1px solid #ef3f3f;
+}
+@media (min-width: 768px) {
+  .NewVenueForm {
+    font-size: 20px;
+  }
+  .NewVenueForm label,
+  .NewVenueForm input[type=text],
+  .NewVenueForm input[type=tel],
+  .NewVenueForm input[type=time],
+  .NewVenueForm input[type=file],
+  .NewVenueForm button[type=submit] {
+    width: 100%;
+  }
+  .NewVenueForm input[type=file] {
+    margin-top: 10px;
+  }
+  .NewVenueForm button[type=submit] {
+    width: 50%;
+    margin: 20px auto 0;
+  }
+}/*# sourceMappingURL=NewVenueForm.css.map */

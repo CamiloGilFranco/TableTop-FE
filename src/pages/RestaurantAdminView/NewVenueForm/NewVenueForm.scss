@@ -1,0 +1,89 @@
+.NewVenueForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+
+  h3 {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="time"] {
+    font-size: 16px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(238, 237, 236);
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .error {
+    color: #ef3f3f;
+    font-weight: 700;
+  }
+
+  input[type="file"] {
+    margin-top: 5px;
+    font-size: 16px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(238, 237, 236);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button[type="submit"] {
+    background-color: #ef3f3f;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: white;
+      color: #ef3f3f;
+      border: 1px solid #ef3f3f;
+    }
+  }
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+
+    label,
+    input[type="text"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="file"],
+    button[type="submit"] {
+      width: 100%;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    button[type="submit"] {
+      width: 50%;
+      margin: 20px auto 0;
+    }
+  }
+}

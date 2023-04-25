@@ -53,18 +53,20 @@ const UpdatePhotos = ({ restaurant, languageSelector, language }) => {
       );
 
       if (response.status === 200) {
-        toast.success("Restaurant created successfully!");
+        toast.success(languageSelector(language, "updatePhotoSuccess"));
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to create restaurant");
+      toast.error(languageSelector(language, "updatePhotoFailure"));
     }
   };
 
   return (
     <div className="UpdatePhotos">
       <form className="updatePhotos__form" onSubmit={handleSubmit}>
-        <h3 className="updatePhotos__heading">Update the Main Photo</h3>
+        <h3 className="updatePhotos__heading">
+          {languageSelector(language, "updateMainPhoto")}
+        </h3>
         <input
           type="file"
           id="main_photo"
@@ -75,7 +77,9 @@ const UpdatePhotos = ({ restaurant, languageSelector, language }) => {
         {errors.main_photo && (
           <p className="updatePhotos__error">{errors.main_photo}</p>
         )}
-        <h3 className="updatePhotos__heading">Update the Logo</h3>
+        <h3 className="updatePhotos__heading">
+          {languageSelector(language, "updateLogo")}
+        </h3>
         <input
           type="file"
           id="logo"
@@ -87,7 +91,7 @@ const UpdatePhotos = ({ restaurant, languageSelector, language }) => {
           <p className="updatePhotos__error">{errors.emptyFields}</p>
         )}{" "}
         <button type="submit" className="updatePhotos__submitButton">
-          {languageSelector(language, "Update")}
+          {languageSelector(language, "update")}
         </button>
       </form>
     </div>

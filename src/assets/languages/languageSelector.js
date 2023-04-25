@@ -316,6 +316,16 @@ const languageSelector = (lang, str) => {
     addResAdminSuccess: "Restaurant admin successfuly added!",
     addResAdminFailure: "There was an error adding the Restaurant Admin",
     restaurantAdmins: "Here is the list of the admins of this restaurant",
+    newRestaurantVenue: "Create a New Venue",
+    venuePhoto: "Venue Photo",
+    createVenue: "Create Venue",
+    newVenueSuccess: "Venue created successfully!",
+    newVenuaFailure: "Failed to create venue",
+    updateMainPhoto: "Update the Main Photo",
+    updateLogo: "Update the Logo",
+    update: "Update",
+    updatePhotoSuccess: "Photos updated successfully!",
+    updatePhotoFailure: "Photos failed to update",
   };
 
   const es = {
@@ -641,6 +651,16 @@ const languageSelector = (lang, str) => {
       "Hubo un error al agregar el administrador del restaurante",
     restaurantAdmins:
       "Aquí está la lista de los administradores de este restaurante",
+    newRestaurantVenue: "Crear un nuevo lugar",
+    venuePhoto: "Foto de la locación",
+    createVenue: "Crear Locación",
+    newVenueSuccess: "Locación creado con éxito!",
+    newVenuaFailure: "Error al crear la locación",
+    updateMainPhoto: "Actualizar la foto principal",
+    updateLogo: "Actualizar el logo",
+    update: "Actualizar",
+    updatePhotoSuccess: "¡Fotos actualizadas con éxito!",
+    updatePhotoFailure: "Las fotos fallaron en la actualización",
   };
   if (lang === "en") {
     return en[str] || str;
