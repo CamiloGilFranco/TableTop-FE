@@ -1,0 +1,52 @@
+.UpdatePhotos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+.UpdatePhotos h3 {
+  text-align: center;
+  font-size: 18px;
+}
+.UpdatePhotos input[type=file] {
+  font-size: 16px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(238, 237, 236);
+  width: 100%;
+}
+.UpdatePhotos input[type=file]:focus {
+  outline: none;
+}
+.UpdatePhotos .newRestaurantForm__error {
+  color: #ef3f3f;
+  font-weight: 700;
+}
+.UpdatePhotos button[type=submit] {
+  background-color: #ef3f3f;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.UpdatePhotos button[type=submit]:hover {
+  background-color: white;
+  color: #ef3f3f;
+  border: 1px solid #ef3f3f;
+}
+@media (min-width: 768px) {
+  .UpdatePhotos {
+    font-size: 20px;
+  }
+  .UpdatePhotos input[type=file] {
+    font-size: 18px;
+  }
+  .UpdatePhotos button[type=submit] {
+    font-size: 18px;
+  }
+}/*# sourceMappingURL=UpdatePhotos.css.map */
