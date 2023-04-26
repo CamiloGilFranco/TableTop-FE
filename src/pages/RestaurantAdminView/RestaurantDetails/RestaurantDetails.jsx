@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./RestaurantDetails.css";
 import { AiFillEdit } from "react-icons/ai";
 import EditVenueDetailsModal from "../../../components/EditDetailsModal/EditDetailsModal";
@@ -29,10 +29,6 @@ const RestaurantDetails = ({
       Authorization: `Bearer ${jwtToken}`,
     },
   };
-
-  useEffect(() => {
-    // setVenues(restaurant.venues || []);
-  }, [restaurant]);
 
   const toggleDetails = async (index) => {
     if (visibleVenueIndex === index) {

@@ -159,13 +159,13 @@ const RestaurantAdminView = () => {
               className={selectedComponent === "updatePhotos" ? "active" : ""}
               onClick={() => setSelectedComponent("updatePhotos")}
             >
-              Update Photos
+              {languageSelector(language, "updatePhotos")}
             </li>
             <li
               className={selectedComponent === "newVenueForm" ? "active" : ""}
               onClick={() => setSelectedComponent("newVenueForm")}
             >
-              New Venue
+              {languageSelector(language, "createVenue")}
             </li>
           </ul>
           <div className="restaurantAdminView__main">
