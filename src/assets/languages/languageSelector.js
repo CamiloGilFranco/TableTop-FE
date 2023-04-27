@@ -326,6 +326,7 @@ const languageSelector = (lang, str) => {
     update: "Update",
     updatePhotoSuccess: "Photos updated successfully!",
     updatePhotoFailure: "Photos failed to update",
+    updatePhotos: "Update Photos",
   };
 
   const es = {
@@ -661,6 +662,7 @@ const languageSelector = (lang, str) => {
     update: "Actualizar",
     updatePhotoSuccess: "¡Fotos actualizadas con éxito!",
     updatePhotoFailure: "Las fotos fallaron en la actualización",
+    updatePhotos: "Actualiza las fotos",
   };
   if (lang === "en") {
     return en[str] || str;

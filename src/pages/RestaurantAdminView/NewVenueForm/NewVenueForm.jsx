@@ -10,6 +10,7 @@ const NewVenueForm = ({
   languageSelector,
   language,
   setRestaurant,
+  onVenueAdded
 }) => {
   const cookies = new Cookies();
   const jwtToken = cookies.get("token");
@@ -72,7 +73,10 @@ const NewVenueForm = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    validateForm();
+
+    if (!validateForm()) {
+      return;
+    }
 
     const data = new FormData();
     data.append("name_venue", venue.name_venue);
@@ -106,6 +110,7 @@ const NewVenueForm = ({
           open_hour: "",
           close_hour: "",
         });
+        onVenueAdded();
       }
     } catch (error) {
       console.error(error);

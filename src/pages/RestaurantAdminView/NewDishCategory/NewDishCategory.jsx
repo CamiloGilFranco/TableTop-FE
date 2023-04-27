@@ -11,6 +11,7 @@ const NewDishCategoryForm = ({
   language,
   languageSelector,
   restaurant = {},
+  onCategoryUpdate
 }) => {
   const [errors, setErrors] = useState({});
   const [category, setCategory] = useState("");
@@ -49,6 +50,7 @@ const NewDishCategoryForm = ({
         setDishCategories([...dishCategories, response.data.data]);
         setCategory("");
         toast.success(languageSelector(language, 'newDishCategorySuccess'));
+        onCategoryUpdate();
       } else {
         setErrors({ apiError: languageSelector(language, 'newDishCategoryFailure') });
         toast.error(languageSelector(language, 'newDishCategoryFailure'));

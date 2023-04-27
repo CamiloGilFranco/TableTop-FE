@@ -7,8 +7,7 @@ import { API_URL } from "../../../constants/apiUrl";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import Cookies from 'universal-cookie';
-
+import Cookies from "universal-cookie";
 
 const RestaurantDetails = ({
   language,
@@ -16,7 +15,6 @@ const RestaurantDetails = ({
   restaurant = {},
   setRestaurant,
 }) => {
-  const { venues = [] } = restaurant;
   const [visibleVenueIndex, setVisibleVenueIndex] = useState(null);
   const [reservations, setReservations] = useState([]);
   const [modalVisible, setModalVisible] = useState({
@@ -25,19 +23,18 @@ const RestaurantDetails = ({
     index: null,
   });
   const cookies = new Cookies();
-  const jwtToken = cookies.get('token');
+  const jwtToken = cookies.get("token");
   const config = {
     headers: {
       Authorization: `Bearer ${jwtToken}`,
     },
   };
 
-
   const toggleDetails = async (index) => {
     if (visibleVenueIndex === index) {
       setVisibleVenueIndex(null);
     } else {
-      const venue = venues[index];
+      const venue = restaurant.venues[index];
       const res = await axios.get(
         `${API_URL}/reservations/venue/${venue.id_restaurant_venue}`,
         config
@@ -47,14 +44,14 @@ const RestaurantDetails = ({
     }
   };
 
-  const editItem = async (field, index, newValue) => {
-    const venueId = venues[index].id_restaurant_venue;
+  const editItem = async (field, venueIndex, newValue) => {
+    const venueId = restaurant.venues[venueIndex].id_restaurant_venue;
     const url = `${API_URL}/restaurant-venues/${venueId}`;
     try {
       const response = await axios.put(url, { field, newValue }, config);
       if (response.status === 200) {
-        const updatedVenues = [...venues];
-        updatedVenues[index][field] = newValue;
+        const updatedVenues = [...restaurant.venues];
+        updatedVenues[venueIndex][field] = newValue;
         setRestaurant({ ...restaurant, venues: updatedVenues });
         toast.success(languageSelector(language, "updateSuccess"));
       } else {
@@ -69,9 +66,10 @@ const RestaurantDetails = ({
     setModalVisible({ show: true, field, index });
   };
 
+
   return (
     <div className="restaurantDetails">
-      {venues.map((venue, index) => (
+      {restaurant.venues.map((venue, index) => (
         <div key={index}>
           <h3 onClick={() => toggleDetails(index)}>
             {languageSelector(language, "signInCity")}: {venue.city}
@@ -120,10 +118,14 @@ const RestaurantDetails = ({
                   onClick={() => handleDetailsClick("close_hour", index)}
                 />
               </li>
-              <h4>{languageSelector(language, 'reservations')}</h4>
+              <h4>{languageSelector(language, "reservations")}</h4>
               {visibleVenueIndex !== null && (
                 <>
-                  <ReservationList reservations={reservations} setReservations={setReservations} language={language}/>
+                  <ReservationList
+                    reservations={reservations}
+                    setReservations={setReservations}
+                    language={language}
+                  />
                 </>
               )}
             </>
@@ -140,6 +142,7 @@ const RestaurantDetails = ({
       )}
     </div>
   );
+  
 };
 
 export default RestaurantDetails;

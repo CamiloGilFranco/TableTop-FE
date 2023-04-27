@@ -65,6 +65,20 @@ const RestaurantAdminView = () => {
     fetchData();
   }, [dispatch, jwtToken]);
 
+  const updateRestaurant = async () => {
+    try {
+      const userId = user.user_id;
+      const restaurantResponse = await axios.get(
+        `${API_URL}/restaurants/byuser/${userId}`,
+        config
+      );
+      setRestaurant(restaurantResponse.data.data);
+      setDishCategories(restaurantResponse.data.data.dishes_categories);
+    } catch (error) {
+      console.error("Error updating restaurant details:", error);
+    }
+  };
+
   if (!user || isExpired) {
     return <NotFoundPageComponent />;
   }
@@ -145,13 +159,13 @@ const RestaurantAdminView = () => {
               className={selectedComponent === "updatePhotos" ? "active" : ""}
               onClick={() => setSelectedComponent("updatePhotos")}
             >
-              Update Photos
+              {languageSelector(language, "updatePhotos")}
             </li>
             <li
               className={selectedComponent === "newVenueForm" ? "active" : ""}
               onClick={() => setSelectedComponent("newVenueForm")}
             >
-              New Venue
+              {languageSelector(language, "createVenue")}
             </li>
           </ul>
           <div className="restaurantAdminView__main">
@@ -170,6 +184,7 @@ const RestaurantAdminView = () => {
                 language={language}
                 languageSelector={languageSelector}
                 restaurant={restaurant}
+                onCategoryUpdate={updateRestaurant}
               />
             )}
             {selectedComponent === "newDishForm" && (
@@ -179,6 +194,7 @@ const RestaurantAdminView = () => {
                 language={language}
                 languageSelector={languageSelector}
                 restaurant={restaurant}
+                onDishUpdate={updateRestaurant}
               />
             )}
             {selectedComponent === "dishList" && (
@@ -190,7 +206,7 @@ const RestaurantAdminView = () => {
               />
             )}
             {selectedComponent === "adminList" && (
-              <AdminList restaurant={restaurant} />
+              <AdminList restaurant={restaurant} onAdminUpdate={updateRestaurant}/>
             )}
             {selectedComponent === "updatePhotos" && (
               <UpdatePhotos
@@ -205,6 +221,8 @@ const RestaurantAdminView = () => {
                 restaurant={restaurant}
                 languageSelector={languageSelector}
                 language={language}
+                setRestaurant={setRestaurant}
+                onVenueAdded={updateRestaurant}
               />
             )}
           </div>

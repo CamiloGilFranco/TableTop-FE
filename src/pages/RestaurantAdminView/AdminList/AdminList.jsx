@@ -8,7 +8,7 @@ import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AdminList = ({ restaurant = {} }) => {
+const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
   const language = useSelector((state) => state.languageReducer);
   const [admins, setAdmins] = useState(restaurant.admins || []);
   const [newAdminEmail, setNewAdminEmail] = useState("");
@@ -34,18 +34,19 @@ const AdminList = ({ restaurant = {} }) => {
         },
         config
       );
-  
+
       if (response.status === 200) {
         const updatedAdmins = response.data.data.admins;
         if (updatedAdmins) {
           setAdmins(updatedAdmins);
         }
         setNewAdminEmail("");
-        toast.success(languageSelector(language, 'addResAdminSuccess'));
+        toast.success(languageSelector(language, "addResAdminSuccess"));
+        onAdminUpdate();
       }
     } catch (error) {
       console.error(error);
-      toast.error(languageSelector(language, 'addResAdminFailure'));
+      toast.error(languageSelector(language, "addResAdminFailure"));
     }
   };
 

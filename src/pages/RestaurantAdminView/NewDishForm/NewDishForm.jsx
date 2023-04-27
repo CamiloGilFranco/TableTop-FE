@@ -11,6 +11,7 @@ const NewDishForm = ({
   language,
   languageSelector,
   restaurant = {},
+  onDishUpdate
 }) => {
   const [errors, setErrors] = useState({});
   const [newDish, setNewDish] = useState({
@@ -82,6 +83,7 @@ const NewDishForm = ({
               response.data.data,
             ]);
             toast.success(languageSelector(language, "newDishSucess"));
+            onDishUpdate();
           })
           .catch((error) => {
             console.log(error);
