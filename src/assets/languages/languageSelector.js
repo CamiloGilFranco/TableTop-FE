@@ -327,6 +327,11 @@ const languageSelector = (lang, str) => {
     updatePhotoSuccess: "Photos updated successfully!",
     updatePhotoFailure: "Photos failed to update",
     updatePhotos: "Update Photos",
+    deleteSelfWarning:
+      "Are you sure you want to delete your account? This action can't be done",
+    deleteSelfSuccess: "Account deleted successfully",
+    deleteSelfFailure: "There has been a problem deleting your account",
+    deleteSelf: "Delete your account",
   };
 
   const es = {
@@ -663,6 +668,11 @@ const languageSelector = (lang, str) => {
     updatePhotoSuccess: "¡Fotos actualizadas con éxito!",
     updatePhotoFailure: "Las fotos fallaron en la actualización",
     updatePhotos: "Actualiza las fotos",
+    deleteSelfWarning:
+      "¿Estás seguro de que desea eliminar tu cuenta? Esta acción no se puede realizar",
+    deleteSelfSuccess: "Cuenta eliminada con éxito",
+    deleteSelfFailure: "Ha habido un problema al eliminar su cuenta",
+    deleteSelf: "Elimina tu cuenta",
   };
   if (lang === "en") {
     return en[str] || str;
