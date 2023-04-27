@@ -67,7 +67,7 @@ const RestaurantDetails = ({
   };
 
   const deleteVenue = async (venueIndex) => {
-    if (!window.confirm("Are you sure you want to delete this venue?")) {
+    if (!window.confirm(languageSelector(language, 'deleteVenueWarning'))) {
       return;
     }
 
@@ -81,12 +81,12 @@ const RestaurantDetails = ({
           (venue) => venue.id_restaurant_venue !== venueId
         );
         setRestaurant({ ...restaurant, venues: updatedVenues });
-        toast.success("Venue deleted successfully");
+        toast.success(languageSelector(language, 'deleteVenueSuccess'));
       } else {
-        toast.error("Error deleting venue");
+        toast.error(languageSelector(language, 'deleteVenueFailure'));
       }
     } catch (error) {
-      toast.error("Error deleting venue");
+      toast.error(languageSelector(language, 'deleteVenueFailure'));
     }
   };
 
