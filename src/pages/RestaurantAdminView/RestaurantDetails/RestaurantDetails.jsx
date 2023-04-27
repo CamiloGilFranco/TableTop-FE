@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RestaurantDetails.css";
-import { AiFillEdit } from "react-icons/ai";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import EditVenueDetailsModal from "../../../components/EditDetailsModal/EditDetailsModal";
 import ReservationList from "./ReservationList/ReservationList";
 import { API_URL } from "../../../constants/apiUrl";
@@ -66,6 +66,29 @@ const RestaurantDetails = ({
     setModalVisible({ show: true, field, index });
   };
 
+  const deleteVenue = async (venueIndex) => {
+    if (!window.confirm("Are you sure you want to delete this venue?")) {
+      return;
+    }
+
+    const venueId = restaurant.venues[venueIndex].id_restaurant_venue;
+    const url = `${API_URL}/restaurant-venues/${venueId}`;
+
+    try {
+      const response = await axios.patch(url, {}, config);
+      if (response.status === 200) {
+        const updatedVenues = restaurant.venues.filter(
+          (venue) => venue.id_restaurant_venue !== venueId
+        );
+        setRestaurant({ ...restaurant, venues: updatedVenues });
+        toast.success("Venue deleted successfully");
+      } else {
+        toast.error("Error deleting venue");
+      }
+    } catch (error) {
+      toast.error("Error deleting venue");
+    }
+  };
 
   return (
     <div className="restaurantDetails">
@@ -130,6 +153,10 @@ const RestaurantDetails = ({
               )}
             </>
           )}
+          <AiFillDelete
+            className="restaurantAdminView__icon restaurantAdminView__delete delete-icon"
+            onClick={() => deleteVenue(index)}
+          />
         </div>
       ))}
       {modalVisible.show && (
@@ -142,7 +169,6 @@ const RestaurantDetails = ({
       )}
     </div>
   );
-  
 };
 
 export default RestaurantDetails;

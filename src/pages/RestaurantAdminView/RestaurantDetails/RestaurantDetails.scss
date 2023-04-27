@@ -56,6 +56,19 @@
           transform: scale(1.2);
         }
       }
+      
+      .delete-icon {
+        cursor: pointer;
+        color: #ef3f3f;
+        font-size: 20px;
+        transition: all 0.3s ease;
+        margin-left: 10px;
+
+        &:hover {
+          transform: scale(1.2);
+          color: #c93030;
+        }
+      }
     }
   }
 
