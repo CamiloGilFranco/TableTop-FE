@@ -328,7 +328,7 @@ const languageSelector = (lang, str) => {
     updatePhotoFailure: "Photos failed to update",
     updatePhotos: "Update Photos",
     deleteSelfWarning:
-      "Are you sure you want to delete your account? This action can't be done",
+      "Are you sure you want to delete your account? This action can't be undone",
     deleteSelfSuccess: "Account deleted successfully",
     deleteSelfFailure: "There has been a problem deleting your account",
     deleteSelf: "Delete your account",
@@ -669,7 +669,7 @@ const languageSelector = (lang, str) => {
     updatePhotoFailure: "Las fotos fallaron en la actualización",
     updatePhotos: "Actualiza las fotos",
     deleteSelfWarning:
-      "¿Estás seguro de que desea eliminar tu cuenta? Esta acción no se puede realizar",
+      "¿Estás seguro de que desea eliminar tu cuenta? Esta acción no se puede deshacer",
     deleteSelfSuccess: "Cuenta eliminada con éxito",
     deleteSelfFailure: "Ha habido un problema al eliminar su cuenta",
     deleteSelf: "Elimina tu cuenta",

@@ -58,7 +58,6 @@ const UserPage = () => {
     city: "",
   });
 
-  // does a get request on mount
   useEffect(() => {
     const fetchUser = async () => {
       dispatch(fetchUserRequest());
@@ -440,7 +439,7 @@ const UserPage = () => {
               </div>
             ))}
           {user.addresses &&
-            user.addresses.map((address, index) => (
+            !!user.addresses.map((address, index) => (
               <div key={address.id_address}>
                 <label className="userPage__form-label" htmlFor="userAddress">
                   {languageSelector(language, "signInAddress")} {index + 1} -{" "}

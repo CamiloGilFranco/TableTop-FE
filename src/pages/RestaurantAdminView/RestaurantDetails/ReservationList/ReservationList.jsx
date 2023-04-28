@@ -24,7 +24,7 @@ const ReservationList = ({ reservations = [], setReservations, language }) => {
           config
         );
         if (response.status === 200) {
-          toast.success(languageSelector(language, "reservationDeleteSucess"));
+          toast.success(languageSelector(language, "reservationDeleteSuccess"));
           setReservations(
             reservations.filter(
               (reservation) => reservation.id_reservation !== reservationId
