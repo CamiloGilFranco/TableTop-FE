@@ -327,6 +327,10 @@ const languageSelector = (lang, str) => {
     updatePhotoSuccess: "Photos updated successfully!",
     updatePhotoFailure: "Photos failed to update",
     updatePhotos: "Update Photos",
+    deleteVenueWarning:
+      "Are you sure you want to delete this venue? This action can't be undone",
+    deleteVenueSuccess: "Venue deleted successfully",
+    deleteVenueFailure: "Error deleting venue",
     deleteSelfWarning:
       "Are you sure you want to delete your account? This action can't be undone",
     deleteSelfSuccess: "Account deleted successfully",
@@ -668,6 +672,10 @@ const languageSelector = (lang, str) => {
     updatePhotoSuccess: "¡Fotos actualizadas con éxito!",
     updatePhotoFailure: "Las fotos fallaron en la actualización",
     updatePhotos: "Actualiza las fotos",
+    deleteVenueWarning:
+      "¿Estás seguro de que desea eliminar esta locación? Esta acción no se puede deshacer",
+    deleteVenueSuccess: "Locación eliminado con éxito",
+    deleteVenueFailure: "Error al eliminar la locación",
     deleteSelfWarning:
       "¿Estás seguro de que desea eliminar tu cuenta? Esta acción no se puede deshacer",
     deleteSelfSuccess: "Cuenta eliminada con éxito",

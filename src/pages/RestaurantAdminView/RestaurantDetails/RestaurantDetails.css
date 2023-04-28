@@ -51,6 +51,17 @@
 .restaurantDetails ul li .edit-icon:hover {
   transform: scale(1.2);
 }
+.restaurantDetails ul li .delete-icon {
+  cursor: pointer;
+  color: #ef3f3f;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+.restaurantDetails ul li .delete-icon:hover {
+  transform: scale(1.2);
+  color: #c93030;
+}
 .restaurantDetails h4 {
   font-size: 18px;
   font-weight: bold;
