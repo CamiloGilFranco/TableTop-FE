@@ -331,6 +331,11 @@ const languageSelector = (lang, str) => {
       "Are you sure you want to delete this venue? This action can't be undone",
     deleteVenueSuccess: "Venue deleted successfully",
     deleteVenueFailure: "Error deleting venue",
+    deleteSelfWarning:
+      "Are you sure you want to delete your account? This action can't be undone",
+    deleteSelfSuccess: "Account deleted successfully",
+    deleteSelfFailure: "There has been a problem deleting your account",
+    deleteSelf: "Delete your account",
   };
 
   const es = {
@@ -671,6 +676,11 @@ const languageSelector = (lang, str) => {
       "¿Estás seguro de que desea eliminar esta locación? Esta acción no se puede deshacer",
     deleteVenueSuccess: "Locación eliminado con éxito",
     deleteVenueFailure: "Error al eliminar la locación",
+    deleteSelfWarning:
+      "¿Estás seguro de que desea eliminar tu cuenta? Esta acción no se puede deshacer",
+    deleteSelfSuccess: "Cuenta eliminada con éxito",
+    deleteSelfFailure: "Ha habido un problema al eliminar su cuenta",
+    deleteSelf: "Elimina tu cuenta",
   };
   if (lang === "en") {
     return en[str] || str;
