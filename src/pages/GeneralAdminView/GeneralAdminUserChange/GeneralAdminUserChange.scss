@@ -7,7 +7,7 @@
   background-color: rgb(206, 204, 201);
   border-radius: 5px;
   padding: 10px;
-    button {
+  button {
     background-color: #ef3f3f;
     color: white;
     font-weight: 700;
@@ -17,23 +17,23 @@
     border-radius: 5px;
     margin-top: 10px;
   }
-  
+
   span {
     font-weight: 700;
     font-size: 18px;
-  } 
-  
+  }
+
   label {
     font-weight: 500;
     font-size: 18px;
   }
-  
+
   input {
     border: none;
     border-radius: 5px;
     padding: 5px;
   }
-  
+
   select {
     border: none;
     border-radius: 5px;
@@ -45,9 +45,14 @@
   cursor: pointer;
   height: 35px;
   width: 35px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #ef3f3f;
+  }
 }
 
-.generalAdmin_userList{
+.generalAdmin_userList {
   button {
     background-color: #ef3f3f;
     color: white;
@@ -60,9 +65,40 @@
   }
 }
 
+.app-admin-show-users-button {
+  right: 10px;
+}
+
+.user__list_main_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.user__list-container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
 .user__list {
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  width: 100% !important;
+
+  &:hover {
+    background: lightgray;
+  }
+}
+
+.user__list_search_input {
+  margin: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  width: 90%;
 }

@@ -1,9 +1,9 @@
 .generalAdminView__container {
+  background-color: #f0f0f0;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
   padding: 10px;
-  background-color: rgb(238, 237, 236);
+  margin: 10px;
+  box-shadow: 0 2px 5px 1px lightgrey;
 }
 .generalAdminView__container h1 {
   text-align: center;
@@ -19,34 +19,61 @@
   }
 }
 
-.generalAdminView__flex {
+.generalAdminView__left_container {
+  width: 300px;
+  height: 100%;
+}
+
+.generalAdminView__image_container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.generalAdminView__image {
+  height: 100%;
+}
+
+.generalAdminView__right_container {
+  padding: 15px;
+  width: calc(100% - 300px);
+  border-left: 1px grey solid;
+}
+
+.generalAdminView__list li.active {
+  background-color: darkgray;
+}
+
+.generalAdminView__list {
+  list-style: none;
+  margin: 15px;
+  padding: 0;
+}
+.generalAdminView__list li {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 22px;
+  font-weight: 700;
+  padding-left: 10px;
+}
+.generalAdminView__list li:hover {
+  background-color: #ef3f3f;
+  color: white;
+}
+
+------------------------------------------------------------- .generalAdminView__flex {
+  background-color: antiquewhite;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 @media (min-width: 765px) {
-  .generalAdminView__flex {
+  ------------------------------------------------------------- .generalAdminView__flex {
     margin-top: 15px;
     flex-direction: row;
   }
-}
-
-.generalAdminView__list {
-  padding: 5px 15px;
-  font-size: 16px;
-  line-height: 20px;
-}
-@media (min-width: 765px) {
-  .generalAdminView__list {
-    font-size: 20px;
-  }
-}
-.generalAdminView__list li {
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.generalAdminView__list li:hover {
-  color: #ef3f3f;
 }
 
 .generalAdminView__main {
@@ -58,11 +85,6 @@
 .generalAdminView__error {
   color: #ef3f3f;
   font-weight: 700;
-}
-
-.generalAdminView__list li.active {
-  color: #ef3f3f;
-  cursor: default;
 }
 
 .generalAdminView__article {
