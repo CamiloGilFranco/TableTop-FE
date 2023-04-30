@@ -13,8 +13,6 @@
     line-height: 25px;
 
     li {
-      margin-bottom: 5px;
-      
       &:last-child {
         margin-bottom: 0;
       }
@@ -49,4 +47,17 @@
       }
     }
   }
+}
+
+.adminList_single_admin_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: solid 1px grey;
+}
+
+.Add_new_admin_span {
+  font-size: 18px;
+  font-weight: 700;
 }

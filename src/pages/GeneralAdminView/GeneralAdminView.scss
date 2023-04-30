@@ -15,11 +15,19 @@
       font-size: 20px;
     }
   }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 }
 
 .generalAdminView__left_container {
   width: 300px;
   height: 100%;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 }
 
 .generalAdminView__image_container {
@@ -38,6 +46,12 @@
   padding: 15px;
   width: calc(100% - 300px);
   border-left: 1px grey solid;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    border-left: none;
+    border-top: 3px solid grey;
+  }
 }
 
 .generalAdminView__list li.active {

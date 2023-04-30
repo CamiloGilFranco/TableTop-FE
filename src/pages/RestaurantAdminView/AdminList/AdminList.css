@@ -10,9 +10,6 @@
   font-size: 16px;
   line-height: 25px;
 }
-.adminList__list li {
-  margin-bottom: 5px;
-}
 .adminList__list li:last-child {
   margin-bottom: 0;
 }
@@ -40,4 +37,17 @@
 }
 .adminList__addAdmin button:hover {
   opacity: 0.8;
+}
+
+.adminList_single_admin_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: solid 1px grey;
+}
+
+.Add_new_admin_span {
+  font-size: 18px;
+  font-weight: 700;
 }/*# sourceMappingURL=AdminList.css.map */

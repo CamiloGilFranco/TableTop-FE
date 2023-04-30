@@ -7,6 +7,7 @@ import { API_URL } from "../../../constants/apiUrl";
 import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AiFillDelete } from "react-icons/ai";
 
 const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
   const language = useSelector((state) => state.languageReducer);
@@ -55,12 +56,16 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
       <h3>{languageSelector(language, "restaurantAdmins")}</h3>
       <ul className="adminList__list">
         {admins.map((admin, index) => (
-          <li key={index}>
-            {admin.name} {admin.last_name} - {admin.email}
-          </li>
+          <div className="adminList_single_admin_container">
+            <li key={index}>
+              {admin.name} {admin.last_name} - {admin.email}
+            </li>
+            <AiFillDelete className="restaurantAdminView__icon" />
+          </div>
         ))}
       </ul>
       <div className="adminList__addAdmin">
+        <span className="Add_new_admin_span">Add new admin</span>
         <input
           type="email"
           placeholder={languageSelector(language, "signInEmail")}

@@ -1,9 +1,7 @@
 .restaurantDetails {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   padding: 10px;
-  background-color: rgb(238, 237, 236);
 }
 .restaurantDetails h3 {
   text-align: center;
@@ -67,4 +65,29 @@
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.restaurantDetails_single_item_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px gray solid;
+  padding: 0 10px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.restaurantDetails_single_item_header:hover {
+  background-color: lightgray;
+}
+
+.restaurantAdminView_span_schedule {
+  display: block;
+}
+
+.restaurantAdminView_span_subtitle {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.restaurantAdminView_detail_restaurant_container {
+  padding: 15px;
 }/*# sourceMappingURL=RestaurantDetails.css.map */

@@ -67,7 +67,7 @@ const RestaurantDetails = ({
   };
 
   const deleteVenue = async (venueIndex) => {
-    if (!window.confirm(languageSelector(language, 'deleteVenueWarning'))) {
+    if (!window.confirm(languageSelector(language, "deleteVenueWarning"))) {
       return;
     }
 
@@ -81,66 +81,76 @@ const RestaurantDetails = ({
           (venue) => venue.id_restaurant_venue !== venueId
         );
         setRestaurant({ ...restaurant, venues: updatedVenues });
-        toast.success(languageSelector(language, 'deleteVenueSuccess'));
+        toast.success(languageSelector(language, "deleteVenueSuccess"));
       } else {
-        toast.error(languageSelector(language, 'deleteVenueFailure'));
+        toast.error(languageSelector(language, "deleteVenueFailure"));
       }
     } catch (error) {
-      toast.error(languageSelector(language, 'deleteVenueFailure'));
+      toast.error(languageSelector(language, "deleteVenueFailure"));
     }
   };
+  console.log(restaurant.venues);
 
   return (
     <div className="restaurantDetails">
       {restaurant.venues.map((venue, index) => (
         <div key={index}>
-          <h3 onClick={() => toggleDetails(index)}>
-            {languageSelector(language, "signInCity")}: {venue.city}
-          </h3>
+          <div
+            className="restaurantDetails_single_item_header"
+            onClick={() => toggleDetails(index)}
+          >
+            <h3>{venue.name_venue}</h3>
+            <AiFillDelete
+              className="restaurantAdminView__icon restaurantAdminView__delete delete-icon"
+              onClick={() => deleteVenue(index)}
+            />
+          </div>
           {visibleVenueIndex === index && (
-            <>
-              <span>{languageSelector(language, "restaurantEditAddress")}</span>
-              <ul>
-                <li>
+            <div className="restaurantAdminView_detail_restaurant_container">
+              <span className="restaurantAdminView_span_subtitle">
+                {languageSelector(language, "restaurantEditAddress")}
+              </span>
+              <ul className="restaurantAdminView_opening_closing_hour_list">
+                <span>
                   {venue.address}
                   <AiFillEdit
                     className="restaurantAdminView__icon restaurantAdminView__edit"
                     onClick={() => handleDetailsClick("address", index)}
                   />
-                </li>
+                </span>
               </ul>
-              <span>
+              <span className="restaurantAdminView_span_subtitle">
                 {languageSelector(language, "restaurantEditPhoneNumber")}
               </span>
               <ul>
-                <li>
+                <span>
                   {venue.phone_number}
                   <AiFillEdit
                     className="restaurantAdminView__icon restaurantAdminView__edit"
                     onClick={() => handleDetailsClick("phone_number", index)}
                   />
-                </li>
+                </span>
               </ul>
-              <span>
+              <span className="restaurantAdminView_span_schedule restaurantAdminView_span_subtitle">
                 {languageSelector(language, "restaurantEditOpenHour")}
               </span>
-              <li>
+              <span className="restaurantAdminView_span_schedule">
                 {venue.open_hour}
                 <AiFillEdit
                   className="restaurantAdminView__icon restaurantAdminView__edit"
                   onClick={() => handleDetailsClick("open_hour", index)}
                 />
-              </li>
-              <span>
+              </span>
+              <span className="restaurantAdminView_span_schedule restaurantAdminView_span_subtitle">
                 {languageSelector(language, "restaurantEditCloseHour")}
               </span>
-              <li>
+              <span className="restaurantAdminView_span_schedule ">
                 {venue.close_hour}
                 <AiFillEdit
                   className="restaurantAdminView__icon restaurantAdminView__edit"
                   onClick={() => handleDetailsClick("close_hour", index)}
                 />
-              </li>
+              </span>
               <h4>{languageSelector(language, "reservations")}</h4>
               {visibleVenueIndex !== null && (
                 <>
@@ -151,12 +161,8 @@ const RestaurantDetails = ({
                   />
                 </>
               )}
-            </>
+            </div>
           )}
-          <AiFillDelete
-            className="restaurantAdminView__icon restaurantAdminView__delete delete-icon"
-            onClick={() => deleteVenue(index)}
-          />
         </div>
       ))}
       {modalVisible.show && (
