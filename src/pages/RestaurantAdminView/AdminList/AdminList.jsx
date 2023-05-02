@@ -43,12 +43,12 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
           setAdmins(updatedAdmins);
         }
         setNewAdminEmail("");
-        toast.success(languageSelector(language, "addResAdminSuccess"));
+        toast.success(languageSelector(language, "removeResAdminSuccess"));
         onAdminUpdate();
       }
     } catch (error) {
       console.error(error);
-      toast.error(languageSelector(language, "addResAdminFailure"));
+      toast.error(languageSelector(language, "removeResAdminFailure"));
     }
   };
 

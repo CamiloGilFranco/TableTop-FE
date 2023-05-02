@@ -110,7 +110,7 @@ const languageSelector = (lang, str) => {
     restaurantOptionsReview: "REVIEWS",
     overViewSchedule: "Opening Hours",
     overviewFacilities: "Facilities",
-    bookingButton: "SUBMIT",
+    bookingButton: "SUMBIT",
     recommendedTitle: "Recommended",
     cartTitle: "Cart Items",
     cartFinishWarning: "delivery charges may apply to your order.",
@@ -336,6 +336,10 @@ const languageSelector = (lang, str) => {
     deleteSelfSuccess: "Account deleted successfully",
     deleteSelfFailure: "There has been a problem deleting your account",
     deleteSelf: "Delete your account",
+    removeResAdminSuccess: "Restaurant Admin successfully removed",
+    removeResAdminFailure: "There has been an error removing this Admin",
+    deleteResAdminWarning:
+      "Are you sure you want to remove this Admin? This action cannot be undone",
   };
 
   const es = {
@@ -681,6 +685,10 @@ const languageSelector = (lang, str) => {
     deleteSelfSuccess: "Cuenta eliminada con éxito",
     deleteSelfFailure: "Ha habido un problema al eliminar su cuenta",
     deleteSelf: "Elimina tu cuenta",
+    removeResAdminSuccess: "Administrador del restaurante eliminado con éxito",
+    removeResAdminFailure: "Ha habido un error al eliminar este administrador",
+    deleteResAdminWarning:
+      "¿Está seguro de que desea eliminar a este administrador? Esta acción no se puede deshacer",
   };
   if (lang === "en") {
     return en[str] || str;
