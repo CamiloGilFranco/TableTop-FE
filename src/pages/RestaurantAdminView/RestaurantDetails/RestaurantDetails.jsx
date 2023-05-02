@@ -89,7 +89,6 @@ const RestaurantDetails = ({
       toast.error(languageSelector(language, "deleteVenueFailure"));
     }
   };
-  console.log(restaurant.venues);
 
   return (
     <div className="restaurantDetails">
