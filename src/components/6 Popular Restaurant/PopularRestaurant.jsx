@@ -18,7 +18,6 @@ const PopularRestaurant = ({ inputValue }) => {
       .get(`${API_URL}/restaurants/withcuisines/all`)
       .then((res) => {
         setSortList(res.data.data);
-        console.log(res.data.data);
       })
       .catch(() => {
         navigate(routePaths.somethingWentWrong);

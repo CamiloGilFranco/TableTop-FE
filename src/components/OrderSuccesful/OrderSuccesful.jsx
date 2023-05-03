@@ -35,6 +35,10 @@ const OrderSuccesful = () => {
         `${API_URL}/orders`,
         {
           price,
+          address: orderData.orderData.address,
+          address_id: orderData.orderData.addressId,
+          city: orderData.orderData.city,
+          cart,
         },
         {
           headers: {
@@ -43,6 +47,7 @@ const OrderSuccesful = () => {
         }
       )
       .then((res) => {
+        console.log(res.data);
         setOrderID(res.data.data.id_order);
         for (const dish of cart) {
           dishList.push({

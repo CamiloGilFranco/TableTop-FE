@@ -79,7 +79,7 @@ const Payment = ({ deliveryAddress }) => {
         orderData: {
           address: deliveryAddress.address,
           city: deliveryAddress.city,
-          addressId: deliveryAddress.id_address,
+          addressId: deliveryAddress.id,
         },
       });
       elements.getElement(CardElement).clear();
