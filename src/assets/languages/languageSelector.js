@@ -358,6 +358,10 @@ const languageSelector = (lang, str) => {
     addFacility: "Add a new facility to this venue",
     addFacilitySelect: "Select a facility",
     addFacilityButton: "Add Facility",
+    deleteCuisineWarning:
+      "Are you sure you want to remove this cuisine? It may impaact the discoverability of your restaurant.",
+    cuisineDeleteSuccess: "Cuisine removed successfully",
+    cuisineDeleteError: "There was a problem removing this cuisine.",
   };
 
   const es = {
@@ -726,6 +730,10 @@ const languageSelector = (lang, str) => {
     addFacility: "Agregar una nueva facilidad a esta locación",
     addFacilitySelect: "Seleccione una facilidad",
     addFacilityButton: "Agregar facilidad",
+    deleteCuisineWarning:
+      "¿Está seguro de que desea eliminar esta cocina? Puede afectar la visibilidad de su restaurante.",
+    cuisineDeleteSuccess: "Cocina eliminada con éxito",
+    cuisineDeleteError: "Hubo un problema al eliminar esta cocina.",
   };
   if (lang === "en") {
     return en[str] || str;

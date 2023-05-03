@@ -50,6 +50,26 @@ const RestaurantCuisine = ({
     }
   };
 
+  const handleCuisineDelete = async (id_cuisine_per_restaurant) => {
+    if (window.confirm(languageSelector(language, "deleteCuisineWarning"))) {
+      try {
+        const response = await axios.patch(
+          `${API_URL}/cuisine-per-restaurant/${id_cuisine_per_restaurant}`,
+          {},
+          config
+        );
+        if (response.status === 200) {
+          onCuisineUpdate();
+          toast.success(languageSelector(language, "cuisineDeleteSuccess"));
+        } else {
+          toast.error((languageSelector(language, "cuisineDeleteError")));
+        }
+      } catch (error) {
+        console.error((languageSelector(language, "cuisineDeleteError")));
+      }
+    }
+  };
+
   return (
     <div className="restaurantCuisine">
       <span>{languageSelector(language, "restaurantCuisineTitle")}</span>
@@ -57,7 +77,12 @@ const RestaurantCuisine = ({
         {restaurant.cuisines.map((element) => (
           <li key={element.id_cuisine_per_restaurant} className="cuisine_item">
             {element.cuisine_category}
-            <AiFillDelete className="restaurantAdminView__icon" />
+            <AiFillDelete
+              className="restaurantAdminView__icon"
+              onClick={() =>
+                handleCuisineDelete(element.id_cuisine_per_restaurant)
+              }
+            />
           </li>
         ))}
       </ul>
