@@ -18,6 +18,7 @@ import {
   addNewComment,
   updateRestaurantRating,
 } from "./ReviewsQueries";
+import Loader from "../Loader/Loader";
 
 const ReviewsComponent = ({
   reviews,
@@ -30,6 +31,7 @@ const ReviewsComponent = ({
   const language = useSelector((state) => state.languageReducer);
   const [reviewsList, setReviewsList] = useState([]);
   const cookies = new Cookies();
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     if (reviews) {
@@ -78,10 +80,12 @@ const ReviewsComponent = ({
           position: "bottom-right",
         });
       } else {
+        setLoader(true);
         if (await alreadyCommented(id_restaurant)) {
           toast.error("you have already made a comment", {
             position: "bottom-right",
           });
+          setLoader(false);
         } else {
           await addNewComment(
             id_restaurant,
@@ -99,6 +103,7 @@ const ReviewsComponent = ({
           setNewReview({ stars: "", title: "", comments: "" });
 
           setNewRender(!newRender);
+          setLoader(false);
         }
       }
     }
@@ -107,6 +112,7 @@ const ReviewsComponent = ({
   return (
     <div className="reviews-component-container">
       <ToastContainer />
+      {loader ? <Loader /> : ""}
       {reviewsList.map((element, index) => {
         const createdAtText = new Date(element.createdAt);
         return (
