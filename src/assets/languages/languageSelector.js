@@ -340,6 +340,24 @@ const languageSelector = (lang, str) => {
     removeResAdminFailure: "There has been an error removing this Admin",
     deleteResAdminWarning:
       "Are you sure you want to remove this Admin? This action cannot be undone",
+    restaurantCuisineSubtitle:
+      "If you want to add a cuisine to your restaurant, you can do it here.",
+    restaurantCuisineTitle:
+      "Here you can see and remove the cuisines of your restaurant.",
+    restaurantCuisineSelect: "Select a cuisine",
+    restaurantCuisineButton: "Add the cuisine",
+    cuisineAddSuccess: "Cuisine Added successfully",
+    restaurantCuisine: "Restaurant Cuisine",
+    updateImageSuccess: "Venue image successfully updated",
+    updateImageError: "There has been an error updating the venua image",
+    facilityAddSuccess: "Facilty added to the venue successfully",
+    facilityAlreadyExistsError: "This venue already has that facility",
+    facilityAddError: "There has been an error adding the facility",
+    updateVenuePhoto: "Update the venue photo",
+    updateVenueButton: "Update image",
+    addFacility: "Add a new facility to this venue",
+    addFacilitySelect: "Select a facility",
+    addFacilityButton: "Add Facility",
   };
 
   const es = {
@@ -689,6 +707,25 @@ const languageSelector = (lang, str) => {
     removeResAdminFailure: "Ha habido un error al eliminar este administrador",
     deleteResAdminWarning:
       "¿Está seguro de que desea eliminar a este administrador? Esta acción no se puede deshacer",
+    restaurantCuisineSubtitle:
+      "Si desea agregar una cocina a su restaurante, puede hacerlo aquí.",
+    restaurantCuisineTitle:
+      "Aquí puedes ver y quitar las cocinas de tu restaurante.",
+    restaurantCuisineSelect: "Seleccione una cocina",
+    restaurantCuisineButton: "Agregar la cocina",
+    cuisineAddSuccess: "Cocina añadida con éxito",
+    restaurantCuisine: "Cocina de restaurante",
+    updateImageSuccess: "Imagen del lugar actualizada correctamente",
+    updateImageError:
+      "Ha ocurrido un error al actualizar la imagen de la locación",
+    facilityAddSuccess: "Facilidad agregada a la locación exitosamente",
+    facilityAlreadyExistsError: "Esta locación ya tiene esa facilidad",
+    facilityAddError: "Ha ocurrido un error al agregar la facilidad",
+    updateVenuePhoto: "Actualizar la foto de la locación",
+    updateVenueButton: "Actualizar imagen",
+    addFacility: "Agregar una nueva facilidad a esta locación",
+    addFacilitySelect: "Seleccione una facilidad",
+    addFacilityButton: "Agregar facilidad",
   };
   if (lang === "en") {
     return en[str] || str;

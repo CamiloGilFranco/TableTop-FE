@@ -17,7 +17,6 @@ const RestaurantDetails = ({
   setRestaurant,
   onVenueUpdate,
 }) => {
-  console.log("🚀 ~ file: RestaurantDetails.jsx:20 ~ restaurant:", restaurant);
   const [visibleVenueIndex, setVisibleVenueIndex] = useState(null);
   const [selectedFacility, setSelectedFacility] = useState("");
   const [reservations, setReservations] = useState([]);
@@ -194,7 +193,9 @@ const RestaurantDetails = ({
                   alt={`${venue.name_venue}`}
                   className="venue-image"
                 />
-                <label htmlFor="venue_photo">Update the venue photo</label>
+                <label htmlFor="venue_photo">
+                  {languageSelector(language, "updateVenuePhoto")}
+                </label>
                 <input
                   name="venue_photo"
                   id="venue_photo"
@@ -202,7 +203,7 @@ const RestaurantDetails = ({
                   accept="image/*"
                 />
                 <button onClick={() => updateVenueImage(index)}>
-                  Update Image
+                  {languageSelector(language, "updateVenueButton")}
                 </button>
               </div>
               <div className="restaurantAdminView_detail_restaurant_container">
@@ -277,21 +278,25 @@ const RestaurantDetails = ({
                   ))}
                 </ul>
                 <span className="restaurantAdminView_span_schedule restaurantAdminView_span_subtitle">
-                  Add a new facility to this venue
+                  {languageSelector(language, "addFacility")}
                 </span>
                 <div className="venue_photo">
                   <select
                     value={selectedFacility}
                     onChange={(e) => setSelectedFacility(e.target.value)}
                   >
-                    <option value="">Select a facility</option>
+                    <option value="">
+                      {languageSelector(language, "addFacilitySelect")}
+                    </option>
                     {facilitiesList.map((facility) => (
                       <option key={facility} value={facility}>
                         {facility}
                       </option>
                     ))}
                   </select>
-                  <button onClick={handleFacilityAdd}>Add facility</button>
+                  <button onClick={handleFacilityAdd}>
+                    {languageSelector(language, "addFacilityButton")}
+                  </button>
                 </div>
                 <h4>{languageSelector(language, "reservations")}</h4>
                 {visibleVenueIndex !== null && (
