@@ -221,6 +221,7 @@ const RestaurantAdminView = () => {
                 languageSelector={languageSelector}
                 restaurant={restaurant}
                 setRestaurant={setRestaurant}
+                onVenueUpdate={updateRestaurant}
               />
             )}
             {selectedComponent === "newDishCategoryForm" && (
