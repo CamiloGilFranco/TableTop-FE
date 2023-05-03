@@ -43,6 +43,13 @@ const Payment = ({ deliveryAddress }) => {
       return;
     }
 
+    if (!cartSubtotal) {
+      toast.error("Your cart is empty", {
+        position: "bottom-right",
+      });
+      return;
+    }
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
