@@ -17,7 +17,7 @@ const RestaurantDetails = ({
   setRestaurant,
   onVenueUpdate,
 }) => {
-  console.log("🚀 ~ file: RestaurantDetails.jsx:20 ~ restaurant:", restaurant)
+  console.log("🚀 ~ file: RestaurantDetails.jsx:20 ~ restaurant:", restaurant);
   const [visibleVenueIndex, setVisibleVenueIndex] = useState(null);
   const [selectedFacility, setSelectedFacility] = useState("");
   const [reservations, setReservations] = useState([]);
@@ -94,7 +94,24 @@ const RestaurantDetails = ({
     }
   };
   const handleFacilityDelete = (venueIndex, facilityIndex) => {
-    axios.patch(`${API_URL}`)
+    if (!window.confirm(languageSelector(language, "facilityDeleteWarning"))) {
+      return;
+    }
+    const facilityId =
+      restaurant.venues[venueIndex].facilities[facilityIndex]
+        .id_facility_per_venue;
+
+    const response = axios.patch(
+      `${API_URL}/facilities/${facilityId}`,
+      {},
+      config
+    );
+    if (response.status === 201 || 200) {
+      toast.success(languageSelector(language, "facilityDeleteSuccess"));
+      onVenueUpdate();
+    } else {
+      toast.error(languageSelector(language, "facilityDeleteError"));
+    }
   };
 
   const updateVenueImage = async (venueIndex) => {
@@ -126,6 +143,32 @@ const RestaurantDetails = ({
       }
     } catch (error) {
       toast.error(languageSelector(language, "updateImageError"));
+    }
+  };
+
+  const handleFacilityAdd = async () => {
+    if (!selectedFacility) {
+      toast.error("Please select a facility to add");
+      return;
+    }
+
+    const response = await axios.post(
+      `${API_URL}/facilities-per-venue`,
+      {
+        facilitiesId_facility: selectedFacility,
+        restaurant_venuesId_restaurant_venue:
+          restaurant.venues[visibleVenueIndex].id_restaurant_venue,
+      },
+      config
+    );
+
+    if (response.status === 201 || 204) {
+      toast.success(languageSelector(language, "facilityAddSuccess"));
+      onVenueUpdate();
+    } else if (response.status === 400) {
+      toast.error(languageSelector(language, "facilityAlreadyExistsError"));
+    } else {
+      toast.error(languageSelector(language, "facilityAddError"));
     }
   };
 
@@ -248,7 +291,7 @@ const RestaurantDetails = ({
                       </option>
                     ))}
                   </select>
-                  <button onClick={handleFacilityDelete}>Add facility</button>
+                  <button onClick={handleFacilityAdd}>Add facility</button>
                 </div>
                 <h4>{languageSelector(language, "reservations")}</h4>
                 {visibleVenueIndex !== null && (
