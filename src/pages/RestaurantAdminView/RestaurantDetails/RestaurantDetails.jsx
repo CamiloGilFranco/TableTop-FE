@@ -150,6 +150,16 @@ const RestaurantDetails = ({
                   onClick={() => handleDetailsClick("close_hour", index)}
                 />
               </span>
+              <span className="restaurantAdminView_span_schedule restaurantAdminView_span_subtitle">
+                {languageSelector(language, "city")}
+              </span>
+              <span>
+                {venue.city}
+                <AiFillEdit
+                  className="restaurantAdminView__icon restaurantAdminView__edit"
+                  onClick={() => handleDetailsClick("city", index)}
+                />
+              </span>
               <h4>{languageSelector(language, "reservations")}</h4>
               {visibleVenueIndex !== null && (
                 <>
@@ -166,6 +176,7 @@ const RestaurantDetails = ({
       ))}
       {modalVisible.show && (
         <EditVenueDetailsModal
+          restaurant={restaurant}
           editItem={editItem}
           onClose={() => setModalVisible({ ...modalVisible, show: false })}
           field={modalVisible.field}
