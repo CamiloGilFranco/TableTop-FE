@@ -8,15 +8,18 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { facilitiesList } from "../../../assets/facilitesList";
 
 const RestaurantDetails = ({
   language,
   languageSelector,
   restaurant = {},
   setRestaurant,
-  onVenueUpdate
+  onVenueUpdate,
 }) => {
+  console.log("🚀 ~ file: RestaurantDetails.jsx:20 ~ restaurant:", restaurant)
   const [visibleVenueIndex, setVisibleVenueIndex] = useState(null);
+  const [selectedFacility, setSelectedFacility] = useState("");
   const [reservations, setReservations] = useState([]);
   const [modalVisible, setModalVisible] = useState({
     show: false,
@@ -90,14 +93,8 @@ const RestaurantDetails = ({
       toast.error(languageSelector(language, "deleteVenueFailure"));
     }
   };
-  const handleFacilityEdit = (venueIndex, facilityIndex) => {
-    console.log(
-      "Handle facility edit for venueIndex:",
-      venueIndex,
-      "and facilityIndex:",
-      facilityIndex
-    );
-    // Add your code for handling facility edit here
+  const handleFacilityDelete = (venueIndex, facilityIndex) => {
+    axios.patch(`${API_URL}`)
   };
 
   const updateVenueImage = async (venueIndex) => {
@@ -107,19 +104,23 @@ const RestaurantDetails = ({
     formData.append("image", fileInput.files[0]);
 
     try {
-      const response = await axios.patch(`${API_URL}/restaurant-venues/${venueId}/image`, formData, {
-        ...config,
-        headers: {
-          ...config.headers,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.patch(
+        `${API_URL}/restaurant-venues/${venueId}/image`,
+        formData,
+        {
+          ...config,
+          headers: {
+            ...config.headers,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       if (response.status === 200) {
         const updatedVenues = [...restaurant.venues];
         updatedVenues[venueIndex].venue_photo = response.data.image_url;
         setRestaurant({ ...restaurant, venues: updatedVenues });
         toast.success(languageSelector(language, "updateImageSuccess"));
-        onVenueUpdate()
+        onVenueUpdate();
       } else {
         toast.error(languageSelector(language, "updateImageError"));
       }
@@ -223,13 +224,32 @@ const RestaurantDetails = ({
                   {venue.facilities.map((facility, facilityIndex) => (
                     <li key={facility.id_facility_per_venue}>
                       {facility.facility}
-                      <AiFillEdit
+                      <AiFillDelete
                         className="restaurantAdminView__icon restaurantAdminView__edit"
-                        onClick={() => handleFacilityEdit(index, facilityIndex)}
+                        onClick={() =>
+                          handleFacilityDelete(index, facilityIndex)
+                        }
                       />
                     </li>
                   ))}
                 </ul>
+                <span className="restaurantAdminView_span_schedule restaurantAdminView_span_subtitle">
+                  Add a new facility to this venue
+                </span>
+                <div className="venue_photo">
+                  <select
+                    value={selectedFacility}
+                    onChange={(e) => setSelectedFacility(e.target.value)}
+                  >
+                    <option value="">Select a facility</option>
+                    {facilitiesList.map((facility) => (
+                      <option key={facility} value={facility}>
+                        {facility}
+                      </option>
+                    ))}
+                  </select>
+                  <button onClick={handleFacilityDelete}>Add facility</button>
+                </div>
                 <h4>{languageSelector(language, "reservations")}</h4>
                 {visibleVenueIndex !== null && (
                   <>
