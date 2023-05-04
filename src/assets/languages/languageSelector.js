@@ -368,7 +368,9 @@ const languageSelector = (lang, str) => {
     restaurantOverviewDishes: "Dishes",
     each: "each",
     totalAmount: "Total Amount",
-    numberOfSales: 'NUMBER OF SALES'
+    numberOfSales: "NUMBER OF SALES",
+    customerName: "Customer",
+    customerAddress: "Delivered at",
   };
 
   const es = {
@@ -747,8 +749,9 @@ const languageSelector = (lang, str) => {
     restaurantOverviewDishes: "Platos",
     each: "cada uno",
     totalAmount: "Cantidad total",
-    numberOfSales: 'TOTAL DE VENTAS'
-
+    numberOfSales: "TOTAL DE VENTAS",
+    customerName: "Cliente",
+    customerAddress: "Entregado en",
   };
   if (lang === "en") {
     return en[str] || str;

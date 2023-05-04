@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './RestaurantOverview.css';
+import React, { useState } from "react";
+import "./RestaurantOverview.css";
 
 const RestaurantOverview = ({ restaurant, language, languageSelector }) => {
   const [activeOrderId, setActiveOrderId] = useState(null);
@@ -13,6 +13,8 @@ const RestaurantOverview = ({ restaurant, language, languageSelector }) => {
         date: order.orders.createdAt,
         totalAmount: order.orders.price,
         dishes: [],
+        user: order.orders.users,
+        orders: order.orders,
       };
     }
 
@@ -34,31 +36,63 @@ const RestaurantOverview = ({ restaurant, language, languageSelector }) => {
 
   return (
     <div className="restaurant-overview">
-    {orders.map((order) => (
-      <div key={order.id} className="order">
-        <h3
-          className={`order-title ${activeOrderId === order.id ? 'active' : ''}`}
-          onClick={() => handleOrderClick(order.id)}
-        >
-          {languageSelector(language, 'restaurantOverviewId')}: {order.id}
-        </h3>
-        {activeOrderId === order.id && (
-          <>
-            <p className="order-date">{languageSelector(language, 'restaurantOverviewDate')}: {new Date(order.date).toLocaleDateString()}</p>
-            <div className="order-dishes">
-              <h4>{languageSelector(language, 'restaurantOverviewDishes')}:</h4>
-              {order.dishes.map((dish) => (
-                <p key={dish.id}>
-                  {dish.quantity} x {dish.title} ({dish.price} {languageSelector(language, 'each')})
+      {orders.map((order) => {
+        const user = order.user;
+        const name = `${user?.name ?? ""} ${user?.last_name ?? ""}`;
+        const addressObj = user?.addresses?.find(
+          (addr) => addr.id_address === order.orders.user_addressesId_address
+        );
+        const address = addressObj ? addressObj.address : "";
+
+        return (
+          <div
+            key={order.id}
+            className="order"
+            onClick={() => handleOrderClick(order.id)}
+          >
+            <p
+              className={`order-title ${
+                activeOrderId === order.id ? "active" : ""
+              }`}
+              onClick={() => handleOrderClick(order.id)}
+            >
+              {languageSelector(language, "restaurantOverviewId")}: {order.id}
+            </p>
+            {activeOrderId === order.id && (
+              <>
+                <p className="order-date">
+                  {languageSelector(language, "restaurantOverviewDate")}:{" "}
+                  {new Date(order.date).toLocaleDateString()}
                 </p>
-              ))}
-            </div>
-            <p className="order-total">{languageSelector(language, 'totalAmount')}: {order.totalAmount}</p>
-          </>
-        )}
-      </div>
-    ))}
-  </div>
+                <p className="order-customer">
+                  {languageSelector(language, "customerName")}: {name}
+                </p>
+                <p className="order-address">
+                  {languageSelector(language, "customerAddress")}: {address}
+                </p>
+                <div className="order-dishes">
+                  <h4>
+                    {languageSelector(language, "restaurantOverviewDishes")}:
+                  </h4>
+                  {order.dishes.map((dish) => {
+                    return (
+                      <p key={dish.id}>
+                        {dish.quantity} x {dish.title} ({dish.price}{" "}
+                        {languageSelector(language, "each")})
+                      </p>
+                    );
+                  })}
+                </div>
+                <p className="order-total">
+                  {languageSelector(language, "totalAmount")}:{" "}
+                  {order.totalAmount}
+                </p>
+              </>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
