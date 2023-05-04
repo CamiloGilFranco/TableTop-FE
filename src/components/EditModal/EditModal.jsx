@@ -18,10 +18,10 @@ const EditModal = ({ item, onClose, handleUpdate }) => {
     const price = form.price.value;
     const description = form.description.value;
 
-    if (title.length <= 1 || typeof title !== "string") {
+    if (title.length || typeof title !== "string") {
       validationErrors.title = "title must be at least 2 characters long";
     }
-    if (price.length === 0) {
+    if (price.length) {
       validationErrors.price = "you must provide a price";
     } else if (isNaN(price)) {
       validationErrors.price = "* The price must be a number";
