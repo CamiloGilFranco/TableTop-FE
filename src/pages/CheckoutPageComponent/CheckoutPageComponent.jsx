@@ -8,6 +8,7 @@ import "./CheckoutPageComponent.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
+
 const publicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
 const stripePromise = loadStripe(publicKey);
@@ -16,6 +17,7 @@ const CheckoutPageComponent = () => {
   const [deliveryAddress, setDeliveryAddress] = useState({
     address: "",
     city: "",
+    id: "",
   });
   return (
     <div className="checkout-page-content">

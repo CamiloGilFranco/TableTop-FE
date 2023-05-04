@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { API_URL } from "../../constants/apiUrl";
 import Cookies from "universal-cookie";
+import Loader from "../Loader/Loader";
 
 const Payment = ({ deliveryAddress }) => {
   const cookies = new Cookies();
@@ -20,6 +21,7 @@ const Payment = ({ deliveryAddress }) => {
   const language = useSelector((state) => state.languageReducer);
   const cartSubtotal = useSelector((state) => state.subtotalReducer);
   const [paymentData, setPaymentData] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     dispatch({ type: NEW_ORDER, payload: paymentData });
@@ -36,6 +38,13 @@ const Payment = ({ deliveryAddress }) => {
 
     if (!deliveryAddress.address) {
       toast.error("Choose an address to delivery", {
+        position: "bottom-right",
+      });
+      return;
+    }
+
+    if (!cartSubtotal) {
+      toast.error("Your cart is empty", {
         position: "bottom-right",
       });
       return;
@@ -59,6 +68,7 @@ const Payment = ({ deliveryAddress }) => {
     }
 
     try {
+      setLoader(true);
       const response = await axios.post(`${API_URL}/checkout`, {
         paymentMethod,
         amount: Math.round((cartSubtotal / 4500) * 100),
@@ -69,20 +79,23 @@ const Payment = ({ deliveryAddress }) => {
         orderData: {
           address: deliveryAddress.address,
           city: deliveryAddress.city,
-          addressId: deliveryAddress.id_address,
+          addressId: deliveryAddress.id,
         },
       });
       elements.getElement(CardElement).clear();
+      setLoader(false);
     } catch (error) {
       toast.error(`Error ${error.response.data.decline_code}`, {
         position: "bottom-right",
       });
+      setLoader(false);
     }
   };
 
   return (
     <main className="payment-container">
       <ToastContainer />
+      {loader ? <Loader /> : <></>}
       <h2 className="payment-container__init-title">
         {languageSelector(language, "payment")}
       </h2>

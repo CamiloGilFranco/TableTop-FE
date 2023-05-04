@@ -13,7 +13,6 @@ const PopularRestaurant = ({ inputValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     axios
       .get(`${API_URL}/restaurants/withcuisines/all`)
@@ -64,31 +63,38 @@ const PopularRestaurant = ({ inputValue }) => {
     }
 
     if (!filteredData.length) {
-      return shortList.map((element, index) => {
-        return (
-          <RestaurantCardComponent
-            key={index}
-            picture={element.main_photo}
-            restaurantName={element.restaurant_name}
-            rating={element.rating}
-            categories={element.cuisines}
-            path={element.restaurant_path}
-          />
-        );
-      });
+      return (
+        shortList &&
+        sortList.length &&
+        shortList.map((element, index) => {
+          return (
+            <RestaurantCardComponent
+              key={index}
+              picture={element.main_photo}
+              restaurantName={element.restaurant_name}
+              rating={element.rating}
+              categories={element.cuisines}
+              path={element.restaurant_path}
+            />
+          );
+        })
+      );
     } else {
-      return filteredData.map((element, index) => {
-        return (
-          <RestaurantCardComponent
-            key={index}
-            picture={element.main_photo}
-            restaurantName={element.restaurant_name}
-            rating={element.rating}
-            categories={element.cuisines}
-            path={element.restaurant_path}
-          />
-        );
-      });
+      return (
+        filteredData &&
+        filteredData.map((element, index) => {
+          return (
+            <RestaurantCardComponent
+              key={index}
+              picture={element.main_photo}
+              restaurantName={element.restaurant_name}
+              rating={element.rating}
+              categories={element.cuisines}
+              path={element.restaurant_path}
+            />
+          );
+        })
+      );
     }
   };
 
@@ -99,20 +105,21 @@ const PopularRestaurant = ({ inputValue }) => {
           {languageSelector(language, "popularRestaurantTitle")}
         </span>
         <div className="popular-restaurants-buttons">
-          {sortButton.map((item, index) => {
-            return (
-              <p
-                key={item.id}
-                className={`popular-restaurants-buttons-text ${
-                  selectOrder === item.id &&
-                  "popular-restaurants-buttons-text-selected"
-                }`}
-                onClick={() => handleOrder(item)}
-              >
-                {item.text}
-              </p>
-            );
-          })}
+          {sortButton &&
+            sortButton.map((item, index) => {
+              return (
+                <p
+                  key={item.id}
+                  className={`popular-restaurants-buttons-text ${
+                    selectOrder === item.id &&
+                    "popular-restaurants-buttons-text-selected"
+                  }`}
+                  onClick={() => handleOrder(item)}
+                >
+                  {item.text}
+                </p>
+              );
+            })}
         </div>
       </header>
       <main className="popular-restaurant-main">

@@ -110,7 +110,7 @@ const languageSelector = (lang, str) => {
     restaurantOptionsReview: "REVIEWS",
     overViewSchedule: "Opening Hours",
     overviewFacilities: "Facilities",
-    bookingButton: "SUMBIT",
+    bookingButton: "SUBMIT",
     recommendedTitle: "Recommended",
     cartTitle: "Cart Items",
     cartFinishWarning: "delivery charges may apply to your order.",
@@ -271,7 +271,7 @@ const languageSelector = (lang, str) => {
     users: "Users",
     restaurants: "Restaurants",
     newRestaurantForm: "Create new Restaurant",
-    deavtivateRestaurantWarning:
+    deactivateRestaurantWarning:
       "Are you sure you want to deactivate this restaurant? This action cannot be reversed.",
     deactivatedRestaurantSuccess: "Restaurant deactivated successfully",
     deactivatedRestaurantFailure: "Error deactivating Restaurant",

@@ -81,7 +81,7 @@ const CarrucelComponent = () => {
                     {element.cuisine_category}
                   </h3>
                   <p className="home-carousel-single-item-quantity">
-                    23 Restaurants
+                    Restaurants
                   </p>
                 </div>
               );

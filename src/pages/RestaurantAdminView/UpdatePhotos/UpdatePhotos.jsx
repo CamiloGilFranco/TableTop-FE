@@ -90,9 +90,11 @@ const UpdatePhotos = ({ restaurant, languageSelector, language }) => {
         {errors.emptyFields && (
           <p className="updatePhotos__error">{errors.emptyFields}</p>
         )}{" "}
-        <button type="submit" className="updatePhotos__submitButton">
-          {languageSelector(language, "update")}
-        </button>
+        <div className="updatePhotos__submitButton_container">
+          <button type="submit" className="updatePhotos__submitButton">
+            {languageSelector(language, "update")}
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -92,9 +92,7 @@ const DishList = ({
           categoryObj.id_dishes_category,
         ]);
       } catch (error) {
-        toast.error(
-          languageSelector(language, "categoryHideFailure")
-        );
+        toast.error(languageSelector(language, "categoryHideFailure"));
       }
     }
   };
@@ -119,34 +117,35 @@ const DishList = ({
           return (
             categoryObj && (
               <div key={category}>
-                <p className="restauranAdminView__itemTitle">
-                  {categoryObj.dishes_category}
-                </p>
+                <div className="restaurantAdminView_dish_category_header">
+                  <p className="restauranAdminView__itemTitle">
+                    {categoryObj.dishes_category}
+                  </p>
+                  <AiFillDelete
+                    className="restaurantAdminView__icon"
+                    onClick={() => handleHideCategory(categoryObj)}
+                  />
+                </div>
                 <ul className="restauranAdminView__itemList">
                   {dishes.map((dish, index) => (
                     <li key={index} className="restaurantAdminView__details">
                       {languageSelector(language, "title")}: {dish.title} -{" "}
                       {languageSelector(language, "price")}: {dish.price}
-                      <AiFillEdit
-                        className="restaurantAdminView__icon restaurantAdminView__edit"
-                        onClick={() => handleEditClick(dish, index, category)}
-                      />
-                      <AiFillDelete
-                        className="restaurantAdminView__icon"
-                        onClick={() => {
-                          handleDelete(dish);
-                        }}
-                      />
+                      <div>
+                        <AiFillEdit
+                          className="restaurantAdminView__icon restaurantAdminView__edit"
+                          onClick={() => handleEditClick(dish, index, category)}
+                        />
+                        <AiFillDelete
+                          className="restaurantAdminView__icon"
+                          onClick={() => {
+                            handleDelete(dish);
+                          }}
+                        />
+                      </div>
                     </li>
                   ))}
                 </ul>
-                <div className="restaurantAdminView__hideCategory">
-                  <AiFillDelete
-                    className="restaurantAdminView__icon"
-                    onClick={() => handleHideCategory(categoryObj)}
-                  />
-                  <span>{languageSelector(language, "hideCategory")}</span>
-                </div>
               </div>
             )
           );
