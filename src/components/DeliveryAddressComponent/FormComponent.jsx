@@ -69,6 +69,7 @@ const FormComponent = ({
 
       setNewRenderList(!newRenderList);
       closeModal();
+      setNewRenderList(!newRenderList);
     }
   };
 

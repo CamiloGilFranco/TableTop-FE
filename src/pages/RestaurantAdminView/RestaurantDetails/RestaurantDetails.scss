@@ -1,9 +1,44 @@
 .restaurantDetails {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   padding: 10px;
-  background-color: rgb(238, 237, 236);
+
+  button {
+    margin-top: 15px;
+    background-color: #ef3f3f;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: white;
+      color: #ef3f3f;
+      border: 1px solid #ef3f3f;
+    }
+  }
+
+  .venue_photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+    label {
+      font-size: 20px;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 15px;
+    }
+  }
 
   h3 {
     text-align: center;
@@ -56,7 +91,7 @@
           transform: scale(1.2);
         }
       }
-      
+
       .delete-icon {
         cursor: pointer;
         color: #ef3f3f;
@@ -78,4 +113,30 @@
     margin-top: 20px;
     margin-bottom: 10px;
   }
+}
+
+.restaurantDetails_single_item_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px gray solid;
+  padding: 0 10px;
+  padding-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+.restaurantAdminView_span_schedule {
+  display: block;
+}
+
+.restaurantAdminView_span_subtitle {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.restaurantAdminView_detail_restaurant_container {
+  padding: 15px;
 }

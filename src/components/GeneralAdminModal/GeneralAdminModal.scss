@@ -1,4 +1,4 @@
-.generalAdminModal__container{
+.generalAdminModal__container {
   padding: 10px;
   position: fixed;
   top: 0;
@@ -11,7 +11,8 @@
   justify-content: center;
   align-items: center;
 }
-.generalAdminModal__box{
+
+.generalAdminModal__box {
   border: 2px solid black;
   padding: 10px;
   text-align: center;
@@ -20,13 +21,17 @@
   width: 90%;
   max-width: 500px;
   margin: auto;
+  border-radius: 15px;
 }
-.generalAdminModal__form{
+
+.generalAdminModal__form {
   display: flex;
   flex-direction: column;
   padding: 5px;
   gap: 10px;
-  input, textarea{
+
+  input,
+  textarea {
     padding: 5px;
     border-radius: 15px;
     border: none;
@@ -35,20 +40,19 @@
   }
   label {
     display: block;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;
   }
-  
+
   label.error {
     color: #ef3f3f;
     font-size: 14px;
     margin-top: 5px;
   }
-  
 }
-.generalAdminModal__buttons{
+.generalAdminModal__buttons {
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -62,19 +66,21 @@
     font-weight: 700;
   }
 }
-.generalAdminModal__button-save{
+.generalAdminModal__button-save {
   background-color: green;
+  width: 93px;
 }
-.generalAdminModal__button-cancel{
+.generalAdminModal__button-cancel {
+  width: 93px;
   background-color: #ef3f3f;
 }
 
 @media (min-width: 765px) {
-  .generalAdminModal__box{
+  .generalAdminModal__box {
     width: 650px;
   }
 }
-.generalAdminModal__checkbox{
+.generalAdminModal__checkbox {
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -84,4 +90,10 @@
   input {
     margin-right: 15px;
   }
+}
+
+.generalAdminModal_file_input {
+  width: auto !important;
+  margin: 0 auto;
+  background-color: transparent !important;
 }

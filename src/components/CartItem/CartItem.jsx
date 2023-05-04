@@ -62,7 +62,7 @@ const CartItem = () => {
         <div className="cart-item-finish-subtotal-container">
           <span className="cart-item-finish-subtotal-text">Subtotal</span>
           <span className="cart-item-finish-subtotal-value">
-            ${cartSubtotal}
+            ${cartSubtotal.toLocaleString()}
           </span>
         </div>
         <p className="cart-item-finish-warning">

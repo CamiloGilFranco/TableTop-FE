@@ -3,68 +3,129 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  background-color: rgb(238, 237, 236);
 }
-.restaurantAdminView__container h1 {
-  text-align: center;
+
+.restaurantAdminView_header {
+  background-image: url(../../assets/scott-webb-UjupleczBOY-unsplash.jpg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 2px 5px 1px #d3d3d3;
 }
-.restaurantAdminView__container h3 {
-  text-align: center;
-  font-size: 18px;
+
+.restaurantAdminView_title {
+  font-size: 35px;
+  font-weight: 700;
 }
-@media (min-width: 765px) {
-  .restaurantAdminView__container h3 {
-    text-align: left;
-    font-size: 20px;
+
+.restaurantAdminView_subtitle {
+  font-size: 25px;
+}
+
+.restaurantAdminView_body {
+  display: flex;
+  padding: 15px;
+  box-shadow: 0 2px 5px 1px #d3d3d3;
+}
+@media (max-width: 800px) {
+  .restaurantAdminView_body {
+    flex-direction: column;
   }
 }
 
-.restaurantAdminView__flex {
+.restaurantAdminView_left_container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .restaurantAdminView_left_container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.restaurantAdminView_left_container_logo_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurantAdminView_left_container_logo {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.restaurantAdminView_left_container_options_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.restaurantAdminView_option_active {
+  background-color: lightgray;
+}
+
+.restaurantAdminView_left_container_option {
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+}
+.restaurantAdminView_left_container_option:hover {
+  background-color: #ef3f3f;
+  color: white;
+}
+
+.restaurantAdminView_right_container {
+  width: calc(100% - 300px);
+  border-left: grey 1px solid;
+  padding-left: 10px;
+}
+@media (max-width: 800px) {
+  .restaurantAdminView_right_container {
+    width: 100%;
+    border-left: none;
+  }
+}
+
+.restaurantAdminView_intro_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restaurantAdminView__subtitle {
+  text-align: center;
+}
+
+---------------------------------------------------------------------- .restaurantAdminView__flex {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 @media (min-width: 765px) {
-  .restaurantAdminView__flex {
+  ---------------------------------------------------------------------- .restaurantAdminView__flex {
     margin-top: 15px;
     flex-direction: row;
   }
 }
 @media (min-width: 100px) {
-  .restaurantAdminView__flex {
+  ---------------------------------------------------------------------- .restaurantAdminView__flex {
     justify-content: space-evenly;
   }
 }
-.restaurantAdminView__flex h3 {
+---------------------------------------------------------------------- .restaurantAdminView__flex h3 {
   font-size: 20px;
 }
 @media (min-width: 765px) {
-  .restaurantAdminView__flex h3 {
+  ---------------------------------------------------------------------- .restaurantAdminView__flex h3 {
     font-size: 22px;
   }
-}
-
-.restaurantAdminView__list {
-  margin: 0;
-  padding: 5px 15px;
-  font-size: 18px;
-  line-height: 25px;
-  cursor: pointer;
-}
-@media (min-width: 765px) {
-  .restaurantAdminView__list {
-    font-size: 20px;
-  }
-}
-.restaurantAdminView__list li.active {
-  color: #ef3f3f;
-  border-bottom: 1px solid #ef3f3f;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-.restaurantAdminView__list li:hover {
-  color: #ef3f3f;
-  border-bottom: 1px solid #ef3f3f;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .restauranAdminView__itemList {

@@ -25,7 +25,9 @@ const IndividualDish = ({ title, description, price, id, id_restaurant }) => {
       <p className="restaurant-view-individual-dish-description">
         {description}
       </p>
-      <span className="restaurant-view-individual-dish-price">${price}</span>
+      <span className="restaurant-view-individual-dish-price">
+        ${price.toLocaleString()}
+      </span>
     </div>
   );
 };

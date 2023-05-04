@@ -1,0 +1,38 @@
+.restaurantCuisine {
+  font-size: 20px;
+}
+.restaurantCuisine button {
+  background-color: #ef3f3f;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.restaurantCuisine button:hover {
+  background-color: white;
+  color: #ef3f3f;
+  border: 1px solid #ef3f3f;
+}
+.restaurantCuisine .restaurant_cuisine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  padding: 15px;
+  gap: 15px;
+}
+.restaurantCuisine li {
+  padding: 5px;
+}
+.restaurantCuisine .cuisine_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 175px;
+}/*# sourceMappingURL=RestaurantCuisine.css.map */

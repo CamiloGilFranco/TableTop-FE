@@ -8,6 +8,7 @@ import "./CheckoutPageComponent.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
+
 const publicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
 
 const stripePromise = loadStripe(publicKey);

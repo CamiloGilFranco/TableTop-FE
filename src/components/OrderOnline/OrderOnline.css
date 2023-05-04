@@ -105,6 +105,15 @@
   padding: 3px 0;
   margin-top: 5px;
 }
+.restaurant-view-individual-dish-main-line-button:hover {
+  background-color: #ef3f3f;
+  color: white;
+}
+.restaurant-view-individual-dish-main-line-button:active {
+  background-color: #ef3f3f;
+  color: white;
+  box-shadow: none;
+}
 
 .restaurant-view-individual-dish-description {
   width: 80%;
