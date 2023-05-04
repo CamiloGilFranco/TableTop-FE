@@ -112,7 +112,7 @@ const ReviewsComponent = ({
   return (
     <div className="reviews-component-container">
       <ToastContainer />
-      {loader ? <Loader /> : ""}
+      {loader ? <Loader /> : <></>}
       {reviewsList.map((element, index) => {
         const createdAtText = new Date(element.createdAt);
         return (

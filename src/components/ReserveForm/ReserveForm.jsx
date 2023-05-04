@@ -96,7 +96,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
       className={`reserve-form`}
       onSubmit={handleReservationSubmit}
     >
-      {loader ? <Loader /> : ""}
+      {loader ? <Loader /> : <></>}
       <div className="reserve-form-input-container">
         <div className="reserve-form-input-date-container-main">
           <div className="reserve-form-input-date-container">

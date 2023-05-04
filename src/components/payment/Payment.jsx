@@ -95,7 +95,7 @@ const Payment = ({ deliveryAddress }) => {
   return (
     <main className="payment-container">
       <ToastContainer />
-      {loader ? <Loader /> : ""}
+      {loader ? <Loader /> : <></>}
       <h2 className="payment-container__init-title">
         {languageSelector(language, "payment")}
       </h2>

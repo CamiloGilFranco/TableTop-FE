@@ -89,7 +89,6 @@ const RestaurantDetails = ({
       toast.error(languageSelector(language, "deleteVenueFailure"));
     }
   };
-  console.log(restaurant.venues);
 
   return (
     <div className="restaurantDetails">
@@ -152,7 +151,7 @@ const RestaurantDetails = ({
                 />
               </span>
               <h4>{languageSelector(language, "reservations")}</h4>
-              {visibleVenueIndex !== null && (
+              {!!visibleVenueIndex && (
                 <>
                   <ReservationList
                     reservations={reservations}

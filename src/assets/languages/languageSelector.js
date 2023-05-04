@@ -271,7 +271,7 @@ const languageSelector = (lang, str) => {
     users: "Users",
     restaurants: "Restaurants",
     newRestaurantForm: "Create new Restaurant",
-    deavtivateRestaurantWarning:
+    desactivateRestaurantWarning:
       "Are you sure you want to deactivate this restaurant? This action cannot be reversed.",
     deactivatedRestaurantSuccess: "Restaurant deactivated successfully",
     deactivatedRestaurantFailure: "Error deactivating Restaurant",
