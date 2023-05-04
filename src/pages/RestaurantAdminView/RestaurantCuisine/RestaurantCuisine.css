@@ -1,4 +1,11 @@
 .restaurantCuisine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  padding: 15px;
+  gap: 15px;
   font-size: 20px;
 }
 .restaurantCuisine button {
@@ -13,9 +20,9 @@
   transition: all 0.2s ease-in-out;
 }
 .restaurantCuisine button:hover {
-  background-color: white;
-  color: #ef3f3f;
-  border: 1px solid #ef3f3f;
+  background-color: #ef3f3f;
+  color: white;
+  border: none;
 }
 .restaurantCuisine .restaurant_cuisine {
   display: flex;
@@ -28,11 +35,25 @@
   gap: 15px;
 }
 .restaurantCuisine li {
-  padding: 5px;
+  padding: 10px;
+  border-bottom: 2px solid lightgray;
 }
 .restaurantCuisine .cuisine_item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 175px;
+}
+.restaurantCuisine select {
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+.restaurantCuisine select option {
+  border: 1px solid lightgray;
+  padding: 5px;
+}
+.restaurantCuisine select option:hover {
+  background-color: #ef3f3f;
+  color: white;
 }/*# sourceMappingURL=RestaurantCuisine.css.map */
