@@ -105,7 +105,9 @@ const RestaurantDetails = ({
       {},
       config
     );
-    if (response.status === 201 || 200) {
+    const isSucceededDelete =
+      response.status === 201 || response.status === 200;
+    if (isSucceededDelete) {
       toast.success(languageSelector(language, "facilityDeleteSuccess"));
       onVenueUpdate();
     } else {
@@ -161,7 +163,7 @@ const RestaurantDetails = ({
       config
     );
 
-    if (response.status === 201 || 204) {
+    if (response.status === 201 || response.status === 204) {
       toast.success(languageSelector(language, "facilityAddSuccess"));
       onVenueUpdate();
     } else if (response.status === 400) {

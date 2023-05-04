@@ -110,7 +110,7 @@ const languageSelector = (lang, str) => {
     restaurantOptionsReview: "REVIEWS",
     overViewSchedule: "Opening Hours",
     overviewFacilities: "Facilities",
-    bookingButton: "SUMBIT",
+    bookingButton: "SUBMIT",
     recommendedTitle: "Recommended",
     cartTitle: "Cart Items",
     cartFinishWarning: "delivery charges may apply to your order.",
