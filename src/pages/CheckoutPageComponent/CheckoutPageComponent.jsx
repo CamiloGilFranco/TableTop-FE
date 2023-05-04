@@ -17,6 +17,7 @@ const CheckoutPageComponent = () => {
   const [deliveryAddress, setDeliveryAddress] = useState({
     address: "",
     city: "",
+    id: "",
   });
   return (
     <div className="checkout-page-content">

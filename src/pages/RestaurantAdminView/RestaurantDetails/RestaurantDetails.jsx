@@ -294,7 +294,7 @@ const RestaurantDetails = ({
                   <button onClick={handleFacilityAdd}>Add facility</button>
                 </div>
                 <h4>{languageSelector(language, "reservations")}</h4>
-                {visibleVenueIndex !== null && (
+                {!!visibleVenueIndex && (
                   <>
                     <ReservationList
                       reservations={reservations}
