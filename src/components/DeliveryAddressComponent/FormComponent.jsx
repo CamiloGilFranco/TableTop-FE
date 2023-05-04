@@ -25,7 +25,7 @@ const FormComponent = ({
   const [addressError, setAddressError] = useState(false);
   const [cityError, setCityError] = useState(false);
 
-  const addNewAddressSubmit = (event) => {
+  const addNewAddressSubmit = async (event) => {
     event.preventDefault();
     let isValid = true;
 
@@ -53,7 +53,7 @@ const FormComponent = ({
     if (isValid) {
       handleNewAddress(addFormValues);
 
-      axios.post(
+      await axios.post(
         `${API_URL}/user-address`,
         {
           name: addFormValues.name,
@@ -69,7 +69,6 @@ const FormComponent = ({
 
       setNewRenderList(!newRenderList);
       closeModal();
-      setNewRenderList(!newRenderList);
     }
   };
 

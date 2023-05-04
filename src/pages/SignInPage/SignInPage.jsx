@@ -6,19 +6,23 @@ import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import languageSelector from "../../assets/languages/languageSelector";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { inputEmailRegEx, inputNameRegex, inputPasswordRegEx } from "../../constants/regexConstants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  inputEmailRegEx,
+  inputNameRegex,
+  inputPasswordRegEx,
+} from "../../constants/regexConstants";
 import { AUTH_URL } from "../../constants/apiUrl";
 import routePaths from "../../constants/routePaths";
-
-
+import Loader from "../../components/Loader/Loader";
 
 const SignInPage = () => {
   const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
   const [formContent, setFormContent] = useState({
     email: "",
     confirmEmail: "",
@@ -41,7 +45,7 @@ const SignInPage = () => {
     wppInformation: false,
   });
 
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
   const [emailError, setEmailError] = useState(false);
   const [confirmEmailError, setConfirmEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -66,12 +70,15 @@ const SignInPage = () => {
       const response = await axios.post(`${AUTH_URL}/local/signup`, input);
       return response.data;
     } catch (error) {
-      return { error: error.response ? error.response.data.message : languageSelector(language,"generalError") };
+      return {
+        error: error.response
+          ? error.response.data.message
+          : languageSelector(language, "generalError"),
+      };
     }
   };
 
-
-  // handles de submit of the form 
+  // handles de submit of the form
   const handleSubmit = async (event) => {
     event.preventDefault();
     let isValid = true;
@@ -93,156 +100,157 @@ const SignInPage = () => {
       return monthNames.indexOf(monthName) + 1;
     };
 
-
     if (!inputEmailRegEx.test(formContent.email)) {
       setEmailError(true);
       isValid = false;
     } else {
       setEmailError(false);
     }
-    
+
     if (
       formContent.confirmEmail !== formContent.email ||
       formContent.confirmEmail.length === 0
-      ) {
-        setConfirmEmailError(true);
-        isValid = false;
-      } else {
-        setConfirmEmailError(false);
-      }
+    ) {
+      setConfirmEmailError(true);
+      isValid = false;
+    } else {
+      setConfirmEmailError(false);
+    }
 
-      if (!inputPasswordRegEx.test(formContent.password)) {
-        setPasswordError(true);
-        isValid = false;
-      } else {
-        setPasswordError(false);
-      }
+    if (!inputPasswordRegEx.test(formContent.password)) {
+      setPasswordError(true);
+      isValid = false;
+    } else {
+      setPasswordError(false);
+    }
 
-      if (
+    if (
       formContent.confirmPassword !== formContent.password ||
       formContent.confirmPassword.length === 0
-      ) {
-        setConfirmPasswordError(true);
-        isValid = false;
-      } else {
-        setConfirmPasswordError(false);
-      }
+    ) {
+      setConfirmPasswordError(true);
+      isValid = false;
+    } else {
+      setConfirmPasswordError(false);
+    }
 
-      if (
-        inputNameRegex.test(formContent.firstName) ||
-        !formContent.firstName.length
-      ) {
-        setFirstNameError(true);
-        isValid = false;
-      } else {
-        setFirstNameError(false);
-      }
-      
+    if (
+      inputNameRegex.test(formContent.firstName) ||
+      !formContent.firstName.length
+    ) {
+      setFirstNameError(true);
+      isValid = false;
+    } else {
+      setFirstNameError(false);
+    }
 
-      if (
-        inputEmailRegEx.test(formContent.lastName) ||
-        formContent.lastName.length === 0
-        ) {
-          setLastNameError(true);
-          isValid = false;
-        } else {
-          setLastNameError(false);
-        }
+    if (
+      inputEmailRegEx.test(formContent.lastName) ||
+      formContent.lastName.length === 0
+    ) {
+      setLastNameError(true);
+      isValid = false;
+    } else {
+      setLastNameError(false);
+    }
 
-      if (formContent.documentNumber.length < 6) {
-        setDocumentNumberError(true);
-        isValid = false;
-      } else {
-        setDocumentNumberError(false);
-      }
-      
-      if (!formContent.address.length) {
-        setAddressError(true);
-        isValid = false;
-      } else {
-        setAddressError(false);
-      }
+    if (formContent.documentNumber.length < 6) {
+      setDocumentNumberError(true);
+      isValid = false;
+    } else {
+      setDocumentNumberError(false);
+    }
 
-      if (formContent.phoneNumber.length < 10) {
-        setPhoneNumberError(true);
-        isValid = false;
-      } else {
-        setPhoneNumberError(false);
-      }
+    if (!formContent.address.length) {
+      setAddressError(true);
+      isValid = false;
+    } else {
+      setAddressError(false);
+    }
 
-      if (!formContent.termsAndConditions) {
-        setTACError(true);
-        isValid = false;
-      } else {
-        setTACError(false);
-      }
+    if (formContent.phoneNumber.length < 10) {
+      setPhoneNumberError(true);
+      isValid = false;
+    } else {
+      setPhoneNumberError(false);
+    }
 
-      if (!formContent.dataProcessing) {
-        setDPError(true);
-        isValid = false;
-      } else {
-        setDPError(false);
-      }
-           
-      if (isValid) {
-        
-        const monthNumber = monthNameToNumber(formContent.birthMonth);
-        const dateString = `${formContent.birthYear}-${monthNumber}-${formContent.birthDay}`;
-        const parsedDateOfBirth = new Date(dateString);
-        const {
-          email,
-          password,
-          firstName,
-          lastName,
-          documentType,
-          documentNumber,
-          city,
-          address,
-          phoneNumber,
-          emailInformation,
-          smsInformation,
-          wppInformation,
-        } = formContent;
+    if (!formContent.termsAndConditions) {
+      setTACError(true);
+      isValid = false;
+    } else {
+      setTACError(false);
+    }
 
-        const userObject = {
-          email,
-          password,
-          name: firstName,
-          last_name: lastName,
-          document_type: documentType,
-          document_number: documentNumber,
-          date_of_birth: parsedDateOfBirth,
-          city,
-          contact_email: emailInformation,
-          contact_sms: smsInformation,
-          contact_wpp: wppInformation,
-          user_role: 'user',
-          address,
-          phone_number: phoneNumber,
-        };
-        
-        const response = await sendUserData(userObject);
-        if (response.error) {
-          toast.error(response.error);
-        } else {
-          toast.success(languageSelector(language, 'signInSuccess'));
-          setTimeout(() => {
-            navigate(routePaths.home);
-          }, 6000);
-        }
+    if (!formContent.dataProcessing) {
+      setDPError(true);
+      isValid = false;
+    } else {
+      setDPError(false);
+    }
+
+    if (isValid) {
+      setLoader(true);
+      const monthNumber = monthNameToNumber(formContent.birthMonth);
+      const dateString = `${formContent.birthYear}-${monthNumber}-${formContent.birthDay}`;
+      const parsedDateOfBirth = new Date(dateString);
+      const {
+        email,
+        password,
+        firstName,
+        lastName,
+        documentType,
+        documentNumber,
+        city,
+        address,
+        phoneNumber,
+        emailInformation,
+        smsInformation,
+        wppInformation,
+      } = formContent;
+
+      const userObject = {
+        email,
+        password,
+        name: firstName,
+        last_name: lastName,
+        document_type: documentType,
+        document_number: documentNumber,
+        date_of_birth: parsedDateOfBirth,
+        city,
+        contact_email: emailInformation,
+        contact_sms: smsInformation,
+        contact_wpp: wppInformation,
+        user_role: "user",
+        address,
+        phone_number: phoneNumber,
+      };
+
+      const response = await sendUserData(userObject);
+      if (response.error) {
+        toast.error(response.error);
+        setLoader(false);
+      } else {
+        setLoader(false);
+        toast.success(languageSelector(language, "signInSuccess"));
+        setTimeout(() => {
+          navigate(routePaths.home);
+        }, 6000);
       }
+    }
   };
 
   return (
     <>
       <ToastContainer />
+      {loader ? <Loader /> : ""}
       <div className="sign-in-page">
         <div className="sign-in-page-header">
           <HeaderComponent />
         </div>
         <div className="sign-in-page-social-media-container">
           <span className="sign-in-page-social-media-container-title">
-            {languageSelector(language, 'signInTitle')}
+            {languageSelector(language, "signInTitle")}
           </span>
           <div className="sign-in-page-social-media-container-icons">
             <div className="sign-in-page-social-media-single-icon-container">
@@ -268,18 +276,20 @@ const SignInPage = () => {
             </div>
           </div>
         </div>
-        <span className="sign-in-page-subtitle">{languageSelector(language, 'signInFormTitle')}</span>
+        <span className="sign-in-page-subtitle">
+          {languageSelector(language, "signInFormTitle")}
+        </span>
         <form action="" className="sign-in-page-form" onSubmit={handleSubmit}>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="email" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInEmail')}
+              {languageSelector(language, "signInEmail")}
             </label>
             <input
               type="text"
               id="email"
               name="email"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInEmail')}
+              placeholder={languageSelector(language, "signInEmail")}
               value={formContent.email}
               onChange={(event) =>
                 setFormContent({ ...formContent, email: event.target.value })
@@ -287,7 +297,7 @@ const SignInPage = () => {
             />
             {emailError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInEmailError')}
+                {languageSelector(language, "signInEmailError")}
               </p>
             ) : (
               <></>
@@ -295,12 +305,15 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInEmailConfirmation')}
+              {languageSelector(language, "signInEmailConfirmation")}
             </label>
             <input
               type="email"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInEmailConfirmation')}
+              placeholder={languageSelector(
+                language,
+                "signInEmailConfirmation"
+              )}
               value={formContent.confirmEmail}
               onChange={(event) =>
                 setFormContent({
@@ -311,7 +324,7 @@ const SignInPage = () => {
             />
             {confirmEmailError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInEmailConfirmationError')}
+                {languageSelector(language, "signInEmailConfirmationError")}
               </p>
             ) : (
               <></>
@@ -319,14 +332,14 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="password" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInPassword')}
+              {languageSelector(language, "signInPassword")}
             </label>
             <input
               type="password"
               name="password"
               id="password"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInPassword')}
+              placeholder={languageSelector(language, "signInPassword")}
               value={formContent.password}
               onChange={(event) =>
                 setFormContent({ ...formContent, password: event.target.value })
@@ -334,7 +347,7 @@ const SignInPage = () => {
             />
             {passwordError ? (
               <p className="sign-in-page-form-text-error">
-              {languageSelector(language, 'signInPasswordError')}
+                {languageSelector(language, "signInPasswordError")}
               </p>
             ) : (
               <></>
@@ -342,12 +355,15 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInPasswordConfirmation')}
+              {languageSelector(language, "signInPasswordConfirmation")}
             </label>
             <input
               type="password"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInPasswordConfirmation')}
+              placeholder={languageSelector(
+                language,
+                "signInPasswordConfirmation"
+              )}
               value={formContent.confirmPassword}
               onChange={(event) =>
                 setFormContent({
@@ -358,7 +374,7 @@ const SignInPage = () => {
             />
             {confirmPasswordError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInPasswordConfirmationError')}
+                {languageSelector(language, "signInPasswordConfirmationError")}
               </p>
             ) : (
               <></>
@@ -366,20 +382,23 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInFirstName')}
+              {languageSelector(language, "signInFirstName")}
             </label>
             <input
               type="text"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInFirstName')}
+              placeholder={languageSelector(language, "signInFirstName")}
               value={formContent.firstName}
               onChange={(event) =>
-                setFormContent({ ...formContent, firstName: event.target.value })
+                setFormContent({
+                  ...formContent,
+                  firstName: event.target.value,
+                })
               }
             />
             {firstNameError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInFirstNameError')}
+                {languageSelector(language, "signInFirstNameError")}
               </p>
             ) : (
               <></>
@@ -387,12 +406,12 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInLastName')}
+              {languageSelector(language, "signInLastName")}
             </label>
             <input
               type="text"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInLastName')}
+              placeholder={languageSelector(language, "signInLastName")}
               value={formContent.lastName}
               onChange={(event) =>
                 setFormContent({ ...formContent, lastName: event.target.value })
@@ -400,7 +419,7 @@ const SignInPage = () => {
             />
             {lastNameError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInLastNameError')}
+                {languageSelector(language, "signInLastNameError")}
               </p>
             ) : (
               <></>
@@ -408,7 +427,7 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInId')}
+              {languageSelector(language, "signInId")}
             </label>
             <div className="sign-in-page-form-input-subcontainer">
               <select
@@ -424,19 +443,19 @@ const SignInPage = () => {
                 }
               >
                 <option value="CC">
-                  {languageSelector(language, 'signInIdCC')}
+                  {languageSelector(language, "signInIdCC")}
                 </option>
                 <option value="CE">
-                  {languageSelector(language, 'signInIdCE')}
+                  {languageSelector(language, "signInIdCE")}
                 </option>
                 <option value="PP">
-                  {languageSelector(language, 'signInIdPassport')}
+                  {languageSelector(language, "signInIdPassport")}
                 </option>
               </select>
               <input
                 type="number"
                 className="sign-in-page-form-text-input sign-in-page-form-text-input-id-text"
-                placeholder={languageSelector(language, 'signInIdNumber')}
+                placeholder={languageSelector(language, "signInIdNumber")}
                 value={formContent.documentNumber}
                 onChange={(event) =>
                   setFormContent({
@@ -448,7 +467,7 @@ const SignInPage = () => {
             </div>
             {documentNumberError ? (
               <span className="sign-in-page-form-text-error-id sign-in-page-form-text-error">
-                {languageSelector(language, 'signInIdNumberError')}
+                {languageSelector(language, "signInIdNumberError")}
               </span>
             ) : (
               <></>
@@ -456,7 +475,7 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInDoB')}
+              {languageSelector(language, "signInDoB")}
             </label>
             <div className="sign-in-page-form-input-subcontainer">
               <select
@@ -575,18 +594,42 @@ const SignInPage = () => {
                   })
                 }
               >
-                <option value="january">{languageSelector(language, 'signInJan')}</option>
-                <option value="february">{languageSelector(language, 'signInFeb')}</option>
-                <option value="march">{languageSelector(language, 'signInMar')}</option>
-                <option value="april">{languageSelector(language, 'signInApr')}</option>
-                <option value="may">{languageSelector(language, 'signInMay')}</option>
-                <option value="june">{languageSelector(language, 'signInJune')}</option>
-                <option value="july">{languageSelector(language, 'signInJul')}</option>
-                <option value="august">{languageSelector(language, 'signInAug')}</option>
-                <option value="september">{languageSelector(language, 'signInSep')}</option>
-                <option value="october">{languageSelector(language, 'signInOct')}</option>
-                <option value="november">{languageSelector(language, 'signInNov')}</option>
-                <option value="december">{languageSelector(language, 'signInDec')}</option>
+                <option value="january">
+                  {languageSelector(language, "signInJan")}
+                </option>
+                <option value="february">
+                  {languageSelector(language, "signInFeb")}
+                </option>
+                <option value="march">
+                  {languageSelector(language, "signInMar")}
+                </option>
+                <option value="april">
+                  {languageSelector(language, "signInApr")}
+                </option>
+                <option value="may">
+                  {languageSelector(language, "signInMay")}
+                </option>
+                <option value="june">
+                  {languageSelector(language, "signInJune")}
+                </option>
+                <option value="july">
+                  {languageSelector(language, "signInJul")}
+                </option>
+                <option value="august">
+                  {languageSelector(language, "signInAug")}
+                </option>
+                <option value="september">
+                  {languageSelector(language, "signInSep")}
+                </option>
+                <option value="october">
+                  {languageSelector(language, "signInOct")}
+                </option>
+                <option value="november">
+                  {languageSelector(language, "signInNov")}
+                </option>
+                <option value="december">
+                  {languageSelector(language, "signInDec")}
+                </option>
               </select>
               <select
                 name=""
@@ -636,7 +679,7 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInCity')}
+              {languageSelector(language, "signInCity")}
             </label>
             <select
               name=""
@@ -659,12 +702,12 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInAddress')}
+              {languageSelector(language, "signInAddress")}
             </label>
             <input
               type="text"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInAddress')}
+              placeholder={languageSelector(language, "signInAddress")}
               value={formContent.address}
               onChange={(event) =>
                 setFormContent({
@@ -675,7 +718,7 @@ const SignInPage = () => {
             />
             {addressError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInAddressError')}
+                {languageSelector(language, "signInAddressError")}
               </p>
             ) : (
               <></>
@@ -683,12 +726,12 @@ const SignInPage = () => {
           </div>
           <div className="sign-in-page-form-input-container">
             <label htmlFor="" className="sign-in-page-form-label">
-              {languageSelector(language, 'signInPhone')}
+              {languageSelector(language, "signInPhone")}
             </label>
             <input
               type="number"
               className="sign-in-page-form-text-input"
-              placeholder={languageSelector(language, 'signInPhone')}
+              placeholder={languageSelector(language, "signInPhone")}
               value={formContent.phoneNumber}
               onChange={(event) =>
                 setFormContent({
@@ -699,7 +742,7 @@ const SignInPage = () => {
             />
             {phoneNumberError ? (
               <p className="sign-in-page-form-text-error">
-                {languageSelector(language, 'signInPhoneError')}
+                {languageSelector(language, "signInPhoneError")}
               </p>
             ) : (
               <></>
@@ -722,12 +765,12 @@ const SignInPage = () => {
               htmlFor="accept-t-y-d"
               className="sign-in-page-form-checkbox-label"
             >
-              {languageSelector(language, 'signInTC')}
+              {languageSelector(language, "signInTC")}
             </label>
           </div>
           {TACError ? (
             <p className="sign-in-page-form-text-error">
-              {languageSelector(language, 'signInTCError')}
+              {languageSelector(language, "signInTCError")}
             </p>
           ) : (
             <></>
@@ -749,18 +792,18 @@ const SignInPage = () => {
               htmlFor="autorizacion-tratamiento-de-datos"
               className="sign-in-page-form-checkbox-label"
             >
-            {languageSelector(language, 'signInPrivacy')}
+              {languageSelector(language, "signInPrivacy")}
             </label>
           </div>
           {DPError ? (
             <p className="sign-in-page-form-text-error">
-              {languageSelector(language, 'signInPrivacyError')}
+              {languageSelector(language, "signInPrivacyError")}
             </p>
           ) : (
             <></>
           )}
           <span className="sign-in-page-form-receive-information">
-            {languageSelector(language, 'signInSubcribe')}
+            {languageSelector(language, "signInSubcribe")}
           </span>
           <div className="sign-in-page-form-checkbox-container">
             <input
@@ -779,7 +822,7 @@ const SignInPage = () => {
               htmlFor="accept-email-information"
               className="sign-in-page-form-checkbox-label"
             >
-              {languageSelector(language, 'signInEmailSub')}
+              {languageSelector(language, "signInEmailSub")}
             </label>
           </div>
           <div className="sign-in-page-form-checkbox-container">
@@ -799,7 +842,7 @@ const SignInPage = () => {
               htmlFor="accept-sms-information"
               className="sign-in-page-form-checkbox-label"
             >
-              {languageSelector(language, 'signInTextMessage')}
+              {languageSelector(language, "signInTextMessage")}
             </label>
           </div>
           <div className="sign-in-page-form-checkbox-container">
@@ -819,12 +862,12 @@ const SignInPage = () => {
               htmlFor="accept-wpp-information"
               className="sign-in-page-form-checkbox-label"
             >
-              {languageSelector(language, 'signInWhatsApp')}
+              {languageSelector(language, "signInWhatsApp")}
             </label>
           </div>
           <input
             type="submit"
-            value={languageSelector(language, 'signInButton')}
+            value={languageSelector(language, "signInButton")}
             className="sign-in-page-form-submit-button"
           />
         </form>
