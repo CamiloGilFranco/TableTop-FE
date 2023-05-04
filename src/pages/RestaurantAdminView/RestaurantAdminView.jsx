@@ -23,6 +23,7 @@ import DishList from "./DishList/DishList";
 import AdminList from "./AdminList/AdminList";
 import UpdatePhotos from "./UpdatePhotos/UpdatePhotos";
 import NewVenueForm from "./NewVenueForm/NewVenueForm";
+import RestaurantCuisine from "./RestaurantCuisine/RestaurantCuisine";
 
 const RestaurantAdminView = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -145,6 +146,16 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "restaurantDetails")}
               </span>
+              <span
+                className={`restaurantAdminView_left_container_option ${
+                  selectedComponent === "restaurantCuisine"
+                    ? "restaurantAdminView_option_active"
+                    : ""
+                }`}
+                onClick={() => setSelectedComponent("restaurantCuisine")}
+              >
+                {languageSelector(language, "restaurantCuisine")}
+              </span>
 
               <span
                 className={`restaurantAdminView_left_container_option ${
@@ -221,6 +232,7 @@ const RestaurantAdminView = () => {
                 languageSelector={languageSelector}
                 restaurant={restaurant}
                 setRestaurant={setRestaurant}
+                onVenueUpdate={updateRestaurant}
               />
             )}
             {selectedComponent === "newDishCategoryForm" && (
@@ -231,6 +243,14 @@ const RestaurantAdminView = () => {
                 languageSelector={languageSelector}
                 restaurant={restaurant}
                 onCategoryUpdate={updateRestaurant}
+              />
+            )}
+            {selectedComponent === "restaurantCuisine" && (
+              <RestaurantCuisine
+                language={language}
+                languageSelector={languageSelector}
+                restaurant={restaurant}
+                onCuisineUpdate={updateRestaurant}
               />
             )}
             {selectedComponent === "newDishForm" && (
