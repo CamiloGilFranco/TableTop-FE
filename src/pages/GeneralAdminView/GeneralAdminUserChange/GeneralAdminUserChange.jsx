@@ -94,15 +94,12 @@ const GeneralAdminUserChange = () => {
 
     setRenderList(
       users.filter((user) => {
-        if (
+        return (
           user.name.toLowerCase().includes(event.target.value.toLowerCase()) ||
           user.last_name
             .toLowerCase()
             .includes(event.target.value.toLowerCase())
-        ) {
-          return true;
-        }
-        return false;
+        );
       })
     );
   };

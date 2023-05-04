@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import { API_URL } from "../../constants/apiUrl";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 
 const ReserveForm = ({ venues, id_restaurant }) => {
   const cookies = new Cookies();
@@ -18,6 +19,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
 
   const [dateError, setDateError] = useState(false);
   const [venueError, setVenueError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const handleReservationSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +59,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
           position: "bottom-right",
         });
       } else {
+        setLoader(true);
         axios
           .post(
             `${API_URL}/reservations`,
@@ -72,6 +75,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
               position: "bottom-right",
             });
             setReserveForm({ dateAndTime: "", venue: "CHOOSE ONE" });
+            setLoader(false);
           })
           .catch(() => {
             toast.error(
@@ -80,6 +84,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
                 position: "bottom-right",
               }
             );
+            setLoader(false);
           });
       }
     }
@@ -91,6 +96,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
       className={`reserve-form`}
       onSubmit={handleReservationSubmit}
     >
+      {loader ? <Loader /> : <></>}
       <div className="reserve-form-input-container">
         <div className="reserve-form-input-date-container-main">
           <div className="reserve-form-input-date-container">
@@ -129,15 +135,14 @@ const ReserveForm = ({ venues, id_restaurant }) => {
             className="reserve-form-input"
           >
             <option value="CHOOSE ONE">CHOOSE A VENUE</option>
-            {
-              !!venues.map((venue, index) => {
+            {!!venues &&
+              venues.map((venue, index) => {
                 return (
                   <option key={index} value={venue.id_restaurant_venue}>
                     {venue.name_venue}
                   </option>
                 );
-              })
-            }
+              })}
           </select>
           {venueError ? (
             <p className="reserve-form-input-error-message">

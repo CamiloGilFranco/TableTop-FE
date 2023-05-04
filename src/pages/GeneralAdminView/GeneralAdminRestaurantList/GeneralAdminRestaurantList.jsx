@@ -39,7 +39,7 @@ const GeneralAdminRestaurantList = () => {
   const handleDelete = async (id) => {
     const confirmationMessage = languageSelector(
       language,
-      "deavtivateRestaurantWarning"
+      "deactivateRestaurantWarning"
     );
 
     if (window.confirm(confirmationMessage)) {
@@ -101,14 +101,9 @@ const GeneralAdminRestaurantList = () => {
 
     setRenderList(
       restaurants.filter((restaurant) => {
-        if (
-          restaurant.restaurant_name
-            .toLowerCase()
-            .includes(event.target.value.toLowerCase())
-        ) {
-          return true;
-        }
-        return false;
+        return restaurant.restaurant_name
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase());
       })
     );
   };

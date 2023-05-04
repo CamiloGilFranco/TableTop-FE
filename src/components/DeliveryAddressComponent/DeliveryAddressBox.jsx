@@ -47,7 +47,7 @@ const DeliveryAddressBox = ({
         className="delivery-address-box-radio"
         onChange={(event) => {
           setAddressSelected(`option${index}`);
-          setDeliveryAddress({ address, city });
+          setDeliveryAddress({ address, city, id });
         }}
       />
       <label
