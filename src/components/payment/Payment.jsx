@@ -43,6 +43,13 @@ const Payment = ({ deliveryAddress }) => {
       return;
     }
 
+    if (!cartSubtotal) {
+      toast.error("Your cart is empty", {
+        position: "bottom-right",
+      });
+      return;
+    }
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -72,7 +79,7 @@ const Payment = ({ deliveryAddress }) => {
         orderData: {
           address: deliveryAddress.address,
           city: deliveryAddress.city,
-          addressId: deliveryAddress.id_address,
+          addressId: deliveryAddress.id,
         },
       });
       elements.getElement(CardElement).clear();
@@ -88,7 +95,7 @@ const Payment = ({ deliveryAddress }) => {
   return (
     <main className="payment-container">
       <ToastContainer />
-      {loader ? <Loader /> : ""}
+      {loader ? <Loader /> : <></>}
       <h2 className="payment-container__init-title">
         {languageSelector(language, "payment")}
       </h2>
