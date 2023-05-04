@@ -24,6 +24,7 @@ import AdminList from "./AdminList/AdminList";
 import UpdatePhotos from "./UpdatePhotos/UpdatePhotos";
 import NewVenueForm from "./NewVenueForm/NewVenueForm";
 import RestaurantCuisine from "./RestaurantCuisine/RestaurantCuisine";
+import RestaurantOverview from "./RestaurantOverview/RestaurantOverview";
 
 const RestaurantAdminView = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -122,8 +123,7 @@ const RestaurantAdminView = () => {
             {restaurant.restaurant_name}
           </span>
           <span className="restaurantAdminView_subtitle">
-            RATING: {restaurant.rating && restaurant.rating.toFixed(1)} | NUMBER
-            OF SALES: {restaurant.number_of_sales}
+            {languageSelector(language, 'rating')}: {restaurant.rating && restaurant.rating.toFixed(1)} | {languageSelector(language, 'numberOfSales')}: {restaurant.number_of_sales}
           </span>
         </div>
         <div className="restaurantAdminView_body">
@@ -136,6 +136,16 @@ const RestaurantAdminView = () => {
               />
             </div>
             <div className="restaurantAdminView_left_container_options_container">
+              <span
+                className={`restaurantAdminView_left_container_option ${
+                  selectedComponent === "restaurantOverview"
+                    ? "restaurantAdminView_option_active"
+                    : ""
+                }`}
+                onClick={() => setSelectedComponent("restaurantOverview")}
+              >
+                {languageSelector(language, "restaurantOverview")}
+              </span>
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "restaurantDetails"
@@ -156,7 +166,6 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "restaurantCuisine")}
               </span>
-
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "newDishCategoryForm"
@@ -167,7 +176,6 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "newDishCategoryForm")}
               </span>
-
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "newDishForm"
@@ -178,7 +186,6 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "newDishForm")}
               </span>
-
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "dishList"
@@ -189,7 +196,6 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "dishList")}
               </span>
-
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "adminList"
@@ -200,7 +206,6 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "adminList")}
               </span>
-
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "updatePhotos"
@@ -211,7 +216,6 @@ const RestaurantAdminView = () => {
               >
                 {languageSelector(language, "updatePhotos")}
               </span>
-
               <span
                 className={`restaurantAdminView_left_container_option ${
                   selectedComponent === "newVenueForm"
@@ -226,6 +230,15 @@ const RestaurantAdminView = () => {
           </div>
           <div className="restaurantAdminView_right_container">
             {intro()}
+            {selectedComponent === "restaurantOverview" && (
+              <RestaurantOverview
+                language={language}
+                languageSelector={languageSelector}
+                restaurant={restaurant}
+                setRestaurant={setRestaurant}
+                onVenueUpdate={updateRestaurant}
+              />
+            )}
             {selectedComponent === "restaurantDetails" && (
               <RestaurantDetails
                 language={language}

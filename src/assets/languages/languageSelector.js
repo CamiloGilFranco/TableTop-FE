@@ -241,7 +241,7 @@ const languageSelector = (lang, str) => {
     restaurantAdminPage: "Administrate your restaurant",
     appAdminPage: "Administrate the plataform",
     reviewsTitle: "Leave your opinion",
-    rating: "Rating",
+    rating: "RATING",
     reviewFormTitle: "Title",
     reviewFormComments: "Comments",
     commentsError:
@@ -362,6 +362,15 @@ const languageSelector = (lang, str) => {
       "Are you sure you want to remove this cuisine? It may impaact the discoverability of your restaurant.",
     cuisineDeleteSuccess: "Cuisine removed successfully",
     cuisineDeleteError: "There was a problem removing this cuisine.",
+    restaurantOverview: "Restaurant Overview",
+    restaurantOverviewId: "Order ID",
+    restaurantOverviewDate: "Date",
+    restaurantOverviewDishes: "Dishes",
+    each: "each",
+    totalAmount: "Total Amount",
+    numberOfSales: "NUMBER OF SALES",
+    customerName: "Customer",
+    customerAddress: "Delivered at",
   };
 
   const es = {
@@ -607,7 +616,7 @@ const languageSelector = (lang, str) => {
     restaurantAdminPage: "Administra tu restaurante",
     appAdminPage: "Administra la plataforma",
     reviewsTitle: "Déjanos tu opinion",
-    rating: "Calificación",
+    rating: "CALIFICACIÓN",
     reviewFormTitle: "Título",
     reviewFormComments: "Comentarios",
     commentsError:
@@ -734,6 +743,15 @@ const languageSelector = (lang, str) => {
       "¿Está seguro de que desea eliminar esta cocina? Puede afectar la visibilidad de su restaurante.",
     cuisineDeleteSuccess: "Cocina eliminada con éxito",
     cuisineDeleteError: "Hubo un problema al eliminar esta cocina.",
+    restaurantOverview: "Resumen del restaurante",
+    restaurantOverviewId: "ID de pedido",
+    restaurantOverviewDate: "Fecha",
+    restaurantOverviewDishes: "Platos",
+    each: "cada uno",
+    totalAmount: "Cantidad total",
+    numberOfSales: "TOTAL DE VENTAS",
+    customerName: "Cliente",
+    customerAddress: "Entregado en",
   };
   if (lang === "en") {
     return en[str] || str;
