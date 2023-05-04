@@ -28,7 +28,7 @@ const EditModal = ({ item, onClose, handleUpdate }) => {
     } else if (price <= 0) {
       validationErrors.price = "the price cannot be zero or lower";
     }
-    if (description.length <= 1 || typeof description !== "string") {
+    if (description.length || typeof description !== "string") {
       validationErrors.description =
         "descrription must be at least 2 characters long";
     }
