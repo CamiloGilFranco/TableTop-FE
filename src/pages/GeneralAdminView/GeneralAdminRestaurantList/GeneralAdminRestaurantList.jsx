@@ -39,7 +39,7 @@ const GeneralAdminRestaurantList = () => {
   const handleDelete = async (id) => {
     const confirmationMessage = languageSelector(
       language,
-      "desactivateRestaurantWarning"
+      "deactivateRestaurantWarning"
     );
 
     if (window.confirm(confirmationMessage)) {
