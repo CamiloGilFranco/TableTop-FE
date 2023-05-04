@@ -24,11 +24,12 @@ const EditVenueDetailsModal = ({
     },
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const venueId = restaurant.venues[index].id_restaurant_venue;
     const requestBody = { field, newValue: editingItem };
 
-    axios.put(`${API_URL}/restaurant-venues/${venueId}`, requestBody, config);
+    const response = await axios.put(`${API_URL}/restaurant-venues/${venueId}`, requestBody, config);
+    
     editItem(field, index, editingItem);
     setEditingItem("");
     setErrors({});
