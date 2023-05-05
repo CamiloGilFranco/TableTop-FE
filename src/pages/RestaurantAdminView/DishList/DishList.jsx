@@ -130,7 +130,8 @@ const DishList = ({
                   {dishes.map((dish, index) => (
                     <li key={index} className="restaurantAdminView__details">
                       {languageSelector(language, "title")}: {dish.title} -{" "}
-                      {languageSelector(language, "price")}: {dish.price}
+                      {languageSelector(language, "price")}: $
+                      {dish.price.toLocaleString()}
                       <div>
                         <AiFillEdit
                           className="restaurantAdminView__icon restaurantAdminView__edit"
