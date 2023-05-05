@@ -130,10 +130,6 @@ const GeneralAdminRestaurantList = () => {
           <div key={index} className="restaurantList__details">
             {restaurant.restaurant_name}
             <div className="restaurantList__details_buttons_container">
-              <AiFillEdit
-                className="restaurantList__icon restaurantAdminView__edit"
-                onClick={() => handleEdit(restaurant)}
-              />
               <AiFillDelete
                 className="restaurantList__icon"
                 onClick={() => handleDelete(restaurant.id_restaurant)}
