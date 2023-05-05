@@ -3,14 +3,14 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
 import { API_URL } from "../../../constants/apiUrl";
-import './NewVenueForm.css'
+import "./NewVenueForm.css";
 
 const NewVenueForm = ({
   restaurant,
   languageSelector,
   language,
   setRestaurant,
-  onVenueAdded
+  onVenueAdded,
 }) => {
   const cookies = new Cookies();
   const jwtToken = cookies.get("token");
@@ -96,7 +96,7 @@ const NewVenueForm = ({
       );
 
       if (response.status === 201) {
-        toast.success(languageSelector(language, 'newVenueSuccess'));
+        toast.success(languageSelector(language, "newVenueSuccess"));
         setRestaurant((prevRestaurant) => ({
           ...prevRestaurant,
           venues: [...prevRestaurant.venues, response.data.data],
@@ -114,15 +114,17 @@ const NewVenueForm = ({
       }
     } catch (error) {
       console.error(error);
-      toast.error(languageSelector(language, 'newVenuaFailure'));
+      toast.error(languageSelector(language, "newVenuaFailure"));
     }
   };
 
   return (
     <div className="NewVenueForm">
-      <h3>{languageSelector(language, 'newRestaurantVenue')}</h3>
+      <h3 className="NewVenueForm_main_title">
+        {languageSelector(language, "newRestaurantVenue")}
+      </h3>
       <form onSubmit={handleSubmit}>
-        <label>{languageSelector(language, 'name')}:</label>
+        <label>{languageSelector(language, "name")}:</label>
         <input
           type="text"
           name="name_venue"
@@ -130,7 +132,7 @@ const NewVenueForm = ({
           onChange={handleChange}
         />
         <span className="error">{errors.name_venue}</span>
-        <label>{languageSelector(language, 'signInAddress')}:</label>
+        <label>{languageSelector(language, "signInAddress")}:</label>
         <input
           type="text"
           name="address"
@@ -139,7 +141,7 @@ const NewVenueForm = ({
         />
         <span className="error">{errors.address}</span>
 
-        <label>{languageSelector(language, 'city')}:</label>
+        <label>{languageSelector(language, "city")}:</label>
         <input
           type="text"
           name="city"
@@ -148,7 +150,7 @@ const NewVenueForm = ({
         />
         <span className="error">{errors.city}</span>
 
-        <label>{languageSelector(language, 'number')}:</label>
+        <label>{languageSelector(language, "number")}:</label>
         <input
           type="tel"
           name="phone_number"
@@ -157,7 +159,7 @@ const NewVenueForm = ({
         />
         <span className="error">{errors.city}</span>
 
-        <label>{languageSelector(language, 'restaurantEditOpenHour')}:</label>
+        <label>{languageSelector(language, "restaurantEditOpenHour")}:</label>
         <input
           type="time"
           name="open_hour"
@@ -166,7 +168,7 @@ const NewVenueForm = ({
         />
         <span className="error">{errors.city}</span>
 
-        <label>{languageSelector(language, 'restaurantEditCloseHour')}:</label>
+        <label>{languageSelector(language, "restaurantEditCloseHour")}:</label>
         <input
           type="time"
           name="close_hour"
@@ -175,14 +177,19 @@ const NewVenueForm = ({
         />
         <span className="error">{errors.city}</span>
 
-        <label>{languageSelector(language, 'venuePhoto')}:</label>
+        <label>{languageSelector(language, "venuePhoto")}:</label>
         <input
           type="file"
           name="venue_photo"
           onChange={handleFileInput}
           accept="image/*"
+          className="NewVenueForm_button_container_last_input"
         />
-        <button type="submit">{languageSelector(language, 'createVenue')}</button>
+        <div className="NewVenueForm_button_container">
+          <button type="submit">
+            {languageSelector(language, "createVenue")}
+          </button>
+        </div>
       </form>
     </div>
   );

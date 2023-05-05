@@ -16,11 +16,7 @@ const ReservationList = ({ reservations = [], setReservations, language }) => {
     },
   };
   const handleDeleteReservation = async (reservationId) => {
-    if (
-      window.confirm(
-        languageSelector(language, 'reservationWarning')
-      )
-    ) {
+    if (window.confirm(languageSelector(language, "reservationWarning"))) {
       try {
         const response = await axios.put(
           `${API_URL}/reservations/${reservationId}`,
@@ -28,17 +24,17 @@ const ReservationList = ({ reservations = [], setReservations, language }) => {
           config
         );
         if (response.status === 200) {
-          toast.success(languageSelector(language, 'reservationDeleteSucess'));
+          toast.success(languageSelector(language, "reservationDeleteSuccess"));
           setReservations(
             reservations.filter(
               (reservation) => reservation.id_reservation !== reservationId
             )
           );
         } else {
-          toast.error(languageSelector(language, 'reservationDeleteFailure'));
+          toast.error(languageSelector(language, "reservationDeleteFailure"));
         }
       } catch (error) {
-        toast.error(languageSelector(language, 'reservationDeleteFailure'));
+        toast.error(languageSelector(language, "reservationDeleteFailure"));
       }
     }
   };
@@ -48,16 +44,21 @@ const ReservationList = ({ reservations = [], setReservations, language }) => {
       {reservations.map((reservation) => (
         <div className="reservationList__item" key={reservation.id_reservation}>
           <p className="reservationList__title">
-           {languageSelector(language, 'reservationId')}: {reservation.id_reservation}
+            {languageSelector(language, "reservationId")}:{" "}
+            {reservation.id_reservation}
           </p>
           <div className="reservationList__detail">
-            <p className="reservationList__label">{languageSelector(language, 'reservationName')}:</p>
+            <p className="reservationList__label">
+              {languageSelector(language, "reservationName")}:
+            </p>
             <p>
               {reservation.users.name} {reservation.users.last_name}
             </p>
           </div>
           <div className="reservationList__detail">
-            <p className="reservationList__label">{languageSelector(language, 'dateAndTime')}:</p>
+            <p className="reservationList__label">
+              {languageSelector(language, "dateAndTime")}:
+            </p>
             <p>{reservation.date_hour}</p>
           </div>
           <AiFillDelete

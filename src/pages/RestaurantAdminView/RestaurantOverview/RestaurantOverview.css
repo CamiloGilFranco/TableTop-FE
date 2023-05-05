@@ -1,0 +1,49 @@
+.restaurant-overview .order {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.restaurant-overview .order-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+}
+.restaurant-overview .order-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 1px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+.restaurant-overview .order-title:hover::after {
+  width: 80%;
+  left: 10%;
+}
+.restaurant-overview .order-title.active {
+  color: #ef3f3f;
+}
+.restaurant-overview .order-date {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.restaurant-overview .order-dishes h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.restaurant-overview .order-dishes p {
+  font-size: 16px;
+  line-height: 25px;
+}
+.restaurant-overview .order-total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}/*# sourceMappingURL=RestaurantOverview.css.map */

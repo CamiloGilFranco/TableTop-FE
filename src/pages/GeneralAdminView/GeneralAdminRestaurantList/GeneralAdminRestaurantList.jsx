@@ -1,27 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import './GeneralAdminRestaurantList.css';
-import languageSelector from '../../../assets/languages/languageSelector';
-import GeneralAdminModal from '../../../components/GeneralAdminModal/GeneralAdminModal';
-import { API_URL } from '../../../constants/apiUrl';
+import React, { useEffect, useState } from "react";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import Cookies from "universal-cookie";
+import axios from "axios";
+import "./GeneralAdminRestaurantList.css";
+import languageSelector from "../../../assets/languages/languageSelector";
+import GeneralAdminModal from "../../../components/GeneralAdminModal/GeneralAdminModal";
+import { API_URL } from "../../../constants/apiUrl";
 
 const GeneralAdminRestaurantList = () => {
   const cookie = new Cookies();
-  const language = useSelector(state=> state.languageReducer);
+  const language = useSelector((state) => state.languageReducer);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
-  const token = cookie.get('token');
+  const token = cookie.get("token");
   const [restaurants, setRestaurants] = useState([]);
   const config = {
     headers: {
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
+  const [filter, setFilter] = useState("");
+  const [renderList, setRenderList] = useState([]);
+
+  useEffect(() => {
+    setRenderList([...restaurants]);
+  }, []);
 
   useEffect(() => {
     axios
@@ -31,17 +37,32 @@ const GeneralAdminRestaurantList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    const confirmationMessage = languageSelector(language, 'deavtivateRestaurantWarning');
-  
+    const confirmationMessage = languageSelector(
+      language,
+      "deactivateRestaurantWarning"
+    );
+
     if (window.confirm(confirmationMessage)) {
-  
       try {
-        const response = await axios.put(`${API_URL}/restaurants/deactivate/${id}`, {}, config);
-        toast.success(response.data.message || languageSelector(language, 'deactivatedRestaurantSuccess'));
-        const updatedRestaurants = await axios.get(`${API_URL}/restaurants`, config);
+        const response = await axios.put(
+          `${API_URL}/restaurants/deactivate/${id}`,
+          {},
+          config
+        );
+        toast.success(
+          response.data.message ||
+            languageSelector(language, "deactivatedRestaurantSuccess")
+        );
+        const updatedRestaurants = await axios.get(
+          `${API_URL}/restaurants`,
+          config
+        );
         setRestaurants(updatedRestaurants.data.data);
       } catch (error) {
-        toast.error(error.response?.data?.message ||languageSelector(language, 'deactivatedRestaurantFailure'));
+        toast.error(
+          error.response?.data?.message ||
+            languageSelector(language, "deactivatedRestaurantFailure")
+        );
       }
     }
   };
@@ -50,7 +71,7 @@ const GeneralAdminRestaurantList = () => {
     setSelectedRestaurant(restaurant);
     setIsModalOpen(true);
   };
-  
+
   const handleRestaurantUpdate = async (updatedRestaurant) => {
     try {
       const response = await axios.put(
@@ -58,32 +79,67 @@ const GeneralAdminRestaurantList = () => {
         updatedRestaurant,
         config
       );
-      toast.success(response.data.message || languageSelector(language, 'updatedRestaurantSuccess'));
-      const updatedRestaurants = await axios.get(`${API_URL}/restaurants`, config);
+      toast.success(
+        response.data.message ||
+          languageSelector(language, "updatedRestaurantSuccess")
+      );
+      const updatedRestaurants = await axios.get(
+        `${API_URL}/restaurants`,
+        config
+      );
       setRestaurants(updatedRestaurants.data.data);
     } catch (error) {
-      toast.error(error.response?.data?.message || languageSelector(language, 'updatedRestaurantFailure'));
+      toast.error(
+        error.response?.data?.message ||
+          languageSelector(language, "updatedRestaurantFailure")
+      );
     }
   };
-  
+
+  const handleFilter = (event) => {
+    setFilter(event.target.value);
+
+    setRenderList(
+      restaurants.filter((restaurant) => {
+        return restaurant.restaurant_name
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase());
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (!filter) {
+      setRenderList([...restaurants]);
+    }
+  }, [filter]);
 
   return (
-    <article className='restaurantList'>
-      <span>{languageSelector(language, 'generalAdminFullList')}</span>
-      <p>{languageSelector(language, 'generalAdminDelete')}</p>
-      <ul>
-        {restaurants.map((restaurant, index) => (
-          <li key={index} className='restaurantList__details'>
+    <article className="restaurantList">
+      <span>{languageSelector(language, "generalAdminFullList")}</span>
+      <p>{languageSelector(language, "generalAdminDelete")}</p>
+      <input
+        type="text"
+        placeholder="Search"
+        className="user__list_search_input"
+        value={filter}
+        onChange={handleFilter}
+      />
+      <div>
+        {renderList.map((restaurant, index) => (
+          <div key={index} className="restaurantList__details">
             {restaurant.restaurant_name}
-            <AiFillEdit
-              className='restaurantList__icon restaurantAdminView__edit'
-              onClick={() => handleEdit(restaurant)}
-            />
-            <AiFillDelete
-              className='restaurantList__icon'
-              onClick={() => handleDelete(restaurant.id_restaurant)}
-            />
-          </li>
+            <div className="restaurantList__details_buttons_container">
+              <AiFillEdit
+                className="restaurantList__icon restaurantAdminView__edit"
+                onClick={() => handleEdit(restaurant)}
+              />
+              <AiFillDelete
+                className="restaurantList__icon"
+                onClick={() => handleDelete(restaurant.id_restaurant)}
+              />
+            </div>
+          </div>
         ))}
         {isModalOpen && (
           <GeneralAdminModal
@@ -93,7 +149,7 @@ const GeneralAdminRestaurantList = () => {
             onSave={handleRestaurantUpdate}
           />
         )}
-      </ul>
+      </div>
     </article>
   );
 };

@@ -49,4 +49,17 @@
   .UpdatePhotos button[type=submit] {
     font-size: 18px;
   }
+}
+
+.updatePhotos__heading {
+  margin-top: 15px;
+}
+
+.updatePhotos__submitButton_container {
+  display: flex;
+  justify-content: center;
+}
+
+.updatePhotos__submitButton {
+  margin: 15px auto;
 }/*# sourceMappingURL=UpdatePhotos.css.map */

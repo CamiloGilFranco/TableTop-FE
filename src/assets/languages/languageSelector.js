@@ -110,7 +110,7 @@ const languageSelector = (lang, str) => {
     restaurantOptionsReview: "REVIEWS",
     overViewSchedule: "Opening Hours",
     overviewFacilities: "Facilities",
-    bookingButton: "SUMBIT",
+    bookingButton: "SUBMIT",
     recommendedTitle: "Recommended",
     cartTitle: "Cart Items",
     cartFinishWarning: "delivery charges may apply to your order.",
@@ -241,7 +241,7 @@ const languageSelector = (lang, str) => {
     restaurantAdminPage: "Administrate your restaurant",
     appAdminPage: "Administrate the plataform",
     reviewsTitle: "Leave your opinion",
-    rating: "Rating",
+    rating: "RATING",
     reviewFormTitle: "Title",
     reviewFormComments: "Comments",
     commentsError:
@@ -271,7 +271,7 @@ const languageSelector = (lang, str) => {
     users: "Users",
     restaurants: "Restaurants",
     newRestaurantForm: "Create new Restaurant",
-    deavtivateRestaurantWarning:
+    deactivateRestaurantWarning:
       "Are you sure you want to deactivate this restaurant? This action cannot be reversed.",
     deactivatedRestaurantSuccess: "Restaurant deactivated successfully",
     deactivatedRestaurantFailure: "Error deactivating Restaurant",
@@ -327,6 +327,67 @@ const languageSelector = (lang, str) => {
     updatePhotoSuccess: "Photos updated successfully!",
     updatePhotoFailure: "Photos failed to update",
     updatePhotos: "Update Photos",
+    deleteVenueWarning:
+      "Are you sure you want to delete this venue? This action can't be undone",
+    deleteVenueSuccess: "Venue deleted successfully",
+    deleteVenueFailure: "Error deleting venue",
+    deleteSelfWarning:
+      "Are you sure you want to delete your account? This action can't be undone",
+    deleteSelfSuccess: "Account deleted successfully",
+    deleteSelfFailure: "There has been a problem deleting your account",
+    deleteSelf: "Delete your account",
+    removeResAdminSuccess: "Restaurant Admin successfully removed",
+    removeResAdminFailure: "There has been an error removing this Admin",
+    deleteResAdminWarning:
+      "Are you sure you want to remove this Admin? This action cannot be undone",
+    restaurantCuisineSubtitle:
+      "If you want to add a cuisine to your restaurant, you can do it here.",
+    restaurantCuisineTitle:
+      "Here you can see and remove the cuisines of your restaurant.",
+    restaurantCuisineSelect: "Select a cuisine",
+    restaurantCuisineButton: "Add the cuisine",
+    cuisineAddSuccess: "Cuisine Added successfully",
+    restaurantCuisine: "Restaurant Cuisine",
+    updateImageSuccess: "Venue image successfully updated",
+    updateImageError: "There has been an error updating the venua image",
+    facilityAddSuccess: "Facilty added to the venue successfully",
+    facilityAlreadyExistsError: "This venue already has that facility",
+    facilityAddError: "There has been an error adding the facility",
+    updateVenuePhoto: "Update the venue photo",
+    updateVenueButton: "Update image",
+    addFacility: "Add a new facility to this venue",
+    addFacilitySelect: "Select a facility",
+    addFacilityButton: "Add Facility",
+    deleteCuisineWarning:
+      "Are you sure you want to remove this cuisine? It may impaact the discoverability of your restaurant.",
+    cuisineDeleteSuccess: "Cuisine removed successfully",
+    cuisineDeleteError: "There was a problem removing this cuisine.",
+    restaurantOverview: "Restaurant Overview",
+    restaurantOverviewId: "Order ID",
+    restaurantOverviewDate: "Date",
+    restaurantOverviewDishes: "Dishes",
+    each: "each",
+    totalAmount: "Total Amount",
+    numberOfSales: "NUMBER OF SALES",
+    customerName: "Customer",
+    customerAddress: "Delivered at",
+    restaurantPhotoAddSucces: "Photo added to the restaurant successfully",
+    restaurantPhotoAddFailure:
+      "There has been a problem adding the picture, please try again later.",
+    imageNotProvided: "Image not provided",
+    deletePhotoWarning:
+      "Are you sure you want to delete this photo? This action cannot be undone",
+    restaurantPhotoDeleteSuccess: "Photo deleted successfully",
+    restaurantPhotoDeleteFailure:
+      "There has been a problem deletinh the photo, please try again later.",
+    restaurantGalleryTitle: "These are your Restaurant photos",
+    restaurantPhotosText:
+      "Here you can add or delete any pictures of your restaurant.",
+    restaurantGalleryAddButton: "Add the selected photo!",
+    restaurantGalleryAddCancel: "Cancel adding a photo",
+    restaurantGalleryAddPhoto:
+      "Choose a photo you want to add to your restaurant",
+    restaurantGallery: "Restaurant Gallery",
   };
 
   const es = {
@@ -572,7 +633,7 @@ const languageSelector = (lang, str) => {
     restaurantAdminPage: "Administra tu restaurante",
     appAdminPage: "Administra la plataforma",
     reviewsTitle: "Déjanos tu opinion",
-    rating: "Calificación",
+    rating: "CALIFICACIÓN",
     reviewFormTitle: "Título",
     reviewFormComments: "Comentarios",
     commentsError:
@@ -663,6 +724,68 @@ const languageSelector = (lang, str) => {
     updatePhotoSuccess: "¡Fotos actualizadas con éxito!",
     updatePhotoFailure: "Las fotos fallaron en la actualización",
     updatePhotos: "Actualiza las fotos",
+    deleteVenueWarning:
+      "¿Estás seguro de que desea eliminar esta locación? Esta acción no se puede deshacer",
+    deleteVenueSuccess: "Locación eliminado con éxito",
+    deleteVenueFailure: "Error al eliminar la locación",
+    deleteSelfWarning:
+      "¿Estás seguro de que desea eliminar tu cuenta? Esta acción no se puede deshacer",
+    deleteSelfSuccess: "Cuenta eliminada con éxito",
+    deleteSelfFailure: "Ha habido un problema al eliminar su cuenta",
+    deleteSelf: "Elimina tu cuenta",
+    removeResAdminSuccess: "Administrador del restaurante eliminado con éxito",
+    removeResAdminFailure: "Ha habido un error al eliminar este administrador",
+    deleteResAdminWarning:
+      "¿Está seguro de que desea eliminar a este administrador? Esta acción no se puede deshacer",
+    restaurantCuisineSubtitle:
+      "Si desea agregar una cocina a su restaurante, puede hacerlo aquí.",
+    restaurantCuisineTitle:
+      "Aquí puedes ver y quitar las cocinas de tu restaurante.",
+    restaurantCuisineSelect: "Seleccione una cocina",
+    restaurantCuisineButton: "Agregar la cocina",
+    cuisineAddSuccess: "Cocina añadida con éxito",
+    restaurantCuisine: "Cocina de restaurante",
+    updateImageSuccess: "Imagen del lugar actualizada correctamente",
+    updateImageError:
+      "Ha ocurrido un error al actualizar la imagen de la locación",
+    facilityAddSuccess: "Facilidad agregada a la locación exitosamente",
+    facilityAlreadyExistsError: "Esta locación ya tiene esa facilidad",
+    facilityAddError: "Ha ocurrido un error al agregar la facilidad",
+    updateVenuePhoto: "Actualizar la foto de la locación",
+    updateVenueButton: "Actualizar imagen",
+    addFacility: "Agregar una nueva facilidad a esta locación",
+    addFacilitySelect: "Seleccione una facilidad",
+    addFacilityButton: "Agregar facilidad",
+    deleteCuisineWarning:
+      "¿Está seguro de que desea eliminar esta cocina? Puede afectar la visibilidad de su restaurante.",
+    cuisineDeleteSuccess: "Cocina eliminada con éxito",
+    cuisineDeleteError: "Hubo un problema al eliminar esta cocina.",
+    restaurantOverview: "Resumen del restaurante",
+    restaurantOverviewId: "ID de pedido",
+    restaurantOverviewDate: "Fecha",
+    restaurantOverviewDishes: "Platos",
+    each: "cada uno",
+    totalAmount: "Cantidad total",
+    numberOfSales: "TOTAL DE VENTAS",
+    customerName: "Cliente",
+    customerAddress: "Entregado en",
+    restaurantPhotoAddSucces: "Foto agregada al restaurante con éxito",
+    restaurantPhotoAddFailure:
+      "Ha habido un problema al agregar la imagen, por favor inténtelo de nuevo más tarde.",
+    imageNotProvided: "Imagen no proporcionada",
+    deletePhotoWarning:
+      "¿Está seguro de que desea eliminar esta foto? Esta acción no se puede deshacer",
+    restaurantPhotoDeleteSuccess: "Foto eliminada exitosamente",
+    restaurantPhotoDeleteFailure:
+      "Ha habido un problema al eliminar la foto, por favor inténtelo de nuevo más tarde.",
+    restaurantGalleryTitle: "Estas son las fotos de su restaurante",
+    restaurantPhotosText:
+      "Aquí puede agregar o eliminar cualquier foto de su restaurante.",
+    restaurantGalleryAddButton: "¡Agregar la foto seleccionada!",
+    restaurantGalleryAddCancel: "Cancelar agregar una foto",
+    restaurantGalleryAddPhoto:
+      "Seleccione una foto que desea agregar a su restaurante",
+    restaurantGallery: "Galería del Restaurante",
   };
   if (lang === "en") {
     return en[str] || str;

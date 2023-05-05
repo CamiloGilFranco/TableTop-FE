@@ -1,4 +1,4 @@
-{
+export const cuisines = {
   "Asian": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/cuisines/asian.jpg",
   "Bar": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/cuisines/bar.jpg",
   "Cafe": "https://raw.githubusercontent.com/CamiloGilFranco/TableTop-FE/main/src/assets/fotos/cuisines/cafe.jpg",

@@ -1,0 +1,123 @@
+.restaurant-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  .gallery-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .gallery-header-icons {
+      display: flex;
+      gap: 10px;
+
+      button {
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #4caf50;
+
+          &:hover {
+            background-color: #43a047;
+          }
+        }
+
+        &:last-child {
+          background-color: #ef3f3f;
+
+          &:hover {
+            background-color: #d83636;
+          }
+        }
+      }
+    }
+  }
+  
+  p {
+    font-size: 16px;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .gallery-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      label {
+        font-size: 16px;
+      }
+
+      input[type="file"] {
+        font-size: 14px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #ef3f3f;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 14px;
+        width: 100%;
+
+        &:hover {
+          background-color: #d83636;
+        }
+
+        &:last-child {
+          background-color: #ccc;
+
+          &:hover {
+            background-color: #bbb;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .restaurant-gallery .gallery-header {
+    flex-direction: row;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+
+    .gallery-header-icons {
+      button {
+        font-size: 20px;
+      }
+    }
+  }
+}

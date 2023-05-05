@@ -7,6 +7,8 @@ import { API_URL } from "../../../constants/apiUrl";
 import Cookies from "universal-cookie";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AiFillDelete } from "react-icons/ai";
+import { USER_ROLE } from "../../../constants/userRoles";
 
 const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
   const language = useSelector((state) => state.languageReducer);
@@ -41,12 +43,33 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
           setAdmins(updatedAdmins);
         }
         setNewAdminEmail("");
-        toast.success(languageSelector(language, "addResAdminSuccess"));
+        toast.success(languageSelector(language, "removeResAdminSuccess"));
         onAdminUpdate();
       }
     } catch (error) {
       console.error(error);
-      toast.error(languageSelector(language, "addResAdminFailure"));
+      toast.error(languageSelector(language, "removeResAdminFailure"));
+    }
+  };
+
+  // removes admin from the restaurant
+  const handleAdminDelete = async (email) => {
+    if (window.confirm(languageSelector(language, "deleteResAdminWarning"))) {
+      try {
+        await axios.patch(
+          `${API_URL}/users/remove-res-admin`,
+          {
+            email,
+            user_role: USER_ROLE,
+          },
+          config
+        );
+        console.log(restaurant);
+        toast.success(languageSelector(language, "deleteResAdmimSuccess"));
+        onAdminUpdate();
+      } catch (error) {
+        toast.error(languageSelector(language, "deleteResAdmimFailure"));
+      }
     }
   };
 
@@ -55,12 +78,21 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
       <h3>{languageSelector(language, "restaurantAdmins")}</h3>
       <ul className="adminList__list">
         {admins.map((admin, index) => (
-          <li key={index}>
-            {admin.name} {admin.last_name} - {admin.email}
-          </li>
+          <div className="adminList_single_admin_container">
+            <li key={index}>
+              {admin.name} {admin.last_name} - {admin.email}
+            </li>
+            <AiFillDelete
+              onClick={() => {
+                handleAdminDelete(admin.email);
+              }}
+              className="restaurantAdminView__icon"
+            />
+          </div>
         ))}
       </ul>
       <div className="adminList__addAdmin">
+        <span className="Add_new_admin_span">Add new admin</span>
         <input
           type="email"
           placeholder={languageSelector(language, "signInEmail")}

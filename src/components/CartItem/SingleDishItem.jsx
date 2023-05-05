@@ -29,7 +29,9 @@ const SingleDishItem = ({
   return (
     <div className="cart-item-product">
       <span className="cart-item-product-title">{title}</span>
-      <span className="cart-item-product-unit-value">${price}</span>
+      <span className="cart-item-product-unit-value">
+        ${price.toLocaleString()}
+      </span>
       <div className="cart-item-product-quantity-container">
         <div className="cart-item-product-quantity-container-buttons">
           <button
@@ -50,7 +52,9 @@ const SingleDishItem = ({
             +
           </button>
         </div>
-        <span className="cart-item-product-total-value">${subtotal}</span>
+        <span className="cart-item-product-total-value">
+          ${subtotal.toLocaleString()}
+        </span>
       </div>
     </div>
   );

@@ -3,8 +3,6 @@
   flex-direction: column;
   font-size: 18px;
   gap: 5px;
-  border: 2px solid lightgray;
-  background-color: rgb(206, 204, 201);
   border-radius: 5px;
   padding: 10px;
 }
@@ -24,15 +22,24 @@
   align-items: center;
   gap: 10px;
   height: 75px;
+  font-size: 20px;
+  padding: 0 10px;
 }
-@media (min-width: 765px) {
-  .restaurantList__details {
-    font-size: 20px;
-  }
+.restaurantList__details:hover {
+  background-color: lightgray;
+}
+
+.restaurantList__details_buttons_container {
+  display: flex;
+  gap: 10px;
 }
 
 .restaurantList__icon {
   cursor: pointer;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+.restaurantList__icon:hover {
+  background-color: #ef3f3f;
 }/*# sourceMappingURL=GeneralAdminRestaurantList.css.map */
