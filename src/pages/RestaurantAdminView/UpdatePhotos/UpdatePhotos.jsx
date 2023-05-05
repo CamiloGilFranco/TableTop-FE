@@ -36,8 +36,12 @@ const UpdatePhotos = ({ restaurant, languageSelector, language }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData();
-    data.append("logo", logo);
-    data.append("main_photo", main_photo);
+    if (logo) {
+      data.append("logo", logo);
+    }
+    if (main_photo) {
+      data.append("main_photo", main_photo);
+    }
 
     const validationErrors = validateFields();
     if (Object.keys(validationErrors).length) {

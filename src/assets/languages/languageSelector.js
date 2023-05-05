@@ -388,6 +388,7 @@ const languageSelector = (lang, str) => {
     restaurantGalleryAddPhoto:
       "Choose a photo you want to add to your restaurant",
     restaurantGallery: "Restaurant Gallery",
+    addNewAdmin: "Add new Admin",
   };
 
   const es = {
@@ -786,6 +787,7 @@ const languageSelector = (lang, str) => {
     restaurantGalleryAddPhoto:
       "Seleccione una foto que desea agregar a su restaurante",
     restaurantGallery: "Galería del Restaurante",
+    addNewAdmin: "Agregar nuevo Administrador",
   };
   if (lang === "en") {
     return en[str] || str;
