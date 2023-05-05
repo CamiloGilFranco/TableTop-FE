@@ -24,7 +24,7 @@ const RestaurantCardComponent = ({
 
   return (
     <figure className="restaurant-card-component" onClick={handleClick}>
-      <div className="restaurant-card-component-image-container">
+      <div data-cy="image-test-cy" className="restaurant-card-component-image-container">
         <img src={picture} alt="" className="restaurant-card-component-image" />
       </div>
       <figcaption className="restaurant-card-component-info">
