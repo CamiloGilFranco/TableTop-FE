@@ -40,17 +40,6 @@ const MobileNavBar = ({
           </section>
         </article>
         <select
-          className="mobile-navbar-location-list"
-          onChange={handleLocationChange}
-          value={location}
-        >
-          {cities.map((element, index) => (
-            <option key={index} value={element}>
-              {element}
-            </option>
-          ))}
-        </select>
-        <select
           className="mobile-navbar-language-list"
           onChange={handleLanguageChange}
           value={language}

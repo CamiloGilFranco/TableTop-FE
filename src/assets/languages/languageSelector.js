@@ -371,6 +371,23 @@ const languageSelector = (lang, str) => {
     numberOfSales: "NUMBER OF SALES",
     customerName: "Customer",
     customerAddress: "Delivered at",
+    restaurantPhotoAddSucces: "Photo added to the restaurant successfully",
+    restaurantPhotoAddFailure:
+      "There has been a problem adding the picture, please try again later.",
+    imageNotProvided: "Image not provided",
+    deletePhotoWarning:
+      "Are you sure you want to delete this photo? This action cannot be undone",
+    restaurantPhotoDeleteSuccess: "Photo deleted successfully",
+    restaurantPhotoDeleteFailure:
+      "There has been a problem deletinh the photo, please try again later.",
+    restaurantGalleryTitle: "These are your Restaurant photos",
+    restaurantPhotosText:
+      "Here you can add or delete any pictures of your restaurant.",
+    restaurantGalleryAddButton: "Add the selected photo!",
+    restaurantGalleryAddCancel: "Cancel adding a photo",
+    restaurantGalleryAddPhoto:
+      "Choose a photo you want to add to your restaurant",
+    restaurantGallery: "Restaurant Gallery",
   };
 
   const es = {
@@ -752,6 +769,23 @@ const languageSelector = (lang, str) => {
     numberOfSales: "TOTAL DE VENTAS",
     customerName: "Cliente",
     customerAddress: "Entregado en",
+    restaurantPhotoAddSucces: "Foto agregada al restaurante con éxito",
+    restaurantPhotoAddFailure:
+      "Ha habido un problema al agregar la imagen, por favor inténtelo de nuevo más tarde.",
+    imageNotProvided: "Imagen no proporcionada",
+    deletePhotoWarning:
+      "¿Está seguro de que desea eliminar esta foto? Esta acción no se puede deshacer",
+    restaurantPhotoDeleteSuccess: "Foto eliminada exitosamente",
+    restaurantPhotoDeleteFailure:
+      "Ha habido un problema al eliminar la foto, por favor inténtelo de nuevo más tarde.",
+    restaurantGalleryTitle: "Estas son las fotos de su restaurante",
+    restaurantPhotosText:
+      "Aquí puede agregar o eliminar cualquier foto de su restaurante.",
+    restaurantGalleryAddButton: "¡Agregar la foto seleccionada!",
+    restaurantGalleryAddCancel: "Cancelar agregar una foto",
+    restaurantGalleryAddPhoto:
+      "Seleccione una foto que desea agregar a su restaurante",
+    restaurantGallery: "Galería del Restaurante",
   };
   if (lang === "en") {
     return en[str] || str;

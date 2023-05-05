@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import RestaurantCardComponent from "../RestaurantCardComponent/RestaurantCardComponent";
 import "./RestaurantList.css";
-import DB from "../../assets/dat.json";
 import { useSearchParams } from "react-router-dom";
 import languageSelector from "../../assets/languages/languageSelector";
 import { useSelector } from "react-redux";

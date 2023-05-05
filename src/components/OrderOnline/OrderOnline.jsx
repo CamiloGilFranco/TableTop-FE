@@ -1,6 +1,3 @@
-import { useSelector } from "react-redux";
-import { es } from "../../assets/languages/languageES";
-import { en } from "../../assets/languages/languajeEN";
 import IndividualDish from "./IndividualDish";
 import { useEffect, useMemo, useState } from "react";
 import "./OrderOnline.css";

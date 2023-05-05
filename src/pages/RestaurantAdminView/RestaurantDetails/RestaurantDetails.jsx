@@ -119,7 +119,7 @@ const RestaurantDetails = ({
     const venueId = restaurant.venues[venueIndex].id_restaurant_venue;
     const formData = new FormData();
     const fileInput = document.getElementById("venue_photo");
-    formData.append("image", fileInput.files[0]);
+    formData.append("venue_photo", fileInput.files[0]);
 
     try {
       const response = await axios.patch(

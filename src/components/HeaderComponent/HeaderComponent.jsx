@@ -9,7 +9,6 @@ import { HiOutlineViewList } from "react-icons/hi";
 import "./HeaderComponent.css";
 import logo from "../../assets/logo.svg";
 import languageSelector from "../../assets/languages/languageSelector";
-import cities from "../../assets/cities.json";
 import routePaths from "../../constants/routePaths";
 
 const HeaderComponent = () => {
@@ -53,17 +52,6 @@ const HeaderComponent = () => {
         </span>
       </section>
       <section className="header-buttons">
-        <select
-          className="location-list"
-          onChange={handleLocationChange}
-          value={location}
-        >
-          {cities.map((element, index) => (
-            <option key={index} value={element}>
-              {element}
-            </option>
-          ))}
-        </select>
         <section className="header-optionLists">
           <select
             className="language-list"
@@ -89,7 +77,6 @@ const HeaderComponent = () => {
         location={location}
         language={language}
         handleLanguageChange={handleLanguageChange}
-        cities={cities}
       />
     </header>
   );
