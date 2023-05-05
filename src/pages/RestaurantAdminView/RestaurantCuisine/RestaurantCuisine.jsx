@@ -37,7 +37,7 @@ const RestaurantCuisine = ({
           },
           config
         );
-        if (response.status === 200 || 201) {
+        if (response.status === 201) {
           onCuisineUpdate();
           setSelectedCuisine("");
           toast.success(languageSelector(language, "cuisineAddSuccess"));
@@ -45,10 +45,15 @@ const RestaurantCuisine = ({
           toast.error(response.data.message);
         }
       } catch (error) {
-        console.error("Error adding cuisine:", error);
+        if (error.response && error.response.status === 400) {
+          toast.error(error.response.data.message);
+        } else {
+          console.error("Error adding cuisine:", error);
+        }
       }
     }
   };
+  
 
   const handleCuisineDelete = async (id_cuisine_per_restaurant) => {
     if (window.confirm(languageSelector(language, "deleteCuisineWarning"))) {

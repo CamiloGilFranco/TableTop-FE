@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./RestaurantGallery.css";
-import GalleryComponent from "../../../components/GalleryComponent/GalleryCarouselComponent";
 import { AiOutlineFileAdd, AiFillDelete } from "react-icons/ai";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { API_URL } from "../../../constants/apiUrl";
+import RestaurantGalleryComponent from "./GalleryComponent/RestaurantGalleryComponent";
 
 const RestaurantGallery = ({
   language,
@@ -98,12 +98,9 @@ const RestaurantGallery = ({
             <button onClick={() => setAdding(true)}>
               <AiOutlineFileAdd />
             </button>
-            <button onClick={handleDeletePhoto}>
-              <AiFillDelete />
-            </button>
           </div>
         </div>
-        <p>{languageSelector(language, 'restaurantPhotosText')}</p>
+        <p>{languageSelector(language, "restaurantPhotosText")}</p>
         {adding ? (
           <div className="gallery-form">
             <form>
@@ -125,9 +122,10 @@ const RestaurantGallery = ({
             </form>
           </div>
         ) : (
-          <GalleryComponent
+          <RestaurantGalleryComponent
             photos={photos}
             setPictureNumber={setPictureNumber}
+            handleDeletePhoto={handleDeletePhoto}
           />
         )}
       </div>
