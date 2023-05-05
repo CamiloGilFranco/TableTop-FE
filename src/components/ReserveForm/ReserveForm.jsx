@@ -15,6 +15,7 @@ const ReserveForm = ({ venues, id_restaurant }) => {
     dateAndTime: "",
     venue: "CHOOSE ONE",
   });
+
   const language = useSelector((state) => state.languageReducer);
 
   const [dateError, setDateError] = useState(false);
@@ -26,6 +27,9 @@ const ReserveForm = ({ venues, id_restaurant }) => {
     let isValid = true;
 
     const reserveDate = new Date(reserveForm.dateAndTime);
+    const inputHour = reserveDate.getHours() - 5;
+    reserveDate.setHours(inputHour);
+    console.log(reserveDate);
     const reserveDateNumber = Date.parse(reserveDate);
 
     const today = new Date();
