@@ -35,9 +35,15 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "env": {
+      "cypress/globals": true
+    },
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "plugins": [
+      "cypress"
     ]
   },
   "browserslist": {
@@ -53,6 +59,8 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^12.11.0",
+    "eslint-plugin-cypress": "^2.13.3",
     "sass": "^1.58.3"
   }
 }

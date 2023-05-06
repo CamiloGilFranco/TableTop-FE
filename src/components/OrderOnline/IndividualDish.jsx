@@ -16,6 +16,7 @@ const IndividualDish = ({ title, description, price, id, id_restaurant }) => {
           {title}
         </span>
         <button
+          data-cy="button-add-food"
           className="restaurant-view-individual-dish-main-line-button"
           onClick={handleClick}
         >
