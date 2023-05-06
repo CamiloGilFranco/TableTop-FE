@@ -29,7 +29,7 @@ const CartItem = () => {
   const { isExpired } = useJwt(login.user.token);
 
   const handlePlaceOrder = () => {
-    if (!cookies.get("token") || !isExpired) {
+    if (!cookies.get("token")) {
       toast.error("You must log in to continue", {
         position: "bottom-right",
       });

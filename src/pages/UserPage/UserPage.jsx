@@ -287,7 +287,7 @@ const UserPage = () => {
     }
   };
 
-  if (!user || isExpired) {
+  if (!user) {
     return (
       <>
         <ToastContainer />

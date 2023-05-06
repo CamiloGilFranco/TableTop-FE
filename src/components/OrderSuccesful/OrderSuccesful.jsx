@@ -27,60 +27,58 @@ const OrderSuccesful = () => {
   const navigate = useNavigate();
   const returnMessage = "Going back to the main page";
 
-  useEffect(() => {
+  useEffect(() => createOrder, []);
+
+  const createOrder = async () => {
     const dishList = [];
 
-    axios
-      .post(
-        `${API_URL}/orders`,
-        {
-          price,
-          address: orderData.orderData.address,
-          address_id: orderData.orderData.addressId,
-          city: orderData.orderData.city,
-          cart,
+    const response = await axios.post(
+      `${API_URL}/orders`,
+      {
+        price,
+        address: orderData.orderData.address,
+        address_id: orderData.orderData.addressId,
+        city: orderData.orderData.city,
+        cart,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${cookies.get("token")}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${cookies.get("token")}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-        setOrderID(res.data.data.id_order);
-        for (const dish of cart) {
-          dishList.push({
-            quantity: dish.quantity,
-            ordersId_order: res.data.data.id_order,
-            dishesId_dish: dish.id,
-            restaurantsId_restaurant: dish.id_restaurant,
-          });
-        }
-        axios
-          .post(`${API_URL}/orders-details/several`, {
-            dishList,
-          })
-          .then(() => {
-            toast.success(returnMessage, {
-              position: "bottom-right",
-            });
-            setTimeout(() => {
-              dispatch({ type: UPLOADSUBTOTAL, payload: 0 });
-              dispatch({ type: RESET_CART, payload: [] });
-              dispatch({
-                type: RESET_ORDER,
-                payload: {
-                  orderStatus: null,
-                  orderData: {},
-                },
-              });
+      }
+    );
 
-              navigate("/");
-            }, 6000);
-          });
+    setOrderID(response.data.data.id_order);
+    for (const dish of cart) {
+      dishList.push({
+        quantity: dish.quantity,
+        ordersId_order: response.data.data.id_order,
+        dishesId_dish: dish.id,
+        restaurantsId_restaurant: dish.id_restaurant,
       });
-  }, []);
+    }
+
+    await axios.post(`${API_URL}/orders-details/several`, {
+      dishList,
+    });
+
+    toast.success(returnMessage, {
+      position: "bottom-right",
+    });
+    setTimeout(() => {
+      dispatch({ type: UPLOADSUBTOTAL, payload: 0 });
+      dispatch({ type: RESET_CART, payload: [] });
+      dispatch({
+        type: RESET_ORDER,
+        payload: {
+          orderStatus: null,
+          orderData: {},
+        },
+      });
+
+      navigate("/");
+    }, 6000);
+  };
 
   return (
     <section className="orderSuccesful__container">

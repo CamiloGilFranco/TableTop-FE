@@ -77,7 +77,8 @@ const RestaurantOverview = ({ restaurant, language, languageSelector }) => {
                   {order.dishes.map((dish) => {
                     return (
                       <p key={dish.id}>
-                        {dish.quantity} x {dish.title} ({dish.price}{" "}
+                        {dish.quantity} x {dish.title} ({"$"}
+                        {dish.price.toLocaleString()}{" "}
                         {languageSelector(language, "each")})
                       </p>
                     );

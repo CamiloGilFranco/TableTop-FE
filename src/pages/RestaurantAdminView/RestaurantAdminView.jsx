@@ -82,7 +82,7 @@ const RestaurantAdminView = () => {
     }
   };
 
-  if (!user || isExpired) {
+  if (!user) {
     return <NotFoundPageComponent />;
   }
 

@@ -69,7 +69,7 @@ const GeneralAdminView = () => {
     setModalVisible(false);
   };
 
-  if (!user || isExpired) {
+  if (!user) {
     return <NotFoundPageComponent />;
   }
 

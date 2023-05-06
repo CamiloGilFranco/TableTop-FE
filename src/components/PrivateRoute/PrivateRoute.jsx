@@ -10,11 +10,7 @@ const PrivateRoute = ({ children, role }) => {
   const userData = getUserDataFromCookies(cookies);
   const userRole = userData ? userData.user_role : null;
 
-  return !isExpired && userRole === role ? (
-    children
-  ) : (
-    <Navigate to={routePaths.home} />
-  );
+  return userRole === role ? children : <Navigate to={routePaths.home} />;
 };
 
 export default PrivateRoute;
