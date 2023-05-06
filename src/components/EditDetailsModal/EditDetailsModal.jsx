@@ -24,23 +24,32 @@ const EditVenueDetailsModal = ({
     },
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const venueId = restaurant.venues[index].id_restaurant_venue;
-    const requestBody = { field, newValue: editingItem };
+    const requestBody = { [field]: editingItem };
 
-    const response = await axios.put(`${API_URL}/restaurant-venues/${venueId}`, requestBody, config);
-    
-    editItem(field, index, editingItem);
-    setEditingItem("");
-    setErrors({});
-    onClose();
+    const response = await axios.put(
+      `${API_URL}/restaurant-venues/${venueId}`,
+      requestBody,
+      config
+    );
+    if (response.status === 200) {
+      editItem(field, index, editingItem);
+      setEditingItem("");
+      setErrors({});
+      onClose();
+    }
   };
 
   return (
     <div className="editVenueDetailsModal__container">
       <section className="editVenueDetailsModal__box">
         <span>{languageSelector(language, "editDetailsModal")}</span>
-        <form className="editVenueDetailsModal__form" onSubmit={handleSubmit}>
+        <form
+          className="editVenueDetailsModal__form"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <input
             type="text"
             name="editedItem"

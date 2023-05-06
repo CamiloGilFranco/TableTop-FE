@@ -43,12 +43,12 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
           setAdmins(updatedAdmins);
         }
         setNewAdminEmail("");
-        toast.success(languageSelector(language, "removeResAdminSuccess"));
+        toast.success(languageSelector(language, "addResAdminSuccess"));
         onAdminUpdate();
       }
     } catch (error) {
       console.error(error);
-      toast.error(languageSelector(language, "removeResAdminFailure"));
+      toast.error(languageSelector(language, "addResAdminFailure"));
     }
   };
 
@@ -64,7 +64,7 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
           },
           config
         );
-        console.log(restaurant);
+
         toast.success(languageSelector(language, "deleteResAdmimSuccess"));
         onAdminUpdate();
       } catch (error) {
@@ -92,7 +92,7 @@ const AdminList = ({ restaurant = {}, onAdminUpdate }) => {
         ))}
       </ul>
       <div className="adminList__addAdmin">
-        <span className="Add_new_admin_span">Add new admin</span>
+        <span className="Add_new_admin_span">{languageSelector(language, 'addNewAdmin')}</span>
         <input
           type="email"
           placeholder={languageSelector(language, "signInEmail")}
