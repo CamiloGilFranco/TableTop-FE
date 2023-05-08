@@ -86,7 +86,7 @@ const RestaurantOverview = ({ restaurant, language, languageSelector }) => {
                 </div>
                 <p className="order-total">
                   {languageSelector(language, "totalAmount")}:{" "}
-                  {order.totalAmount}
+                  ${order.totalAmount.toLocaleString()}
                 </p>
               </>
             )}
