@@ -82,6 +82,7 @@ const Payment = ({ deliveryAddress }) => {
           addressId: deliveryAddress.id,
         },
       });
+
       elements.getElement(CardElement).clear();
       setLoader(false);
     } catch (error) {
